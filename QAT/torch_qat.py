@@ -18,7 +18,6 @@ from pathlib import Path
 import torch
 from torch import nn
 from ultralytics.models.yolo.detect import DetectionTrainer
-from ultralytics.nn.modules.conv import Conv as UltralyticsConv
 from ultralytics.nn.tasks import BaseModel
 
 
@@ -69,7 +68,8 @@ class MinMaxFakeQuant(nn.Module):
             scale = magnitude.div(127.0).clamp_min(epsilon)
             quantized = tensor.div(scale).round().clamp(-127, 127).mul(scale)
         else:
-            # Signed asymmetric INT8 for intermediate activations.
+            # Signed asymmetric INT8 for activations. Deployment uses the
+            # equivalent uint8 grid required by PyTorch quantized Conv2d.
             qmin, qmax = -128, 127
             minimum = torch.minimum(self.min_val, torch.zeros_like(self.min_val))
             maximum = torch.maximum(self.max_val, torch.zeros_like(self.max_val))
@@ -89,11 +89,13 @@ class MinMaxFakeQuant(nn.Module):
 
 
 class QATConv2d(nn.Conv2d):
-    """Conv2d whose floating-point weights are fake-quantized each forward."""
+    """Conv2d that simulates the exact activation/weight INT8 boundaries."""
 
     def __init__(self, *args: object, **kwargs: object) -> None:
         super().__init__(*args, **kwargs)
+        self.input_fake_quant = MinMaxFakeQuant(symmetric=False)
         self.weight_fake_quant = MinMaxFakeQuant(symmetric=True)
+        self.output_fake_quant = MinMaxFakeQuant(symmetric=False)
 
     @classmethod
     def from_conv(cls, conv: nn.Conv2d) -> "QATConv2d":
@@ -113,8 +115,15 @@ class QATConv2d(nn.Conv2d):
         return qat_conv
 
     def forward(self, tensor: torch.Tensor) -> torch.Tensor:
+        # Old checkpoints only contain weight_fake_quant.  Keeping this
+        # fallback makes them loadable, but new training creates all 3 ranges.
+        input_fake_quant = getattr(self, "input_fake_quant", None)
+        output_fake_quant = getattr(self, "output_fake_quant", None)
+        if input_fake_quant is not None:
+            tensor = input_fake_quant(tensor)
         weight = self.weight_fake_quant(self.weight)
-        return self._conv_forward(tensor, weight, self.bias)
+        output = self._conv_forward(tensor, weight, self.bias)
+        return output_fake_quant(output) if output_fake_quant is not None else output
 
 
 def _replace_convs(module: nn.Module) -> int:
@@ -149,24 +158,19 @@ def load_raw_model(path: Path) -> BaseModel:
 
 
 def prepare_model(model: BaseModel) -> tuple[BaseModel, int, int]:
-    """Insert MPS-compatible weight and activation fake quantizers."""
+    """Insert fake quantizers at the same boundaries as deployed INT8 Conv2d."""
     model.train()
     qat_modules = _replace_convs(model)
-
-    # Ultralytics Conv computes Conv -> BatchNorm -> activation. Quantizing at
-    # the block output better matches deployment than quantizing before BN.
-    for module in list(model.modules()):
-        if isinstance(module, UltralyticsConv):
-            module.act = nn.Sequential(
-                module.act,
-                MinMaxFakeQuant(symmetric=False),
-            )
 
     fake_quantizers = sum(
         isinstance(module, MinMaxFakeQuant) for module in model.modules()
     )
-    if not qat_modules or not fake_quantizers:
-        raise RuntimeError("QAT preparation did not insert fake-quantization modules")
+    expected_fake_quantizers = qat_modules * 3
+    if not qat_modules or fake_quantizers != expected_fake_quantizers:
+        raise RuntimeError(
+            f"Expected {expected_fake_quantizers} fake quantizers for "
+            f"{qat_modules} convolutions, found {fake_quantizers}"
+        )
     return model, qat_modules, fake_quantizers
 
 
@@ -285,7 +289,12 @@ def main() -> None:
     epochs = 50
     imgsz = 640
     batch = 8
-    device = "mps" if torch.backends.mps.is_available() else "cpu"
+    if torch.cuda.is_available():
+        device = "0"
+    elif torch.backends.mps.is_available():
+        device = "mps"
+    else:
+        device = "cpu"
 
     jobs = [
         # QATJob(

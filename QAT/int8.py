@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Convert custom QAT checkpoints to CPU quantized Conv2d islands.
 
-Weights use the trained symmetric QAT ranges. Conv input/output ranges are
-calibrated on real images because the original observers are AFTER BN/SiLU.
-BN, activations, residuals and detection decoding remain floating point.
+Weights and Conv input/output ranges come directly from the aligned QAT
+observers.  Older checkpoints without boundary observers use a clearly marked
+image-calibration fallback. BN, activations, residuals and detection decoding
+remain floating point.
 Run from the project root: python -m QAT.int8 --help
 """
 from __future__ import annotations
@@ -80,9 +81,16 @@ class Int8Conv2d(nn.Module):
 
 
 def qparams(bounds):
+    """Map an observed float range to PyTorch's uint8 activation parameters."""
     low, high = min(bounds[0], 0.), max(bounds[1], 0.)
     scale = max((high - low) / 255, torch.finfo(torch.float32).eps)
     return scale, max(0, min(255, round(-low / scale)))
+
+
+def observer_qparams(observer):
+    if observer is None or not observer.initialized:
+        raise ValueError('QAT activation observer is missing or uninitialized')
+    return qparams((float(observer.min_val), float(observer.max_val)))
 
 
 def image_tensor(path, size):
@@ -93,17 +101,13 @@ def image_tensor(path, size):
     return torch.from_numpy(im[:, :, ::-1].transpose(2, 0, 1).copy()).float().unsqueeze(0) / 255
 
 
-def convert(model, batches):
-    model = model.cpu().float().eval()
-    for m in model.modules():
-        if isinstance(m, MinMaxFakeQuant):
-            m.observer_enabled = False
-            if not m.initialized:
-                raise ValueError('Checkpoint contains uninitialized QAT ranges')
-            m.fake_quant_enabled = True
-    convs = {name: m for name, m in model.named_modules() if isinstance(m, QATConv2d)}
-    if not convs:
-        raise ValueError('No custom QAT convolutions found')
+def _calibrate_legacy_ranges(model, convs, batches):
+    """Collect missing Conv boundary ranges for checkpoints made by old code."""
+    if batches is None:
+        raise ValueError(
+            'This is an old QAT checkpoint without Conv boundary observers; '
+            'provide calibration images with --images'
+        )
     ranges, handles = {}, []
     def hook(name):
         def observe(module, inputs, output):
@@ -127,10 +131,38 @@ def convert(model, batches):
             handle.remove()
     if count == 0 or set(ranges) != set(convs):
         raise ValueError('Calibration must exercise every QAT convolution')
+    return ranges, count
+
+
+def convert(model, batches=None):
+    model = model.cpu().float().eval()
+    for m in model.modules():
+        if isinstance(m, MinMaxFakeQuant):
+            m.observer_enabled = False
+            if not m.initialized:
+                raise ValueError('Checkpoint contains uninitialized QAT ranges')
+            m.fake_quant_enabled = True
+    convs = {name: m for name, m in model.named_modules() if isinstance(m, QATConv2d)}
+    if not convs:
+        raise ValueError('No custom QAT convolutions found')
+    aligned = all(
+        getattr(conv, 'input_fake_quant', None) is not None
+        and getattr(conv.input_fake_quant, 'initialized', False)
+        and getattr(conv, 'output_fake_quant', None) is not None
+        and getattr(conv.output_fake_quant, 'initialized', False)
+        for conv in convs.values()
+    )
+    ranges, count = ({}, 0) if aligned else _calibrate_legacy_ranges(model, convs, batches)
     for name, conv in convs.items():
         parent_name, _, attr = name.rpartition('.')
         parent = model.get_submodule(parent_name) if parent_name else model
-        setattr(parent, attr, Int8Conv2d(conv, qparams(ranges[name][0]), qparams(ranges[name][1])))
+        if aligned:
+            input_params = observer_qparams(conv.input_fake_quant)
+            output_params = observer_qparams(conv.output_fake_quant)
+        else:
+            input_params = qparams(ranges[name][0])
+            output_params = qparams(ranges[name][1])
+        setattr(parent, attr, Int8Conv2d(conv, input_params, output_params))
     # Remove the remaining simulated activation quantization for deployment.
     for name, module in list(model.named_modules()):
         if isinstance(module, MinMaxFakeQuant):
@@ -138,13 +170,17 @@ def convert(model, batches):
             setattr(model.get_submodule(parent_name), attr, nn.Identity())
     model.int8_backend = torch.backends.quantized.engine
     model.int8_conv_count = len(convs)
+    model.int8_range_source = 'qat_observers' if aligned else 'legacy_calibration'
     return model, count
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--model', type=Path, default=ROOT / 'QAT/runs/kitti_qat_10e-3/weights/best.pt')
-    parser.add_argument('--images', type=Path, default=ROOT / 'datasets/kitti/images/train')
+    parser.add_argument(
+        '--images', type=Path, default=ROOT / 'datasets/kitti/images/train',
+        help='calibration images used only for checkpoints made by the old QAT code',
+    )
     parser.add_argument('--output', type=Path)
     parser.add_argument('--samples', type=int, default=128)
     parser.add_argument('--imgsz', type=int, default=640)
@@ -159,17 +195,27 @@ def main():
     output = args.output or args.model.with_name('best_real_int8.pt')
     if output.resolve() == args.model.resolve() or output.exists():
         raise FileExistsError(f'Refusing to overwrite: {output}')
-    paths = sorted(p for p in args.images.rglob('*') if p.suffix.lower() in {'.jpg', '.jpeg', '.png'})
-    if not paths:
-        raise ValueError(f'No calibration images in {args.images}')
-    # Deterministic sample spread across the training image list.
-    indices = torch.linspace(0, len(paths)-1, min(args.samples, len(paths))).long().tolist()
-    paths = [paths[i] for i in indices]
     model = torch.load(args.model, map_location='cpu', weights_only=False)
     if isinstance(model, dict):
         model = model.get('ema') if model.get('ema') is not None else model.get('model')
-    model, count = convert(model, (image_tensor(p, args.imgsz) for p in paths))
-    sample = image_tensor(paths[0], args.imgsz)
+    convs = [m for m in model.modules() if isinstance(m, QATConv2d)]
+    needs_legacy_calibration = any(
+        getattr(conv, 'input_fake_quant', None) is None
+        or not getattr(conv.input_fake_quant, 'initialized', False)
+        or getattr(conv, 'output_fake_quant', None) is None
+        or not getattr(conv.output_fake_quant, 'initialized', False)
+        for conv in convs
+    )
+    paths = []
+    if needs_legacy_calibration:
+        paths = sorted(p for p in args.images.rglob('*') if p.suffix.lower() in {'.jpg', '.jpeg', '.png'})
+        if not paths:
+            raise ValueError(f'No calibration images in {args.images}')
+        indices = torch.linspace(0, len(paths)-1, min(args.samples, len(paths))).long().tolist()
+        paths = [paths[i] for i in indices]
+    batches = (image_tensor(p, args.imgsz) for p in paths) if paths else None
+    model, count = convert(model, batches)
+    sample = image_tensor(paths[0], args.imgsz) if paths else torch.rand(1, 3, args.imgsz, args.imgsz)
     with torch.inference_mode(), torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU]) as prof:
         prediction = model(sample)[0]
     events = {e.key: e.count for e in prof.key_averages() if 'quantized::conv2d' in e.key}
@@ -182,8 +228,10 @@ def main():
     with torch.inference_mode():
         torch.testing.assert_close(reloaded(sample)[0], prediction, rtol=0, atol=0)
     temporary.replace(output)
-    report = dict(model=str(output), backend=args.backend, calibration_images=count,
-                  calibration_source=str(args.images), imgsz=args.imgsz,
+    report = dict(model=str(output), backend=args.backend,
+                  range_source=model.int8_range_source,
+                  calibration_images=count,
+                  calibration_source=str(args.images) if count else None, imgsz=args.imgsz,
                   quantized_convs=model.int8_conv_count, runtime_operators=events,
                   precision='int8_convs_float_remainder', reload_verified=True)
     output.with_suffix('.json').write_text(json.dumps(report, indent=2) + '\n')
@@ -194,4 +242,3 @@ if __name__ == '__main__':
     # Keep serialized custom classes importable when launched from an IDE.
     from QAT.int8 import main as canonical_main
     canonical_main()
-
