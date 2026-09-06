@@ -114,7 +114,7 @@ def main() -> None:
     jobs = [
         ValidationJob(
             "KITTI QAT best.pt",
-            PROJECT_ROOT / "QAT/runs/kitti_qat_10e-3/weights/best.pt",
+            PROJECT_ROOT / "QAT/runs/kitti_qat_10e-3/weights/best_real_int8.pt",
             str(PROJECT_ROOT / "datasets/kitti/kitti.yaml"),
         ),
     ]
@@ -140,3 +140,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    #
+    #

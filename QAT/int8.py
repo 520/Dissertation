@@ -194,3 +194,4 @@ if __name__ == '__main__':
     # Keep serialized custom classes importable when launched from an IDE.
     from QAT.int8 import main as canonical_main
     canonical_main()
+
