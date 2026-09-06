@@ -1,0 +1,12 @@
+# macOS and IDE files
+.DS_Store
+.idea/
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+/datasets/**

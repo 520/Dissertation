@@ -1,0 +1,104 @@
+[
+  {
+    "name": "KITTI PyTorch FP32",
+    "model": "Milad_models/yolov8n_kitti/final_model_factorized_lwi_fp32.onnx",
+    "data": "kitti.yaml",
+    "precision": "fp32",
+    "mAP50-95": 0.674389280867849,
+    "mAP50": 0.8907855367201312,
+    "mAP75": 0.7400225488837091,
+    "precision_mean": 0.9240696250584202,
+    "recall_mean": 0.8309283494001093,
+    "speed_ms_per_image": {
+      "preprocess": 0.455725327567616,
+      "inference": 18.580586058819037,
+      "loss": 0.0007846751661885145,
+      "postprocess": 0.5548838382278737
+    }
+  },
+  {
+    "name": "KITTI ONNX FP16",
+    "model": "Milad_models/yolov8n_kitti/final_model_factorized_lwi_fp16.onnx",
+    "data": "kitti.yaml",
+    "precision": "fp16",
+    "mAP50-95": 0.6751181973886344,
+    "mAP50": 0.8908544119984229,
+    "mAP75": 0.7407805553482663,
+    "precision_mean": 0.9237888306315624,
+    "recall_mean": 0.830836459612156,
+    "speed_ms_per_image": {
+      "preprocess": 0.4526206771430604,
+      "inference": 17.985441774074772,
+      "loss": 0.0005768489296451418,
+      "postprocess": 0.5303482794431298
+    }
+  },
+  {
+    "name": "KITTI ONNX INT8",
+    "model": "Milad_models/yolov8n_kitti/final_model_factorized_lwi_int8.onnx",
+    "data": "kitti.yaml",
+    "precision": "int8",
+    "mAP50-95": 0.6122940026262162,
+    "mAP50": 0.8745269577512931,
+    "mAP75": 0.685278960662302,
+    "precision_mean": 0.8772843489129387,
+    "recall_mean": 0.8135360647659609,
+    "speed_ms_per_image": {
+      "preprocess": 0.4710185394664621,
+      "inference": 12.491264928516793,
+      "loss": 0.0005814345070911244,
+      "postprocess": 0.5467883442541639
+    }
+  },
+  {
+    "name": "VOC PyTorch FP32",
+    "model": "Milad_models/yolov8n_voc/final_model_factorized_lwi_fp32.onnx",
+    "data": "VOC.yaml",
+    "precision": "fp32",
+    "mAP50-95": 0.5902940257322606,
+    "mAP50": 0.8049985153506889,
+    "mAP75": 0.655185054114515,
+    "precision_mean": 0.7938340310678285,
+    "recall_mean": 0.7474422323641982,
+    "speed_ms_per_image": {
+      "preprocess": 0.4605014386028171,
+      "inference": 21.527593225583942,
+      "loss": 0.000642690020913579,
+      "postprocess": 0.6291793426942498
+    }
+  },
+  {
+    "name": "VOC ONNX FP16",
+    "model": "Milad_models/yolov8n_voc/final_model_factorized_lwi_fp16.onnx",
+    "data": "VOC.yaml",
+    "precision": "fp16",
+    "mAP50-95": 0.5903121156533185,
+    "mAP50": 0.8050770748107945,
+    "mAP75": 0.6553663769174805,
+    "precision_mean": 0.7934466412080743,
+    "recall_mean": 0.7474700098062658,
+    "speed_ms_per_image": {
+      "preprocess": 0.47210387701419154,
+      "inference": 21.052490749999745,
+      "loss": 0.0006246304512978381,
+      "postprocess": 0.6640608707672184
+    }
+  },
+  {
+    "name": "VOC ONNX INT8",
+    "model": "Milad_models/yolov8n_voc/final_model_factorized_lwi_int8.onnx",
+    "data": "VOC.yaml",
+    "precision": "int8",
+    "mAP50-95": 0.5591328541687184,
+    "mAP50": 0.7860067876916766,
+    "mAP75": 0.6243695190054319,
+    "precision_mean": 0.778233269149893,
+    "recall_mean": 0.7337647070013209,
+    "speed_ms_per_image": {
+      "preprocess": 0.4925603156301781,
+      "inference": 12.581265562214329,
+      "loss": 0.0006072879613191952,
+      "postprocess": 0.7565542518157435
+    }
+  }
+]
