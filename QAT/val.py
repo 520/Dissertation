@@ -108,15 +108,21 @@ def main() -> None:
     # ------------------------------------------------------------------
     imgsz = 640
     batch = 1
+    # Real PyTorch INT8 convolution is CPU-only in this project.
     device = "cpu"
     results_file = PROJECT_ROOT / "QAT/validation_results.json"
 
     jobs = [
         ValidationJob(
             "KITTI QAT best.pt",
-            PROJECT_ROOT / "QAT/runs/kitti_qat_10e-3/weights/best_real_int8.pt",
+            PROJECT_ROOT / "QAT/runs/kitti_qat_new_10e/weights/best_real_int8.pt",
             str(PROJECT_ROOT / "datasets/kitti/kitti.yaml"),
         ),
+        # ValidationJob(
+        #     "VOC QAT best.pt",
+        #     PROJECT_ROOT / "QAT/runs/voc_qat_10e-5/weights/best_real_int8.pt",
+        #     str(PROJECT_ROOT / "datasets/VOC/VOC.yaml"),
+        # ),
     ]
     # ------------------------------------------------------------------
 

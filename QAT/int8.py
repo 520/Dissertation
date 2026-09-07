@@ -93,6 +93,27 @@ def observer_qparams(observer):
     return qparams((float(observer.min_val), float(observer.max_val)))
 
 
+def float_conv_from_qat(conv):
+    """Remove fake quantizers while preserving an unsupported Conv in FP32."""
+    float_conv = nn.Conv2d(
+        conv.in_channels, conv.out_channels, conv.kernel_size,
+        conv.stride, conv.padding, conv.dilation, conv.groups,
+        conv.bias is not None, conv.padding_mode,
+    )
+    float_conv.weight = conv.weight
+    float_conv.bias = conv.bias
+    return float_conv
+
+
+def has_activation_ranges(conv):
+    return (
+        getattr(conv, 'input_fake_quant', None) is not None
+        and getattr(conv.input_fake_quant, 'initialized', False)
+        and getattr(conv, 'output_fake_quant', None) is not None
+        and getattr(conv.output_fake_quant, 'initialized', False)
+    )
+
+
 def image_tensor(path, size):
     im = cv2.imread(str(path))
     if im is None:
@@ -139,24 +160,30 @@ def convert(model, batches=None):
     for m in model.modules():
         if isinstance(m, MinMaxFakeQuant):
             m.observer_enabled = False
-            if not m.initialized:
-                raise ValueError('Checkpoint contains uninitialized QAT ranges')
             m.fake_quant_enabled = True
-    convs = {name: m for name, m in model.named_modules() if isinstance(m, QATConv2d)}
-    if not convs:
+    all_convs = {name: m for name, m in model.named_modules() if isinstance(m, QATConv2d)}
+    if not all_convs:
         raise ValueError('No custom QAT convolutions found')
-    aligned = all(
-        getattr(conv, 'input_fake_quant', None) is not None
-        and getattr(conv.input_fake_quant, 'initialized', False)
-        and getattr(conv, 'output_fake_quant', None) is not None
-        and getattr(conv.output_fake_quant, 'initialized', False)
-        for conv in convs.values()
+    # A Conv whose weight observer never ran (normally YOLOv8's fixed DFL
+    # projection) was not QAT-trained. Quantizing it after training would add
+    # an error the model never learned, so retain that Conv in FP32.
+    skipped = {
+        name: conv for name, conv in all_convs.items()
+        if not getattr(conv.weight_fake_quant, 'initialized', False)
+    }
+    convs = {name: conv for name, conv in all_convs.items() if name not in skipped}
+    missing_ranges = {name: conv for name, conv in convs.items() if not has_activation_ranges(conv)}
+    ranges, count = (
+        _calibrate_legacy_ranges(model, missing_ranges, batches)
+        if missing_ranges else ({}, 0)
     )
-    ranges, count = ({}, 0) if aligned else _calibrate_legacy_ranges(model, convs, batches)
-    for name, conv in convs.items():
+    for name, conv in all_convs.items():
         parent_name, _, attr = name.rpartition('.')
         parent = model.get_submodule(parent_name) if parent_name else model
-        if aligned:
+        if name in skipped:
+            setattr(parent, attr, float_conv_from_qat(conv))
+            continue
+        if name not in missing_ranges:
             input_params = observer_qparams(conv.input_fake_quant)
             output_params = observer_qparams(conv.output_fake_quant)
         else:
@@ -170,15 +197,21 @@ def convert(model, batches=None):
             setattr(model.get_submodule(parent_name), attr, nn.Identity())
     model.int8_backend = torch.backends.quantized.engine
     model.int8_conv_count = len(convs)
-    model.int8_range_source = 'qat_observers' if aligned else 'legacy_calibration'
+    model.int8_float_fallback_count = len(skipped)
+    if not missing_ranges:
+        model.int8_range_source = 'qat_observers'
+    elif len(missing_ranges) == len(convs):
+        model.int8_range_source = 'legacy_calibration'
+    else:
+        model.int8_range_source = 'qat_observers_plus_calibration'
     return model, count
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--model', type=Path, default=ROOT / 'QAT/runs/kitti_qat_10e-3/weights/best.pt')
+    parser.add_argument('--model', type=Path, default=ROOT / 'QAT/runs/voc_qat_10e-5/weights/best.pt')
     parser.add_argument(
-        '--images', type=Path, default=ROOT / 'datasets/kitti/images/train',
+        '--images', type=Path, default=ROOT / 'datasets/VOC/images/train',
         help='calibration images used only for checkpoints made by the old QAT code',
     )
     parser.add_argument('--output', type=Path)
@@ -200,10 +233,8 @@ def main():
         model = model.get('ema') if model.get('ema') is not None else model.get('model')
     convs = [m for m in model.modules() if isinstance(m, QATConv2d)]
     needs_legacy_calibration = any(
-        getattr(conv, 'input_fake_quant', None) is None
-        or not getattr(conv.input_fake_quant, 'initialized', False)
-        or getattr(conv, 'output_fake_quant', None) is None
-        or not getattr(conv.output_fake_quant, 'initialized', False)
+        getattr(conv.weight_fake_quant, 'initialized', False)
+        and not has_activation_ranges(conv)
         for conv in convs
     )
     paths = []
@@ -233,6 +264,7 @@ def main():
                   calibration_images=count,
                   calibration_source=str(args.images) if count else None, imgsz=args.imgsz,
                   quantized_convs=model.int8_conv_count, runtime_operators=events,
+                  fp32_fallback_convs=model.int8_float_fallback_count,
                   precision='int8_convs_float_remainder', reload_verified=True)
     output.with_suffix('.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report, indent=2))

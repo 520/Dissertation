@@ -1,19 +1,19 @@
 [
   {
     "name": "KITTI QAT best.pt",
-    "model": "QAT/runs/kitti_qat_10e-3/weights/best_real_int8.pt",
+    "model": "QAT/runs/kitti_qat_new_10e/weights/best_real_int8.pt",
     "data": "/Users/richard/Developer/Dissertation/datasets/kitti/kitti.yaml",
     "precision": "int8_convs_float_remainder",
-    "mAP50-95": 0.6565713720153451,
-    "mAP50": 0.904941310571715,
-    "mAP75": 0.7542978323909686,
-    "precision_mean": 0.8954699546714482,
-    "recall_mean": 0.8456233379266316,
+    "mAP50-95": 0.6516478497612221,
+    "mAP50": 0.8981714776611303,
+    "mAP75": 0.7522843085792219,
+    "precision_mean": 0.882269661200167,
+    "recall_mean": 0.8486701307187712,
     "speed_ms_per_image": {
-      "preprocess": 0.19076799863908486,
-      "inference": 23.38464999464385,
-      "loss": 0.000715276767545813,
-      "postprocess": 0.30981272256490056
+      "preprocess": 0.18367217186378332,
+      "inference": 22.23629231064644,
+      "loss": 0.0005846350809576657,
+      "postprocess": 0.2404370661971239
     }
   }
 ]

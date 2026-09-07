@@ -18,6 +18,7 @@ from pathlib import Path
 import torch
 from torch import nn
 from ultralytics.models.yolo.detect import DetectionTrainer
+from ultralytics.nn.modules.block import DFL
 from ultralytics.nn.tasks import BaseModel
 
 
@@ -127,6 +128,11 @@ class QATConv2d(nn.Conv2d):
 
 
 def _replace_convs(module: nn.Module) -> int:
+    # DFL is a fixed projection used only while decoding boxes for inference.
+    # It is not exercised by the normal training forward path, so it cannot
+    # collect representative QAT input/output ranges. Keep it in FP32.
+    if isinstance(module, DFL):
+        return 0
     count = 0
     for name, child in list(module.named_children()):
         if isinstance(child, QATConv2d):
@@ -297,12 +303,6 @@ def main() -> None:
         device = "cpu"
 
     jobs = [
-        # QATJob(
-        #     "kitti_qat_10e",
-        #     PROJECT_ROOT
-        #     / "Milad_models/yolov8n_kitti/final_model_factorized_lwi.pt",
-        #     str(PROJECT_ROOT / "datasets/kitti/kitti.yaml"),
-        # ),
         QATJob(
             "voc_qat_10e",
             PROJECT_ROOT
