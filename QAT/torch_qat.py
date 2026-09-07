@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Fine-tune the factorized YOLO models with PyTorch eager-mode QAT.
 
-The input files contain serialized Ultralytics ``DetectionModel`` objects
-rather than normal checkpoint dictionaries.  This script prepares each raw
-model with fake-quantization modules, then hands it directly to an Ultralytics
-``DetectionTrainer``.
+Accepts serialized Ultralytics models and checkpoint dictionaries containing
+an EMA/model object. This script prepares the model with fake-quantization
+modules, then hands it directly to an Ultralytics ``DetectionTrainer``.
 """
 
 from __future__ import annotations
@@ -146,8 +145,28 @@ def _replace_convs(module: nn.Module) -> int:
 
 
 def load_raw_model(path: Path) -> BaseModel:
-    """Load the non-standard raw DetectionModel used by this project."""
-    model = torch.load(path, map_location="cpu", weights_only=False)
+    """Load a raw model or an Ultralytics checkpoint, preserving factorization."""
+    checkpoint = torch.load(path, map_location="cpu", weights_only=False)
+    model = checkpoint
+    if isinstance(checkpoint, dict):
+        # EMA may be None (e.g. stripped checkpoints). Select an actual model
+        # object instead of treating any nonempty dictionary as a model.
+        model = next(
+            (checkpoint[key] for key in ("ema", "model")
+             if isinstance(checkpoint.get(key), BaseModel)),
+            None,
+        )
+        if model is None:
+            fields = ", ".join(
+                f"{key}: {type(value).__name__}"
+                for key, value in list(checkpoint.items())[:12]
+            )
+            raise TypeError(
+                f"Checkpoint has no Ultralytics BaseModel in 'ema' or 'model': "
+                f"{path}. Fields: {fields}. If it contains only a state_dict, "
+                "the matching factorized model architecture is also required; "
+                "do not substitute a standard YOLO architecture."
+            )
     if not isinstance(model, BaseModel):
         raise TypeError(
             f"Expected a serialized Ultralytics BaseModel, got "
@@ -306,7 +325,7 @@ def main() -> None:
         QATJob(
             "voc_qat_10e",
             PROJECT_ROOT
-            / "Milad_models/yolov8n_voc/final_model_factorized_lwi.pt",
+            / "original/yolov8n_voc/final_model_factorized_lwi.pt",
             "VOC.yaml",
         ),
     ]
