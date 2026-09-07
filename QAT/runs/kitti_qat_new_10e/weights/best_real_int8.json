@@ -1,0 +1,15 @@
+{
+  "model": "/Users/richard/Developer/Dissertation/QAT/runs/kitti_qat_new_10e/weights/best_real_int8.pt",
+  "backend": "qnnpack",
+  "range_source": "qat_observers",
+  "calibration_images": 0,
+  "calibration_source": null,
+  "imgsz": 640,
+  "quantized_convs": 108,
+  "runtime_operators": {
+    "quantized::conv2d": 108
+  },
+  "fp32_fallback_convs": 1,
+  "precision": "int8_convs_float_remainder",
+  "reload_verified": true
+}

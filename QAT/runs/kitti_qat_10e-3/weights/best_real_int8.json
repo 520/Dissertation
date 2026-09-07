@@ -1,0 +1,13 @@
+{
+  "model": "/Users/richard/Developer/Dissertation/QAT/runs/kitti_qat_10e-3/weights/best_real_int8.pt",
+  "backend": "qnnpack",
+  "calibration_images": 128,
+  "calibration_source": "/Users/richard/Developer/Dissertation/datasets/kitti/images/train",
+  "imgsz": 640,
+  "quantized_convs": 109,
+  "runtime_operators": {
+    "quantized::conv2d": 109
+  },
+  "precision": "int8_convs_float_remainder",
+  "reload_verified": true
+}
