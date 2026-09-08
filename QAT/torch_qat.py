@@ -276,7 +276,7 @@ def train_job(
             "imgsz": imgsz,
             "batch": batch,
             "device": device,
-            "workers": 0,
+            "workers": 4,
             "project": str(RUNS_ROOT),
             "name": job.name,
             "exist_ok": False,
@@ -313,7 +313,7 @@ def main() -> None:
     # ------------------------------------------------------------------
     epochs = 50
     imgsz = 640
-    batch = 8
+    batch = 16
     if torch.cuda.is_available():
         device = "0"
     elif torch.backends.mps.is_available():
