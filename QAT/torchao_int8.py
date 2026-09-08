@@ -7,7 +7,7 @@ are process- and machine-specific, so the saved artifact is a portable recipe;
 ``load_int8_model()`` reconstructs and compiles it on the deployment CPU.
 
 Run from the project root:
-    python -m QAT.torchao_int8 --checkpoint path/to/best_torchao_qat.pt
+    python -m QAT.torchao_int8 --checkpoint QAT/runs/voc_torchao_qat/weights/best.pt
 """
 
 from __future__ import annotations

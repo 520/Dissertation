@@ -16,8 +16,9 @@ import argparse
 import copy
 import json
 from pathlib import Path
+import shutil
 import sys
-from typing import Any, Iterator
+from typing import Iterator
 
 import cv2
 import torch
@@ -38,10 +39,32 @@ IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 
 
 class StateOnlyDetectionTrainer(DetectionTrainer):
-    """Save the ModelOpt-native checkpoint ourselves after training."""
+    """Save ModelOpt-native checkpoints without pickling the whole model."""
 
-    def save_model(self) -> None:
-        return
+    def _save_modelopt_checkpoint(self, model: nn.Module, path: Path) -> None:
+        mto, _mtq = _modelopt_api()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        mto.save(model, path)
+        fitness = float(self.fitness) if self.fitness is not None else float("-inf")
+        metadata = {
+            **self.modelopt_metadata,
+            "checkpoint": str(path.resolve()),
+            "epoch": self.epoch,
+            "fitness": fitness,
+            "best_fitness": (
+                float(self.best_fitness) if self.best_fitness is not None else fitness
+            ),
+        }
+        path.with_suffix(".json").write_text(json.dumps(metadata, indent=2) + "\n")
+
+    def save_model(self) -> bool:
+        candidate = self.ema.ema if self.ema is not None else self.model
+        self._save_modelopt_checkpoint(candidate, self.last)
+        if self.best_fitness == self.fitness:
+            self._save_modelopt_checkpoint(candidate, self.best)
+        if self.save_period > 0 and self.epoch % self.save_period == 0:
+            self._save_modelopt_checkpoint(candidate, self.wdir / f"epoch{self.epoch}.pt")
+        return True
 
     def final_eval(self) -> None:
         # Per-epoch validation already selected the best in-memory state.
@@ -134,13 +157,6 @@ def prepare_modelopt_model(
     return quantized, count
 
 
-def _cpu_state_dict(model: nn.Module) -> dict[str, Any]:
-    return {
-        key: value.detach().cpu().clone() if isinstance(value, torch.Tensor) else copy.deepcopy(value)
-        for key, value in model.state_dict().items()
-    }
-
-
 def _portable_source(path: Path) -> str:
     path = path.resolve()
     try:
@@ -150,7 +166,7 @@ def _portable_source(path: Path) -> str:
 
 
 def train(args: argparse.Namespace) -> Path:
-    mto, _mtq = _modelopt_api()
+    _modelopt_api()
     source = args.model.expanduser().resolve()
     paths = select_calibration_images(args.images, args.calibration_samples)
     device = resolve_device(args.device)
@@ -189,38 +205,14 @@ def train(args: argparse.Namespace) -> Path:
             "amp": False,
             "plots": False,
             "val": True,
-            "save": False,
+            "save": True,
         }
     )
     trainer.model = model
-    best: dict[str, Any] = {"fitness": float("-inf"), "state_dict": None}
-
-    def on_fit_epoch_end(current: DetectionTrainer) -> None:
-        fitness = float(current.fitness) if current.fitness is not None else float("-inf")
-        if fitness >= best["fitness"]:
-            candidate = current.ema.ema if current.ema is not None else current.model
-            best["fitness"] = fitness
-            best["state_dict"] = _cpu_state_dict(candidate)
-
-    trainer.add_callback("on_fit_epoch_end", on_fit_epoch_end)
-    trainer.train()
-
-    if best["state_dict"] is not None:
-        trainer.model.load_state_dict(best["state_dict"], strict=True)
-    output = args.output or Path(trainer.save_dir) / "best_modelopt_qat.pt"
-    output = output.expanduser().resolve()
-    output.parent.mkdir(parents=True, exist_ok=True)
-    if output.exists() and not args.overwrite:
-        raise FileExistsError(f"Refusing to overwrite: {output}")
-    trained = trainer.model.float().cpu().eval()
-    mto.save(trained, output)
-
-    metadata = {
+    trainer.modelopt_metadata = {
         "format": FORMAT,
         "format_version": 1,
-        "checkpoint": str(output),
         "source_model": _portable_source(source),
-        "fitness": best["fitness"],
         "quantized_convs": quantized_convs,
         "calibration_images": len(paths),
         "calibration_sources": [
@@ -228,7 +220,20 @@ def train(args: argparse.Namespace) -> Path:
         ],
         "imgsz": args.imgsz,
     }
-    output.with_suffix(".json").write_text(json.dumps(metadata, indent=2) + "\n")
+    trainer.train()
+
+    best_path = Path(trainer.best).resolve()
+    if not best_path.is_file():
+        raise RuntimeError(f"Training finished without a best checkpoint: {best_path}")
+    output = args.output.expanduser().resolve() if args.output else best_path
+    if output != best_path:
+        output.parent.mkdir(parents=True, exist_ok=True)
+        if output.exists() and not args.overwrite:
+            raise FileExistsError(f"Refusing to overwrite: {output}")
+        shutil.copy2(best_path, output)
+        metadata = json.loads(best_path.with_suffix(".json").read_text())
+        metadata["checkpoint"] = str(output)
+        output.with_suffix(".json").write_text(json.dumps(metadata, indent=2) + "\n")
     print(f"ModelOpt QAT checkpoint saved: {output}")
     return output
 

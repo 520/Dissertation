@@ -6,7 +6,7 @@ ONNX export can run on CPU; ``--build-engine`` requires CUDA and TensorRT.
 
 Example on A100:
     python -m QAT.modelopt_export \
-        --checkpoint path/to/best_modelopt_qat.pt --build-engine
+        --checkpoint QAT/runs/voc_modelopt_qat/weights/best.pt --build-engine
 """
 
 from __future__ import annotations

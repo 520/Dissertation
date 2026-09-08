@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import copy
 from pathlib import Path
+import shutil
 import sys
 from typing import Any, Iterator
 
@@ -41,7 +42,7 @@ FORMAT = "torchao_pt2e_x86_qat"
 
 
 class StateOnlyDetectionTrainer(DetectionTrainer):
-    """Avoid pickling PT2E graphs; portable state is saved after training."""
+    """Save portable TorchAO state instead of pickling PT2E GraphModules."""
 
     def _refresh_ema_if_observers_resized(self) -> bool:
         """Rebuild EMA after lazy TorchAO observers acquire channel shapes."""
@@ -70,8 +71,30 @@ class StateOnlyDetectionTrainer(DetectionTrainer):
         self._refresh_ema_if_observers_resized()
         super().optimizer_step()
 
-    def save_model(self) -> None:
-        return
+    def save_model(self) -> bool:
+        candidate = self.ema.ema if self.ema is not None else self.model
+        fitness = float(self.fitness) if self.fitness is not None else float("-inf")
+        payload = {
+            "format": FORMAT,
+            "format_version": 1,
+            "source_model": self.qat_source_model,
+            "state_dict": _cpu_state_dict(candidate),
+            "epoch": self.epoch,
+            "fitness": fitness,
+            "best_fitness": (
+                float(self.best_fitness) if self.best_fitness is not None else fitness
+            ),
+            "prepared_units": self.qat_prepared_units,
+            "quantized_convs": self.qat_quantized_convs,
+            "imgsz": self.args.imgsz,
+        }
+        self.wdir.mkdir(parents=True, exist_ok=True)
+        torch.save(payload, self.last)
+        if self.best_fitness == self.fitness:
+            torch.save(payload, self.best)
+        if self.save_period > 0 and self.epoch % self.save_period == 0:
+            torch.save(payload, self.wdir / f"epoch{self.epoch}.pt")
+        return True
 
     def final_eval(self) -> None:
         # Per-epoch validation already selected the best in-memory state.
@@ -288,50 +311,28 @@ def train(args: argparse.Namespace) -> Path:
             "amp": False,
             "plots": False,
             "val": True,
-            # Exported PT2E GraphModules are not pickleable. Save the portable
-            # base-model + state-dict recipe below instead of Ultralytics .pt.
-            "save": False,
+            "save": True,
         }
     )
     trainer.model = model
-
-    best: dict[str, Any] = {"fitness": float("-inf"), "state_dict": None}
-
-    def on_fit_epoch_end(current: DetectionTrainer) -> None:
-        fitness = float(current.fitness) if current.fitness is not None else float("-inf")
-        if fitness >= best["fitness"]:
-            candidate = current.ema.ema if current.ema is not None else current.model
-            best["fitness"] = fitness
-            best["state_dict"] = _cpu_state_dict(candidate)
+    trainer.qat_source_model = _portable_source(source)
+    trainer.qat_prepared_units = units
+    trainer.qat_quantized_convs = convs
 
     trainer.add_callback(
         "on_train_epoch_start", lambda current: freeze_qat(current, freeze_epoch)
     )
-    trainer.add_callback("on_fit_epoch_end", on_fit_epoch_end)
     trainer.train()
 
-    if best["state_dict"] is None:
-        candidate = trainer.ema.ema if trainer.ema is not None else trainer.model
-        best["state_dict"] = _cpu_state_dict(candidate)
-
-    output = args.output or Path(trainer.save_dir) / "best_torchao_qat.pt"
-    output = output.expanduser().resolve()
-    output.parent.mkdir(parents=True, exist_ok=True)
-    if output.exists() and not args.overwrite:
-        raise FileExistsError(f"Refusing to overwrite: {output}")
-    torch.save(
-        {
-            "format": FORMAT,
-            "format_version": 1,
-            "source_model": _portable_source(source),
-            "state_dict": best["state_dict"],
-            "fitness": best["fitness"],
-            "prepared_units": units,
-            "quantized_convs": convs,
-            "imgsz": args.imgsz,
-        },
-        output,
-    )
+    best_path = Path(trainer.best).resolve()
+    if not best_path.is_file():
+        raise RuntimeError(f"Training finished without a best checkpoint: {best_path}")
+    output = args.output.expanduser().resolve() if args.output else best_path
+    if output != best_path:
+        output.parent.mkdir(parents=True, exist_ok=True)
+        if output.exists() and not args.overwrite:
+            raise FileExistsError(f"Refusing to overwrite: {output}")
+        shutil.copy2(best_path, output)
     print(f"TorchAO QAT checkpoint saved: {output}")
     return output
 
@@ -344,10 +345,10 @@ def parse_args() -> argparse.Namespace:
         default=PROJECT_ROOT / "original/yolov8n_voc/final_model_factorized_lwi.pt",
     )
     parser.add_argument("--data", default=str(PROJECT_ROOT / "datasets/VOC/VOC.yaml"))
-    parser.add_argument("--epochs", type=int, default=50)
+    parser.add_argument("--epochs", type=int, default=1)
     parser.add_argument("--imgsz", type=int, default=640)
     parser.add_argument("--batch", type=int, default=8)
-    parser.add_argument("--workers", type=int, default=0)
+    parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--device", default="0" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--lr0", type=float, default=1e-4)
     parser.add_argument("--name", default="voc_torchao_qat")
