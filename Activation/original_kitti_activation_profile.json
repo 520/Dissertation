@@ -1,0 +1,28 @@
+{
+  "model": "HEAD:original/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "device": "cpu",
+  "threads": 10,
+  "batch": 1,
+  "imgsz": 640,
+  "silu_references": 56,
+  "wall_clock": {
+    "repeats": 100,
+    "native_silu_median_ms": 46.68091700000332,
+    "identity_median_ms": 42.64391600008821,
+    "difference_ms": 4.037000999915108,
+    "estimated_activation_percent": 8.648075614955937
+  },
+  "operator_profile": {
+    "profiled_forwards": 20,
+    "forward_total_ms": 961.3165489999999,
+    "silu_self_total_ms": 82.87932200000115,
+    "silu_operator_percent": 8.621439221681511,
+    "silu_operators": [
+      {
+        "name": "aten::silu_",
+        "calls": 1120,
+        "self_cpu_total_ms": 82.87932200000115
+      }
+    ]
+  }
+}

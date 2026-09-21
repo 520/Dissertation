@@ -1,0 +1,42 @@
+{
+  "model": "HEAD:original/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "data": "/Users/richard/Developer/Dissertation/datasets/kitti/kitti.yaml",
+  "device": "cpu",
+  "threads": 10,
+  "batch": 1,
+  "imgsz": 640,
+  "silu_references_replaced": 56,
+  "scope": "Real preprocessed KITTI images; wall-clock model forward only. Excludes image loading, preprocessing and NMS. SiLU time is the sum of inner timers around torch.nn.functional.silu calls.",
+  "images": 1496,
+  "timed_batches": 1496,
+  "silu_calls_per_batch": {
+    "minimum": 56,
+    "maximum": 56
+  },
+  "activation_elements_total": 7459415040,
+  "forward_ms_per_image": {
+    "mean": 27.955707949866312,
+    "median": 27.989021,
+    "p90": 30.193021,
+    "p99": 31.6255819,
+    "minimum": 21.31075,
+    "maximum": 42.329458
+  },
+  "silu_ms_per_image": {
+    "mean": 2.816277562834224,
+    "median": 2.8161635,
+    "p90": 2.9497475,
+    "p99": 3.0325364,
+    "minimum": 2.404162,
+    "maximum": 5.566289
+  },
+  "silu_percent_per_image": {
+    "mean": 10.095572036397751,
+    "median": 10.071276727985126,
+    "p90": 10.702356056205867,
+    "p99": 11.248814791203774,
+    "minimum": 8.719563032954033,
+    "maximum": 13.149917960206341
+  },
+  "aggregate_silu_wall_clock_percent": 10.074069910462388
+}

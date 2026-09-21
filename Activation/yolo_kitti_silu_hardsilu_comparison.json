@@ -1,0 +1,104 @@
+{
+  "model": "HEAD:original/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "data": "/Users/richard/Developer/Dissertation/datasets/kitti/kitti.yaml",
+  "device": "cpu",
+  "torch_version": "2.12.1",
+  "threads": 1,
+  "workers": 0,
+  "batch": 1,
+  "imgsz": 640,
+  "latency_scope": "Forward-only wall clock on preprocessed KITTI validation images; excludes loading, preprocessing and NMS. Activation latency is the sum of all timed activation calls per image.",
+  "comparisons": {
+    "native_silu": {
+      "activation_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 1496,
+        "timed_batches": 1496,
+        "median_ms": 26.3785005,
+        "p90_ms": 29.6597915,
+        "p99_ms": 35.41760449999999,
+        "minimum_ms": 21.269417,
+        "maximum_ms": 73.391459,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 7459415040,
+          "mean_ms": 4.920777669786096,
+          "median_ms": 4.872398499999999,
+          "p90_ms": 5.2498515,
+          "p99_ms": 6.05371295,
+          "minimum_ms": 4.325003,
+          "maximum_ms": 28.545082,
+          "aggregate_wall_clock_percent": 18.579067030064717,
+          "median_per_image_percent": 18.80857498330567,
+          "p90_per_image_percent": 19.793972217556806,
+          "p99_per_image_percent": 20.440454257478628
+        }
+      },
+      "validation": {
+        "map50": 0.9025431831755923,
+        "map50_95": 0.6789510634497695,
+        "precision_mean": 0.9354739889052617,
+        "recall_mean": 0.8233276889118891,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.21116941317745963,
+          "inference": 23.34414187004481,
+          "loss": 0.0007757204236153931,
+          "postprocess": 0.3713536891816395
+        }
+      }
+    },
+    "hard_silu": {
+      "activation_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 1496,
+        "timed_batches": 1496,
+        "median_ms": 21.6796455,
+        "p90_ms": 23.2196255,
+        "p99_ms": 25.65946455,
+        "minimum_ms": 17.296,
+        "maximum_ms": 33.977167,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 7459415040,
+          "mean_ms": 0.7593029906417111,
+          "median_ms": 0.770478,
+          "p90_ms": 0.8146455,
+          "p99_ms": 0.87840515,
+          "minimum_ms": 0.677292,
+          "maximum_ms": 1.070418,
+          "aggregate_wall_clock_percent": 3.563572447364012,
+          "median_per_image_percent": 3.578531688581558,
+          "p90_per_image_percent": 3.7724314845826226,
+          "p99_per_image_percent": 3.9023421826151683
+        }
+      },
+      "validation": {
+        "map50": 0.8696885877437999,
+        "map50_95": 0.6054723436143093,
+        "precision_mean": 0.8927239113642906,
+        "recall_mean": 0.823260240570198,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.22531246396346905,
+          "inference": 23.686507873052392,
+          "loss": 0.000819803310812197,
+          "postprocess": 0.41436059556852894
+        }
+      }
+    }
+  },
+  "hard_silu_relative_to_native_silu": {
+    "model_median_ms_change_percent": -17.813199806410534,
+    "model_p90_ms_change_percent": -21.71345675171048,
+    "model_p99_ms_change_percent": -27.55166558483647,
+    "activation_median_ms_change_percent": -84.18688454977564,
+    "activation_median_speedup": 6.3238645360412615,
+    "map50_absolute_change": -0.03285459543179248,
+    "map50_95_absolute_change": -0.07347871983546017
+  }
+}

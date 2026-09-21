@@ -1,0 +1,1346 @@
+{
+  "model": "HEAD:original/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "data": "/Users/richard/Developer/Dissertation/datasets/kitti/kitti.yaml",
+  "dataset_label": "KITTI",
+  "device": "cpu",
+  "torch_version": "2.12.1",
+  "threads": 1,
+  "batch": 1,
+  "imgsz": 640,
+  "latency_note": "Forward-only wall clock on preprocessed KITTI images. Image loading, preprocessing and NMS are excluded. Exported C++ activation kernels are single-threaded, while native SiLU and the PyTorch C++ LUT may use the configured PyTorch thread count. Activation time uses inner wall-clock timers around all activation calls. With batch > 1, reported latency is batch time divided by batch size.",
+  "build": {
+    "all_activations_cpp": [
+      "c++",
+      "-O3",
+      "-ffast-math",
+      "-march=native",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-dynamiclib",
+      "/Users/richard/Developer/Dissertation/Activation/comparesilu.cpp",
+      "-o",
+      "/var/folders/3y/pn_y7l4j1114mg42qvp92r2r0000gn/T/yolo-activation-comparison-gs_bw_8u/libactivations.dylib",
+      "-lm"
+    ],
+    "torch_cpp": [
+      "c++",
+      "-O3",
+      "-ffast-math",
+      "-march=native",
+      "-std=c++17",
+      "-fPIC",
+      "-I",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/include",
+      "-I",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/include/torch/csrc/api/include",
+      "/Users/richard/Developer/Dissertation/Activation/uniform_lut21_torch.cpp",
+      "-Xpreprocessor",
+      "-fopenmp",
+      "-L",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/lib",
+      "-Wl,-rpath,/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/lib",
+      "-lomp",
+      "-dynamiclib",
+      "-undefined",
+      "dynamic_lookup",
+      "-o",
+      "/var/folders/3y/pn_y7l4j1114mg42qvp92r2r0000gn/T/yolo-activation-comparison-gs_bw_8u/libtorch_lut21.dylib"
+    ]
+  },
+  "comparisons": {
+    "native_silu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 25.803687500000002,
+        "p90_ms": 28.4006089,
+        "p99_ms": 32.98222383000011,
+        "minimum_ms": 22.365542,
+        "maximum_ms": 53.303541,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 4.762326290000001,
+          "median_ms": 4.651084,
+          "p90_ms": 4.8788747,
+          "p99_ms": 6.0276604900000335,
+          "minimum_ms": 4.423377,
+          "maximum_ms": 12.495082,
+          "aggregate_wall_clock_percent": 18.1300226653384,
+          "median_per_image_percent": 17.987292076967375,
+          "p90_per_image_percent": 19.643007646223143,
+          "p99_per_image_percent": 20.779712914178802
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9025431831755923,
+        "map50_95": 0.6789510634497695,
+        "precision_mean": 0.9354739889052617,
+        "recall_mean": 0.8233276889118891,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.233832923111958,
+          "inference": 25.368197631009668,
+          "loss": 0.0009208863660930357,
+          "postprocess": 0.3716795775370188
+        }
+      }
+    },
+    "cpp_exact_silu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 28.416188,
+        "p90_ms": 30.3831964,
+        "p99_ms": 38.02565325000004,
+        "minimum_ms": 24.920792,
+        "maximum_ms": 45.857667,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 6.981923600000001,
+          "median_ms": 6.887418,
+          "p90_ms": 7.1339482,
+          "p99_ms": 8.736488110000007,
+          "minimum_ms": 6.69175,
+          "maximum_ms": 9.968752,
+          "aggregate_wall_clock_percent": 24.295269341806414,
+          "median_per_image_percent": 24.265714123942494,
+          "p90_per_image_percent": 25.650685146480885,
+          "p99_per_image_percent": 26.960072746433607
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9025435156743371,
+        "map50_95": 0.6789512867970946,
+        "precision_mean": 0.9354738250545833,
+        "recall_mean": 0.8233276024179208,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18189496127270882,
+          "inference": 29.017075915122977,
+          "loss": 0.0008069265000073907,
+          "postprocess": 0.3144845969220046
+        }
+      }
+    },
+    "cpp_taylor3_linear": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 21.756541499999997,
+        "p90_ms": 23.0383164,
+        "p99_ms": 24.573088750000007,
+        "minimum_ms": 18.856792,
+        "maximum_ms": 25.609,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 1.55199098,
+          "median_ms": 1.541897,
+          "p90_ms": 1.6330661000000002,
+          "p99_ms": 1.7025159300000001,
+          "minimum_ms": 1.449915,
+          "maximum_ms": 1.724289,
+          "aggregate_wall_clock_percent": 7.159529433760956,
+          "median_per_image_percent": 7.1288100640759735,
+          "p90_per_image_percent": 7.625788528761554,
+          "p99_per_image_percent": 7.882689918201357
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8811753781099856,
+        "map50_95": 0.6363715238477076,
+        "precision_mean": 0.8794567544959911,
+        "recall_mean": 0.8266608245447988,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.1821157553570721,
+          "inference": 22.81810430482914,
+          "loss": 0.000833801482380013,
+          "postprocess": 0.3286511691195705
+        }
+      }
+    },
+    "cpp_range_poly": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 29.6572295,
+        "p90_ms": 32.1555167,
+        "p99_ms": 33.262903830000006,
+        "minimum_ms": 26.955541,
+        "maximum_ms": 33.542166,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 8.5984986,
+          "median_ms": 8.602478000000001,
+          "p90_ms": 8.9100069,
+          "p99_ms": 9.11514608,
+          "minimum_ms": 8.189624,
+          "maximum_ms": 9.146042,
+          "aggregate_wall_clock_percent": 28.84470327581248,
+          "median_per_image_percent": 28.909273130540907,
+          "p90_per_image_percent": 30.16477861026505,
+          "p99_per_image_percent": 31.31086889001215
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9025436699831952,
+        "map50_95": 0.6789253801215482,
+        "precision_mean": 0.9353990909504317,
+        "recall_mean": 0.8233545246026317,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18645287233853122,
+          "inference": 30.610134592266416,
+          "loss": 0.0008944037419233819,
+          "postprocess": 0.3184163535824772
+        }
+      }
+    },
+    "cpp_fast_sigmoid": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 21.0235005,
+        "p90_ms": 23.1906497,
+        "p99_ms": 23.98523458000001,
+        "minimum_ms": 18.251375,
+        "maximum_ms": 25.877083,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 0.9632952899999999,
+          "median_ms": 0.9535819999999999,
+          "p90_ms": 1.0711294,
+          "p99_ms": 1.1877192200000006,
+          "minimum_ms": 0.858836,
+          "maximum_ms": 1.28783,
+          "aggregate_wall_clock_percent": 4.541632120336277,
+          "median_per_image_percent": 4.571389424251329,
+          "p90_per_image_percent": 4.805266878583672,
+          "p99_per_image_percent": 5.17352939735189
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.7238462433178672,
+        "map50_95": 0.4284351167497292,
+        "precision_mean": 0.6896597298033892,
+        "recall_mean": 0.6838706909077717,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.20234062299339148,
+          "inference": 23.97557461359674,
+          "loss": 0.0008077239213734062,
+          "postprocess": 0.41831965909004015
+        }
+      }
+    },
+    "cpp_hard_silu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 20.5148955,
+        "p90_ms": 22.3745711,
+        "p99_ms": 22.778644170000003,
+        "minimum_ms": 17.446667,
+        "maximum_ms": 23.337417,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 0.68457191,
+          "median_ms": 0.6705220000000001,
+          "p90_ms": 0.7577479,
+          "p99_ms": 0.8612207500000001,
+          "minimum_ms": 0.602998,
+          "maximum_ms": 0.866542,
+          "aggregate_wall_clock_percent": 3.3158842224489735,
+          "median_per_image_percent": 3.2873878041748155,
+          "p90_per_image_percent": 3.639427194504153,
+          "p99_per_image_percent": 3.8966970918260238
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8696885809975854,
+        "map50_95": 0.6054723940239966,
+        "precision_mean": 0.8927238218995414,
+        "recall_mean": 0.8232601240858304,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.21045892110712028,
+          "inference": 24.507157245978764,
+          "loss": 0.000996360290263447,
+          "postprocess": 0.34808677071578614
+        }
+      }
+    },
+    "cpp_piecewise_linear": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 43.941145500000005,
+        "p90_ms": 47.0763711,
+        "p99_ms": 48.62978908,
+        "minimum_ms": 39.129083,
+        "maximum_ms": 49.29775,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 21.84132227,
+          "median_ms": 21.826105,
+          "p90_ms": 23.2847169,
+          "p99_ms": 23.825976500000003,
+          "minimum_ms": 19.32058,
+          "maximum_ms": 24.149459,
+          "aggregate_wall_clock_percent": 49.61229775498037,
+          "median_per_image_percent": 49.80907776206405,
+          "p90_per_image_percent": 51.54061169555711,
+          "p99_per_image_percent": 54.101059278895235
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8984669019611168,
+        "map50_95": 0.6767351442910335,
+        "precision_mean": 0.9181804256475319,
+        "recall_mean": 0.8359660304783083,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.19829082621704572,
+          "inference": 46.44083911432578,
+          "loss": 0.0009812947865383342,
+          "postprocess": 0.3464610340743968
+        }
+      }
+    },
+    "cpp_lut21": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 22.803792,
+        "p90_ms": 24.456062499999998,
+        "p99_ms": 26.150819830000014,
+        "minimum_ms": 20.265084,
+        "maximum_ms": 28.475917,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 1.8070393399999998,
+          "median_ms": 1.7851469999999998,
+          "p90_ms": 1.9370797000000002,
+          "p99_ms": 2.1181143600000003,
+          "minimum_ms": 1.666006,
+          "maximum_ms": 2.170917,
+          "aggregate_wall_clock_percent": 7.903897801906252,
+          "median_per_image_percent": 7.8685691001884335,
+          "p90_per_image_percent": 8.33896763681862,
+          "p99_per_image_percent": 8.8160890492765
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9032311696111852,
+        "map50_95": 0.6828048112271636,
+        "precision_mean": 0.9399700453916763,
+        "recall_mean": 0.8240098600583492,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.20558546058458751,
+          "inference": 25.51432056416793,
+          "loss": 0.0008648609866485882,
+          "postprocess": 0.34621758221178695
+        }
+      }
+    },
+    "cpp_relu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 21.5092505,
+        "p90_ms": 23.081217,
+        "p99_ms": 24.226373330000012,
+        "minimum_ms": 17.041917,
+        "maximum_ms": 26.379458,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 0.6596327900000002,
+          "median_ms": 0.645559,
+          "p90_ms": 0.742055,
+          "p99_ms": 0.8589521400000001,
+          "minimum_ms": 0.553123,
+          "maximum_ms": 0.878667,
+          "aggregate_wall_clock_percent": 3.089312770488415,
+          "median_per_image_percent": 3.0314952027345408,
+          "p90_per_image_percent": 3.4953051066051417,
+          "p99_per_image_percent": 3.7765205334639687
+        }
+      },
+      "kitti_validation": {
+        "map50": 7.973928844075284e-05,
+        "map50_95": 1.6292327554368712e-05,
+        "precision_mean": 0.000339194302819324,
+        "recall_mean": 0.023114940517844646,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.2156825314261641,
+          "inference": 24.01759073860439,
+          "loss": 0.00091285162726274,
+          "postprocess": 4.047850632347075
+        }
+      }
+    },
+    "cpp_lut9_range2": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 29.156709,
+        "p90_ms": 30.7438916,
+        "p99_ms": 33.91620634000001,
+        "minimum_ms": 24.674958,
+        "maximum_ms": 35.066917,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 8.176343880000001,
+          "median_ms": 8.191146,
+          "p90_ms": 8.7061738,
+          "p99_ms": 8.95444527,
+          "minimum_ms": 7.363004,
+          "maximum_ms": 9.118416,
+          "aggregate_wall_clock_percent": 28.003271510368293,
+          "median_per_image_percent": 27.929791167863648,
+          "p90_per_image_percent": 30.00467736017636,
+          "p99_per_image_percent": 31.836164914360793
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8008983550888991,
+        "map50_95": 0.5368301269233713,
+        "precision_mean": 0.8461046710685067,
+        "recall_mean": 0.7341985278283306,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18839932753760946,
+          "inference": 31.838164987287684,
+          "loss": 0.0008485654728047619,
+          "postprocess": 0.3345321016364654
+        }
+      }
+    },
+    "cpp_lut9_range3": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 25.390063,
+        "p90_ms": 28.3971506,
+        "p99_ms": 31.87309425,
+        "minimum_ms": 22.400959,
+        "maximum_ms": 31.973208,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 6.49224226,
+          "median_ms": 6.4759775,
+          "p90_ms": 6.9364882,
+          "p99_ms": 7.273435130000002,
+          "minimum_ms": 5.771082,
+          "maximum_ms": 7.510454,
+          "aggregate_wall_clock_percent": 25.484134952544213,
+          "median_per_image_percent": 25.348092111022467,
+          "p90_per_image_percent": 27.71813501455217,
+          "p99_per_image_percent": 28.991836471657923
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8966898178638044,
+        "map50_95": 0.6651681511326694,
+        "precision_mean": 0.9337690675625935,
+        "recall_mean": 0.8116407652010557,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18331761295611648,
+          "inference": 29.794031080875335,
+          "loss": 0.0007791717869982423,
+          "postprocess": 0.33579358623342764
+        }
+      }
+    },
+    "cpp_lut9_range4": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 24.205271,
+        "p90_ms": 26.2145705,
+        "p99_ms": 27.078722750000004,
+        "minimum_ms": 20.803292,
+        "maximum_ms": 28.218584,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 5.75444336,
+          "median_ms": 5.773918,
+          "p90_ms": 6.0980041,
+          "p99_ms": 6.18867339,
+          "minimum_ms": 5.124839,
+          "maximum_ms": 6.284247,
+          "aggregate_wall_clock_percent": 23.979897696219787,
+          "median_per_image_percent": 23.794711374553433,
+          "p90_per_image_percent": 26.693088843272516,
+          "p99_per_image_percent": 27.775843521812863
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.896924577212323,
+        "map50_95": 0.6729662795490894,
+        "precision_mean": 0.9134021075940681,
+        "recall_mean": 0.8316193430325104,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.19481284092115647,
+          "inference": 29.412736160427443,
+          "loss": 0.0007909779292106427,
+          "postprocess": 0.33029009759981576
+        }
+      }
+    },
+    "cpp_lut9_range5": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 24.444771000000003,
+        "p90_ms": 26.1263708,
+        "p99_ms": 28.054476160000004,
+        "minimum_ms": 22.689584,
+        "maximum_ms": 28.839958,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 5.383836499999998,
+          "median_ms": 5.427664,
+          "p90_ms": 5.6283642,
+          "p99_ms": 5.717225320000001,
+          "minimum_ms": 4.86075,
+          "maximum_ms": 5.830414,
+          "aggregate_wall_clock_percent": 21.87634983341275,
+          "median_per_image_percent": 22.127738088868874,
+          "p90_per_image_percent": 23.079332091110533,
+          "p99_per_image_percent": 23.419865818694742
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8843278910334123,
+        "map50_95": 0.6567972805779034,
+        "precision_mean": 0.8876951028038068,
+        "recall_mean": 0.822123616038943,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.19601176939280981,
+          "inference": 29.0104466650949,
+          "loss": 0.0007015715687826587,
+          "postprocess": 0.3350341918294216
+        }
+      }
+    },
+    "cpp_lut13_range2": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 26.9211455,
+        "p90_ms": 29.0889792,
+        "p99_ms": 30.967373330000004,
+        "minimum_ms": 23.205042,
+        "maximum_ms": 31.833458,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 8.1859252,
+          "median_ms": 8.206522,
+          "p90_ms": 8.505393999999999,
+          "p99_ms": 8.636858010000001,
+          "minimum_ms": 7.477751,
+          "maximum_ms": 8.639037,
+          "aggregate_wall_clock_percent": 30.248371406945317,
+          "median_per_image_percent": 30.345130304359607,
+          "p90_per_image_percent": 31.752517788102388,
+          "p99_per_image_percent": 33.93157623751194
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8012420293449709,
+        "map50_95": 0.5380765701217619,
+        "precision_mean": 0.8441503140825982,
+        "recall_mean": 0.7320186228434608,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18535173796559115,
+          "inference": 31.458368374972498,
+          "loss": 0.0008762379835427765,
+          "postprocess": 0.32760314501803395
+        }
+      }
+    },
+    "cpp_lut13_range3": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 23.9109585,
+        "p90_ms": 27.4846247,
+        "p99_ms": 29.77113833000001,
+        "minimum_ms": 21.346458,
+        "maximum_ms": 32.173208,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 6.0914655799999995,
+          "median_ms": 6.005979,
+          "p90_ms": 6.6348912,
+          "p99_ms": 7.144038730000001,
+          "minimum_ms": 5.567796,
+          "maximum_ms": 7.234498,
+          "aggregate_wall_clock_percent": 25.11170209093477,
+          "median_per_image_percent": 25.09036290721502,
+          "p90_per_image_percent": 27.749076009634628,
+          "p99_per_image_percent": 30.869469634672672
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8922170367258744,
+        "map50_95": 0.6637260012757946,
+        "precision_mean": 0.9169914130882448,
+        "recall_mean": 0.8213355701985504,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.20009258090999174,
+          "inference": 30.35285444787376,
+          "loss": 0.0009200100193117971,
+          "postprocess": 0.3392612787558907
+        }
+      }
+    },
+    "cpp_lut13_range4": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 24.4889995,
+        "p90_ms": 28.1896583,
+        "p99_ms": 31.278200830000003,
+        "minimum_ms": 21.624125,
+        "maximum_ms": 31.929208,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 5.81116535,
+          "median_ms": 5.815476,
+          "p90_ms": 6.2602673,
+          "p99_ms": 6.57168916,
+          "minimum_ms": 5.130753,
+          "maximum_ms": 6.688921,
+          "aggregate_wall_clock_percent": 23.488134336490294,
+          "median_per_image_percent": 23.91567650984016,
+          "p90_per_image_percent": 25.606043742835872,
+          "p99_per_image_percent": 26.924363240679142
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9009825641368224,
+        "map50_95": 0.6788568034980803,
+        "precision_mean": 0.9424771760427227,
+        "recall_mean": 0.820245436789421,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18852042448098197,
+          "inference": 29.052581874334148,
+          "loss": 0.0008919010410936802,
+          "postprocess": 0.3473805360910657
+        }
+      }
+    },
+    "cpp_lut13_range5": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 24.4043955,
+        "p90_ms": 30.296624700000006,
+        "p99_ms": 35.05490809000008,
+        "minimum_ms": 20.284833,
+        "maximum_ms": 51.438625,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 5.443059079999999,
+          "median_ms": 5.3751455,
+          "p90_ms": 5.6980377,
+          "p99_ms": 7.05533951000001,
+          "minimum_ms": 4.955206,
+          "maximum_ms": 9.040043,
+          "aggregate_wall_clock_percent": 21.437537779336328,
+          "median_per_image_percent": 21.881977741331276,
+          "p90_per_image_percent": 24.348462659652157,
+          "p99_per_image_percent": 25.58953694451671
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.901698314694783,
+        "map50_95": 0.679748156909587,
+        "precision_mean": 0.9432216457393929,
+        "recall_mean": 0.8214373870991257,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.19068364037428348,
+          "inference": 29.24903692911007,
+          "loss": 0.0009602306108037133,
+          "postprocess": 0.3429781075862014
+        }
+      }
+    },
+    "cpp_lut17_range2": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 29.008458500000003,
+        "p90_ms": 31.2742417,
+        "p99_ms": 34.23931483000004,
+        "minimum_ms": 25.519875,
+        "maximum_ms": 42.021292,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 8.17299531,
+          "median_ms": 8.1476245,
+          "p90_ms": 8.7098191,
+          "p99_ms": 9.110523080000023,
+          "minimum_ms": 7.12333,
+          "maximum_ms": 13.596419,
+          "aggregate_wall_clock_percent": 27.973251338115684,
+          "median_per_image_percent": 28.068723697950716,
+          "p90_per_image_percent": 29.919765880232923,
+          "p99_per_image_percent": 31.623755849459233
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8058024830494904,
+        "map50_95": 0.5385131370687862,
+        "precision_mean": 0.8439022054274452,
+        "recall_mean": 0.7425301433741667,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18329310360594023,
+          "inference": 31.323133549461424,
+          "loss": 0.000827379649721975,
+          "postprocess": 0.3311236751422276
+        }
+      }
+    },
+    "cpp_lut17_range3": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 26.083979,
+        "p90_ms": 28.218783000000002,
+        "p99_ms": 29.174705090000003,
+        "minimum_ms": 21.428834,
+        "maximum_ms": 29.669417,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 6.47233235,
+          "median_ms": 6.444267,
+          "p90_ms": 6.9544878,
+          "p99_ms": 7.19832038,
+          "minimum_ms": 5.575959,
+          "maximum_ms": 7.209248,
+          "aggregate_wall_clock_percent": 24.835135495847513,
+          "median_per_image_percent": 25.07916060517463,
+          "p90_per_image_percent": 26.52792726456648,
+          "p99_per_image_percent": 29.33388242979872
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8915410206800801,
+        "map50_95": 0.6616297360344839,
+        "precision_mean": 0.9177566330441396,
+        "recall_mean": 0.8210374292996789,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.1866165574838646,
+          "inference": 29.424879603611966,
+          "loss": 0.0008209451595240367,
+          "postprocess": 0.3172377439872639
+        }
+      }
+    },
+    "cpp_lut17_range4": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 25.579208,
+        "p90_ms": 27.2388215,
+        "p99_ms": 28.194149260000007,
+        "minimum_ms": 20.5435,
+        "maximum_ms": 29.413459,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 5.779650470000002,
+          "median_ms": 5.7659395,
+          "p90_ms": 6.1856968000000006,
+          "p99_ms": 6.5561806,
+          "minimum_ms": 5.242332,
+          "maximum_ms": 6.569704,
+          "aggregate_wall_clock_percent": 22.719481139256608,
+          "median_per_image_percent": 22.70474416239029,
+          "p90_per_image_percent": 24.684733312077135,
+          "p99_per_image_percent": 26.307590580734516
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9021638561408629,
+        "map50_95": 0.6800507187645041,
+        "precision_mean": 0.9389433864948052,
+        "recall_mean": 0.8230324179619983,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18819606484758358,
+          "inference": 28.78095731817389,
+          "loss": 0.0008550935850254905,
+          "postprocess": 0.32182367110964116
+        }
+      }
+    },
+    "cpp_lut17_range5": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 25.100645999999998,
+        "p90_ms": 27.032666600000002,
+        "p99_ms": 29.72803967000001,
+        "minimum_ms": 22.0805,
+        "maximum_ms": 31.06025,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 5.3645426700000005,
+          "median_ms": 5.315439,
+          "p90_ms": 5.673454400000001,
+          "p99_ms": 6.084420770000002,
+          "minimum_ms": 4.944627,
+          "maximum_ms": 6.493664,
+          "aggregate_wall_clock_percent": 21.16948418546392,
+          "median_per_image_percent": 21.20544010484258,
+          "p90_per_image_percent": 22.531773416706624,
+          "p99_per_image_percent": 23.402024138200634
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9036051499173328,
+        "map50_95": 0.682147898734541,
+        "precision_mean": 0.9432288570477348,
+        "recall_mean": 0.8220218879496533,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.17981591310020506,
+          "inference": 28.328256533443934,
+          "loss": 0.0007659772476238972,
+          "postprocess": 0.33065429947491015
+        }
+      }
+    },
+    "cpp_lut21_range2": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 28.0044995,
+        "p90_ms": 29.9508083,
+        "p99_ms": 31.250792260000004,
+        "minimum_ms": 23.331708,
+        "maximum_ms": 31.869667,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 8.06708825,
+          "median_ms": 8.1102895,
+          "p90_ms": 8.5901466,
+          "p99_ms": 8.895089420000001,
+          "minimum_ms": 7.185662,
+          "maximum_ms": 9.052838,
+          "aggregate_wall_clock_percent": 28.84963945193637,
+          "median_per_image_percent": 28.894237378714834,
+          "p90_per_image_percent": 30.642198136155503,
+          "p99_per_image_percent": 32.91240569770679
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.80705993992609,
+        "map50_95": 0.5394402884010454,
+        "precision_mean": 0.8372055802422936,
+        "recall_mean": 0.7513143520713328,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.1857980962650182,
+          "inference": 31.261134552136465,
+          "loss": 0.0009190033764714116,
+          "postprocess": 0.32922706885409736
+        }
+      }
+    },
+    "cpp_lut21_range3": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 27.088124999999998,
+        "p90_ms": 29.0783045,
+        "p99_ms": 31.661054410000055,
+        "minimum_ms": 21.9245,
+        "maximum_ms": 41.917,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 6.58930708,
+          "median_ms": 6.5822965,
+          "p90_ms": 6.9963668,
+          "p99_ms": 7.333495700000004,
+          "minimum_ms": 5.906044,
+          "maximum_ms": 8.100122,
+          "aggregate_wall_clock_percent": 24.374424571771645,
+          "median_per_image_percent": 24.251108557558148,
+          "p90_per_image_percent": 26.298299701133967,
+          "p99_per_image_percent": 29.06731131623816
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.8889219949747764,
+        "map50_95": 0.6623104987730787,
+        "precision_mean": 0.9149372306495294,
+        "recall_mean": 0.8163809263066081,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18602617312699005,
+          "inference": 29.765205004704352,
+          "loss": 0.0008322098739473224,
+          "postprocess": 0.3339327386700772
+        }
+      }
+    },
+    "cpp_lut21_range4": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 27.514353999999997,
+        "p90_ms": 29.7741583,
+        "p99_ms": 30.93160392,
+        "minimum_ms": 23.980667,
+        "maximum_ms": 31.012083,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 6.018428580000001,
+          "median_ms": 5.9760605,
+          "p90_ms": 6.3663097,
+          "p99_ms": 6.64775403,
+          "minimum_ms": 5.470166,
+          "maximum_ms": 6.669042,
+          "aggregate_wall_clock_percent": 21.810006844288587,
+          "median_per_image_percent": 21.947645305610763,
+          "p90_per_image_percent": 23.03632685891147,
+          "p99_per_image_percent": 24.265513742400184
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9010961240664749,
+        "map50_95": 0.678325601217711,
+        "precision_mean": 0.930611123097741,
+        "recall_mean": 0.8251345586189056,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18936706751665627,
+          "inference": 28.974701300128384,
+          "loss": 0.0008643014552944805,
+          "postprocess": 0.3330500006519229
+        }
+      }
+    },
+    "cpp_lut21_range5": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 26.644271,
+        "p90_ms": 28.8103583,
+        "p99_ms": 30.65817899000001,
+        "minimum_ms": 23.535791,
+        "maximum_ms": 32.721833,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 5.536171800000001,
+          "median_ms": 5.4684965000000005,
+          "p90_ms": 5.8830334,
+          "p99_ms": 6.226286380000001,
+          "minimum_ms": 4.969254,
+          "maximum_ms": 6.490159,
+          "aggregate_wall_clock_percent": 20.797703157313446,
+          "median_per_image_percent": 20.676774905448177,
+          "p90_per_image_percent": 22.378012983504195,
+          "p99_per_image_percent": 23.326887240139836
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9032311696111852,
+        "map50_95": 0.6828047395202362,
+        "precision_mean": 0.9399700252283949,
+        "recall_mean": 0.824009628067707,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.1840905227456392,
+          "inference": 28.051502475249738,
+          "loss": 0.0008786383516277047,
+          "postprocess": 0.32872353673875704
+        }
+      }
+    },
+    "torch_cpp_lut21": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 23.940875,
+        "p90_ms": 25.7625038,
+        "p99_ms": 26.63990958000001,
+        "minimum_ms": 19.959584,
+        "maximum_ms": 27.967458,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 498624000,
+          "mean_ms": 2.9261837700000006,
+          "median_ms": 2.9122510000000004,
+          "p90_ms": 3.0820865,
+          "p99_ms": 3.30760426,
+          "minimum_ms": 2.741507,
+          "maximum_ms": 3.366832,
+          "aggregate_wall_clock_percent": 12.268366118464522,
+          "median_per_image_percent": 12.26848291313377,
+          "p90_per_image_percent": 13.05937193492315,
+          "p99_per_image_percent": 13.834523627533416
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9032311696111852,
+        "map50_95": 0.6828047395202362,
+        "precision_mean": 0.9399700252283949,
+        "recall_mean": 0.824009628067707,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.18558222729144108,
+          "inference": 23.4631141845086,
+          "loss": 0.0008974532192951301,
+          "postprocess": 0.3207863375590091
+        }
+      }
+    }
+  },
+  "relative_to_native_silu": {
+    "cpp_exact_silu": {
+      "median_ms_change_percent": 10.124523868923756,
+      "p90_ms_change_percent": 6.9807922322397715,
+      "p99_ms_change_percent": 15.291356477341314,
+      "activation_median_ms_change_percent": 48.081995509003924,
+      "activation_median_speedup": 0.6753015426100173,
+      "map50_absolute_change": 3.324987447594907e-07,
+      "map50_95_absolute_change": 2.2334732507900412e-07
+    },
+    "cpp_taylor3_linear": {
+      "median_ms_change_percent": -15.684370693142228,
+      "p90_ms_change_percent": -18.880906810417017,
+      "p99_ms_change_percent": -25.495961471073656,
+      "activation_median_ms_change_percent": -66.8486529161804,
+      "activation_median_speedup": 3.016468674626126,
+      "map50_absolute_change": -0.02136780506560676,
+      "map50_95_absolute_change": -0.042579539602061955
+    },
+    "cpp_range_poly": {
+      "median_ms_change_percent": 14.934074829421172,
+      "p90_ms_change_percent": 13.221222873147617,
+      "p99_ms_change_percent": 0.8510038663451042,
+      "activation_median_ms_change_percent": 84.95641016158817,
+      "activation_median_speedup": 0.5406679331234557,
+      "map50_absolute_change": 4.868076028952117e-07,
+      "map50_95_absolute_change": -2.5683328221282054e-05
+    },
+    "cpp_fast_sigmoid": {
+      "median_ms_change_percent": -18.525208848541517,
+      "p90_ms_change_percent": -18.34453345118245,
+      "p99_ms_change_percent": -27.27829783817239,
+      "activation_median_ms_change_percent": -79.49763969001636,
+      "activation_median_speedup": 4.877487200890957,
+      "map50_absolute_change": -0.17869693985772517,
+      "map50_95_absolute_change": -0.25051594670004035
+    },
+    "cpp_hard_silu": {
+      "median_ms_change_percent": -20.496264342063515,
+      "p90_ms_change_percent": -21.217988041094433,
+      "p99_ms_change_percent": -30.936603039844425,
+      "activation_median_ms_change_percent": -85.58353278504538,
+      "activation_median_speedup": 6.936512150235189,
+      "map50_absolute_change": -0.03285460217800695,
+      "map50_95_absolute_change": -0.07347866942577297
+    },
+    "cpp_piecewise_linear": {
+      "median_ms_change_percent": 70.2901784870864,
+      "p90_ms_change_percent": 65.7583161887772,
+      "p99_ms_change_percent": 47.442420288734795,
+      "activation_median_ms_change_percent": 369.26920692036515,
+      "activation_median_speedup": 0.21309729793749277,
+      "map50_absolute_change": -0.004076281214475563,
+      "map50_95_absolute_change": -0.0022159191587359794
+    },
+    "cpp_lut21": {
+      "median_ms_change_percent": -11.625840298988278,
+      "p90_ms_change_percent": -13.888950106277488,
+      "p99_ms_change_percent": -20.712381418582087,
+      "activation_median_ms_change_percent": -61.61868932059709,
+      "activation_median_speedup": 2.605434734506458,
+      "map50_absolute_change": 0.0006879864355928689,
+      "map50_95_absolute_change": 0.003853747777394112
+    },
+    "cpp_relu": {
+      "median_ms_change_percent": -16.642725966976627,
+      "p90_ms_change_percent": -18.72985159835782,
+      "p99_ms_change_percent": -26.54718052102937,
+      "activation_median_ms_change_percent": -86.12024637697364,
+      "activation_median_speedup": 7.204738838742857,
+      "map50_absolute_change": -0.9024634438871516,
+      "map50_95_absolute_change": -0.6789347711222151
+    },
+    "cpp_lut9_range2": {
+      "median_ms_change_percent": 12.994350129220859,
+      "p90_ms_change_percent": 8.250818523823972,
+      "p99_ms_change_percent": 2.83177542792116,
+      "activation_median_ms_change_percent": 76.11262234782257,
+      "activation_median_speedup": 0.5678184713103637,
+      "map50_absolute_change": -0.10164482808669328,
+      "map50_95_absolute_change": -0.14212093652639823
+    },
+    "cpp_lut9_range3": {
+      "median_ms_change_percent": -1.6029666302539158,
+      "p90_ms_change_percent": -0.012176851602649662,
+      "p99_ms_change_percent": -3.3628101783460127,
+      "activation_median_ms_change_percent": 39.235874905720905,
+      "activation_median_speedup": 0.7182057071693038,
+      "map50_absolute_change": -0.005853365311787928,
+      "map50_95_absolute_change": -0.01378291231710016
+    },
+    "cpp_lut9_range4": {
+      "median_ms_change_percent": -6.194527429461399,
+      "p90_ms_change_percent": -7.69715328180869,
+      "p99_ms_change_percent": -17.89903891996019,
+      "activation_median_ms_change_percent": 24.14133995429883,
+      "activation_median_speedup": 0.8055334350089488,
+      "map50_absolute_change": -0.005618605963269352,
+      "map50_95_absolute_change": -0.005984783900680135
+    },
+    "cpp_lut9_range5": {
+      "median_ms_change_percent": -5.26636551461879,
+      "p90_ms_change_percent": -8.007708947395145,
+      "p99_ms_change_percent": -14.940616786178936,
+      "activation_median_ms_change_percent": 16.69675284299316,
+      "activation_median_speedup": 0.8569218728351644,
+      "map50_absolute_change": -0.018215292142180095,
+      "map50_95_absolute_change": -0.02215378287186609
+    },
+    "cpp_lut13_range2": {
+      "median_ms_change_percent": 4.330613599315986,
+      "p90_ms_change_percent": 2.4237871181698467,
+      "p99_ms_change_percent": -6.108898267094496,
+      "activation_median_ms_change_percent": 76.4432119480104,
+      "activation_median_speedup": 0.5667545886064767,
+      "map50_absolute_change": -0.10130115383062144,
+      "map50_95_absolute_change": -0.1408744933280076
+    },
+    "cpp_lut13_range3": {
+      "median_ms_change_percent": -7.335110534104874,
+      "p90_ms_change_percent": -3.225227329545038,
+      "p99_ms_change_percent": -9.735806525815116,
+      "activation_median_ms_change_percent": 29.13073597466741,
+      "activation_median_speedup": 0.7744089681299252,
+      "map50_absolute_change": -0.010326146449717966,
+      "map50_95_absolute_change": -0.015225062173974901
+    },
+    "cpp_lut13_range4": {
+      "median_ms_change_percent": -5.094961718165296,
+      "p90_ms_change_percent": -0.7427678777689879,
+      "p99_ms_change_percent": -5.166489102684925,
+      "activation_median_ms_change_percent": 25.034852090394416,
+      "activation_median_speedup": 0.7997770087951528,
+      "map50_absolute_change": -0.001560619038769917,
+      "map50_95_absolute_change": -9.425995168921286e-05
+    },
+    "cpp_lut13_range5": {
+      "median_ms_change_percent": -5.422837336717873,
+      "p90_ms_change_percent": 6.675968838118833,
+      "p99_ms_change_percent": 6.284246540449142,
+      "activation_median_ms_change_percent": 15.567585964906254,
+      "activation_median_speedup": 0.8652945301666717,
+      "map50_absolute_change": -0.0008448684808093354,
+      "map50_95_absolute_change": 0.0007970934598174884
+    },
+    "cpp_lut17_range2": {
+      "median_ms_change_percent": 12.419817903933305,
+      "p90_ms_change_percent": 10.118208416299128,
+      "p99_ms_change_percent": 3.811419771084391,
+      "activation_median_ms_change_percent": 75.17689424658852,
+      "activation_median_speedup": 0.5708515408386825,
+      "map50_absolute_change": -0.09674070012610192,
+      "map50_95_absolute_change": -0.1404379263809833
+    },
+    "cpp_lut17_range3": {
+      "median_ms_change_percent": 1.0862459096204642,
+      "p90_ms_change_percent": -0.6402183158826561,
+      "p99_ms_change_percent": -11.544154086228858,
+      "activation_median_ms_change_percent": 38.554087606244046,
+      "activation_median_speedup": 0.7217398037666658,
+      "map50_absolute_change": -0.011002162495512224,
+      "map50_95_absolute_change": -0.01732132741528558
+    },
+    "cpp_lut17_range4": {
+      "median_ms_change_percent": -0.8699512424338616,
+      "p90_ms_change_percent": -4.090712998762506,
+      "p99_ms_change_percent": -14.51713685129062,
+      "activation_median_ms_change_percent": 23.969799298400115,
+      "activation_median_speedup": 0.8066480753049872,
+      "map50_absolute_change": -0.0003793270347294264,
+      "map50_95_absolute_change": 0.001099655314734549
+    },
+    "cpp_lut17_range5": {
+      "median_ms_change_percent": -2.7245776403082105,
+      "p90_ms_change_percent": -4.816594970962045,
+      "p99_ms_change_percent": -9.866478915348779,
+      "activation_median_ms_change_percent": 14.283874468833494,
+      "activation_median_speedup": 0.8750140863247609,
+      "map50_absolute_change": 0.0010619667417404166,
+      "map50_95_absolute_change": 0.0031968352847714376
+    },
+    "cpp_lut21_range2": {
+      "median_ms_change_percent": 8.529060042290462,
+      "p90_ms_change_percent": 5.45833156415177,
+      "p99_ms_change_percent": -5.2495901395988405,
+      "activation_median_ms_change_percent": 74.37417814857784,
+      "activation_median_speedup": 0.5734794053899062,
+      "map50_absolute_change": -0.0954832432495023,
+      "map50_95_absolute_change": -0.1395107750487241
+    },
+    "cpp_lut21_range3": {
+      "median_ms_change_percent": 4.97772847388574,
+      "p90_ms_change_percent": 2.386200952191556,
+      "p99_ms_change_percent": -4.0057014554559505,
+      "activation_median_ms_change_percent": 41.52177212881986,
+      "activation_median_speedup": 0.7066050579763461,
+      "map50_absolute_change": -0.013621188200815926,
+      "map50_95_absolute_change": -0.01664056467669084
+    },
+    "cpp_lut21_range4": {
+      "median_ms_change_percent": 6.629542773683005,
+      "p90_ms_change_percent": 4.836337857530928,
+      "p99_ms_change_percent": -6.217348837875805,
+      "activation_median_ms_change_percent": 28.487477327865932,
+      "activation_median_speedup": 0.7782859628010794,
+      "map50_absolute_change": -0.0014470591091174656,
+      "map50_95_absolute_change": -0.0006254622320585046
+    },
+    "cpp_lut21_range5": {
+      "median_ms_change_percent": 3.2576099830692704,
+      "p90_ms_change_percent": 1.4427486447306381,
+      "p99_ms_change_percent": -7.0463557944997754,
+      "activation_median_ms_change_percent": 17.574666464849926,
+      "activation_median_speedup": 0.8505233568312606,
+      "map50_absolute_change": 0.0006879864355928689,
+      "map50_95_absolute_change": 0.003853676070466716
+    },
+    "torch_cpp_lut21": {
+      "median_ms_change_percent": -7.219171678466513,
+      "p90_ms_change_percent": -9.288903309393485,
+      "p99_ms_change_percent": -19.229492476584408,
+      "activation_median_ms_change_percent": -37.38554281109521,
+      "activation_median_speedup": 1.5970752520988059,
+      "map50_absolute_change": 0.0006879864355928689,
+      "map50_95_absolute_change": 0.003853676070466716
+    }
+  }
+}

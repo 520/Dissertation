@@ -1,0 +1,18 @@
+{
+  "format": "nvidia_modelopt_int8_qat",
+  "format_version": 1,
+  "source_model": "original/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "quantized_convs": 63,
+  "calibration_images": 128,
+  "calibration_sources": [
+    "/content/Dissertation/datasets/VOC/images/train2007",
+    "/content/Dissertation/datasets/VOC/images/val2007",
+    "/content/Dissertation/datasets/VOC/images/train2012",
+    "/content/Dissertation/datasets/VOC/images/val2012"
+  ],
+  "imgsz": 640,
+  "checkpoint": "/content/Dissertation/QAT/runs/kitti_modelopt_qat-2/weights/best.pt",
+  "epoch": 27,
+  "fitness": 0.65646,
+  "best_fitness": 0.65646
+}

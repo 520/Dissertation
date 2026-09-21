@@ -1,0 +1,196 @@
+{
+  "model": "/Users/richard/Developer/Dissertation/original/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "data": "/Users/richard/Developer/Dissertation/datasets/kitti/kitti.yaml",
+  "dataset_label": "KITTI",
+  "device": "cpu",
+  "torch_version": "2.12.1",
+  "threads": 1,
+  "batch": 1,
+  "imgsz": 640,
+  "latency_note": "Forward-only wall clock on preprocessed KITTI images. Image loading, preprocessing and NMS are excluded. C LUT calls a single-threaded C kernel, while native SiLU and C++ LUT may use the configured PyTorch thread count. Activation time uses inner wall-clock timers around all activation calls. With batch > 1, reported latency is batch time divided by batch size.",
+  "build": {
+    "c": [
+      "cc",
+      "-O3",
+      "-ffast-math",
+      "-march=native",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-dynamiclib",
+      "/Users/richard/Developer/Dissertation/Activation/uniform_lut21_silu.c",
+      "-o",
+      "/var/folders/3y/pn_y7l4j1114mg42qvp92r2r0000gn/T/yolo-activation-comparison-q35s0ps8/liblut21.dylib",
+      "-lm"
+    ],
+    "torch_cpp": [
+      "c++",
+      "-O3",
+      "-ffast-math",
+      "-march=native",
+      "-std=c++17",
+      "-fPIC",
+      "-I",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/include",
+      "-I",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/include/torch/csrc/api/include",
+      "/Users/richard/Developer/Dissertation/Activation/uniform_lut21_torch.cpp",
+      "-Xpreprocessor",
+      "-fopenmp",
+      "-L",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/lib",
+      "-Wl,-rpath,/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/lib",
+      "-lomp",
+      "-dynamiclib",
+      "-undefined",
+      "dynamic_lookup",
+      "-o",
+      "/var/folders/3y/pn_y7l4j1114mg42qvp92r2r0000gn/T/yolo-activation-comparison-q35s0ps8/libtorch_lut21.dylib"
+    ]
+  },
+  "comparisons": {
+    "native_silu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 1496,
+        "timed_batches": 1496,
+        "median_ms": 26.3656455,
+        "p90_ms": 29.1044165,
+        "p99_ms": 33.736139249999994,
+        "minimum_ms": 21.231917,
+        "maximum_ms": 35.71,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 7459415040,
+          "mean_ms": 4.86767174197861,
+          "median_ms": 4.9203969999999995,
+          "p90_ms": 5.2303345,
+          "p99_ms": 5.60778355,
+          "minimum_ms": 4.299622,
+          "maximum_ms": 6.198292,
+          "aggregate_wall_clock_percent": 18.609591181693883,
+          "median_per_image_percent": 18.985554785767548,
+          "p90_per_image_percent": 19.959859372007784,
+          "p99_per_image_percent": 20.359948513660083
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9025431831755923,
+        "map50_95": 0.6789510634497695,
+        "precision_mean": 0.9354739889052617,
+        "recall_mean": 0.8233276889118891,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.23163458359110878,
+          "inference": 25.056587584640997,
+          "loss": 0.0007470672648060161,
+          "postprocess": 0.4156817877740645
+        }
+      }
+    },
+    "c_lut21": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 1496,
+        "timed_batches": 1496,
+        "median_ms": 24.000625,
+        "p90_ms": 25.576479499999998,
+        "p99_ms": 27.110655949999995,
+        "minimum_ms": 19.369209,
+        "maximum_ms": 30.307417,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 7459415040,
+          "mean_ms": 2.8118801898395724,
+          "median_ms": 2.852769,
+          "p90_ms": 3.0424375,
+          "p99_ms": 3.1895987,
+          "minimum_ms": 2.425834,
+          "maximum_ms": 3.372206,
+          "aggregate_wall_clock_percent": 11.934219992348439,
+          "median_per_image_percent": 11.983402553044298,
+          "p90_per_image_percent": 12.485247912088525,
+          "p99_per_image_percent": 12.831254513291787
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9032311696111852,
+        "map50_95": 0.6828047395202362,
+        "precision_mean": 0.9399700252283949,
+        "recall_mean": 0.824009628067707,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.21567460507527056,
+          "inference": 27.554303666471377,
+          "loss": 0.0006454270686344169,
+          "postprocess": 0.36844512896762005
+        }
+      }
+    },
+    "torch_cpp_lut21": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "KITTI_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 1496,
+        "timed_batches": 1496,
+        "median_ms": 24.357353500000002,
+        "p90_ms": 26.110021000000003,
+        "p99_ms": 27.518058649999997,
+        "minimum_ms": 19.523125,
+        "maximum_ms": 29.176,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 7459415040,
+          "mean_ms": 3.0768227132352943,
+          "median_ms": 3.137087,
+          "p90_ms": 3.29921,
+          "p99_ms": 3.4684475,
+          "minimum_ms": 2.669382,
+          "maximum_ms": 3.700457,
+          "aggregate_wall_clock_percent": 12.88340283713232,
+          "median_per_image_percent": 12.94649829765335,
+          "p90_per_image_percent": 13.53875611939858,
+          "p99_per_image_percent": 13.950305962483384
+        }
+      },
+      "kitti_validation": {
+        "map50": 0.9032311696111852,
+        "map50_95": 0.6828047395202362,
+        "precision_mean": 0.9399700252283949,
+        "recall_mean": 0.824009628067707,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.2224862726575217,
+          "inference": 26.305206941390043,
+          "loss": 0.0006507152501919511,
+          "postprocess": 0.3735262800478389
+        }
+      }
+    }
+  },
+  "relative_to_native_silu": {
+    "c_lut21": {
+      "median_ms_change_percent": -8.97008381607801,
+      "p90_ms_change_percent": -12.121655144675385,
+      "p99_ms_change_percent": -19.639127200958537,
+      "activation_median_ms_change_percent": -42.02156858481135,
+      "activation_median_speedup": 1.7247793284349344,
+      "map50_absolute_change": 0.0006879864355928689,
+      "map50_95_absolute_change": 0.003853676070466716
+    },
+    "torch_cpp_lut21": {
+      "median_ms_change_percent": -7.617078823274012,
+      "p90_ms_change_percent": -10.28845742363533,
+      "p99_ms_change_percent": -18.43151213575809,
+      "activation_median_ms_change_percent": -36.24321370816216,
+      "activation_median_speedup": 1.5684604857946238,
+      "map50_absolute_change": 0.0006879864355928689,
+      "map50_95_absolute_change": 0.003853676070466716
+    }
+  }
+}

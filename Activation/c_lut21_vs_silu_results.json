@@ -1,0 +1,122 @@
+{
+  "compiler_command": [
+    "cc",
+    "-O3",
+    "-ffast-math",
+    "-march=native",
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-dynamiclib",
+    "/Users/richard/Developer/Dissertation/Activation/uniform_lut21_silu.c",
+    "-o",
+    "/var/folders/3y/pn_y7l4j1114mg42qvp92r2r0000gn/T/c-lut21-z_8f65c9/liblut21.dylib",
+    "-lm"
+  ],
+  "cpp_compiler_command": [
+    "c++",
+    "-O3",
+    "-ffast-math",
+    "-march=native",
+    "-std=c++17",
+    "-fPIC",
+    "-I",
+    "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/include",
+    "-I",
+    "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/include/torch/csrc/api/include",
+    "/Users/richard/Developer/Dissertation/Activation/uniform_lut21_torch.cpp",
+    "-Xpreprocessor",
+    "-fopenmp",
+    "-L",
+    "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/lib",
+    "-Wl,-rpath,/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/lib",
+    "-lomp",
+    "-dynamiclib",
+    "-undefined",
+    "dynamic_lookup",
+    "-o",
+    "/var/folders/3y/pn_y7l4j1114mg42qvp92r2r0000gn/T/c-lut21-z_8f65c9/libtorch_lut21.dylib"
+  ],
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "torch_version": "2.12.1",
+  "input": {
+    "elements": 1000000,
+    "distribution": "uniform(min=-8, max=8)",
+    "seed": 12345,
+    "warmup": 10,
+    "repeats": 100
+  },
+  "timing": {
+    "c_uniform_lut21_single_thread": {
+      "median_ms": 0.6061665,
+      "best_ms": 0.490291,
+      "p10_ms": 0.5769582999999999,
+      "p90_ms": 0.6531003,
+      "ns_per_element": 0.6061665,
+      "million_elements_per_second": 1649.7117541137623,
+      "checksum": 1903588.747229427
+    },
+    "torch_cpp_lut21_1_thread": {
+      "median_ms": 0.8420205000000001,
+      "best_ms": 0.661042,
+      "p10_ms": 0.7461285,
+      "p90_ms": 0.9573459000000001,
+      "ns_per_element": 0.8420205000000002,
+      "million_elements_per_second": 1187.6195413294568,
+      "checksum": 1903588.7472294262
+    },
+    "torch_functional_silu_1_thread": {
+      "median_ms": 1.2044165,
+      "best_ms": 1.001834,
+      "p10_ms": 1.0294836,
+      "p90_ms": 1.3527702,
+      "ns_per_element": 1.2044165,
+      "million_elements_per_second": 830.2775659416822,
+      "checksum": 1897549.8366990585
+    },
+    "torch_cpp_lut21_10_threads": {
+      "median_ms": 0.2073335,
+      "best_ms": 0.146833,
+      "p10_ms": 0.1660211,
+      "p90_ms": 0.2869464,
+      "ns_per_element": 0.2073335,
+      "million_elements_per_second": 4823.1472482739155,
+      "checksum": 1903588.7472294262
+    },
+    "torch_functional_silu_10_threads": {
+      "median_ms": 0.291958,
+      "best_ms": 0.188125,
+      "p10_ms": 0.2058965,
+      "p90_ms": 0.34023370000000003,
+      "ns_per_element": 0.291958,
+      "million_elements_per_second": 3425.150192835956,
+      "checksum": 1897549.8366990583
+    }
+  },
+  "speedup": {
+    "c_lut21_over_torch_silu_1_thread": 1.9869400568985582,
+    "c_lut21_over_torch_silu_10_threads": 0.48164654430754583,
+    "cpp_lut21_over_torch_silu_1_thread": 1.4303885712996298,
+    "cpp_lut21_over_torch_silu_10_threads": 1.408156424311556
+  },
+  "lut21_error_vs_torch_functional_silu": {
+    "range": [
+      -8.0,
+      8.0
+    ],
+    "samples": 4001,
+    "c_lut21": {
+      "mae": 0.006420354279854759,
+      "rmse": 0.009994240171399816,
+      "max_absolute_error": 0.03346443176269531,
+      "max_error_at_x": 5.0
+    },
+    "torch_cpp_lut21": {
+      "mae": 0.006420354279854759,
+      "rmse": 0.009994240171399816,
+      "max_absolute_error": 0.03346443176269531,
+      "max_error_at_x": 5.0
+    },
+    "cpp_vs_c_max_absolute_difference": 0.0
+  }
+}

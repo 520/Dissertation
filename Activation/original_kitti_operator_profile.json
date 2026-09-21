@@ -1,0 +1,325 @@
+{
+  "model": "HEAD:original/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "torch_version": "2.12.1",
+  "device": "cpu",
+  "threads": 10,
+  "input_shape": [
+    1,
+    3,
+    640,
+    640
+  ],
+  "input": "seeded random normal tensor",
+  "fusion": "checkpoint as loaded",
+  "scope": "forward only; excludes preprocessing and NMS",
+  "unprofiled_median_ms": 48.387375496531604,
+  "profiled_mean_ms": 48.47111399999999,
+  "profiled_forwards": 30,
+  "categories": [
+    {
+      "category": "Convolution",
+      "ms_per_forward": 25.871288200000116,
+      "percent": 53.374651550199815
+    },
+    {
+      "category": "Python / dispatch gaps",
+      "ms_per_forward": 8.850998900000203,
+      "percent": 18.260357911312298
+    },
+    {
+      "category": "SiLU",
+      "ms_per_forward": 4.159610999999925,
+      "percent": 8.581628637625135
+    },
+    {
+      "category": "BatchNorm",
+      "ms_per_forward": 3.861375466666545,
+      "percent": 7.966343556012649
+    },
+    {
+      "category": "Concatenation",
+      "ms_per_forward": 2.281563499999935,
+      "percent": 4.707058104750667
+    },
+    {
+      "category": "Pooling",
+      "ms_per_forward": 1.3445391666666653,
+      "percent": 2.773897803682963
+    },
+    {
+      "category": "Other operators",
+      "ms_per_forward": 1.2173050999999437,
+      "percent": 2.511403183347393
+    },
+    {
+      "category": "Copy / layout",
+      "ms_per_forward": 0.5752247333333526,
+      "percent": 1.1867371839924137
+    },
+    {
+      "category": "Upsampling",
+      "ms_per_forward": 0.30920793333331553,
+      "percent": 0.6379220690766785
+    }
+  ],
+  "operators": [
+    {
+      "operator": "aten::_slow_conv2d_forward",
+      "calls_per_forward": 64.0,
+      "self_ms_per_forward": 25.613351666666727,
+      "percent": 52.84250670753457
+    },
+    {
+      "operator": "model_forward",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 8.850998900000203,
+      "percent": 18.260357911312298
+    },
+    {
+      "operator": "aten::silu_",
+      "calls_per_forward": 56.0,
+      "self_ms_per_forward": 4.159610999999925,
+      "percent": 8.581628637625135
+    },
+    {
+      "operator": "aten::native_batch_norm",
+      "calls_per_forward": 57.0,
+      "self_ms_per_forward": 3.7009075666666273,
+      "percent": 7.635284731988267
+    },
+    {
+      "operator": "aten::cat",
+      "calls_per_forward": 17.0,
+      "self_ms_per_forward": 2.281563499999935,
+      "percent": 4.707058104750667
+    },
+    {
+      "operator": "aten::max_pool2d_with_indices",
+      "calls_per_forward": 3.0,
+      "self_ms_per_forward": 1.2678231999999758,
+      "percent": 2.615626288267226
+    },
+    {
+      "operator": "aten::copy_",
+      "calls_per_forward": 11.0,
+      "self_ms_per_forward": 0.5678789333333167,
+      "percent": 1.1715821784770963
+    },
+    {
+      "operator": "aten::add",
+      "calls_per_forward": 8.0,
+      "self_ms_per_forward": 0.36549826666667673,
+      "percent": 0.7540537786415984
+    },
+    {
+      "operator": "aten::upsample_nearest2d",
+      "calls_per_forward": 2.0,
+      "self_ms_per_forward": 0.30920793333331553,
+      "percent": 0.6379220690766785
+    },
+    {
+      "operator": "aten::_softmax",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.21052263333333612,
+      "percent": 0.43432596439466226
+    },
+    {
+      "operator": "aten::empty",
+      "calls_per_forward": 452.0,
+      "self_ms_per_forward": 0.19523409999990154,
+      "percent": 0.4027844295055847
+    },
+    {
+      "operator": "aten::_convolution",
+      "calls_per_forward": 64.0,
+      "self_ms_per_forward": 0.12242380000011371,
+      "percent": 0.2525706341309047
+    },
+    {
+      "operator": "aten::_batch_norm_impl_index",
+      "calls_per_forward": 57.0,
+      "self_ms_per_forward": 0.11113369999998973,
+      "percent": 0.22927820474683072
+    },
+    {
+      "operator": "aten::view",
+      "calls_per_forward": 103.0,
+      "self_ms_per_forward": 0.09702439999989673,
+      "percent": 0.20016952777255487
+    },
+    {
+      "operator": "aten::max_pool2d",
+      "calls_per_forward": 3.0,
+      "self_ms_per_forward": 0.07671596666668981,
+      "percent": 0.15827151541573772
+    },
+    {
+      "operator": "aten::sigmoid",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.04969696666668218,
+      "percent": 0.10252903753497843
+    },
+    {
+      "operator": "aten::batch_norm",
+      "calls_per_forward": 57.0,
+      "self_ms_per_forward": 0.049334199999928295,
+      "percent": 0.10178061927755219
+    },
+    {
+      "operator": "aten::convolution",
+      "calls_per_forward": 64.0,
+      "self_ms_per_forward": 0.04828619999976753,
+      "percent": 0.0996185068075133
+    },
+    {
+      "operator": "aten::resize_",
+      "calls_per_forward": 64.0,
+      "self_ms_per_forward": 0.04816146666663708,
+      "percent": 0.09936117141156912
+    },
+    {
+      "operator": "aten::conv2d",
+      "calls_per_forward": 64.0,
+      "self_ms_per_forward": 0.04423650000014327,
+      "percent": 0.09126363384209259
+    },
+    {
+      "operator": "aten::thnn_conv2d",
+      "calls_per_forward": 64.0,
+      "self_ms_per_forward": 0.042990033333366005,
+      "percent": 0.08869206788473234
+    },
+    {
+      "operator": "aten::narrow",
+      "calls_per_forward": 62.0,
+      "self_ms_per_forward": 0.04192146666674404,
+      "percent": 0.08648752464559417
+    },
+    {
+      "operator": "aten::mul",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.041631733333321125,
+      "percent": 0.08588978032013278
+    },
+    {
+      "operator": "aten::slice",
+      "calls_per_forward": 62.0,
+      "self_ms_per_forward": 0.03418886666661777,
+      "percent": 0.07053451807733938
+    },
+    {
+      "operator": "aten::as_strided",
+      "calls_per_forward": 65.0,
+      "self_ms_per_forward": 0.027135933333330073,
+      "percent": 0.05598372121864184
+    },
+    {
+      "operator": "aten::empty_like",
+      "calls_per_forward": 60.0,
+      "self_ms_per_forward": 0.023022499999975243,
+      "percent": 0.04749736100551609
+    },
+    {
+      "operator": "aten::sub",
+      "calls_per_forward": 2.0,
+      "self_ms_per_forward": 0.01660279999999014,
+      "percent": 0.03425297796949776
+    },
+    {
+      "operator": "aten::chunk",
+      "calls_per_forward": 9.0,
+      "self_ms_per_forward": 0.011945599999998254,
+      "percent": 0.024644781219590406
+    },
+    {
+      "operator": "aten::detach",
+      "calls_per_forward": 25.0,
+      "self_ms_per_forward": 0.010795766666655346,
+      "percent": 0.022272577986665102
+    },
+    {
+      "operator": "aten::split",
+      "calls_per_forward": 9.0,
+      "self_ms_per_forward": 0.009755033333377953,
+      "percent": 0.020125457263841625
+    },
+    {
+      "operator": "aten::_nnpack_available",
+      "calls_per_forward": 64.0,
+      "self_ms_per_forward": 0.008323233333397285,
+      "percent": 0.01717153299467655
+    },
+    {
+      "operator": "aten::div",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.008191500000000814,
+      "percent": 0.016899756007259945
+    },
+    {
+      "operator": "aten::clone",
+      "calls_per_forward": 3.0,
+      "self_ms_per_forward": 0.004348600000009901,
+      "percent": 0.008971528898654777
+    },
+    {
+      "operator": "aten::contiguous",
+      "calls_per_forward": 3.0,
+      "self_ms_per_forward": 0.002997200000025866,
+      "percent": 0.0061834766166625876
+    },
+    {
+      "operator": "aten::softmax",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.0029029000000053203,
+      "percent": 0.005988927756034905
+    },
+    {
+      "operator": "aten::fill_",
+      "calls_per_forward": 2.0,
+      "self_ms_per_forward": 0.002554199999990063,
+      "percent": 0.00526953021956554
+    },
+    {
+      "operator": "aten::ones",
+      "calls_per_forward": 2.0,
+      "self_ms_per_forward": 0.0023458000000333413,
+      "percent": 0.004839583427014575
+    },
+    {
+      "operator": "aten::reshape",
+      "calls_per_forward": 6.0,
+      "self_ms_per_forward": 0.0022470333333777185,
+      "percent": 0.004635819456053184
+    },
+    {
+      "operator": "aten::_to_copy",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.0022304333333185546,
+      "percent": 0.004601572254597975
+    },
+    {
+      "operator": "aten::empty_strided",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.0014695000000021535,
+      "percent": 0.0030317025517551622
+    },
+    {
+      "operator": "aten::transpose",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.0014083333333352736,
+      "percent": 0.0029055105548745457
+    },
+    {
+      "operator": "aten::to",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.001269533333342406,
+      "percent": 0.002619154437718114
+    },
+    {
+      "operator": "aten::unsqueeze",
+      "calls_per_forward": 1.0,
+      "self_ms_per_forward": 0.0012251000000003843,
+      "percent": 0.002527484720075516
+    }
+  ]
+}

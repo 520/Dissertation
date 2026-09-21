@@ -1,0 +1,16 @@
+{
+  "checkpoint": "/Users/richard/Developer/Dissertation/QAT/runs/voc_modelopt_qat-2/weights/best.pt",
+  "source_model": "/Users/richard/Developer/Dissertation/original/yolov8n_voc/final_model_factorized_lwi.pt",
+  "onnx": "/Users/richard/Developer/Dissertation/QAT/runs/voc_modelopt_qat-2/weights/best_qdq.onnx",
+  "engine": null,
+  "precision": "explicit_qdq_int8",
+  "imgsz": 640,
+  "batch": 1,
+  "dynamic": false,
+  "onnx_nodes": {
+    "QuantizeLinear": 129,
+    "DequantizeLinear": 129,
+    "Conv": 64
+  },
+  "tensorrt_built": false
+}

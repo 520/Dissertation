@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/richard/Developer/Dissertation/Activation/hello'
+relocations:     []
+...

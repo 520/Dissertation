@@ -1,0 +1,23 @@
+{
+  "model": "/Users/richard/Developer/Dissertation/Milad_models/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "output_model": "/Users/richard/Developer/Dissertation/Activation/yolov8n_kitti_lut21.pt",
+  "data": "/Users/richard/Developer/Dissertation/datasets/kitti/kitti.yaml",
+  "activation": {
+    "type": "piecewise_linear_lut",
+    "points": 21,
+    "minimum": -5.0,
+    "maximum": 5.0,
+    "replaced_silu_references": 57
+  },
+  "mAP50-95": 0.6288291837464247,
+  "mAP50": 0.8771562796444743,
+  "mAP75": 0.708910915735815,
+  "precision_mean": 0.9105364116641563,
+  "recall_mean": 0.808400344469662,
+  "speed_ms_per_image": {
+    "preprocess": 0.22510566938087037,
+    "inference": 60.7753641197438,
+    "loss": 0.000606358347318688,
+    "postprocess": 0.3443955310186456
+  }
+}

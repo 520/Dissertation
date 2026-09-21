@@ -1,0 +1,17 @@
+{
+  "model": "HEAD:original/yolov8n_kitti/final_model_factorized_lwi.pt",
+  "device": "cpu",
+  "torch_version": "2.12.1",
+  "threads": 10,
+  "input_shape": [
+    1,
+    3,
+    640,
+    640
+  ],
+  "repeats": 100,
+  "scope": "forward only; excludes preprocessing and NMS",
+  "unprofiled_median_ms": 6.484687502961606,
+  "timing": "wall clock with MPS synchronization",
+  "note": "GPU operator breakdown requires Apple Instruments Metal tracing; CPU operator percentages are not GPU percentages."
+}
