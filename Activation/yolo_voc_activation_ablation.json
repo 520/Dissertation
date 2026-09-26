@@ -1,0 +1,1347 @@
+{
+  "model": "/Users/richard/Developer/Dissertation/original/yolov8n_voc/final_model_factorized_lwi.pt",
+  "data": "/Users/richard/Developer/Dissertation/datasets/VOC/VOC.yaml",
+  "dataset_label": "VOC",
+  "device": "cpu",
+  "torch_version": "2.12.1",
+  "threads": 1,
+  "batch": 1,
+  "imgsz": 640,
+  "latency_note": "Forward-only wall clock on preprocessed VOC images. Image loading, preprocessing and NMS are excluded. Exported C++ activation kernels are single-threaded, while native SiLU and the PyTorch C++ LUT may use the configured PyTorch thread count. Activation time uses inner wall-clock timers around all activation calls. With batch > 1, reported latency is batch time divided by batch size.",
+  "build": {
+    "all_activations_cpp": [
+      "c++",
+      "-O3",
+      "-ffast-math",
+      "-march=native",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-dynamiclib",
+      "/Users/richard/Developer/Dissertation/Activation/comparesilu.cpp",
+      "-o",
+      "/var/folders/3y/pn_y7l4j1114mg42qvp92r2r0000gn/T/yolo-activation-comparison-eph4dnoz/libactivations.dylib",
+      "-lm"
+    ],
+    "torch_cpp": [
+      "c++",
+      "-O3",
+      "-ffast-math",
+      "-march=native",
+      "-std=c++17",
+      "-fPIC",
+      "-I",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/include",
+      "-I",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/include/torch/csrc/api/include",
+      "/Users/richard/Developer/Dissertation/Activation/uniform_lut21_torch.cpp",
+      "-Xpreprocessor",
+      "-fopenmp",
+      "-L",
+      "/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/lib",
+      "-Wl,-rpath,/opt/anaconda3/envs/ultralytics/lib/python3.13/site-packages/torch/lib",
+      "-lomp",
+      "-dynamiclib",
+      "-undefined",
+      "dynamic_lookup",
+      "-o",
+      "/var/folders/3y/pn_y7l4j1114mg42qvp92r2r0000gn/T/yolo-activation-comparison-eph4dnoz/libtorch_lut21.dylib"
+    ]
+  },
+  "comparisons": {
+    "native_silu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 41.249896,
+        "p90_ms": 45.084067000000005,
+        "p99_ms": 48.20258009,
+        "minimum_ms": 24.775917,
+        "maximum_ms": 48.214667,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 770730240,
+          "mean_ms": 7.11560461,
+          "median_ms": 7.3395030000000006,
+          "p90_ms": 8.0232062,
+          "p99_ms": 8.391060230000003,
+          "minimum_ms": 4.532577,
+          "maximum_ms": 8.756294,
+          "aggregate_wall_clock_percent": 17.713445064967154,
+          "median_per_image_percent": 17.77877977636819,
+          "p90_per_image_percent": 18.920023506365517,
+          "p99_per_image_percent": 19.436196513790602
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8308537471605224,
+        "map50_95": 0.6270436845933758,
+        "precision_mean": 0.8258378291689917,
+        "recall_mean": 0.7568045968684636,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5830686382693413,
+          "inference": 62.29641964487986,
+          "loss": 0.0011526582851720656,
+          "postprocess": 0.898692818645794
+        }
+      }
+    },
+    "cpp_exact_silu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 55.448521,
+        "p90_ms": 61.1999003,
+        "p99_ms": 63.861739590000035,
+        "minimum_ms": 49.120791,
+        "maximum_ms": 70.283334,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 963056640,
+          "mean_ms": 13.69136518,
+          "median_ms": 13.5876695,
+          "p90_ms": 14.4105609,
+          "p99_ms": 14.936855410000003,
+          "minimum_ms": 12.690626,
+          "maximum_ms": 15.602671,
+          "aggregate_wall_clock_percent": 24.557926235645013,
+          "median_per_image_percent": 24.550616032585147,
+          "p90_per_image_percent": 26.073770257322387,
+          "p99_per_image_percent": 26.852910589900677
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8308537066240417,
+        "map50_95": 0.6270431113959681,
+        "precision_mean": 0.8258380680209745,
+        "recall_mean": 0.7568045627938874,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5959245502624905,
+          "inference": 78.80137007025999,
+          "loss": 0.0011320167651527105,
+          "postprocess": 0.8571944678669531
+        }
+      }
+    },
+    "cpp_taylor3_linear": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 46.600271,
+        "p90_ms": 51.387778499999996,
+        "p99_ms": 79.25484134000021,
+        "minimum_ms": 38.093208,
+        "maximum_ms": 121.182167,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 3.3898054299999996,
+          "median_ms": 3.3256685,
+          "p90_ms": 3.758235500000001,
+          "p99_ms": 5.021302350000001,
+          "minimum_ms": 2.764707,
+          "maximum_ms": 5.121624,
+          "aggregate_wall_clock_percent": 7.0534623643732735,
+          "median_per_image_percent": 7.0951256499110436,
+          "p90_per_image_percent": 7.780633984458892,
+          "p99_per_image_percent": 8.236745726470378
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8072683448661584,
+        "map50_95": 0.5998608623679612,
+        "precision_mean": 0.7953364882708736,
+        "recall_mean": 0.7476794700752605,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6138767150717526,
+          "inference": 67.25091556914727,
+          "loss": 0.0011643227089984645,
+          "postprocess": 0.899295315265236
+        }
+      }
+    },
+    "cpp_range_poly": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 61.041146,
+        "p90_ms": 63.9173295,
+        "p99_ms": 66.84542283000002,
+        "minimum_ms": 52.688333,
+        "maximum_ms": 71.907375,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 17.08687405,
+          "median_ms": 17.050061499999998,
+          "p90_ms": 17.4719618,
+          "p99_ms": 17.927585520000004,
+          "minimum_ms": 16.425002,
+          "maximum_ms": 18.678453,
+          "aggregate_wall_clock_percent": 28.07583241320976,
+          "median_per_image_percent": 27.917337577335473,
+          "p90_per_image_percent": 29.936318606938766,
+          "p99_per_image_percent": 31.36807079834709
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8308643479006393,
+        "map50_95": 0.6270408771953897,
+        "precision_mean": 0.8258086618082148,
+        "recall_mean": 0.7569151356744562,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6040126038166901,
+          "inference": 81.83931127237584,
+          "loss": 0.001242742943431714,
+          "postprocess": 0.8368114739499081
+        }
+      }
+    },
+    "cpp_fast_sigmoid": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 45.378229000000005,
+        "p90_ms": 49.1731458,
+        "p99_ms": 71.84512458000002,
+        "minimum_ms": 36.891166,
+        "maximum_ms": 76.324833,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 2.12581725,
+          "median_ms": 2.1081455,
+          "p90_ms": 2.4601977,
+          "p99_ms": 2.99687617,
+          "minimum_ms": 1.578876,
+          "maximum_ms": 3.005209,
+          "aggregate_wall_clock_percent": 4.599857141082018,
+          "median_per_image_percent": 4.60864592660506,
+          "p90_per_image_percent": 5.132359307891687,
+          "p99_per_image_percent": 5.373994320800771
+        }
+      },
+      "voc_validation": {
+        "map50": 0.6716399925674914,
+        "map50_95": 0.44652008040049646,
+        "precision_mean": 0.6968155670035897,
+        "recall_mean": 0.6202362307782929,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.613318827006097,
+          "inference": 65.20270921745474,
+          "loss": 0.0014206874243317396,
+          "postprocess": 0.8623854842390228
+        }
+      }
+    },
+    "cpp_hard_silu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 41.7862915,
+        "p90_ms": 45.8987006,
+        "p99_ms": 49.783794670000006,
+        "minimum_ms": 36.223,
+        "maximum_ms": 51.128875,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 1.4382479099999999,
+          "median_ms": 1.4170165,
+          "p90_ms": 1.7712868,
+          "p99_ms": 2.001480570000001,
+          "minimum_ms": 1.085004,
+          "maximum_ms": 2.181123,
+          "aggregate_wall_clock_percent": 3.418482380504765,
+          "median_per_image_percent": 3.386187403667023,
+          "p90_per_image_percent": 3.855596127028592,
+          "p99_per_image_percent": 4.382885157602591
+        }
+      },
+      "voc_validation": {
+        "map50": 0.7915287110092479,
+        "map50_95": 0.5766179133850133,
+        "precision_mean": 0.7774151487119323,
+        "recall_mean": 0.752219827200016,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5913908337748927,
+          "inference": 63.33896571254957,
+          "loss": 0.0012155741004200701,
+          "postprocess": 0.88562465305186
+        }
+      }
+    },
+    "cpp_piecewise_linear": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 89.07691700000001,
+        "p90_ms": 94.6103289,
+        "p99_ms": 97.48608166000002,
+        "minimum_ms": 74.153583,
+        "maximum_ms": 99.944416,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 43.962480140000004,
+          "median_ms": 44.7103985,
+          "p90_ms": 48.6844897,
+          "p99_ms": 50.49998696000001,
+          "minimum_ms": 26.93733,
+          "maximum_ms": 51.039335,
+          "aggregate_wall_clock_percent": 49.87493198711141,
+          "median_per_image_percent": 50.17706763315449,
+          "p90_per_image_percent": 53.12524958105451,
+          "p99_per_image_percent": 55.96909902118833
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8252967176048944,
+        "map50_95": 0.6193479748017762,
+        "precision_mean": 0.8213057199972965,
+        "recall_mean": 0.7429791578221515,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5240463003360123,
+          "inference": 104.82641150166847,
+          "loss": 0.0012865482400194405,
+          "postprocess": 0.7469797475435537
+        }
+      }
+    },
+    "cpp_lut21": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 48.39875,
+        "p90_ms": 51.134558899999995,
+        "p99_ms": 55.719442830000006,
+        "minimum_ms": 38.555709,
+        "maximum_ms": 57.318375,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 3.7962754599999995,
+          "median_ms": 3.8196244999999998,
+          "p90_ms": 4.13807,
+          "p99_ms": 4.370799170000001,
+          "minimum_ms": 3.250083,
+          "maximum_ms": 4.532582,
+          "aggregate_wall_clock_percent": 7.886017696954647,
+          "median_per_image_percent": 7.882002190362865,
+          "p90_per_image_percent": 8.408851631150684,
+          "p99_per_image_percent": 8.719367330166108
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8310734036402219,
+        "map50_95": 0.6277052181807075,
+        "precision_mean": 0.8318054173278154,
+        "recall_mean": 0.7508030625338573,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5800666052118907,
+          "inference": 64.54908380635938,
+          "loss": 0.0012514726702894591,
+          "postprocess": 0.8524969844574365
+        }
+      }
+    },
+    "cpp_relu": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 45.964646,
+        "p90_ms": 47.991491700000005,
+        "p99_ms": 51.07522934000008,
+        "minimum_ms": 37.891792,
+        "maximum_ms": 65.06525,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 1.54931434,
+          "median_ms": 1.546872,
+          "p90_ms": 1.7879968000000002,
+          "p99_ms": 2.040886350000001,
+          "minimum_ms": 1.062662,
+          "maximum_ms": 2.206746,
+          "aggregate_wall_clock_percent": 3.378503454093328,
+          "median_per_image_percent": 3.3799542220647756,
+          "p90_per_image_percent": 3.818665049045455,
+          "p99_per_image_percent": 4.071341852882147
+        }
+      },
+      "voc_validation": {
+        "map50": 2.1939620103678775e-05,
+        "map50_95": 4.320337744781984e-06,
+        "precision_mean": 3.500923544588591e-05,
+        "recall_mean": 0.015662079859427084,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6092384458296397,
+          "inference": 65.23019903412934,
+          "loss": 0.0011781590708217552,
+          "postprocess": 1.1084056839694745
+        }
+      }
+    },
+    "cpp_lut9_range2": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 61.0640835,
+        "p90_ms": 65.2623464,
+        "p99_ms": 71.38525633000008,
+        "minimum_ms": 52.174334,
+        "maximum_ms": 85.769791,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 16.140810639999998,
+          "median_ms": 16.2390005,
+          "p90_ms": 18.3832724,
+          "p99_ms": 19.926798070000007,
+          "minimum_ms": 10.734623,
+          "maximum_ms": 21.540208,
+          "aggregate_wall_clock_percent": 26.551696191527295,
+          "median_per_image_percent": 26.95709011112019,
+          "p90_per_image_percent": 29.391089174015033,
+          "p99_per_image_percent": 31.170281792923447
+        }
+      },
+      "voc_validation": {
+        "map50": 0.7124596637026778,
+        "map50_95": 0.5029097532704196,
+        "precision_mean": 0.7554220547229784,
+        "recall_mean": 0.6315676913739496,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6053668937757355,
+          "inference": 82.14163635812119,
+          "loss": 0.0011947097556680773,
+          "postprocess": 0.862894254260174
+        }
+      }
+    },
+    "cpp_lut9_range3": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 57.404416499999996,
+        "p90_ms": 61.356788099999996,
+        "p99_ms": 64.7287005,
+        "minimum_ms": 49.508625,
+        "maximum_ms": 65.000208,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 12.911506210000002,
+          "median_ms": 12.809414499999999,
+          "p90_ms": 14.6668439,
+          "p99_ms": 15.377606940000005,
+          "minimum_ms": 8.994254,
+          "maximum_ms": 16.209795,
+          "aggregate_wall_clock_percent": 22.537240694735104,
+          "median_per_image_percent": 22.544531233744074,
+          "p90_per_image_percent": 24.626144954921646,
+          "p99_per_image_percent": 25.49691599799733
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8260601643686014,
+        "map50_95": 0.6196196753896964,
+        "precision_mean": 0.8198070632158636,
+        "recall_mean": 0.74959635678269,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5856370527294272,
+          "inference": 76.45793255623983,
+          "loss": 0.0012118538130771162,
+          "postprocess": 0.8450725730322024
+        }
+      }
+    },
+    "cpp_lut9_range4": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 54.369896,
+        "p90_ms": 58.505500600000005,
+        "p99_ms": 61.79285958,
+        "minimum_ms": 44.942,
+        "maximum_ms": 61.840833,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 10.943625089999996,
+          "median_ms": 10.933979,
+          "p90_ms": 12.192625600000001,
+          "p99_ms": 13.048148080000002,
+          "minimum_ms": 8.9288,
+          "maximum_ms": 13.228336,
+          "aggregate_wall_clock_percent": 20.08889744450364,
+          "median_per_image_percent": 19.936556960118008,
+          "p90_per_image_percent": 22.282917826386438,
+          "p99_per_image_percent": 23.8103670194954
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8249897109671356,
+        "map50_95": 0.6183378373815682,
+        "precision_mean": 0.8214467940107862,
+        "recall_mean": 0.7432462547473995,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5899513887702089,
+          "inference": 74.41866318881641,
+          "loss": 0.0013061785268206495,
+          "postprocess": 0.827610923626064
+        }
+      }
+    },
+    "cpp_lut9_range5": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 54.0272085,
+        "p90_ms": 58.9958544,
+        "p99_ms": 66.02935858000008,
+        "minimum_ms": 47.2295,
+        "maximum_ms": 81.364417,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 997248000,
+          "mean_ms": 10.31940644,
+          "median_ms": 10.121229499999998,
+          "p90_ms": 11.4117125,
+          "p99_ms": 13.401908430000002,
+          "minimum_ms": 8.596246,
+          "maximum_ms": 13.727166,
+          "aggregate_wall_clock_percent": 18.86636948866697,
+          "median_per_image_percent": 18.897800309926378,
+          "p90_per_image_percent": 20.751887942324224,
+          "p99_per_image_percent": 23.066942435202595
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8036512071541662,
+        "map50_95": 0.5950497398002359,
+        "precision_mean": 0.811567113508017,
+        "recall_mean": 0.7151016324692834,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5074466015771864,
+          "inference": 64.25091246618794,
+          "loss": 0.0011465523138843357,
+          "postprocess": 0.7399604842329475
+        }
+      }
+    },
+    "cpp_lut13_range2": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 62.379437499999995,
+        "p90_ms": 68.30967050000001,
+        "p99_ms": 72.04665625000001,
+        "minimum_ms": 51.05925,
+        "maximum_ms": 72.755125,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1015056000,
+          "mean_ms": 17.19521964,
+          "median_ms": 17.5101005,
+          "p90_ms": 19.3135559,
+          "p99_ms": 20.193976530000004,
+          "minimum_ms": 11.913286,
+          "maximum_ms": 20.930292,
+          "aggregate_wall_clock_percent": 27.633413785609182,
+          "median_per_image_percent": 27.836885082111877,
+          "p90_per_image_percent": 30.493076125606954,
+          "p99_per_image_percent": 32.541948386232335
+        }
+      },
+      "voc_validation": {
+        "map50": 0.7212817722615856,
+        "map50_95": 0.5115228596742347,
+        "precision_mean": 0.7581165795633369,
+        "recall_mean": 0.6408252494466845,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.4345445379874178,
+          "inference": 64.23864515132115,
+          "loss": 0.0009595571206151945,
+          "postprocess": 0.716575718262861
+        }
+      }
+    },
+    "cpp_lut13_range3": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 62.0653545,
+        "p90_ms": 66.1997914,
+        "p99_ms": 81.63167259000002,
+        "minimum_ms": 53.551834,
+        "maximum_ms": 85.526292,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1068480000,
+          "mean_ms": 13.695542660000001,
+          "median_ms": 13.534938499999999,
+          "p90_ms": 15.5457636,
+          "p99_ms": 17.229666120000015,
+          "minimum_ms": 11.281503,
+          "maximum_ms": 20.253039,
+          "aggregate_wall_clock_percent": 21.964647124722106,
+          "median_per_image_percent": 22.033688094626168,
+          "p90_per_image_percent": 23.89921056688221,
+          "p99_per_image_percent": 25.79133378503157
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8259591599267979,
+        "map50_95": 0.6213564250353493,
+        "precision_mean": 0.8165307650487568,
+        "recall_mean": 0.7563596427267092,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5932765325313508,
+          "inference": 76.50216089131565,
+          "loss": 0.0011262555952077267,
+          "postprocess": 0.8465370156177774
+        }
+      }
+    },
+    "cpp_lut13_range4": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 63.989271,
+        "p90_ms": 67.9421953,
+        "p99_ms": 72.87606083000003,
+        "minimum_ms": 56.818959,
+        "maximum_ms": 77.695958,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1119054720,
+          "mean_ms": 12.806357740000003,
+          "median_ms": 12.7495615,
+          "p90_ms": 14.5364386,
+          "p99_ms": 15.797319700000001,
+          "minimum_ms": 9.540751,
+          "maximum_ms": 16.179628,
+          "aggregate_wall_clock_percent": 19.977196188666856,
+          "median_per_image_percent": 19.965268188794212,
+          "p90_per_image_percent": 21.994886742639316,
+          "p99_per_image_percent": 23.3027032668089
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8306700846361903,
+        "map50_95": 0.6267341837627523,
+        "precision_mean": 0.8323221970968447,
+        "recall_mean": 0.7465395000435497,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.618448578774793,
+          "inference": 77.47226073505843,
+          "loss": 0.0010770170125347315,
+          "postprocess": 0.8708910757499404
+        }
+      }
+    },
+    "cpp_lut13_range5": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 63.662146,
+        "p90_ms": 68.0528544,
+        "p99_ms": 72.17122325000003,
+        "minimum_ms": 54.563458,
+        "maximum_ms": 79.069667,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 12.07869631,
+          "median_ms": 12.0689985,
+          "p90_ms": 13.1606,
+          "p99_ms": 14.017654460000003,
+          "minimum_ms": 10.336418,
+          "maximum_ms": 14.371625,
+          "aggregate_wall_clock_percent": 19.007864381774016,
+          "median_per_image_percent": 19.036907006405773,
+          "p90_per_image_percent": 20.59399930206998,
+          "p99_per_image_percent": 22.13096632621277
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8307118297144841,
+        "map50_95": 0.6253817474018425,
+        "precision_mean": 0.8264423283534554,
+        "recall_mean": 0.7513642397130529,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6196599281107008,
+          "inference": 75.18687748674577,
+          "loss": 0.0011732827260857448,
+          "postprocess": 0.8413912685084586
+        }
+      }
+    },
+    "cpp_lut17_range2": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 73.06575000000001,
+        "p90_ms": 78.29311640000002,
+        "p99_ms": 94.86998009000003,
+        "minimum_ms": 64.604625,
+        "maximum_ms": 99.896417,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 19.570710700000003,
+          "median_ms": 19.57479,
+          "p90_ms": 21.574506500000002,
+          "p99_ms": 23.89931100000005,
+          "minimum_ms": 13.593501,
+          "maximum_ms": 33.417666,
+          "aggregate_wall_clock_percent": 26.442155117721875,
+          "median_per_image_percent": 26.581546018134496,
+          "p90_per_image_percent": 28.62066432703753,
+          "p99_per_image_percent": 30.50256213709517
+        }
+      },
+      "voc_validation": {
+        "map50": 0.7228561126843579,
+        "map50_95": 0.513062669485515,
+        "precision_mean": 0.7561793482210764,
+        "recall_mean": 0.6434558651523715,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6169405945079799,
+          "inference": 81.92447887737798,
+          "loss": 0.0012871703167638918,
+          "postprocess": 0.8655096980462674
+        }
+      }
+    },
+    "cpp_lut17_range3": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 65.52393749999999,
+        "p90_ms": 69.2291494,
+        "p99_ms": 75.25389625000001,
+        "minimum_ms": 59.533,
+        "maximum_ms": 75.949,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 14.827545,
+          "median_ms": 14.849564,
+          "p90_ms": 16.455997,
+          "p99_ms": 17.48569431000001,
+          "minimum_ms": 10.499544,
+          "maximum_ms": 18.927957,
+          "aggregate_wall_clock_percent": 22.551387080658987,
+          "median_per_image_percent": 22.635429836301164,
+          "p90_per_image_percent": 24.63857397370826,
+          "p99_per_image_percent": 26.39666152490574
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8263329657529607,
+        "map50_95": 0.6215878778103907,
+        "precision_mean": 0.8150387920212852,
+        "recall_mean": 0.7574141072135034,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5889482241805927,
+          "inference": 75.16290274372989,
+          "loss": 0.0012174501293935958,
+          "postprocess": 0.8192850540910398
+        }
+      }
+    },
+    "cpp_lut17_range4": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 66.0673545,
+        "p90_ms": 70.168617,
+        "p99_ms": 80.04677866,
+        "minimum_ms": 60.652584,
+        "maximum_ms": 80.305333,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 13.378890390000002,
+          "median_ms": 13.244706,
+          "p90_ms": 15.0205132,
+          "p99_ms": 15.656016700000002,
+          "minimum_ms": 11.320667,
+          "maximum_ms": 16.255333,
+          "aggregate_wall_clock_percent": 20.12168584758685,
+          "median_per_image_percent": 20.012744116794767,
+          "p90_per_image_percent": 21.924756554553547,
+          "p99_per_image_percent": 22.53577282229153
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8302912585080311,
+        "map50_95": 0.6270132222983018,
+        "precision_mean": 0.8284272273552196,
+        "recall_mean": 0.7527491530697501,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5175679552011533,
+          "inference": 64.65469409328831,
+          "loss": 0.0010003602486572066,
+          "postprocess": 0.75895100099447
+        }
+      }
+    },
+    "cpp_lut17_range5": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 63.5107085,
+        "p90_ms": 67.4082214,
+        "p99_ms": 74.91548458,
+        "minimum_ms": 57.586042,
+        "maximum_ms": 76.634083,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 12.101968600000003,
+          "median_ms": 11.974645,
+          "p90_ms": 13.4233482,
+          "p99_ms": 14.470950100000001,
+          "minimum_ms": 10.436122,
+          "maximum_ms": 14.560753,
+          "aggregate_wall_clock_percent": 18.978703608646732,
+          "median_per_image_percent": 18.824309172280433,
+          "p90_per_image_percent": 20.446770181602577,
+          "p99_per_image_percent": 21.870287420081002
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8308412121842217,
+        "map50_95": 0.6273836591412851,
+        "precision_mean": 0.8300245885190654,
+        "recall_mean": 0.7507889955579367,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.39374002728277924,
+          "inference": 53.023121673043285,
+          "loss": 0.0009107677871845655,
+          "postprocess": 0.656976292394341
+        }
+      }
+    },
+    "cpp_lut21_range2": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 71.6715,
+        "p90_ms": 75.65417049999999,
+        "p99_ms": 79.05282426000002,
+        "minimum_ms": 57.644334,
+        "maximum_ms": 83.209959,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 19.48736159,
+          "median_ms": 19.443231,
+          "p90_ms": 21.8251752,
+          "p99_ms": 22.889238220000003,
+          "minimum_ms": 12.006167,
+          "maximum_ms": 23.778874,
+          "aggregate_wall_clock_percent": 27.180290174888928,
+          "median_per_image_percent": 27.19405892333672,
+          "p90_per_image_percent": 29.759714441607976,
+          "p99_per_image_percent": 31.42222763550826
+        }
+      },
+      "voc_validation": {
+        "map50": 0.7236090162768122,
+        "map50_95": 0.5149303116503514,
+        "precision_mean": 0.7613302545524476,
+        "recall_mean": 0.6437829855369502,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6004447685748335,
+          "inference": 82.29158510718524,
+          "loss": 0.001131393130953681,
+          "postprocess": 0.8895477459824437
+        }
+      }
+    },
+    "cpp_lut21_range3": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 67.7340625,
+        "p90_ms": 72.2043664,
+        "p99_ms": 74.31333625,
+        "minimum_ms": 59.700708,
+        "maximum_ms": 74.519875,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 15.167934590000002,
+          "median_ms": 15.293935999999999,
+          "p90_ms": 16.561360500000003,
+          "p99_ms": 17.681264410000004,
+          "minimum_ms": 11.93133,
+          "maximum_ms": 18.119083,
+          "aggregate_wall_clock_percent": 22.24998042633585,
+          "median_per_image_percent": 22.31533497957649,
+          "p90_per_image_percent": 23.9970277544214,
+          "p99_per_image_percent": 25.632046797713365
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8260643363700375,
+        "map50_95": 0.6209660570642389,
+        "precision_mean": 0.8161542344211986,
+        "recall_mean": 0.7586330699222823,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6092487457689795,
+          "inference": 78.56470019912969,
+          "loss": 0.0012190159001914814,
+          "postprocess": 0.8654059782037677
+        }
+      }
+    },
+    "cpp_lut21_range4": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 66.449708,
+        "p90_ms": 70.59189140000001,
+        "p99_ms": 83.09526417000002,
+        "minimum_ms": 58.049125,
+        "maximum_ms": 86.103792,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 13.395183549999997,
+          "median_ms": 13.302605,
+          "p90_ms": 14.803155900000002,
+          "p99_ms": 16.593474970000027,
+          "minimum_ms": 10.583168,
+          "maximum_ms": 21.553372,
+          "aggregate_wall_clock_percent": 20.033697464722373,
+          "median_per_image_percent": 19.824797216482835,
+          "p90_per_image_percent": 22.006233915958767,
+          "p99_per_image_percent": 23.923551049779444
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8307213812174667,
+        "map50_95": 0.626730945373768,
+        "precision_mean": 0.8282264298516766,
+        "recall_mean": 0.7556846671422268,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5984396524352615,
+          "inference": 75.65469972623745,
+          "loss": 0.0011429836359287849,
+          "postprocess": 0.8450811463641732
+        }
+      }
+    },
+    "cpp_lut21_range5": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 64.5579585,
+        "p90_ms": 68.2944331,
+        "p99_ms": 84.09933075000002,
+        "minimum_ms": 55.792917,
+        "maximum_ms": 86.541042,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 12.295104550000001,
+          "median_ms": 12.114498000000001,
+          "p90_ms": 13.5153272,
+          "p99_ms": 14.819594870000003,
+          "minimum_ms": 9.906996,
+          "maximum_ms": 15.451994,
+          "aggregate_wall_clock_percent": 18.880108230357354,
+          "median_per_image_percent": 18.679691568610117,
+          "p90_per_image_percent": 20.489006923592648,
+          "p99_per_image_percent": 22.026013361946315
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8310734036402219,
+        "map50_95": 0.627705190585502,
+        "precision_mean": 0.8318054573793351,
+        "recall_mean": 0.7508031384189939,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.6010148612982912,
+          "inference": 74.56766422408674,
+          "loss": 0.001205968303892815,
+          "postprocess": 0.8447763790196267
+        }
+      }
+    },
+    "torch_cpp_lut21": {
+      "replaced_or_native_silu_references": 56,
+      "latency": {
+        "scope": "VOC_images_forward_only_excluding_loading_preprocessing_and_nms",
+        "unit": "milliseconds_per_image",
+        "images": 100,
+        "timed_batches": 100,
+        "median_ms": 59.2947495,
+        "p90_ms": 64.3727747,
+        "p99_ms": 69.30626392,
+        "minimum_ms": 52.202334,
+        "maximum_ms": 71.493958,
+        "activation": {
+          "calls_per_batch_minimum": 56,
+          "calls_per_batch_maximum": 56,
+          "elements_total": 1139712000,
+          "mean_ms": 7.184789699999999,
+          "median_ms": 7.151729,
+          "p90_ms": 7.6098381,
+          "p99_ms": 8.012460070000001,
+          "minimum_ms": 6.37242,
+          "maximum_ms": 8.40025,
+          "aggregate_wall_clock_percent": 11.934289733105214,
+          "median_per_image_percent": 11.975032075251042,
+          "p90_per_image_percent": 12.479643237380941,
+          "p99_per_image_percent": 13.073538324238342
+        }
+      },
+      "voc_validation": {
+        "map50": 0.8310734036402219,
+        "map50_95": 0.627705190585502,
+        "precision_mean": 0.8318054573793351,
+        "recall_mean": 0.7508031384189939,
+        "validator_speed_ms_per_image": {
+          "preprocess": 0.5980029188523371,
+          "inference": 67.0533014378042,
+          "loss": 0.001274306529491383,
+          "postprocess": 0.8580740910821314
+        }
+      }
+    }
+  },
+  "relative_to_native_silu": {
+    "cpp_exact_silu": {
+      "median_ms_change_percent": 34.42099587354111,
+      "p90_ms_change_percent": 35.74618345767252,
+      "p99_ms_change_percent": 32.48614383454684,
+      "activation_median_ms_change_percent": 85.13064849213903,
+      "activation_median_speedup": 0.5401590758444633,
+      "map50_absolute_change": -4.053648072765981e-08,
+      "map50_95_absolute_change": -5.73197407649495e-07
+    },
+    "cpp_taylor3_linear": {
+      "median_ms_change_percent": 12.970638762337726,
+      "p90_ms_change_percent": 13.98212698956372,
+      "p99_ms_change_percent": 64.42033018154198,
+      "activation_median_ms_change_percent": -54.68809672807546,
+      "activation_median_speedup": 2.206925615105655,
+      "map50_absolute_change": -0.02358540229436401,
+      "map50_95_absolute_change": -0.02718282222541457
+    },
+    "cpp_range_poly": {
+      "median_ms_change_percent": 47.978908843794414,
+      "p90_ms_change_percent": 41.77365475923012,
+      "p99_ms_change_percent": 38.676026688180585,
+      "activation_median_ms_change_percent": 132.3053958830727,
+      "activation_median_speedup": 0.4304678314503441,
+      "map50_absolute_change": 1.0600740116939456e-05,
+      "map50_95_absolute_change": -2.807397986082094e-06
+    },
+    "cpp_fast_sigmoid": {
+      "median_ms_change_percent": 10.008105232556234,
+      "p90_ms_change_percent": 9.069897797818452,
+      "p99_ms_change_percent": 49.04829668008757,
+      "activation_median_ms_change_percent": -71.27672677564135,
+      "activation_median_speedup": 3.481497363440996,
+      "map50_absolute_change": -0.159213754593031,
+      "map50_95_absolute_change": -0.18052360419287933
+    },
+    "cpp_hard_silu": {
+      "median_ms_change_percent": 1.300356005746045,
+      "p90_ms_change_percent": 1.806921278863314,
+      "p99_ms_change_percent": 3.280352580811423,
+      "activation_median_ms_change_percent": -80.69329081274306,
+      "activation_median_speedup": 5.179546603726916,
+      "map50_absolute_change": -0.03932503615127447,
+      "map50_95_absolute_change": -0.050425771208362447
+    },
+    "cpp_piecewise_linear": {
+      "median_ms_change_percent": 115.9445856542281,
+      "p90_ms_change_percent": 109.8531370295408,
+      "p99_ms_change_percent": 102.24245564860183,
+      "activation_median_ms_change_percent": 509.1747424859693,
+      "activation_median_speedup": 0.1641565104815606,
+      "map50_absolute_change": -0.005557029555627979,
+      "map50_95_absolute_change": -0.007695709791599614
+    },
+    "cpp_lut21": {
+      "median_ms_change_percent": 17.33059884563103,
+      "p90_ms_change_percent": 13.420466037369676,
+      "p99_ms_change_percent": 15.594316167236533,
+      "activation_median_ms_change_percent": -47.95799524845212,
+      "activation_median_speedup": 1.9215247467388485,
+      "map50_absolute_change": 0.00021965647969945934,
+      "map50_95_absolute_change": 0.0006615335873316752
+    },
+    "cpp_relu": {
+      "median_ms_change_percent": 11.429725786460171,
+      "p90_ms_change_percent": 6.448896236446459,
+      "p99_ms_change_percent": 5.959534208825543,
+      "activation_median_ms_change_percent": -78.92402251215103,
+      "activation_median_speedup": 4.744738414038137,
+      "map50_absolute_change": -0.8308318075404187,
+      "map50_95_absolute_change": -0.627039364255631
+    },
+    "cpp_lut9_range2": {
+      "median_ms_change_percent": 48.034515044595516,
+      "p90_ms_change_percent": 44.757007836049915,
+      "p99_ms_change_percent": 48.094264242111606,
+      "activation_median_ms_change_percent": 121.25477024806717,
+      "activation_median_speedup": 0.4519676565069384,
+      "map50_absolute_change": -0.11839408345784463,
+      "map50_95_absolute_change": -0.12413393132295614
+    },
+    "cpp_lut9_range3": {
+      "median_ms_change_percent": 39.16257267654686,
+      "p90_ms_change_percent": 36.09417291479048,
+      "p99_ms_change_percent": 34.28472164590309,
+      "activation_median_ms_change_percent": 74.52700135145388,
+      "activation_median_speedup": 0.5729772426366562,
+      "map50_absolute_change": -0.004793582791920992,
+      "map50_95_absolute_change": -0.00742400920367936
+    },
+    "cpp_lut9_range4": {
+      "median_ms_change_percent": 31.806140796088304,
+      "p90_ms_change_percent": 29.769793395081237,
+      "p99_ms_change_percent": 28.19409140470348,
+      "activation_median_ms_change_percent": 48.97437878286854,
+      "activation_median_speedup": 0.6712563651347785,
+      "map50_absolute_change": -0.0058640361933868235,
+      "map50_95_absolute_change": -0.00870584721180756
+    },
+    "cpp_lut9_range5": {
+      "median_ms_change_percent": 30.975381125809385,
+      "p90_ms_change_percent": 30.857436619460245,
+      "p99_ms_change_percent": 36.983037955054165,
+      "activation_median_ms_change_percent": 37.90074750293034,
+      "activation_median_speedup": 0.72515923090174,
+      "map50_absolute_change": -0.027202540006356246,
+      "map50_95_absolute_change": -0.031993944793139883
+    },
+    "cpp_lut13_range2": {
+      "median_ms_change_percent": 51.22326005379504,
+      "p90_ms_change_percent": 51.5162119247139,
+      "p99_ms_change_percent": 49.46638979797402,
+      "activation_median_ms_change_percent": 138.57338160363173,
+      "activation_median_speedup": 0.41915824526535417,
+      "map50_absolute_change": -0.10957197489893677,
+      "map50_95_absolute_change": -0.11552082491914106
+    },
+    "cpp_lut13_range3": {
+      "median_ms_change_percent": 50.46184480077235,
+      "p90_ms_change_percent": 46.83633444161102,
+      "p99_ms_change_percent": 69.35125140103268,
+      "activation_median_ms_change_percent": 84.41219385018302,
+      "activation_median_speedup": 0.542263490890631,
+      "map50_absolute_change": -0.00489458723372449,
+      "map50_95_absolute_change": -0.005687259558026514
+    },
+    "cpp_lut13_range4": {
+      "median_ms_change_percent": 55.125896559836185,
+      "p90_ms_change_percent": 50.701123081908264,
+      "p99_ms_change_percent": 51.18705408285549,
+      "activation_median_ms_change_percent": 73.71151016628782,
+      "activation_median_speedup": 0.5756670925505948,
+      "map50_absolute_change": -0.00018366252433210661,
+      "map50_95_absolute_change": -0.0003095008306235325
+    },
+    "cpp_lut13_range5": {
+      "median_ms_change_percent": 54.332864257403216,
+      "p90_ms_change_percent": 50.94657365317107,
+      "p99_ms_change_percent": 49.72481372417762,
+      "activation_median_ms_change_percent": 64.43890683061235,
+      "activation_median_speedup": 0.6081285866428768,
+      "map50_absolute_change": -0.0001419174460383088,
+      "map50_95_absolute_change": -0.0016619371915332914
+    },
+    "cpp_lut17_range2": {
+      "median_ms_change_percent": 77.12953749022788,
+      "p90_ms_change_percent": 73.6602786966846,
+      "p99_ms_change_percent": 96.81514954773456,
+      "activation_median_ms_change_percent": 166.70457114057993,
+      "activation_median_speedup": 0.37494670440908945,
+      "map50_absolute_change": -0.1079976344761645,
+      "map50_95_absolute_change": -0.11398101510786074
+    },
+    "cpp_lut17_range3": {
+      "median_ms_change_percent": 58.846309576150176,
+      "p90_ms_change_percent": 53.55568831001868,
+      "p99_ms_change_percent": 56.1200585310827,
+      "activation_median_ms_change_percent": 102.32383582376082,
+      "activation_median_speedup": 0.4942571377853249,
+      "map50_absolute_change": -0.004520781407561736,
+      "map50_95_absolute_change": -0.005455806782985073
+    },
+    "cpp_lut17_range4": {
+      "median_ms_change_percent": 60.16368744299378,
+      "p90_ms_change_percent": 55.63950120116713,
+      "p99_ms_change_percent": 66.06326572258801,
+      "activation_median_ms_change_percent": 80.457804840464,
+      "activation_median_speedup": 0.554146162247769,
+      "map50_absolute_change": -0.0005624886524913109,
+      "map50_95_absolute_change": -3.0462295073974133e-05
+    },
+    "cpp_lut17_range5": {
+      "median_ms_change_percent": 53.965742119689224,
+      "p90_ms_change_percent": 49.51672705126624,
+      "p99_ms_change_percent": 55.41799721119451,
+      "activation_median_ms_change_percent": 63.15334975678871,
+      "activation_median_speedup": 0.6129202995161861,
+      "map50_absolute_change": -1.2534976300715428e-05,
+      "map50_95_absolute_change": 0.00033997454790934967
+    },
+    "cpp_lut21_range2": {
+      "median_ms_change_percent": 73.74952896850938,
+      "p90_ms_change_percent": 67.80688951597908,
+      "p99_ms_change_percent": 64.00123004287097,
+      "activation_median_ms_change_percent": 164.91209282154392,
+      "activation_median_speedup": 0.37748371142635706,
+      "map50_absolute_change": -0.10724473088371023,
+      "map50_95_absolute_change": -0.11211337294302437
+    },
+    "cpp_lut21_range3": {
+      "median_ms_change_percent": 64.20420187241197,
+      "p90_ms_change_percent": 60.154953190003894,
+      "p99_ms_change_percent": 54.168793685417036,
+      "activation_median_ms_change_percent": 108.37836022411868,
+      "activation_median_speedup": 0.47989628046043875,
+      "map50_absolute_change": -0.004789410790484894,
+      "map50_95_absolute_change": -0.006077627529136875
+    },
+    "cpp_lut21_range4": {
+      "median_ms_change_percent": 61.0906073557131,
+      "p90_ms_change_percent": 56.57835705017474,
+      "p99_ms_change_percent": 72.38758592351529,
+      "activation_median_ms_change_percent": 81.24667296954574,
+      "activation_median_speedup": 0.5517342655818166,
+      "map50_absolute_change": -0.00013236594305565674,
+      "map50_95_absolute_change": -0.00031273921960783824
+    },
+    "cpp_lut21_range5": {
+      "median_ms_change_percent": 56.504536399316,
+      "p90_ms_change_percent": 51.48241417527837,
+      "p99_ms_change_percent": 74.47060010683346,
+      "activation_median_ms_change_percent": 65.05883300272512,
+      "activation_median_speedup": 0.6058445839026925,
+      "map50_absolute_change": 0.00021965647969945934,
+      "map50_95_absolute_change": 0.0006615059921262212
+    },
+    "torch_cpp_lut21": {
+      "median_ms_change_percent": 43.7452096848923,
+      "p90_ms_change_percent": 42.783867968255805,
+      "p99_ms_change_percent": 43.78123285225998,
+      "activation_median_ms_change_percent": -2.5584021152386067,
+      "activation_median_speedup": 1.0262557487846646,
+      "map50_absolute_change": 0.00021965647969945934,
+      "map50_95_absolute_change": 0.0006615059921262212
+    }
+  },
+  "validation_execution": "Four independent one-thread CPU processes; forward latency measured separately without competing workers"
+}
