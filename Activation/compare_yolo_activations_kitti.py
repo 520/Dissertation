@@ -33,6 +33,7 @@ except ModuleNotFoundError:
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_GIT_MODEL = "HEAD:original/yolov8n_kitti/final_model_factorized_lwi.pt"
+DEFAULT_MODEL: Path | None = None
 DEFAULT_DATA = PROJECT_ROOT / "datasets/kitti/kitti.yaml"
 DEFAULT_RESULTS = PROJECT_ROOT / "Activation/yolo_kitti_activation_ablation.json"
 DEFAULT_DATASET_LABEL = "KITTI"
@@ -338,6 +339,7 @@ def validate_kitti(
 def prepare_models(
     base_model: BaseModel,
     cpp_functions: dict[str, Any],
+    selected: set[str] | None = None,
 ) -> tuple[
     dict[str, BaseModel],
     dict[str, int],
@@ -353,11 +355,18 @@ def prepare_models(
     if native_count == 0:
         raise RuntimeError("The model contains no nn.SiLU modules")
 
+    if selected is not None:
+        cpp_functions = {
+            name: function for name, function in cpp_functions.items()
+            if name in selected
+        }
+    include_torch_cpp = selected is None or "torch_cpp_lut21" in selected
     models = {"native_silu": base_model}
     models.update(
         {name: copy.deepcopy(base_model) for name in cpp_functions}
     )
-    models["torch_cpp_lut21"] = copy.deepcopy(base_model)
+    if include_torch_cpp:
+        models["torch_cpp_lut21"] = copy.deepcopy(base_model)
     recorders = {name: ActivationRecorder() for name in models}
 
     native_silu = next(
@@ -375,12 +384,13 @@ def prepare_models(
             models[name],
             TimedActivation(CppArrayActivation(function), recorders[name]),
         )
-    replacements["torch_cpp_lut21"] = replace_silu(
-        models["torch_cpp_lut21"],
-        TimedActivation(
-            TorchCppLUT21SiLU(), recorders["torch_cpp_lut21"]
-        ),
-    )
+    if include_torch_cpp:
+        replacements["torch_cpp_lut21"] = replace_silu(
+            models["torch_cpp_lut21"],
+            TimedActivation(
+                TorchCppLUT21SiLU(), recorders["torch_cpp_lut21"]
+            ),
+        )
     if any(count != native_count for count in replacements.values()):
         raise RuntimeError(
             f"Incomplete SiLU replacement: native={native_count}, {replacements}"
@@ -394,7 +404,7 @@ def parse_args() -> argparse.Namespace:
     print("threads:", torch.get_num_threads())
     parser = argparse.ArgumentParser(description=__doc__)
     source = parser.add_mutually_exclusive_group()
-    source.add_argument("--model", type=Path)
+    source.add_argument("--model", type=Path, default=DEFAULT_MODEL)
     source.add_argument("--git-object", default=DEFAULT_GIT_MODEL)
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA)
     parser.add_argument("--dataset-label", default=DEFAULT_DATASET_LABEL)
@@ -414,6 +424,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-validation", action="store_true")
     parser.add_argument("--skip-latency", action="store_true")
     parser.add_argument("--verbose-build", action="store_true")
+    parser.add_argument(
+        "--only", nargs="+", choices=[*CPP_ACTIVATIONS, "torch_cpp_lut21"],
+        help="Run only these replacements plus the native SiLU baseline",
+    )
     return parser.parse_args()
 
 
@@ -461,7 +475,7 @@ def main() -> None:
 
         base_model = load_model(args.model, args.git_object)
         models, replacement_counts, activation_recorders = prepare_models(
-            base_model, cpp_functions
+            base_model, cpp_functions, set(args.only) if args.only else None
         )
         latency_validator = (
             None
@@ -472,6 +486,7 @@ def main() -> None:
         )
 
         comparisons: dict[str, Any] = {}
+        validation_key = f"{args.dataset_label.lower()}_validation"
         for name, model in models.items():
             print(f"\n=== {name} ===")
             entry: dict[str, Any] = {
@@ -504,7 +519,7 @@ def main() -> None:
                     f"share={activation['aggregate_wall_clock_percent']:.2f}%"
                 )
             if not args.skip_validation:
-                entry["kitti_validation"] = validate_kitti(
+                entry[validation_key] = validate_kitti(
                     model,
                     data_path,
                     args.imgsz,
@@ -513,8 +528,8 @@ def main() -> None:
                 )
                 print(
                     f"{args.dataset_label}: "
-                    f"mAP50={entry['kitti_validation']['map50']:.6f}, "
-                    f"mAP50-95={entry['kitti_validation']['map50_95']:.6f}"
+                    f"mAP50={entry[validation_key]['map50']:.6f}, "
+                    f"mAP50-95={entry[validation_key]['map50_95']:.6f}"
                 )
             comparisons[name] = entry
 
@@ -546,11 +561,11 @@ def main() -> None:
                 native_activation["median_ms"]
                 / candidate_activation["median_ms"]
             )
-        if "kitti_validation" in native:
+        if validation_key in native:
             for metric in ("map50", "map50_95"):
                 delta[f"{metric}_absolute_change"] = (
-                    candidate["kitti_validation"][metric]
-                    - native["kitti_validation"][metric]
+                    candidate[validation_key][metric]
+                    - native[validation_key][metric]
                 )
         relative_to_native[name] = delta
 

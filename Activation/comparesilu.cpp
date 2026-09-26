@@ -171,22 +171,26 @@ static inline float silu_piecewise_linear(float x)
     return x;
 }
 
+// writing routine for this using fewer if condition and fewer operation
 static inline float silu_lut(float x)
 {
-    if (x != x)
-        return lut_y[0];
+//     if (x != x)
+//         return lut_y[0];
     /* Outer branches do not need index conversion or table loads. */
     if (x <= -5.0f)
         return 0.0f;
     if (x >= 5.0f)
         return x;
-
+//  -4 1 2
+//  4 9 18
     float position = (x + 5.0f) * 2.0f;
     int index = (int)position;
     /* Rounding can produce position == 20 just below x == 5. */
+//     figure it out whether it is necessary
     if (index > 19)
         index = 19;
     return x * lut_segments[index][1] + lut_segments[index][0];
+
 }
 
 static const GridLUT *active_grid_lut = nullptr;
