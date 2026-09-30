@@ -1,0 +1,148 @@
+{
+  "models": [
+    {
+      "model": "8n_float32_fp32.engine",
+      "dataset": "kitti.yaml",
+      "mAP50-95": 0.6754988754843907,
+      "mAP50": 0.9048546178977632,
+      "Recall": 0.8396487021629016,
+      "parameters": 3012408,
+      "GFLOPs": 8.1992192,
+      "GMACs": 4.0996096,
+      "weights_MB": 6.243363,
+      "engine_MB": 79.823354
+    },
+    {
+      "model": "voc_8n_best_fp32.engine",
+      "dataset": "VOC.yaml",
+      "mAP50-95": 0.621306495256996,
+      "mAP50": 0.8250775421472655,
+      "Recall": 0.758346007347229,
+      "parameters": 3014748,
+      "GFLOPs": 8.2121216,
+      "GMACs": 4.1060608,
+      "weights_MB": 6.264099,
+      "engine_MB": 93.513752
+    }
+  ],
+  "latency_memory": [
+    {
+      "model": "8n_float32_fp32.engine",
+      "phase": "engine_only",
+      "median_ms": 2.623152017593384,
+      "P95_ms": 3.150696074962616,
+      "mean_ms": 2.736895847162431,
+      "FPS_inverse_mean": 365.3774406639492,
+      "FPS_observed_wall": 361.8652553954667,
+      "images": 5428,
+      "loaded_GPU_used_MiB": 1104.234375,
+      "load_delta_MiB": 154.0,
+      "loaded_process_MiB": null,
+      "inference_GPU_peak_sampled_MiB": 1103.421875,
+      "inference_process_peak_sampled_MiB": null
+    },
+    {
+      "model": "8n_float32_fp32.engine",
+      "phase": "end_to_end",
+      "median_ms": 4.264499992132187,
+      "P95_ms": 5.624819919466972,
+      "mean_ms": 4.60497334866037,
+      "FPS_inverse_mean": 217.15652280396137,
+      "FPS_observed_wall": 216.84701309917708,
+      "images": 3253,
+      "loaded_GPU_used_MiB": 1112.609375,
+      "load_delta_MiB": 147.1875,
+      "loaded_process_MiB": null,
+      "inference_GPU_peak_sampled_MiB": 1111.171875,
+      "inference_process_peak_sampled_MiB": null
+    },
+    {
+      "model": "voc_8n_best_fp32.engine",
+      "phase": "engine_only",
+      "median_ms": 2.6805760860443115,
+      "P95_ms": 3.232204854488373,
+      "mean_ms": 2.795149263712656,
+      "FPS_inverse_mean": 357.76264723399794,
+      "FPS_observed_wall": 354.0769194343928,
+      "images": 5312,
+      "loaded_GPU_used_MiB": 1111.171875,
+      "load_delta_MiB": 138.0,
+      "loaded_process_MiB": null,
+      "inference_GPU_peak_sampled_MiB": 1111.171875,
+      "inference_process_peak_sampled_MiB": null
+    },
+    {
+      "model": "voc_8n_best_fp32.engine",
+      "phase": "end_to_end",
+      "median_ms": 4.377399920485914,
+      "P95_ms": 5.493009916972369,
+      "mean_ms": 4.60620639697668,
+      "FPS_inverse_mean": 217.0983915649889,
+      "FPS_observed_wall": 216.78462129795454,
+      "images": 3252,
+      "loaded_GPU_used_MiB": 1110.921875,
+      "load_delta_MiB": 138.0,
+      "loaded_process_MiB": null,
+      "inference_GPU_peak_sampled_MiB": 1109.296875,
+      "inference_process_peak_sampled_MiB": null
+    }
+  ],
+  "telemetry": [
+    {
+      "model": "8n_float32_fp32.engine",
+      "phase": "engine_only",
+      "idle_power_W": 8.831595114468922,
+      "running_power_W": 63.92457153477127,
+      "GPU_energy_J_per_image": 0.17665296842304162,
+      "incremental_GPU_energy_J_per_image": 0.15224721246059847,
+      "temperature_mean_C": 74.05839416058394,
+      "temperature_max_C": 78.0,
+      "SM_clock_mean_MHz": 1453.948905109489,
+      "memory_clock_mean_MHz": 5507.715328467153,
+      "GPU_util_mean_pct": 92.87591240875912,
+      "memory_util_mean_pct": 40.386861313868614
+    },
+    {
+      "model": "8n_float32_fp32.engine",
+      "phase": "end_to_end",
+      "idle_power_W": 9.229869259638718,
+      "running_power_W": 63.909496809577725,
+      "GPU_energy_J_per_image": 0.29472159148601274,
+      "incremental_GPU_energy_J_per_image": 0.2521576237941112,
+      "temperature_mean_C": 78.18978102189782,
+      "temperature_max_C": 82.0,
+      "SM_clock_mean_MHz": 1669.846715328467,
+      "memory_clock_mean_MHz": 5623.686131386861,
+      "GPU_util_mean_pct": 54.53284671532847,
+      "memory_util_mean_pct": 27.868613138686133
+    },
+    {
+      "model": "voc_8n_best_fp32.engine",
+      "phase": "engine_only",
+      "idle_power_W": 9.910243077974332,
+      "running_power_W": 63.83654087423773,
+      "GPU_energy_J_per_image": 0.18029003691121995,
+      "incremental_GPU_energy_J_per_image": 0.15230108159098873,
+      "temperature_mean_C": 81.06617647058823,
+      "temperature_max_C": 84.0,
+      "SM_clock_mean_MHz": 1414.735294117647,
+      "memory_clock_mean_MHz": 5467.35294117647,
+      "GPU_util_mean_pct": 95.79411764705883,
+      "memory_util_mean_pct": 42.97794117647059
+    },
+    {
+      "model": "voc_8n_best_fp32.engine",
+      "phase": "end_to_end",
+      "idle_power_W": 10.76473357972867,
+      "running_power_W": 63.84182148116957,
+      "GPU_energy_J_per_image": 0.29449423625591814,
+      "incremental_GPU_energy_J_per_image": 0.24483788371911464,
+      "temperature_mean_C": 83.75912408759125,
+      "temperature_max_C": 87.0,
+      "SM_clock_mean_MHz": 1640.4014598540145,
+      "memory_clock_mean_MHz": 5585.029197080292,
+      "GPU_util_mean_pct": 54.99270072992701,
+      "memory_util_mean_pct": 27.51094890510949
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "accuracy_speed": [
+    {
+      "Model": "YOLOv8n",
+      "Dataset": "KITTI",
+      "Precision": "FP32",
+      "mAP50-95 (%)": 67.54988754843907,
+      "mAP50 (%)": 90.48546178977632,
+      "Engine median / P95 (ms)": "2.623 / 3.151",
+      "E2E median / P95 (ms)": "4.264 / 5.625",
+      "E2E FPS": 216.84701309917708
+    },
+    {
+      "Model": "YOLOv8n",
+      "Dataset": "VOC",
+      "Precision": "FP32",
+      "mAP50-95 (%)": 62.130649525699596,
+      "mAP50 (%)": 82.50775421472655,
+      "Engine median / P95 (ms)": "2.681 / 3.232",
+      "E2E median / P95 (ms)": "4.377 / 5.493",
+      "E2E FPS": 216.78462129795454
+    }
+  ],
+  "resources_energy": [
+    {
+      "Model": "YOLOv8n",
+      "Dataset": "KITTI",
+      "Params (M)": 3.012408,
+      "GFLOPs": 8.1992192,
+      "Weights (MB)": 6.243363,
+      "Engine (MB)": 79.823354,
+      "Approx. GPU load delta (MiB)": 147.1875,
+      "E2E GPU power (W)": 63.909496809577725,
+      "E2E GPU energy (J/image)": 0.29472159148601274
+    },
+    {
+      "Model": "YOLOv8n",
+      "Dataset": "VOC",
+      "Params (M)": 3.014748,
+      "GFLOPs": 8.2121216,
+      "Weights (MB)": 6.264099,
+      "Engine (MB)": 93.513752,
+      "Approx. GPU load delta (MiB)": 138.0,
+      "E2E GPU power (W)": 63.84182148116957,
+      "E2E GPU energy (J/image)": 0.29449423625591814
+    }
+  ],
+  "notes": {
+    "table1": "Batch = 1; input = 640 x 640; GPU = NVIDIA RTX A2000. mAP is reported as a percentage. Engine latency uses CUDA events and resident GPU buffers. E2E includes preprocessing, data transfer, inference, NMS and result construction; disk I/O is excluded. FPS is completed images divided by measured wall time, not the reciprocal of median latency. P95 describes per-image latency within a run.",
+    "table2": "Parameters and GFLOPs describe the original PyTorch checkpoint; 1 MAC is counted as 2 FLOPs. File sizes use decimal MB. GPU load delta uses total-device NVML memory before loading versus after warmup and is approximate, not process-specific model memory. Power and energy use the E2E sustained test; energy includes idle GPU power and covers the GPU board, not the full computer. Results are single-run measurements; repeat under comparable thermal conditions before final publication."
+  },
+  "environment": {
+    "timestamp_utc": "2026-09-30T13:26:31.143872+00:00",
+    "gpu": "NVIDIA RTX A2000",
+    "gpu_uuid": "a0aa0f21-a2f1-4018-b27b-236640f36d02",
+    "python": "3.14.7",
+    "torch": "2.14.0+cu130",
+    "tensorrt": "11.3.0.99",
+    "ultralytics": "8.4.163",
+    "driver": "581.29",
+    "imgsz": 640,
+    "batch": 1,
+    "run_seconds_min": 15.0,
+    "idle_seconds": 5.0,
+    "warmup": 20,
+    "idle_settle_seconds": 10.0,
+    "sampling_interval_s": 0.1,
+    "pid": 19220
+  }
+}

@@ -18,6 +18,7 @@ from types import MethodType
 from typing import Any
 
 import torch
+from ultralytics import YOLO
 from ultralytics.cfg import DEFAULT_CFG
 from ultralytics.engine.exporter import Exporter
 from ultralytics.nn.tasks import BaseModel
@@ -39,6 +40,7 @@ class ExportConfig:
     fraction: float
     dynamic: bool
     simplify: bool
+    device: str | int | None = None
 
 
 def _skip_unsupported_fuse(model: BaseModel, *_args: Any, **_kwargs: Any) -> BaseModel:
@@ -82,13 +84,14 @@ def precision_overrides(precision: str, data: str | None) -> dict[str, Any]:
 
 
 def load_raw_model(path: Path) -> BaseModel:
-    # These trusted local files serialize the complete DetectionModel, so
-    # weights_only=False is required.  A normal Ultralytics checkpoint dict is
-    # deliberately rejected to keep this compatibility path explicit.
+    # Some local checkpoints contain a model object, while standard Ultralytics
+    # checkpoints contain a dict. Let YOLO apply its normal checkpoint setup.
     model = torch.load(path, map_location="cpu", weights_only=False)
+    if isinstance(model, dict):
+        model = YOLO(str(path)).model
     if not isinstance(model, BaseModel):
         raise TypeError(
-            f"Expected a serialized Ultralytics BaseModel in {path}, got {type(model).__name__}"
+            f"Expected an Ultralytics BaseModel or checkpoint in {path}, got {type(model).__name__}"
         )
     return model
 
@@ -116,17 +119,17 @@ def check_and_repair_onnx(path: Path) -> None:
 
 
 def export_model(path: Path, config: ExportConfig) -> Path:
-    if config.format not in {"onnx", "openvino", "torchscript", "coreml", "ncnn"}:
+    if config.format not in {"onnx", "openvino", "torchscript", "coreml", "ncnn", "engine"}:
         raise ValueError(f"Unsupported export format: {config.format}")
     if config.precision not in {"fp32", "fp16", "int8"}:
         raise ValueError(f"Unsupported precision: {config.precision}")
     if not 0.0 < config.fraction <= 1.0:
         raise ValueError("fraction must be greater than 0 and at most 1")
     model = load_raw_model(path)
-    # Ultralytics adds its own `_int8` suffix after ONNX static quantization.
-    # FP16/FP32 exports need an explicit suffix to distinguish their artifacts.
+    # ONNX adds its own INT8 suffix; TensorRT uses this stem directly.
     virtual_stem = (
-        path.stem if config.precision == "int8" else f"{path.stem}_{config.precision}"
+        path.stem if config.format == "onnx" and config.precision == "int8"
+        else f"{path.stem}_{config.precision}"
     )
 
     # Low-rank factorization replaced some Conv.conv layers with Sequential.
@@ -142,7 +145,7 @@ def export_model(path: Path, config: ExportConfig) -> Path:
         "format": config.format,
         "imgsz": config.imgsz,
         "batch": 1,
-        "device": "cpu",
+        "device": config.device if config.device is not None else ("0" if config.format == "engine" else "cpu"),
         "dynamic": config.dynamic,
         "simplify": config.simplify,
         "fraction": config.fraction,
