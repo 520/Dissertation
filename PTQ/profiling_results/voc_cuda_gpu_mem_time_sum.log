@@ -1,0 +1,3 @@
+Generating SQLite file C:\Users\dxu1\Desktop\Dissertation\PTQ\profiling_results\voc_timeline.sqlite from C:\Users\dxu1\Desktop\Dissertation\PTQ\profiling_results\voc_timeline.nsys-rep
+Processing [C:\Users\dxu1\Desktop\Dissertation\PTQ\profiling_results\voc_timeline.sqlite] with [C:\Users\dxu1\AppData\Local\NVIDIA\NsightSystemsPortable\ProgramFiles64Folder\NVIDIA Corporation\Nsight Systems 2026.5.1\target-windows-x64\reports\cuda_gpu_mem_time_sum.py] to [C:\Users\dxu1\Desktop\Dissertation\PTQ\profiling_results\voc_stats_cuda_gpu_mem_time_sum.csv]... PROCESSED
+

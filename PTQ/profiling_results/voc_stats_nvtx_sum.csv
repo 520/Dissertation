@@ -1,0 +1,424 @@
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Style,Range
+20.2,217569870,600,362616.5,19061.5,5853,2539586,767271.2,PushPop,:Framework_GPU_sync
+12.6,136497396,100,1364974.0,1254213.0,312950,2023996,408301.9,PushPop,:06_NMS
+5.1,55102700,100,551027.0,537512.5,421943,772082,55652.0,PushPop,:01_CPU_letterbox
+3.7,39647695,100,396477.0,328965.0,100390,771572,157330.8,PushPop,:07_scale_boxes_and_Results
+2.7,29208575,100,292085.8,283702.0,242419,487272,39848.0,PushPop,:05_TensorRT_backend_D2D_and_graph
+2.2,23301570,100,233015.7,226804.0,202186,437371,29685.3,PushPop,:03_H2D_uint8
+1.4,15268105,100,152681.0,157778.0,108875,392197,42069.1,PushPop,:04_GPU_layout_cast_normalize
+0.8,8917401,296,30126.4,25192.0,15949,112687,12538.0,PushPop,CCCL:cub::DeviceSelect::Flagged
+0.6,6488560,1,6488560.0,6488560.0,6488560,6488560,0.0,PushPop,:E2E/voc/image_0029
+0.6,6483529,1,6483529.0,6483529.0,6483529,6483529,0.0,PushPop,:E2E/voc/image_0014
+0.6,6417933,1,6417933.0,6417933.0,6417933,6417933,0.0,PushPop,:E2E/voc/image_0017
+0.6,6353741,1,6353741.0,6353741.0,6353741,6353741,0.0,PushPop,:E2E/voc/image_0007
+0.6,6341772,1,6341772.0,6341772.0,6341772,6341772,0.0,PushPop,:E2E/voc/image_0047
+0.6,6270951,1,6270951.0,6270951.0,6270951,6270951,0.0,PushPop,:E2E/voc/image_0022
+0.6,6256312,1,6256312.0,6256312.0,6256312,6256312,0.0,PushPop,:E2E/voc/image_0061
+0.6,6230696,1,6230696.0,6230696.0,6230696,6230696,0.0,PushPop,:E2E/voc/image_0052
+0.6,6220523,1,6220523.0,6220523.0,6220523,6220523,0.0,PushPop,:E2E/voc/image_0088
+0.6,6208057,1,6208057.0,6208057.0,6208057,6208057,0.0,PushPop,:E2E/voc/image_0019
+0.6,6178914,1,6178914.0,6178914.0,6178914,6178914,0.0,PushPop,:E2E/voc/image_0018
+0.6,6178668,1,6178668.0,6178668.0,6178668,6178668,0.0,PushPop,:E2E/voc/image_0049
+0.6,6176136,1,6176136.0,6176136.0,6176136,6176136,0.0,PushPop,:E2E/voc/image_0009
+0.6,6156516,1,6156516.0,6156516.0,6156516,6156516,0.0,PushPop,:E2E/voc/image_0016
+0.6,6136594,1,6136594.0,6136594.0,6136594,6136594,0.0,PushPop,:E2E/voc/image_0013
+0.6,6133674,1,6133674.0,6133674.0,6133674,6133674,0.0,PushPop,:E2E/voc/image_0012
+0.6,6113643,1,6113643.0,6113643.0,6113643,6113643,0.0,PushPop,:E2E/voc/image_0008
+0.6,6107578,1,6107578.0,6107578.0,6107578,6107578,0.0,PushPop,:E2E/voc/image_0020
+0.6,6105862,1,6105862.0,6105862.0,6105862,6105862,0.0,PushPop,:E2E/voc/image_0023
+0.6,6097853,1,6097853.0,6097853.0,6097853,6097853,0.0,PushPop,:E2E/voc/image_0015
+0.6,6087646,1,6087646.0,6087646.0,6087646,6087646,0.0,PushPop,:E2E/voc/image_0006
+0.6,6085873,1,6085873.0,6085873.0,6085873,6085873,0.0,PushPop,:E2E/voc/image_0021
+0.6,6072817,1,6072817.0,6072817.0,6072817,6072817,0.0,PushPop,:E2E/voc/image_0048
+0.6,6061003,1,6061003.0,6061003.0,6061003,6061003,0.0,PushPop,:E2E/voc/image_0053
+0.6,6053384,1,6053384.0,6053384.0,6053384,6053384,0.0,PushPop,:E2E/voc/image_0050
+0.6,6041515,1,6041515.0,6041515.0,6041515,6041515,0.0,PushPop,:E2E/voc/image_0067
+0.6,6038372,1,6038372.0,6038372.0,6038372,6038372,0.0,PushPop,:E2E/voc/image_0051
+0.6,6029448,1,6029448.0,6029448.0,6029448,6029448,0.0,PushPop,:E2E/voc/image_0062
+0.6,6023855,1,6023855.0,6023855.0,6023855,6023855,0.0,PushPop,:E2E/voc/image_0063
+0.6,5989720,1,5989720.0,5989720.0,5989720,5989720,0.0,PushPop,:E2E/voc/image_0069
+0.6,5985196,1,5985196.0,5985196.0,5985196,5985196,0.0,PushPop,:E2E/voc/image_0089
+0.6,5964968,1,5964968.0,5964968.0,5964968,5964968,0.0,PushPop,:E2E/voc/image_0043
+0.6,5957419,1,5957419.0,5957419.0,5957419,5957419,0.0,PushPop,:E2E/voc/image_0072
+0.6,5954248,296,20115.7,12067.0,7717,69014,15307.7,PushPop,CCCL:cub::DeviceReduce::Sum
+0.6,5941447,1,5941447.0,5941447.0,5941447,5941447,0.0,PushPop,:E2E/voc/image_0092
+0.5,5921654,1,5921654.0,5921654.0,5921654,5921654,0.0,PushPop,:E2E/voc/image_0064
+0.5,5913860,1,5913860.0,5913860.0,5913860,5913860,0.0,PushPop,:E2E/voc/image_0071
+0.5,5885443,1,5885443.0,5885443.0,5885443,5885443,0.0,PushPop,:E2E/voc/image_0066
+0.5,5827006,1,5827006.0,5827006.0,5827006,5827006,0.0,PushPop,:E2E/voc/image_0068
+0.5,5790088,1,5790088.0,5790088.0,5790088,5790088,0.0,PushPop,:E2E/voc/image_0070
+0.5,5722828,1,5722828.0,5722828.0,5722828,5722828,0.0,PushPop,:E2E/voc/image_0065
+0.5,5676547,1,5676547.0,5676547.0,5676547,5676547,0.0,PushPop,:E2E/voc/image_0000
+0.5,5643261,1,5643261.0,5643261.0,5643261,5643261,0.0,PushPop,:E2E/voc/image_0054
+0.5,5607552,1,5607552.0,5607552.0,5607552,5607552,0.0,PushPop,:E2E/voc/image_0035
+0.5,5558990,1,5558990.0,5558990.0,5558990,5558990,0.0,PushPop,:E2E/voc/image_0090
+0.5,5516233,1,5516233.0,5516233.0,5516233,5516233,0.0,PushPop,:E2E/voc/image_0038
+0.5,5496117,1,5496117.0,5496117.0,5496117,5496117,0.0,PushPop,:E2E/voc/image_0010
+0.5,5466380,1,5466380.0,5466380.0,5466380,5466380,0.0,PushPop,:E2E/voc/image_0036
+0.5,5386788,1,5386788.0,5386788.0,5386788,5386788,0.0,PushPop,:E2E/voc/image_0024
+0.5,5373325,1,5373325.0,5373325.0,5373325,5373325,0.0,PushPop,:E2E/voc/image_0039
+0.5,5368795,1,5368795.0,5368795.0,5368795,5368795,0.0,PushPop,:E2E/voc/image_0040
+0.5,5358817,1,5358817.0,5358817.0,5358817,5358817,0.0,PushPop,:E2E/voc/image_0037
+0.5,5333908,1,5333908.0,5333908.0,5333908,5333908,0.0,PushPop,:E2E/voc/image_0011
+0.5,5303807,1,5303807.0,5303807.0,5303807,5303807,0.0,PushPop,:E2E/voc/image_0042
+0.5,5269695,1,5269695.0,5269695.0,5269695,5269695,0.0,PushPop,:E2E/voc/image_0094
+0.5,5198163,1,5198163.0,5198163.0,5198163,5198163,0.0,PushPop,:E2E/voc/image_0033
+0.5,5165689,1,5165689.0,5165689.0,5165689,5165689,0.0,PushPop,:E2E/voc/image_0082
+0.5,5156628,1,5156628.0,5156628.0,5156628,5156628,0.0,PushPop,:E2E/voc/image_0093
+0.5,5122084,1,5122084.0,5122084.0,5122084,5122084,0.0,PushPop,:E2E/voc/image_0030
+0.5,5116543,1,5116543.0,5116543.0,5116543,5116543,0.0,PushPop,:E2E/voc/image_0058
+0.5,5091120,1,5091120.0,5091120.0,5091120,5091120,0.0,PushPop,:E2E/voc/image_0031
+0.5,5087323,1,5087323.0,5087323.0,5087323,5087323,0.0,PushPop,:E2E/voc/image_0073
+0.5,5050831,1,5050831.0,5050831.0,5050831,5050831,0.0,PushPop,:E2E/voc/image_0027
+0.5,5047429,1,5047429.0,5047429.0,5047429,5047429,0.0,PushPop,:E2E/voc/image_0028
+0.5,5025336,1,5025336.0,5025336.0,5025336,5025336,0.0,PushPop,:E2E/voc/image_0034
+0.5,4985165,1,4985165.0,4985165.0,4985165,4985165,0.0,PushPop,:E2E/voc/image_0032
+0.5,4968718,1,4968718.0,4968718.0,4968718,4968718,0.0,PushPop,:E2E/voc/image_0096
+0.5,4936029,1,4936029.0,4936029.0,4936029,4936029,0.0,PushPop,:E2E/voc/image_0001
+0.5,4919018,1,4919018.0,4919018.0,4919018,4919018,0.0,PushPop,:E2E/voc/image_0025
+0.5,4917289,1,4917289.0,4917289.0,4917289,4917289,0.0,PushPop,:E2E/voc/image_0003
+0.5,4884167,1,4884167.0,4884167.0,4884167,4884167,0.0,PushPop,:E2E/voc/image_0057
+0.5,4878499,1,4878499.0,4878499.0,4878499,4878499,0.0,PushPop,:E2E/voc/image_0055
+0.5,4874541,1,4874541.0,4874541.0,4874541,4874541,0.0,PushPop,:E2E/voc/image_0041
+0.5,4868225,1,4868225.0,4868225.0,4868225,4868225,0.0,PushPop,:E2E/voc/image_0056
+0.4,4847110,1,4847110.0,4847110.0,4847110,4847110,0.0,PushPop,:E2E/voc/image_0060
+0.4,4846544,1,4846544.0,4846544.0,4846544,4846544,0.0,PushPop,:E2E/voc/image_0004
+0.4,4843184,1,4843184.0,4843184.0,4843184,4843184,0.0,PushPop,:E2E/voc/image_0005
+0.4,4842699,1,4842699.0,4842699.0,4842699,4842699,0.0,PushPop,:E2E/voc/image_0044
+0.4,4839829,1,4839829.0,4839829.0,4839829,4839829,0.0,PushPop,:E2E/voc/image_0095
+0.4,4839466,1,4839466.0,4839466.0,4839466,4839466,0.0,PushPop,:E2E/voc/image_0059
+0.4,4825641,1,4825641.0,4825641.0,4825641,4825641,0.0,PushPop,:E2E/voc/image_0091
+0.4,4823260,1,4823260.0,4823260.0,4823260,4823260,0.0,PushPop,:E2E/voc/image_0045
+0.4,4820797,1,4820797.0,4820797.0,4820797,4820797,0.0,PushPop,:E2E/voc/image_0097
+0.4,4802537,1,4802537.0,4802537.0,4802537,4802537,0.0,PushPop,:E2E/voc/image_0026
+0.4,4800024,1,4800024.0,4800024.0,4800024,4800024,0.0,PushPop,:E2E/voc/image_0081
+0.4,4795255,1,4795255.0,4795255.0,4795255,4795255,0.0,PushPop,:E2E/voc/image_0084
+0.4,4743244,1,4743244.0,4743244.0,4743244,4743244,0.0,PushPop,:E2E/voc/image_0077
+0.4,4712144,1,4712144.0,4712144.0,4712144,4712144,0.0,PushPop,:E2E/voc/image_0074
+0.4,4673758,1,4673758.0,4673758.0,4673758,4673758,0.0,PushPop,:E2E/voc/image_0098
+0.4,4672864,1,4672864.0,4672864.0,4672864,4672864,0.0,PushPop,:E2E/voc/image_0078
+0.4,4647002,1,4647002.0,4647002.0,4647002,4647002,0.0,PushPop,:E2E/voc/image_0085
+0.4,4645271,1,4645271.0,4645271.0,4645271,4645271,0.0,PushPop,:E2E/voc/image_0083
+0.4,4588447,1,4588447.0,4588447.0,4588447,4588447,0.0,PushPop,:E2E/voc/image_0099
+0.4,4537699,1,4537699.0,4537699.0,4537699,4537699,0.0,PushPop,:E2E/voc/image_0086
+0.4,4536772,1,4536772.0,4536772.0,4536772,4536772,0.0,PushPop,:E2E/voc/image_0075
+0.4,4527589,1,4527589.0,4527589.0,4527589,4527589,0.0,PushPop,:E2E/voc/image_0076
+0.4,4525577,1,4525577.0,4525577.0,4525577,4525577,0.0,PushPop,:E2E/voc/image_0087
+0.4,4492120,1,4492120.0,4492120.0,4492120,4492120,0.0,PushPop,:E2E/voc/image_0080
+0.4,4439791,1,4439791.0,4439791.0,4439791,4439791,0.0,PushPop,:E2E/voc/image_0079
+0.4,4434688,1,4434688.0,4434688.0,4434688,4434688,0.0,PushPop,:E2E/voc/image_0046
+0.4,4205710,1,4205710.0,4205710.0,4205710,4205710,0.0,PushPop,:E2E/voc/image_0002
+0.2,1674012,100,16740.1,16077.5,14123,60950,4685.0,PushPop,:08_final_GPU_wait
+0.1,1226678,100,12266.8,11230.5,10245,30884,3072.6,PushPop,:02_CPU_tensor_view
+0.1,1221647,1,1221647.0,1221647.0,1221647,1221647,0.0,PushPop,TensorRT:ExecutionContext::enqueueV3
+0.0,181845,62,2933.0,317.5,145,161476,20465.6,StartEnd,myelin-exec:myelinTensorGetInputMemoryBatch
+0.0,167158,1,167158.0,167158.0,167158,167158,0.0,PushPop,TensorRT:PWN(/model.22/Mul_2)
+0.0,115177,1,115177.0,115177.0,115177,115177,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.0/conv/Conv
+0.0,105180,62,1696.5,1617.0,1244,2893,311.3,StartEnd,myelin-exec:myelinGraphExecute 
+0.0,69549,1,69549.0,69549.0,69549,69549,0.0,PushPop,TensorRT:/model.22/cv2.1/cv2.1.1/conv/Conv
+0.0,55043,62,887.8,877.0,468,2624,279.4,StartEnd,myelin-exec:myelinGraphUnload
+0.0,21819,1,21819.0,21819.0,21819,21819,0.0,PushPop,TensorRT:/model.18/m.0/cv1/conv/Conv
+0.0,16964,62,273.6,267.0,125,647,91.5,StartEnd,myelin-exec:myelinTensorGetOutputMemoryBatch
+0.0,15859,1,15859.0,15859.0,15859,15859,0.0,PushPop,"TensorRT:PWN(PWN(/model.0/act/Sigmoid), PWN(/model.0/act/Mul))"
+0.0,12265,1,12265.0,12265.0,12265,12265,0.0,PushPop,TensorRT:/model.22/Reshape_3_copy_output
+0.0,11227,62,181.1,144.5,119,983,151.1,StartEnd,myelin-exec:myelinGraphLoad
+0.0,11109,1,11109.0,11109.0,11109,11109,0.0,PushPop,TensorRT:/model.22/dfl/conv/Conv
+0.0,10332,1,10332.0,10332.0,10332,10332,0.0,PushPop,"TensorRT:PWN(PWN(/model.6/m.0/cv1/act/Sigmoid), PWN(/model.6/m.0/cv1/act/Mul))"
+0.0,10163,1,10163.0,10163.0,10163,10163,0.0,PushPop,TensorRT:/model.0/conv/Conv
+0.0,10152,1,10152.0,10152.0,10152,10152,0.0,PushPop,TensorRT:/model.8/Split_output_1 copy
+0.0,9317,62,150.3,122.0,110,1070,125.5,StartEnd,myelin-exec:myelinTensorSetInputMemoryBatch
+0.0,8121,1,8121.0,8121.0,8121,8121,0.0,PushPop,"TensorRT:PWN(PWN(/model.2/m.0/cv1/act/Sigmoid), PWN(/model.2/m.0/cv1/act/Mul))"
+0.0,8076,1,8076.0,8076.0,8076,8076,0.0,PushPop,"TensorRT:PWN(PWN(/model.2/cv2/act/Sigmoid), PWN(/model.2/cv2/act/Mul))"
+0.0,8063,62,130.0,117.0,111,257,30.5,StartEnd,myelin-exec:myelinTensorSetOutputMemoryBatch
+0.0,7628,1,7628.0,7628.0,7628,7628,0.0,PushPop,TensorRT:/model.22/cv2.0/cv2.0.1/conv/Conv
+0.0,7494,1,7494.0,7494.0,7494,7494,0.0,PushPop,"TensorRT:PWN(PWN(/model.1/act/Sigmoid), PWN(/model.1/act/Mul))"
+0.0,7392,1,7392.0,7392.0,7392,7392,0.0,PushPop,"TensorRT:PWN(PWN(/model.4/cv2/act/Sigmoid), PWN(/model.4/cv2/act/Mul))"
+0.0,7358,1,7358.0,7358.0,7358,7358,0.0,PushPop,"TensorRT:PWN(PWN(/model.4/m.0/cv1/act/Sigmoid), PWN(/model.4/m.0/cv1/act/Mul))"
+0.0,7133,1,7133.0,7133.0,7133,7133,0.0,PushPop,"TensorRT:PWN(PWN(PWN(/model.6/m.1/cv2/act/Sigmoid), PWN(/model.6/m.1/cv2/act/Mul)), PWN(/model.6/m.1/Add))"
+0.0,7111,1,7111.0,7111.0,7111,7111,0.0,PushPop,"TensorRT:PWN(PWN(PWN(/model.2/m.0/cv2/act/Sigmoid), PWN(/model.2/m.0/cv2/act/Mul)), PWN(/model.2/m.0/Add))"
+0.0,7093,1,7093.0,7093.0,7093,7093,0.0,PushPop,"TensorRT:PWN(PWN(/model.12/m.0/cv1/act/Sigmoid), PWN(/model.12/m.0/cv1/act/Mul))"
+0.0,7077,1,7077.0,7077.0,7077,7077,0.0,PushPop,"TensorRT:PWN(PWN(/model.7/act/Sigmoid), PWN(/model.7/act/Mul))"
+0.0,7069,1,7069.0,7069.0,7069,7069,0.0,PushPop,"TensorRT:PWN(PWN(/model.5/act/Sigmoid), PWN(/model.5/act/Mul))"
+0.0,6805,1,6805.0,6805.0,6805,6805,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv2.1/cv2.1.1/act/Sigmoid), PWN(/model.22/cv2.1/cv2.1.1/act/Mul))"
+0.0,6766,1,6766.0,6766.0,6766,6766,0.0,PushPop,"TensorRT:PWN(PWN(PWN(/model.4/m.0/cv2/act/Sigmoid), PWN(/model.4/m.0/cv2/act/Mul)), PWN(/model.4/m.0/Add))"
+0.0,6745,1,6745.0,6745.0,6745,6745,0.0,PushPop,"TensorRT:PWN(PWN(/model.15/m.0/cv2/act/Sigmoid), PWN(/model.15/m.0/cv2/act/Mul))"
+0.0,6731,1,6731.0,6731.0,6731,6731,0.0,PushPop,"TensorRT:PWN(PWN(/model.6/cv1/act/Sigmoid), PWN(/model.6/cv1/act/Mul))"
+0.0,6686,1,6686.0,6686.0,6686,6686,0.0,PushPop,TensorRT:PWN(/model.22/Sub)
+0.0,6671,1,6671.0,6671.0,6671,6671,0.0,PushPop,"TensorRT:PWN(PWN(/model.8/cv1/act/Sigmoid), PWN(/model.8/cv1/act/Mul))"
+0.0,6669,1,6669.0,6669.0,6669,6669,0.0,PushPop,TensorRT:/model.8/cv1/conv/Conv
+0.0,6648,1,6648.0,6648.0,6648,6648,0.0,PushPop,TensorRT:/model.4/cv2/conv/Conv
+0.0,6636,1,6636.0,6636.0,6636,6636,0.0,PushPop,"TensorRT:PWN(PWN(/model.2/cv1/act/Sigmoid), PWN(/model.2/cv1/act/Mul))"
+0.0,6606,1,6606.0,6606.0,6606,6606,0.0,PushPop,"TensorRT:PWN(PWN(/model.12/cv1/act/Sigmoid), PWN(/model.12/cv1/act/Mul))"
+0.0,6599,1,6599.0,6599.0,6599,6599,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv2.2/cv2.2.0/act/Sigmoid), PWN(/model.22/cv2.2/cv2.2.0/act/Mul))"
+0.0,6544,1,6544.0,6544.0,6544,6544,0.0,PushPop,"TensorRT:PWN(PWN(/model.12/m.0/cv2/act/Sigmoid), PWN(/model.12/m.0/cv2/act/Mul))"
+0.0,6536,1,6536.0,6536.0,6536,6536,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv2.0/cv2.0.1/act/Sigmoid), PWN(/model.22/cv2.0/cv2.0.1/act/Mul))"
+0.0,6510,1,6510.0,6510.0,6510,6510,0.0,PushPop,"TensorRT:PWN(PWN(PWN(/model.4/m.1/cv2/act/Sigmoid), PWN(/model.4/m.1/cv2/act/Mul)), PWN(/model.4/m.1/Add))"
+0.0,6508,1,6508.0,6508.0,6508,6508,0.0,PushPop,"TensorRT:PWN(PWN(PWN(/model.8/m.0/cv2/act/Sigmoid), PWN(/model.8/m.0/cv2/act/Mul)), PWN(/model.8/m.0/Add))"
+0.0,6472,1,6472.0,6472.0,6472,6472,0.0,PushPop,TensorRT:PWN(/model.22/Sub_1)
+0.0,6419,1,6419.0,6419.0,6419,6419,0.0,PushPop,"TensorRT:PWN(PWN(/model.3/act/Sigmoid), PWN(/model.3/act/Mul))"
+0.0,6407,1,6407.0,6407.0,6407,6407,0.0,PushPop,"TensorRT:PWN(PWN(/model.21/cv2/act/Sigmoid), PWN(/model.21/cv2/act/Mul))"
+0.0,6402,1,6402.0,6402.0,6402,6402,0.0,PushPop,TensorRT:PWN(/model.22/Sigmoid)
+0.0,6311,1,6311.0,6311.0,6311,6311,0.0,PushPop,TensorRT:PWN(/model.22/Add_1)
+0.0,6289,1,6289.0,6289.0,6289,6289,0.0,PushPop,"TensorRT:PWN(PWN(PWN(/model.6/m.0/cv2/act/Sigmoid), PWN(/model.6/m.0/cv2/act/Mul)), PWN(/model.6/m.0/Add))"
+0.0,6218,1,6218.0,6218.0,6218,6218,0.0,PushPop,"TensorRT:PWN(PWN(/model.6/cv2/act/Sigmoid), PWN(/model.6/cv2/act/Mul))"
+0.0,6103,1,6103.0,6103.0,6103,6103,0.0,PushPop,"TensorRT:PWN(PWN(/model.15/cv2/act/Sigmoid), PWN(/model.15/cv2/act/Mul))"
+0.0,6100,1,6100.0,6100.0,6100,6100,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv2.0/cv2.0.0/act/Sigmoid), PWN(/model.22/cv2.0/cv2.0.0/act/Mul))"
+0.0,6087,1,6087.0,6087.0,6087,6087,0.0,PushPop,"TensorRT:PWN(PWN(/model.6/m.1/cv1/act/Sigmoid), PWN(/model.6/m.1/cv1/act/Mul))"
+0.0,6074,1,6074.0,6074.0,6074,6074,0.0,PushPop,"TensorRT:PWN(PWN(/model.8/m.0/cv1/act/Sigmoid), PWN(/model.8/m.0/cv1/act/Mul))"
+0.0,6064,1,6064.0,6064.0,6064,6064,0.0,PushPop,"TensorRT:PWN(PWN(/model.21/m.0/cv1/act/Sigmoid), PWN(/model.21/m.0/cv1/act/Mul))"
+0.0,6024,1,6024.0,6024.0,6024,6024,0.0,PushPop,"TensorRT:PWN(PWN(/model.18/m.0/cv1/act/Sigmoid), PWN(/model.18/m.0/cv1/act/Mul))"
+0.0,6022,1,6022.0,6022.0,6022,6022,0.0,PushPop,"TensorRT:PWN(PWN(/model.9/cv2/act/Sigmoid), PWN(/model.9/cv2/act/Mul))"
+0.0,5948,1,5948.0,5948.0,5948,5948,0.0,PushPop,"TensorRT:PWN(PWN(/model.4/m.1/cv1/act/Sigmoid), PWN(/model.4/m.1/cv1/act/Mul))"
+0.0,5939,1,5939.0,5939.0,5939,5939,0.0,PushPop,"TensorRT:PWN(PWN(/model.16/act/Sigmoid), PWN(/model.16/act/Mul))"
+0.0,5926,1,5926.0,5926.0,5926,5926,0.0,PushPop,"TensorRT:PWN(PWN(/model.19/act/Sigmoid), PWN(/model.19/act/Mul))"
+0.0,5904,1,5904.0,5904.0,5904,5904,0.0,PushPop,TensorRT:/model.2/Split_output_0 copy
+0.0,5896,1,5896.0,5896.0,5896,5896,0.0,PushPop,"TensorRT:PWN(PWN(/model.4/cv1/act/Sigmoid), PWN(/model.4/cv1/act/Mul))"
+0.0,5881,1,5881.0,5881.0,5881,5881,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/Add_2), PWN(/model.22/Constant_14_output_0 + ONNXTRT_Broadcast, PWN(/model.22/Div_1)))"
+0.0,5858,1,5858.0,5858.0,5858,5858,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv2.2/cv2.2.1/act/Sigmoid), PWN(/model.22/cv2.2/cv2.2.1/act/Mul))"
+0.0,5831,1,5831.0,5831.0,5831,5831,0.0,PushPop,"TensorRT:PWN(PWN(/model.8/cv2/act/Sigmoid), PWN(/model.8/cv2/act/Mul))"
+0.0,5770,1,5770.0,5770.0,5770,5770,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv3.0/cv3.0.0/act/Sigmoid), PWN(/model.22/cv3.0/cv3.0.0/act/Mul))"
+0.0,5723,1,5723.0,5723.0,5723,5723,0.0,PushPop,"TensorRT:PWN(PWN(/model.21/m.0/cv2/act/Sigmoid), PWN(/model.21/m.0/cv2/act/Mul))"
+0.0,5564,1,5564.0,5564.0,5564,5564,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv3.1/cv3.1.1/act/Sigmoid), PWN(/model.22/cv3.1/cv3.1.1/act/Mul))"
+0.0,5426,1,5426.0,5426.0,5426,5426,0.0,PushPop,"TensorRT:PWN(PWN(/model.18/cv1/act/Sigmoid), PWN(/model.18/cv1/act/Mul))"
+0.0,5409,1,5409.0,5409.0,5409,5409,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv3.2/cv3.2.1/act/Sigmoid), PWN(/model.22/cv3.2/cv3.2.1/act/Mul))"
+0.0,5363,1,5363.0,5363.0,5363,5363,0.0,PushPop,TensorRT:/model.22/dfl/Softmax
+0.0,5361,1,5361.0,5361.0,5361,5361,0.0,PushPop,"TensorRT:PWN(PWN(/model.15/m.0/cv1/act/Sigmoid), PWN(/model.15/m.0/cv1/act/Mul))"
+0.0,5336,1,5336.0,5336.0,5336,5336,0.0,PushPop,"TensorRT:PWN(PWN(/model.15/cv1/act/Sigmoid), PWN(/model.15/cv1/act/Mul))"
+0.0,5333,1,5333.0,5333.0,5333,5333,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv3.2/cv3.2.0/act/Sigmoid), PWN(/model.22/cv3.2/cv3.2.0/act/Mul))"
+0.0,5315,1,5315.0,5315.0,5315,5315,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv3.0/cv3.0.1/act/Sigmoid), PWN(/model.22/cv3.0/cv3.0.1/act/Mul))"
+0.0,5279,1,5279.0,5279.0,5279,5279,0.0,PushPop,"TensorRT:PWN(PWN(/model.18/m.0/cv2/act/Sigmoid), PWN(/model.18/m.0/cv2/act/Mul))"
+0.0,5238,1,5238.0,5238.0,5238,5238,0.0,PushPop,"TensorRT:PWN(PWN(/model.18/cv2/act/Sigmoid), PWN(/model.18/cv2/act/Mul))"
+0.0,5190,1,5190.0,5190.0,5190,5190,0.0,PushPop,"TensorRT:PWN(PWN(/model.21/cv1/act/Sigmoid), PWN(/model.21/cv1/act/Mul))"
+0.0,5173,1,5173.0,5173.0,5173,5173,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv3.1/cv3.1.0/act/Sigmoid), PWN(/model.22/cv3.1/cv3.1.0/act/Mul))"
+0.0,5152,1,5152.0,5152.0,5152,5152,0.0,PushPop,TensorRT:/model.8/Split_output_0 copy
+0.0,5086,1,5086.0,5086.0,5086,5086,0.0,PushPop,"TensorRT:PWN(PWN(/model.22/cv2.1/cv2.1.0/act/Sigmoid), PWN(/model.22/cv2.1/cv2.1.0/act/Mul))"
+0.0,4868,1,4868.0,4868.0,4868,4868,0.0,PushPop,"TensorRT:PWN(PWN(/model.12/cv2/act/Sigmoid), PWN(/model.12/cv2/act/Mul))"
+0.0,4789,1,4789.0,4789.0,4789,4789,0.0,PushPop,TensorRT:/model.8/m.0/cv1/conv/Conv
+0.0,4659,1,4659.0,4659.0,4659,4659,0.0,PushPop,TensorRT:/model.22/Mul_2_output_0 copy
+0.0,4612,1,4612.0,4612.0,4612,4612,0.0,PushPop,TensorRT:/model.22/cv2.0/cv2.0.0/conv/Conv || /model.22/cv3.0/cv3.0.0/conv/Conv
+0.0,4571,1,4571.0,4571.0,4571,4571,0.0,PushPop,TensorRT:/model.7/conv/Conv
+0.0,4417,1,4417.0,4417.0,4417,4417,0.0,PushPop,TensorRT:/model.22/Reshape_copy_output
+0.0,4133,1,4133.0,4133.0,4133,4133,0.0,PushPop,TensorRT:/model.22/cv2.2/cv2.2.2/Conv
+0.0,4089,1,4089.0,4089.0,4089,4089,0.0,PushPop,TensorRT:/model.1/conv/Conv
+0.0,3935,1,3935.0,3935.0,3935,3935,0.0,PushPop,TensorRT:/model.22/Div_1_output_0 copy
+0.0,3813,1,3813.0,3813.0,3813,3813,0.0,PushPop,TensorRT:/model.9/m/MaxPool
+0.0,3731,1,3731.0,3731.0,3731,3731,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.8/cv2/conv/Conv
+0.0,3729,1,3729.0,3729.0,3729,3729,0.0,PushPop,TensorRT:/model.22/cv3.0/cv3.0.2/Conv
+0.0,3696,1,3696.0,3696.0,3696,3696,0.0,PushPop,TensorRT:/model.18/Split_output_0 copy
+0.0,3437,1,3437.0,3437.0,3437,3437,0.0,PushPop,TensorRT:/model.22/cv2.0/cv2.0.2/Conv
+0.0,3381,1,3381.0,3381.0,3381,3381,0.0,PushPop,TensorRT:/model.12/cv2/conv/Conv
+0.0,3355,1,3355.0,3355.0,3355,3355,0.0,PushPop,TensorRT:/model.19/conv/Conv
+0.0,3346,1,3346.0,3346.0,3346,3346,0.0,PushPop,TensorRT:/model.22/cv2.2/cv2.2.1/conv/Conv
+0.0,3319,1,3319.0,3319.0,3319,3319,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.9/cv2/act/Sigmoid), PWN(/model.9/cv2/act/Mul))"
+0.0,3301,1,3301.0,3301.0,3301,3301,0.0,PushPop,TensorRT:/model.22/dfl/Reshape + /model.22/dfl/Transpose
+0.0,3288,1,3288.0,3288.0,3288,3288,0.0,PushPop,TensorRT:/model.21/Split_output_1 copy
+0.0,3288,1,3288.0,3288.0,3288,3288,0.0,PushPop,TensorRT:/model.22/cv2.1/cv2.1.2/Conv
+0.0,3156,1,3156.0,3156.0,3156,3156,0.0,PushPop,TensorRT:/model.4/m.0/cv1/conv/Conv
+0.0,3078,1,3078.0,3078.0,3078,3078,0.0,PushPop,TensorRT:/model.2/cv1/conv/Conv
+0.0,3072,1,3072.0,3072.0,3072,3072,0.0,PushPop,TensorRT:/model.12/Split_output_0 copy
+0.0,3066,1,3066.0,3066.0,3066,3066,0.0,PushPop,TensorRT:/model.22/cv3.0/cv3.0.1/conv/Conv
+0.0,3043,1,3043.0,3043.0,3043,3043,0.0,PushPop,TensorRT:/model.21/m.0/cv1/conv/Conv
+0.0,3028,1,3028.0,3028.0,3028,3028,0.0,PushPop,TensorRT:/model.6/m.0/cv2/conv/Conv
+0.0,3027,1,3027.0,3027.0,3027,3027,0.0,PushPop,TensorRT:/model.6/Split_output_1 copy
+0.0,3024,1,3024.0,3024.0,3024,3024,0.0,PushPop,TensorRT:/model.9/cv1/conv/Conv_output_0 copy
+0.0,2983,1,2983.0,2983.0,2983,2983,0.0,PushPop,TensorRT:/model.2/m.0/cv1/conv/Conv
+0.0,2955,1,2955.0,2955.0,2955,2955,0.0,PushPop,TensorRT:/model.22/cv3.2/cv3.2.2/Conv
+0.0,2888,1,2888.0,2888.0,2888,2888,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.21/m.0/cv1/conv/Conv
+0.0,2874,1,2874.0,2874.0,2874,2874,0.0,PushPop,TensorRT:/model.6/Split_output_0 copy
+0.0,2864,1,2864.0,2864.0,2864,2864,0.0,PushPop,TensorRT:/model.12/m.0/cv1/conv/Conv
+0.0,2851,1,2851.0,2851.0,2851,2851,0.0,PushPop,TensorRT:/model.22/cv3.1/cv3.1.2/Conv
+0.0,2842,1,2842.0,2842.0,2842,2842,0.0,PushPop,TensorRT:/model.22/Reshape_1_copy_output
+0.0,2832,1,2832.0,2832.0,2832,2832,0.0,PushPop,TensorRT:/model.10/Resize
+0.0,2821,1,2821.0,2821.0,2821,2821,0.0,PushPop,TensorRT:/model.22/cv2.1/cv2.1.0/conv/Conv || /model.22/cv3.1/cv3.1.0/conv/Conv
+0.0,2819,1,2819.0,2819.0,2819,2819,0.0,PushPop,TensorRT:/model.2/m.0/cv2/conv/Conv
+0.0,2817,1,2817.0,2817.0,2817,2817,0.0,PushPop,TensorRT:/model.21/Split_output_0 copy
+0.0,2805,1,2805.0,2805.0,2805,2805,0.0,PushPop,TensorRT:/model.6/cv1/conv/Conv
+0.0,2800,1,2800.0,2800.0,2800,2800,0.0,PushPop,TensorRT:/model.15/m.0/cv1/conv/Conv
+0.0,2770,1,2770.0,2770.0,2770,2770,0.0,PushPop,TensorRT:/model.2/Split_output_1 copy
+0.0,2747,1,2747.0,2747.0,2747,2747,0.0,PushPop,TensorRT:/model.22/cv3.1/cv3.1.1/conv/Conv
+0.0,2743,1,2743.0,2743.0,2743,2743,0.0,PushPop,TensorRT:/model.22/Reshape_4_copy_output
+0.0,2724,1,2724.0,2724.0,2724,2724,0.0,PushPop,TensorRT:/model.5/conv/Conv
+0.0,2717,1,2717.0,2717.0,2717,2717,0.0,PushPop,TensorRT:/model.4/Split_output_0 copy
+0.0,2713,1,2713.0,2713.0,2713,2713,0.0,PushPop,TensorRT:/model.12/cv1/conv/Conv
+0.0,2692,1,2692.0,2692.0,2692,2692,0.0,PushPop,TensorRT:/model.21/cv2/conv/Conv
+0.0,2691,1,2691.0,2691.0,2691,2691,0.0,PushPop,TensorRT:/model.4/cv1/conv/Conv
+0.0,2675,1,2675.0,2675.0,2675,2675,0.0,PushPop,TensorRT:/model.15/Split_output_0 copy
+0.0,2665,1,2665.0,2665.0,2665,2665,0.0,PushPop,TensorRT:/model.4/m.0/cv2/conv/Conv
+0.0,2663,1,2663.0,2663.0,2663,2663,0.0,PushPop,TensorRT:/model.9/m/MaxPool_output_0 copy
+0.0,2630,1,2630.0,2630.0,2630,2630,0.0,PushPop,TensorRT:/model.6/m.1/cv1/conv/Conv
+0.0,2616,1,2616.0,2616.0,2616,2616,0.0,PushPop,TensorRT:/model.9/m_1/MaxPool_output_0 copy
+0.0,2604,1,2604.0,2604.0,2604,2604,0.0,PushPop,TensorRT:/model.18/cv2/conv/Conv
+0.0,2576,1,2576.0,2576.0,2576,2576,0.0,PushPop,TensorRT:/model.22/Reshape_2_copy_output
+0.0,2548,1,2548.0,2548.0,2548,2548,0.0,PushPop,TensorRT:/model.6/m.0/cv1/conv/Conv
+0.0,2530,1,2530.0,2530.0,2530,2530,0.0,PushPop,TensorRT:/model.15/Split_output_1 copy
+0.0,2525,1,2525.0,2525.0,2525,2525,0.0,PushPop,TensorRT:/model.16/conv/Conv
+0.0,2523,1,2523.0,2523.0,2523,2523,0.0,PushPop,TensorRT:/model.3/conv/Conv
+0.0,2504,1,2504.0,2504.0,2504,2504,0.0,PushPop,TensorRT:/model.12/Split_output_1 copy
+0.0,2499,1,2499.0,2499.0,2499,2499,0.0,PushPop,TensorRT:/model.6/m.1/cv2/conv/Conv
+0.0,2490,1,2490.0,2490.0,2490,2490,0.0,PushPop,TensorRT:/model.9/cv1/conv/Conv
+0.0,2474,1,2474.0,2474.0,2474,2474,0.0,PushPop,TensorRT:/model.4/m.0/Add_output_0 copy
+0.0,2466,1,2466.0,2466.0,2466,2466,0.0,PushPop,TensorRT:/model.15/m.0/cv2/conv/Conv
+0.0,2465,1,2465.0,2465.0,2465,2465,0.0,PushPop,TensorRT:/model.18/cv1/conv/Conv
+0.0,2461,1,2461.0,2461.0,2461,2461,0.0,PushPop,TensorRT:/model.22/Reshape_5_copy_output
+0.0,2446,1,2446.0,2446.0,2446,2446,0.0,PushPop,TensorRT:/model.4/Split_output_1 copy
+0.0,2437,1,2437.0,2437.0,2437,2437,0.0,PushPop,TensorRT:/model.22/cv3.2/cv3.2.1/conv/Conv
+0.0,2421,1,2421.0,2421.0,2421,2421,0.0,PushPop,TensorRT:/model.18/m.0/cv2/conv/Conv
+0.0,2420,1,2420.0,2420.0,2420,2420,0.0,PushPop,TensorRT:/model.9/cv2/act/Mul_output_0 copy
+0.0,2410,1,2410.0,2410.0,2410,2410,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl112_0
+0.0,2364,1,2364.0,2364.0,2364,2364,0.0,PushPop,TensorRT:/model.2/cv2/conv/Conv
+0.0,2362,1,2362.0,2362.0,2362,2362,0.0,PushPop,TensorRT:/model.12/m.0/cv2/conv/Conv
+0.0,2351,1,2351.0,2351.0,2351,2351,0.0,PushPop,TensorRT:/model.10/Resize_output_0 copy
+0.0,2329,1,2329.0,2329.0,2329,2329,0.0,PushPop,TensorRT:/model.8/m.0/cv2/conv/Conv
+0.0,2288,1,2288.0,2288.0,2288,2288,0.0,PushPop,TensorRT:/model.6/m.0/Add_output_0 copy
+0.0,2279,1,2279.0,2279.0,2279,2279,0.0,PushPop,TensorRT:/model.4/m.1/cv1/conv/Conv
+0.0,2254,1,2254.0,2254.0,2254,2254,0.0,PushPop,TensorRT:/model.13/Resize_output_0 copy
+0.0,2220,1,2220.0,2220.0,2220,2220,0.0,PushPop,TensorRT:/model.12/cv2/act/Mul_output_0 copy
+0.0,2200,1,2200.0,2200.0,2200,2200,0.0,PushPop,TensorRT:/model.18/Split_output_1 copy
+0.0,2189,1,2189.0,2189.0,2189,2189,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl37_0
+0.0,2187,1,2187.0,2187.0,2187,2187,0.0,PushPop,TensorRT:/model.9/m_2/MaxPool
+0.0,2185,1,2185.0,2185.0,2185,2185,0.0,PushPop,TensorRT:/model.9/cv2/conv/Conv
+0.0,2170,1,2170.0,2170.0,2170,2170,0.0,PushPop,TensorRT:/model.4/m.1/cv2/conv/Conv
+0.0,2151,1,2151.0,2151.0,2151,2151,0.0,PushPop,TensorRT:/model.6/cv2/conv/Conv
+0.0,2130,1,2130.0,2130.0,2130,2130,0.0,PushPop,TensorRT:/model.15/cv2/conv/Conv
+0.0,2114,1,2114.0,2114.0,2114,2114,0.0,PushPop,TensorRT:/model.8/cv2/conv/Conv
+0.0,2084,1,2084.0,2084.0,2084,2084,0.0,PushPop,TensorRT:/model.21/cv1/conv/Conv
+0.0,2077,1,2077.0,2077.0,2077,2077,0.0,PushPop,TensorRT:/model.22/cv2.2/cv2.2.0/conv/Conv || /model.22/cv3.2/cv3.2.0/conv/Conv
+0.0,2034,1,2034.0,2034.0,2034,2034,0.0,PushPop,TensorRT:/model.15/cv1/conv/Conv
+0.0,2033,1,2033.0,2033.0,2033,2033,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl5_0
+0.0,2012,1,2012.0,2012.0,2012,2012,0.0,PushPop,TensorRT:/model.21/m.0/cv2/conv/Conv
+0.0,1981,1,1981.0,1981.0,1981,1981,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl115_0
+0.0,1804,1,1804.0,1804.0,1804,1804,0.0,PushPop,TensorRT:/model.9/m_1/MaxPool
+0.0,1656,1,1656.0,1656.0,1656,1656,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.1/act/Sigmoid), PWN(/model.1/act/Mul))"
+0.0,1568,1,1568.0,1568.0,1568,1568,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl9_0
+0.0,1533,1,1533.0,1533.0,1533,1533,0.0,PushPop,myelin-exec:__myl_Sub_myl235_0
+0.0,1469,1,1469.0,1469.0,1469,1469,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl25_0
+0.0,1463,1,1463.0,1463.0,1463,1463,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl166_0
+0.0,1435,1,1435.0,1435.0,1435,1435,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl17_0
+0.0,1409,1,1409.0,1409.0,1409,1409,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMulAdd_myl20_0
+0.0,1379,1,1379.0,1379.0,1379,1379,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl134_0
+0.0,1361,1,1361.0,1361.0,1361,1361,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMulAdd_myl48_0
+0.0,1360,1,1360.0,1360.0,1360,1360,0.0,PushPop,myelin-exec:__myl_Mul_myl240_0
+0.0,1353,1,1353.0,1353.0,1353,1353,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl180_0
+0.0,1344,1,1344.0,1344.0,1344,1344,0.0,PushPop,myelin-exec:__myl_Sub_myl237_0
+0.0,1332,1,1332.0,1332.0,1332,1332,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl13_0
+0.0,1328,1,1328.0,1328.0,1328,1328,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl68_0
+0.0,1319,1,1319.0,1319.0,1319,1319,0.0,PushPop,TensorRT:/model.13/Resize
+0.0,1315,1,1315.0,1315.0,1315,1315,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl103_0
+0.0,1300,1,1300.0,1300.0,1300,1300,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl54_0
+0.0,1297,1,1297.0,1297.0,1297,1297,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl139_0
+0.0,1285,1,1285.0,1285.0,1285,1285,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl211_0
+0.0,1276,1,1276.0,1276.0,1276,1276,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl198_0
+0.0,1263,1,1263.0,1263.0,1263,1263,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl151_0
+0.0,1260,1,1260.0,1260.0,1260,1260,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl61_0
+0.0,1254,1,1254.0,1254.0,1254,1254,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMulAdd_myl72_0
+0.0,1250,1,1250.0,1250.0,1250,1250,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl109_0
+0.0,1248,1,1248.0,1248.0,1248,1248,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl83_0
+0.0,1247,1,1247.0,1247.0,1247,1247,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl78_0
+0.0,1247,1,1247.0,1247.0,1247,1247,0.0,PushPop,myelin-exec:__myl_NegExpAddDiv_myl231_0
+0.0,1226,1,1226.0,1226.0,1226,1226,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl29_0
+0.0,1226,1,1226.0,1226.0,1226,1226,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl86_0
+0.0,1224,1,1224.0,1224.0,1224,1224,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl143_0
+0.0,1222,1,1222.0,1222.0,1222,1222,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl155_0
+0.0,1218,1,1218.0,1218.0,1218,1218,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMulAdd_myl66_0
+0.0,1217,1,1217.0,1217.0,1217,1217,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl144_0
+0.0,1189,1,1189.0,1189.0,1189,1189,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMulAdd_myl88_0
+0.0,1169,1,1169.0,1169.0,1169,1169,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl175_0
+0.0,1165,1,1165.0,1165.0,1165,1165,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl153_0
+0.0,1161,1,1161.0,1161.0,1161,1161,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl131_0
+0.0,1161,1,1161.0,1161.0,1161,1161,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl207_0
+0.0,1161,1,1161.0,1161.0,1161,1161,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl64_0
+0.0,1160,1,1160.0,1160.0,1160,1160,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl181_0
+0.0,1159,1,1159.0,1159.0,1159,1159,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl80_0
+0.0,1153,1,1153.0,1153.0,1153,1153,0.0,PushPop,myelin-exec:__myl_Add_myl236_0
+0.0,1153,1,1153.0,1153.0,1153,1153,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl93_0
+0.0,1144,1,1144.0,1144.0,1144,1144,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl145_0
+0.0,1143,1,1143.0,1143.0,1143,1143,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl187_0
+0.0,1127,1,1127.0,1127.0,1127,1127,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl218_0
+0.0,1113,1,1113.0,1113.0,1113,1113,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMulAdd_myl40_0
+0.0,1104,1,1104.0,1104.0,1104,1104,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl33_0
+0.0,1095,1,1095.0,1095.0,1095,1095,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl43_0
+0.0,1092,1,1092.0,1092.0,1092,1092,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl182_0
+0.0,1066,1,1066.0,1066.0,1066,1066,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl188_0
+0.0,1054,1,1054.0,1054.0,1054,1054,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl57_0
+0.0,1046,1,1046.0,1046.0,1046,1046,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl212_0
+0.0,1044,1,1044.0,1044.0,1044,1044,0.0,PushPop,myelin-exec:__myl_AddDiv_myl238_0
+0.0,1036,1,1036.0,1036.0,1036,1036,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl127_0
+0.0,1000,1,1000.0,1000.0,1000,1000,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl121_0
+0.0,976,1,976.0,976.0,976,976,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl201_0
+0.0,941,1,941.0,941.0,941,941,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl220_0
+0.0,914,1,914.0,914.0,914,914,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl189_0
+0.0,904,1,904.0,904.0,904,904,0.0,PushPop,myelin-exec:__myl_MoveNegExpAddDivMul_myl169_0
+0.0,769,1,769.0,769.0,769,769,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.15/m.0/cv1/act/Sigmoid), PWN(/model.15/m.0/cv1/act/Mul))"
+0.0,717,1,717.0,717.0,717,717,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.12/cv1/act/Sigmoid), PWN(/model.12/cv1/act/Mul))"
+0.0,705,1,705.0,705.0,705,705,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.1/conv/Conv
+0.0,663,1,663.0,663.0,663,663,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.21/cv2/conv/Conv
+0.0,663,1,663.0,663.0,663,663,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.4/cv2/conv/Conv
+0.0,649,1,649.0,649.0,649,649,0.0,PushPop,TensorRT:/model.22/dfl/Reshape_1
+0.0,628,1,628.0,628.0,628,628,0.0,PushPop,TensorRT:/model.22/Reshape_1
+0.0,626,1,626.0,626.0,626,626,0.0,PushPop,TensorRT:/model.22/Constant_12_output_0
+0.0,617,1,617.0,617.0,617,617,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.4/cv1/conv/Conv
+0.0,593,1,593.0,593.0,593,593,0.0,PushPop,TensorRT:/model.22/Reshape_4
+0.0,592,1,592.0,592.0,592,592,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.4/m.1/cv2/conv/Conv
+0.0,589,1,589.0,589.0,589,589,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.5/act/Sigmoid), PWN(/model.5/act/Mul))"
+0.0,588,1,588.0,588.0,588,588,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.8/cv1/act/Sigmoid), PWN(/model.8/cv1/act/Mul))"
+0.0,569,1,569.0,569.0,569,569,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.2/cv1/act/Sigmoid), PWN(/model.2/cv1/act/Mul))"
+0.0,551,1,551.0,551.0,551,551,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.2/cv2.2.0/conv/Conv || /model.22/cv3.2/cv3.2.0/conv/Conv
+0.0,537,1,537.0,537.0,537,537,0.0,PushPop,TensorRT:/model.22/Reshape
+0.0,532,1,532.0,532.0,532,532,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.18/cv1/act/Sigmoid), PWN(/model.18/cv1/act/Mul))"
+0.0,530,1,530.0,530.0,530,530,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.6/cv2/conv/Conv
+0.0,521,1,521.0,521.0,521,521,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv2.0/cv2.0.1/act/Sigmoid), PWN(/model.22/cv2.0/cv2.0.1/act/Mul))"
+0.0,518,1,518.0,518.0,518,518,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.2/cv2/act/Sigmoid), PWN(/model.2/cv2/act/Mul))"
+0.0,511,1,511.0,511.0,511,511,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.21/cv2/act/Sigmoid), PWN(/model.21/cv2/act/Mul))"
+0.0,507,1,507.0,507.0,507,507,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.18/cv2/conv/Conv
+0.0,502,1,502.0,502.0,502,502,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.15/cv2/act/Sigmoid), PWN(/model.15/cv2/act/Mul))"
+0.0,489,1,489.0,489.0,489,489,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.2/cv2.2.1/conv/Conv
+0.0,485,1,485.0,485.0,485,485,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.22/cv3.2/cv3.2.2/Conv
+0.0,478,1,478.0,478.0,478,478,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.21/m.0/cv2/act/Sigmoid), PWN(/model.21/m.0/cv2/act/Mul))"
+0.0,475,1,475.0,475.0,475,475,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.6/cv1/conv/Conv
+0.0,472,1,472.0,472.0,472,472,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.15/cv1/act/Sigmoid), PWN(/model.15/cv1/act/Mul))"
+0.0,472,1,472.0,472.0,472,472,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.18/m.0/cv2/act/Sigmoid), PWN(/model.18/m.0/cv2/act/Mul))"
+0.0,464,1,464.0,464.0,464,464,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.2/m.0/cv2/conv/Conv
+0.0,462,1,462.0,462.0,462,462,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.18/cv2/act/Sigmoid), PWN(/model.18/cv2/act/Mul))"
+0.0,455,1,455.0,455.0,455,455,0.0,PushPop,TensorRT:/model.22/Reshape_5
+0.0,455,1,455.0,455.0,455,455,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.2/cv1/act/Sigmoid), PWN(/model.2/cv1/act/Mul))"
+0.0,450,1,450.0,450.0,450,450,0.0,PushPop,TensorRT:/model.22/Reshape_2
+0.0,442,1,442.0,442.0,442,442,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.12/cv2/act/Sigmoid), PWN(/model.12/cv2/act/Mul))"
+0.0,441,1,441.0,441.0,441,441,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.2/m.0/cv1/act/Sigmoid), PWN(/model.2/m.0/cv1/act/Mul))"
+0.0,436,1,436.0,436.0,436,436,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.12/cv2/conv/Conv
+0.0,434,1,434.0,434.0,434,434,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.22/cv3.2/cv3.2.1/conv/Conv
+0.0,433,1,433.0,433.0,433,433,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.6/cv1/act/Sigmoid), PWN(/model.6/cv1/act/Mul))"
+0.0,432,1,432.0,432.0,432,432,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.6/cv1/act/Sigmoid), PWN(/model.6/cv1/act/Mul))"
+0.0,430,1,430.0,430.0,430,430,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.15/cv1/act/Sigmoid), PWN(/model.15/cv1/act/Mul))"
+0.0,428,1,428.0,428.0,428,428,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.4/cv1/act/Sigmoid), PWN(/model.4/cv1/act/Mul))"
+0.0,423,1,423.0,423.0,423,423,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.18/cv1/act/Sigmoid), PWN(/model.18/cv1/act/Mul))"
+0.0,422,1,422.0,422.0,422,422,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.3/act/Sigmoid), PWN(/model.3/act/Mul))"
+0.0,412,1,412.0,412.0,412,412,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.3/conv/Conv
+0.0,409,1,409.0,409.0,409,409,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(/model.22/Sigmoid)
+0.0,406,1,406.0,406.0,406,406,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.4/m.1/cv1/act/Sigmoid), PWN(/model.4/m.1/cv1/act/Mul))"
+0.0,405,1,405.0,405.0,405,405,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.12/m.0/cv2/act/Sigmoid), PWN(/model.12/m.0/cv2/act/Mul))"
+0.0,405,1,405.0,405.0,405,405,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.15/cv2/act/Sigmoid), PWN(/model.15/cv2/act/Mul))"
+0.0,404,1,404.0,404.0,404,404,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(/model.4/m.1/cv2/act/Sigmoid), PWN(/model.4/m.1/cv2/act/Mul)), PWN(/model.4/m.1/Add))"
+0.0,403,1,403.0,403.0,403,403,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.4/m.1/cv2/act/Sigmoid), PWN(/model.4/m.1/cv2/act/Mul)), PWN(/model.4/m.1/Add))"
+0.0,401,1,401.0,401.0,401,401,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.4/cv1/act/Sigmoid), PWN(/model.4/cv1/act/Mul))"
+0.0,399,1,399.0,399.0,399,399,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.4/m.0/cv2/conv/Conv
+0.0,392,1,392.0,392.0,392,392,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.12/cv2/act/Sigmoid), PWN(/model.12/cv2/act/Mul))"
+0.0,384,1,384.0,384.0,384,384,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.2/cv1/conv/Conv
+0.0,384,1,384.0,384.0,384,384,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.12/cv1/act/Sigmoid), PWN(/model.12/cv1/act/Mul))"
+0.0,380,1,380.0,380.0,380,380,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv3.2/cv3.2.1/act/Sigmoid), PWN(/model.22/cv3.2/cv3.2.1/act/Mul))"
+0.0,378,1,378.0,378.0,378,378,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.6/m.1/cv2/act/Sigmoid), PWN(/model.6/m.1/cv2/act/Mul)), PWN(/model.6/m.1/Add))"
+0.0,357,1,357.0,357.0,357,357,0.0,PushPop,TensorRT:/model.22/Reshape_3
+0.0,356,1,356.0,356.0,356,356,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.15/m.0/cv2/conv/Conv
+0.0,356,1,356.0,356.0,356,356,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.22/cv3.0/cv3.0.2/Conv
+0.0,350,1,350.0,350.0,350,350,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv2.2/cv2.2.1/act/Sigmoid), PWN(/model.22/cv2.2/cv2.2.1/act/Mul))"
+0.0,346,1,346.0,346.0,346,346,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.19/act/Sigmoid), PWN(/model.19/act/Mul))"
+0.0,345,1,345.0,345.0,345,345,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv3.0/cv3.0.1/act/Sigmoid), PWN(/model.22/cv3.0/cv3.0.1/act/Mul))"
+0.0,340,1,340.0,340.0,340,340,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(/model.6/m.1/cv2/act/Sigmoid), PWN(/model.6/m.1/cv2/act/Mul)), PWN(/model.6/m.1/Add))"
+0.0,325,1,325.0,325.0,325,325,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.0/cv2.0.2/Conv
+0.0,325,1,325.0,325.0,325,325,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.9/cv2/act/Sigmoid), PWN(/model.9/cv2/act/Mul))"
+0.0,322,1,322.0,322.0,322,322,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.2/cv2.2.2/Conv
+0.0,321,1,321.0,321.0,321,321,0.0,PushPop,"TensorRT:Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.8/cv1/act/Sigmoid), PWN(/model.8/cv1/act/Mul))"
+0.0,313,1,313.0,313.0,313,313,0.0,PushPop,"TensorRT:Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.4/m.0/cv1/act/Sigmoid), PWN(/model.4/m.0/cv1/act/Mul))"
+0.0,307,1,307.0,307.0,307,307,0.0,PushPop,TensorRT:Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.1/cv2.1.0/conv/Conv || /model.22/cv3.1/cv3.1.0/conv/Conv
+0.0,265,1,265.0,265.0,265,265,0.0,PushPop,TensorRT:Reformatting CopyNode for Output Tensor 0 to /model.22/cv2.2/cv2.2.0/conv/Conv || /model.22/cv3.2/cv3.2.0/conv/Conv
+0.0,264,1,264.0,264.0,264,264,0.0,PushPop,TensorRT:/model.22/Constant_13_output_0
+0.0,196,1,196.0,196.0,196,196,0.0,PushPop,TensorRT:/model.22/Constant_15_output_0 + ONNXTRT_Broadcast_95

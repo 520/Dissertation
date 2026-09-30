@@ -1,0 +1,5147 @@
+{
+  "input_metadata": {
+    "engine": "C:\\Users\\dxu1\\Desktop\\Dissertation\\original\\yolov8n_kitti\\8n_float32_fp32.engine",
+    "engine_sha256": "212d389539b7f460ad03830bbc682823d0e5d582a467c46735576ea712d1ab6d",
+    "plan_sha256": "5f115edb8207e9e229c33bc14857bafb92e8b8cfdabd89b4ea2ee20e01b0f6b0",
+    "metadata": {
+      "description": "Ultralytics 8n_float32_fp32 model trained on /users/jupyterhub-ltd/.local/lib/python3.12/site-packages/ultralytics/cfg/datasets/kitti.yaml",
+      "author": "Ultralytics",
+      "date": "2026-09-27T00:38:07.618104+01:00",
+      "version": "8.4.163",
+      "license": "AGPL-3.0 License (https://ultralytics.com/license)",
+      "docs": "https://docs.ultralytics.com",
+      "stride": 32,
+      "task": "detect",
+      "head": "Detect",
+      "batch": 1,
+      "imgsz": [
+        640,
+        640
+      ],
+      "names": {
+        "0": "car",
+        "1": "van",
+        "2": "truck",
+        "3": "pedestrian",
+        "4": "person_sitting",
+        "5": "cyclist",
+        "6": "tram",
+        "7": "misc"
+      },
+      "args": {
+        "data": null,
+        "batch": 1,
+        "fraction": 1.0,
+        "quantize": 32,
+        "nms": null,
+        "dynamic": false,
+        "simplify": true,
+        "opset": null,
+        "workspace": null
+      },
+      "channels": 3,
+      "end2end": false
+    },
+    "image": "C:\\Users\\dxu1\\Desktop\\Dissertation\\PTQ\\datasets\\kitti\\images\\val\\000000.png",
+    "input_name": "images",
+    "shape": [
+      1,
+      3,
+      640,
+      640
+    ],
+    "dtype": "float32",
+    "input_sha256": "96c05374decc5038b7847aab342a95ec62e4b5874b5605987dcfee381fbe81fe",
+    "preparation": "Same fixed representative image and GPU preprocessing as original IProfiler run."
+  },
+  "layer_count": 227,
+  "repeat_count": 3,
+  "normal_benchmarks": [
+    {
+      "run": 1,
+      "benchmark_iterations": 6380,
+      "profile_iterations": 3984,
+      "GPU_compute_mean_ms": 2.3502161018808776,
+      "GPU_compute_median_ms": 2.29883,
+      "GPU_compute_P95_ms": 2.89355,
+      "whole_process_telemetry": {
+        "temperature_C": {
+          "mean": 60.015625,
+          "min": 45,
+          "max": 67
+        },
+        "SM_clock_MHz": {
+          "mean": 1597.140625,
+          "min": 210,
+          "max": 1777
+        },
+        "memory_clock_MHz": {
+          "mean": 5659.625,
+          "min": 405,
+          "max": 5701
+        },
+        "power_W": {
+          "mean": 66.16638281249999,
+          "min": 8.294,
+          "max": 68.897
+        }
+      }
+    },
+    {
+      "run": 2,
+      "benchmark_iterations": 6184,
+      "profile_iterations": 3917,
+      "GPU_compute_mean_ms": 2.42472481080207,
+      "GPU_compute_median_ms": 2.37109,
+      "GPU_compute_P95_ms": 2.9880969999999993,
+      "whole_process_telemetry": {
+        "temperature_C": {
+          "mean": 80.8359375,
+          "min": 74,
+          "max": 85
+        },
+        "SM_clock_MHz": {
+          "mean": 1544.9609375,
+          "min": 1387,
+          "max": 1852
+        },
+        "memory_clock_MHz": {
+          "mean": 5701.0,
+          "min": 5701,
+          "max": 5701
+        },
+        "power_W": {
+          "mean": 68.3313203125,
+          "min": 57.965,
+          "max": 68.992
+        }
+      }
+    },
+    {
+      "run": 3,
+      "benchmark_iterations": 5440,
+      "profile_iterations": 3547,
+      "GPU_compute_mean_ms": 2.756567612132353,
+      "GPU_compute_median_ms": 2.70215,
+      "GPU_compute_P95_ms": 3.3311235000000003,
+      "whole_process_telemetry": {
+        "temperature_C": {
+          "mean": 91.11023622047244,
+          "min": 88,
+          "max": 92
+        },
+        "SM_clock_MHz": {
+          "mean": 1140.5669291338584,
+          "min": 1057,
+          "max": 1680
+        },
+        "memory_clock_MHz": {
+          "mean": 5701.0,
+          "min": 5701,
+          "max": 5701
+        },
+        "power_W": {
+          "mean": 60.28964566929135,
+          "min": 53.401,
+          "max": 64.808
+        }
+      }
+    }
+  ],
+  "normal_GPU_compute_mean_of_run_means_ms": 2.5105028416050996,
+  "normal_GPU_compute_between_run_SD_ms": 0.21633028081442482,
+  "profile_layer_sum_mean_ms": 3.66494503,
+  "Top10_overlap_with_python": 9,
+  "per_run_Top10_overlap_with_python": [
+    9,
+    9,
+    8
+  ],
+  "entered_Top10": [
+    "/model.22/cv2.2/cv2.2.1/conv/Conv"
+  ],
+  "left_Top10": [
+    "/model.0/conv/Conv"
+  ],
+  "layers": [
+    {
+      "layer": "/model.22/cv2.0/cv2.0.0/conv/Conv || /model.22/cv3.0/cv3.0.0/conv/Conv",
+      "python_rank": 1,
+      "python_mean_ms": 0.07272448107600211,
+      "trtexec_mean_ms": 0.07967763333333333,
+      "trtexec_between_run_SD_ms": 0.017427460056569727,
+      "trtexec_run_mean_ms": [
+        0.0682151,
+        0.071085,
+        0.0997328
+      ],
+      "trtexec_run_median_ms": [
+        0.067712,
+        0.070656,
+        0.098304
+      ],
+      "mean_change_pct": 9.560951352907821,
+      "trtexec_rank": 1,
+      "layer_share_pct": 2.1740471598105615,
+      "cumulative_share_pct": 2.1740471598105615
+    },
+    {
+      "layer": "/model.7/conv/Conv",
+      "python_rank": 2,
+      "python_mean_ms": 0.06173887953162193,
+      "trtexec_mean_ms": 0.06705733333333334,
+      "trtexec_between_run_SD_ms": 0.015956827335449026,
+      "trtexec_run_mean_ms": [
+        0.0566564,
+        0.0590864,
+        0.0854292
+      ],
+      "trtexec_run_median_ms": [
+        0.055296,
+        0.058368,
+        0.084992
+      ],
+      "mean_change_pct": 8.614432011172735,
+      "trtexec_rank": 2,
+      "layer_share_pct": 1.8296954738590812,
+      "cumulative_share_pct": 4.003742633669643
+    },
+    {
+      "layer": "/model.22/cv2.1/cv2.1.0/conv/Conv || /model.22/cv3.1/cv3.1.0/conv/Conv",
+      "python_rank": 4,
+      "python_mean_ms": 0.058923199474811554,
+      "trtexec_mean_ms": 0.06593616666666667,
+      "trtexec_between_run_SD_ms": 0.016699896599180888,
+      "trtexec_run_mean_ms": [
+        0.0549595,
+        0.0576942,
+        0.0851548
+      ],
+      "trtexec_run_median_ms": [
+        0.054272,
+        0.057344,
+        0.084992
+      ],
+      "mean_change_pct": 11.901877790687543,
+      "trtexec_rank": 3,
+      "layer_share_pct": 1.7991038372181718,
+      "cumulative_share_pct": 5.802846470887815
+    },
+    {
+      "layer": "/model.22/cv2.0/cv2.0.1/conv/Conv",
+      "python_rank": 3,
+      "python_mean_ms": 0.05916960049420595,
+      "trtexec_mean_ms": 0.0625596,
+      "trtexec_between_run_SD_ms": 0.011698570125874358,
+      "trtexec_run_mean_ms": [
+        0.0547199,
+        0.0569526,
+        0.0760063
+      ],
+      "trtexec_run_median_ms": [
+        0.055296,
+        0.057344,
+        0.075776
+      ],
+      "mean_change_pct": 5.729292537856523,
+      "trtexec_rank": 4,
+      "layer_share_pct": 1.7069723962544674,
+      "cumulative_share_pct": 7.5098188671422825
+    },
+    {
+      "layer": "/model.1/conv/Conv",
+      "python_rank": 5,
+      "python_mean_ms": 0.05828800052404404,
+      "trtexec_mean_ms": 0.062004933333333324,
+      "trtexec_between_run_SD_ms": 0.009483450802494487,
+      "trtexec_run_mean_ms": [
+        0.0557991,
+        0.0572943,
+        0.0729214
+      ],
+      "trtexec_run_median_ms": [
+        0.055296,
+        0.057344,
+        0.072704
+      ],
+      "mean_change_pct": 6.376840474663448,
+      "trtexec_rank": 5,
+      "layer_share_pct": 1.6918380173722092,
+      "cumulative_share_pct": 9.201656884514492
+    },
+    {
+      "layer": "/model.22/cv2.2/cv2.2.0/conv/Conv || /model.22/cv3.2/cv3.2.0/conv/Conv",
+      "python_rank": 7,
+      "python_mean_ms": 0.05578239984810352,
+      "trtexec_mean_ms": 0.06123833333333334,
+      "trtexec_between_run_SD_ms": 0.013307762126042582,
+      "trtexec_run_mean_ms": [
+        0.0520313,
+        0.0551873,
+        0.0764964
+      ],
+      "trtexec_run_median_ms": [
+        0.0512,
+        0.053248,
+        0.0768
+      ],
+      "mean_change_pct": 9.780743568018636,
+      "trtexec_rank": 6,
+      "layer_share_pct": 1.670920923289628,
+      "cumulative_share_pct": 10.87257780780412
+    },
+    {
+      "layer": "/model.22/cv3.0/cv3.0.1/conv/Conv",
+      "python_rank": 8,
+      "python_mean_ms": 0.05552447963505983,
+      "trtexec_mean_ms": 0.060414466666666666,
+      "trtexec_between_run_SD_ms": 0.01127329948698842,
+      "trtexec_run_mean_ms": [
+        0.0527181,
+        0.0551708,
+        0.0733545
+      ],
+      "trtexec_run_median_ms": [
+        0.052224,
+        0.055296,
+        0.073728
+      ],
+      "mean_change_pct": 8.806902943974904,
+      "trtexec_rank": 7,
+      "layer_share_pct": 1.6484412773488901,
+      "cumulative_share_pct": 12.52101908515301
+    },
+    {
+      "layer": "/model.19/conv/Conv",
+      "python_rank": 9,
+      "python_mean_ms": 0.05300928059965372,
+      "trtexec_mean_ms": 0.057633566666666664,
+      "trtexec_between_run_SD_ms": 0.011174475649592393,
+      "trtexec_run_mean_ms": [
+        0.050313,
+        0.0520919,
+        0.0704958
+      ],
+      "trtexec_run_median_ms": [
+        0.047104,
+        0.049152,
+        0.069632
+      ],
+      "mean_change_pct": 8.723540509703032,
+      "trtexec_rank": 8,
+      "layer_share_pct": 1.5725629223603024,
+      "cumulative_share_pct": 14.093582007513312
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl5_0",
+      "python_rank": 6,
+      "python_mean_ms": 0.05632000043988228,
+      "trtexec_mean_ms": 0.05529763333333334,
+      "trtexec_between_run_SD_ms": 1.527525231658017e-07,
+      "trtexec_run_mean_ms": [
+        0.0552976,
+        0.0552978,
+        0.0552975
+      ],
+      "trtexec_run_median_ms": [
+        0.055296,
+        0.055296,
+        0.055296
+      ],
+      "mean_change_pct": -1.8152824903477138,
+      "trtexec_rank": 9,
+      "layer_share_pct": 1.5088257226421031,
+      "cumulative_share_pct": 15.602407730155415
+    },
+    {
+      "layer": "/model.22/cv2.2/cv2.2.1/conv/Conv",
+      "python_rank": 11,
+      "python_mean_ms": 0.052573440112173554,
+      "trtexec_mean_ms": 0.0544511,
+      "trtexec_between_run_SD_ms": 0.005710681786792185,
+      "trtexec_run_mean_ms": [
+        0.050475,
+        0.0518834,
+        0.0609949
+      ],
+      "trtexec_run_median_ms": [
+        0.04608,
+        0.047104,
+        0.058368
+      ],
+      "mean_change_pct": 3.5714989999135804,
+      "trtexec_rank": 10,
+      "layer_share_pct": 1.4857276044874266,
+      "cumulative_share_pct": 17.088135334642843
+    },
+    {
+      "layer": "/model.0/conv/Conv",
+      "python_rank": 10,
+      "python_mean_ms": 0.05288735926151276,
+      "trtexec_mean_ms": 0.0541511,
+      "trtexec_between_run_SD_ms": 0.0014110823540814318,
+      "trtexec_run_mean_ms": [
+        0.0531212,
+        0.0535726,
+        0.0557595
+      ],
+      "trtexec_run_median_ms": [
+        0.052224,
+        0.053248,
+        0.055296
+      ],
+      "mean_change_pct": 2.389494873885467,
+      "trtexec_rank": 11,
+      "layer_share_pct": 1.4775419428323595,
+      "cumulative_share_pct": 18.565677277475203
+    },
+    {
+      "layer": "/model.6/m.0/cv1/conv/Conv",
+      "python_rank": 13,
+      "python_mean_ms": 0.04686880033463239,
+      "trtexec_mean_ms": 0.053454100000000004,
+      "trtexec_between_run_SD_ms": 0.006128513809236297,
+      "trtexec_run_mean_ms": [
+        0.047583,
+        0.0529682,
+        0.0598111
+      ],
+      "trtexec_run_median_ms": [
+        0.04608,
+        0.047104,
+        0.057344
+      ],
+      "mean_change_pct": 14.050497598295863,
+      "trtexec_rank": 12,
+      "layer_share_pct": 1.4585239222537536,
+      "cumulative_share_pct": 20.024201199728957
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.0/conv/Conv",
+      "python_rank": 12,
+      "python_mean_ms": 0.049559360034763814,
+      "trtexec_mean_ms": 0.04979013333333334,
+      "trtexec_between_run_SD_ms": 0.006384138389268621,
+      "trtexec_run_mean_ms": [
+        0.0458518,
+        0.0463626,
+        0.057156
+      ],
+      "trtexec_run_median_ms": [
+        0.045056,
+        0.04608,
+        0.05632
+      ],
+      "mean_change_pct": 0.46565027959935,
+      "trtexec_rank": 13,
+      "layer_share_pct": 1.3585506174244948,
+      "cumulative_share_pct": 21.38275181715345
+    },
+    {
+      "layer": "/model.21/cv2/conv/Conv",
+      "python_rank": 15,
+      "python_mean_ms": 0.041989120189100504,
+      "trtexec_mean_ms": 0.04620526666666667,
+      "trtexec_between_run_SD_ms": 0.008167441411074422,
+      "trtexec_run_mean_ms": [
+        0.0412339,
+        0.0417504,
+        0.0556315
+      ],
+      "trtexec_run_median_ms": [
+        0.038912,
+        0.039936,
+        0.053248
+      ],
+      "mean_change_pct": 10.041045057811404,
+      "trtexec_rank": 14,
+      "layer_share_pct": 1.2607355987182887,
+      "cumulative_share_pct": 22.64348741587174
+    },
+    {
+      "layer": "/model.12/cv2/conv/Conv",
+      "python_rank": 18,
+      "python_mean_ms": 0.039311680141836405,
+      "trtexec_mean_ms": 0.0459551,
+      "trtexec_between_run_SD_ms": 0.004499194469013315,
+      "trtexec_run_mean_ms": [
+        0.0426984,
+        0.044078,
+        0.0510889
+      ],
+      "trtexec_run_median_ms": [
+        0.047104,
+        0.048128,
+        0.053248
+      ],
+      "mean_change_pct": 16.89935366332387,
+      "trtexec_rank": 15,
+      "layer_share_pct": 1.2539096664159244,
+      "cumulative_share_pct": 23.897397082287664
+    },
+    {
+      "layer": "/model.4/m.0/cv1/conv/Conv",
+      "python_rank": 16,
+      "python_mean_ms": 0.04109632045030594,
+      "trtexec_mean_ms": 0.0437352,
+      "trtexec_between_run_SD_ms": 0.0129093869416793,
+      "trtexec_run_mean_ms": [
+        0.0506993,
+        0.0516671,
+        0.0288392
+      ],
+      "trtexec_run_median_ms": [
+        0.049152,
+        0.049152,
+        0.026624
+      ],
+      "mean_change_pct": 6.421206377551547,
+      "trtexec_rank": 16,
+      "layer_share_pct": 1.1933384987223123,
+      "cumulative_share_pct": 25.090735581009977
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl34_0",
+      "python_rank": 111,
+      "python_mean_ms": 0.011264000087976456,
+      "trtexec_mean_ms": 0.0420964,
+      "trtexec_between_run_SD_ms": 0.00996988405800188,
+      "trtexec_run_mean_ms": [
+        0.0368623,
+        0.0535933,
+        0.0358336
+      ],
+      "trtexec_run_median_ms": [
+        0.036864,
+        0.0536,
+        0.03584
+      ],
+      "mean_change_pct": 273.72513912650805,
+      "trtexec_rank": 17,
+      "layer_share_pct": 1.1486229576545655,
+      "cumulative_share_pct": 26.239358538664543
+    },
+    {
+      "layer": "/model.4/m.1/cv1/conv/Conv",
+      "python_rank": 19,
+      "python_mean_ms": 0.03807392004877329,
+      "trtexec_mean_ms": 0.0411422,
+      "trtexec_between_run_SD_ms": 0.008269977489086656,
+      "trtexec_run_mean_ms": [
+        0.0460445,
+        0.0457881,
+        0.031594
+      ],
+      "trtexec_run_median_ms": [
+        0.047104,
+        0.04608,
+        0.0256
+      ],
+      "mean_change_pct": 8.058744535094341,
+      "trtexec_rank": 18,
+      "layer_share_pct": 1.1225870964836817,
+      "cumulative_share_pct": 27.361945635148224
+    },
+    {
+      "layer": "/model.12/m.0/cv2/conv/Conv",
+      "python_rank": 21,
+      "python_mean_ms": 0.0367955201305449,
+      "trtexec_mean_ms": 0.0407644,
+      "trtexec_between_run_SD_ms": 0.008416180589792498,
+      "trtexec_run_mean_ms": [
+        0.0440332,
+        0.0470558,
+        0.0312042
+      ],
+      "trtexec_run_median_ms": [
+        0.048128,
+        0.0512,
+        0.029696
+      ],
+      "mean_change_pct": 10.786312723326418,
+      "trtexec_rank": 19,
+      "layer_share_pct": 1.1122786199060672,
+      "cumulative_share_pct": 28.474224255054292
+    },
+    {
+      "layer": "/model.15/cv2/conv/Conv",
+      "python_rank": 20,
+      "python_mean_ms": 0.036916800402104856,
+      "trtexec_mean_ms": 0.039728766666666665,
+      "trtexec_between_run_SD_ms": 0.0037854841398866465,
+      "trtexec_run_mean_ms": [
+        0.0417091,
+        0.0421133,
+        0.0353639
+      ],
+      "trtexec_run_median_ms": [
+        0.048128,
+        0.045056,
+        0.0256
+      ],
+      "mean_change_pct": 7.617036779822017,
+      "trtexec_rank": 20,
+      "layer_share_pct": 1.0840208063548136,
+      "cumulative_share_pct": 29.558245061409107
+    },
+    {
+      "layer": "/model.12/cv1/conv/Conv",
+      "python_rank": 22,
+      "python_mean_ms": 0.03612159987911582,
+      "trtexec_mean_ms": 0.039199700000000004,
+      "trtexec_between_run_SD_ms": 0.008152111393375338,
+      "trtexec_run_mean_ms": [
+        0.04109,
+        0.0462406,
+        0.0302685
+      ],
+      "trtexec_run_median_ms": [
+        0.041984,
+        0.049152,
+        0.026624
+      ],
+      "mean_change_pct": 8.521494427670206,
+      "trtexec_rank": 21,
+      "layer_share_pct": 1.0695849372671218,
+      "cumulative_share_pct": 30.62782999867623
+    },
+    {
+      "layer": "/model.15/m.0/cv2/conv/Conv",
+      "python_rank": 17,
+      "python_mean_ms": 0.03946784000843764,
+      "trtexec_mean_ms": 0.038007599999999996,
+      "trtexec_between_run_SD_ms": 0.009499591921761693,
+      "trtexec_run_mean_ms": [
+        0.04314,
+        0.043837,
+        0.0270458
+      ],
+      "trtexec_run_median_ms": [
+        0.047104,
+        0.047104,
+        0.0256
+      ],
+      "mean_change_pct": -3.6998224582988626,
+      "trtexec_rank": 22,
+      "layer_share_pct": 1.0370578464037696,
+      "cumulative_share_pct": 31.66488784508
+    },
+    {
+      "layer": "/model.5/conv/Conv",
+      "python_rank": 26,
+      "python_mean_ms": 0.035116480141878126,
+      "trtexec_mean_ms": 0.0370974,
+      "trtexec_between_run_SD_ms": 0.005617689033757565,
+      "trtexec_run_mean_ms": [
+        0.0332486,
+        0.0344998,
+        0.0435438
+      ],
+      "trtexec_run_median_ms": [
+        0.032768,
+        0.034816,
+        0.043008
+      ],
+      "mean_change_pct": 5.640997759794075,
+      "trtexec_rank": 23,
+      "layer_share_pct": 1.0122225489422962,
+      "cumulative_share_pct": 32.67711039402229
+    },
+    {
+      "layer": "/model.3/conv/Conv",
+      "python_rank": 27,
+      "python_mean_ms": 0.034687359929084775,
+      "trtexec_mean_ms": 0.036825366666666665,
+      "trtexec_between_run_SD_ms": 0.006500045592404207,
+      "trtexec_run_mean_ms": [
+        0.0325054,
+        0.0336699,
+        0.0443008
+      ],
+      "trtexec_run_median_ms": [
+        0.032768,
+        0.033792,
+        0.044032
+      ],
+      "mean_change_pct": 6.1636479165691815,
+      "trtexec_rank": 24,
+      "layer_share_pct": 1.0047999728570736,
+      "cumulative_share_pct": 33.681910366879364
+    },
+    {
+      "layer": "/model.21/m.0/cv1/conv/Conv",
+      "python_rank": 30,
+      "python_mean_ms": 0.03406719997525215,
+      "trtexec_mean_ms": 0.036356566666666666,
+      "trtexec_between_run_SD_ms": 0.00710920826416932,
+      "trtexec_run_mean_ms": [
+        0.0318208,
+        0.032699,
+        0.0445499
+      ],
+      "trtexec_run_median_ms": [
+        0.03072,
+        0.031744,
+        0.044032
+      ],
+      "mean_change_pct": 6.7201492728419465,
+      "trtexec_rank": 25,
+      "layer_share_pct": 0.9920085122440886,
+      "cumulative_share_pct": 34.673918879123455
+    },
+    {
+      "layer": "/model.2/cv2/conv/Conv",
+      "python_rank": 25,
+      "python_mean_ms": 0.035516800731420516,
+      "trtexec_mean_ms": 0.036264733333333334,
+      "trtexec_between_run_SD_ms": 0.0016619449940757157,
+      "trtexec_run_mean_ms": [
+        0.0351525,
+        0.0354665,
+        0.0381752
+      ],
+      "trtexec_run_median_ms": [
+        0.034816,
+        0.034816,
+        0.037888
+      ],
+      "mean_change_pct": 2.105855782362598,
+      "trtexec_rank": 26,
+      "layer_share_pct": 0.9895027902596764,
+      "cumulative_share_pct": 35.66342166938313
+    },
+    {
+      "layer": "/model.18/cv2/conv/Conv",
+      "python_rank": 33,
+      "python_mean_ms": 0.03247583991847933,
+      "trtexec_mean_ms": 0.0360763,
+      "trtexec_between_run_SD_ms": 0.007404510635416768,
+      "trtexec_run_mean_ms": [
+        0.0315508,
+        0.0320568,
+        0.0446213
+      ],
+      "trtexec_run_median_ms": [
+        0.031744,
+        0.0328,
+        0.047104
+      ],
+      "mean_change_pct": 11.08658033343719,
+      "trtexec_rank": 27,
+      "layer_share_pct": 0.9843612852223325,
+      "cumulative_share_pct": 36.64778295460547
+    },
+    {
+      "layer": "/model.21/m.0/cv2/conv/Conv",
+      "python_rank": 28,
+      "python_mean_ms": 0.03428544003516436,
+      "trtexec_mean_ms": 0.03597053333333333,
+      "trtexec_between_run_SD_ms": 0.006900514215863435,
+      "trtexec_run_mean_ms": [
+        0.0312971,
+        0.0327183,
+        0.0438962
+      ],
+      "trtexec_run_median_ms": [
+        0.029696,
+        0.03072,
+        0.044032
+      ],
+      "mean_change_pct": 4.914894767110134,
+      "trtexec_rank": 28,
+      "layer_share_pct": 0.9814753847299404,
+      "cumulative_share_pct": 37.62925833933541
+    },
+    {
+      "layer": "/model.15/cv1/conv/Conv",
+      "python_rank": 31,
+      "python_mean_ms": 0.03352735958993435,
+      "trtexec_mean_ms": 0.035528333333333335,
+      "trtexec_between_run_SD_ms": 0.005223030379323228,
+      "trtexec_run_mean_ms": [
+        0.0321795,
+        0.0328589,
+        0.0415466
+      ],
+      "trtexec_run_median_ms": [
+        0.031744,
+        0.032768,
+        0.041984
+      ],
+      "mean_change_pct": 5.968181711510989,
+      "trtexec_rank": 29,
+      "layer_share_pct": 0.9694097194503716,
+      "cumulative_share_pct": 38.598668058785776
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl125_0",
+      "python_rank": 72,
+      "python_mean_ms": 0.01945599913597107,
+      "trtexec_mean_ms": 0.0355,
+      "trtexec_between_run_SD_ms": 0.007683823885930754,
+      "trtexec_run_mean_ms": [
+        0.0276521,
+        0.0430085,
+        0.0358394
+      ],
+      "trtexec_run_median_ms": [
+        0.027648,
+        0.043008,
+        0.03584
+      ],
+      "mean_change_pct": 82.4630015241217,
+      "trtexec_rank": 30,
+      "layer_share_pct": 0.9686366291829485,
+      "cumulative_share_pct": 39.56730468796872
+    },
+    {
+      "layer": "/model.8/m.0/cv1/conv/Conv",
+      "python_rank": 32,
+      "python_mean_ms": 0.03310847999528051,
+      "trtexec_mean_ms": 0.035454566666666666,
+      "trtexec_between_run_SD_ms": 0.007321718215237006,
+      "trtexec_run_mean_ms": [
+        0.0305906,
+        0.0318979,
+        0.0438752
+      ],
+      "trtexec_run_median_ms": [
+        0.029696,
+        0.031744,
+        0.044032
+      ],
+      "mean_change_pct": 7.086059739742168,
+      "trtexec_rank": 31,
+      "layer_share_pct": 0.9673969562011865,
+      "cumulative_share_pct": 40.53470164416991
+    },
+    {
+      "layer": "/model.8/m.0/cv2/conv/Conv",
+      "python_rank": 34,
+      "python_mean_ms": 0.031907840054482224,
+      "trtexec_mean_ms": 0.03496726666666666,
+      "trtexec_between_run_SD_ms": 0.007415844935227092,
+      "trtexec_run_mean_ms": [
+        0.0300339,
+        0.0313725,
+        0.0434954
+      ],
+      "trtexec_run_median_ms": [
+        0.029696,
+        0.03072,
+        0.043008
+      ],
+      "mean_change_pct": 9.588322515596515,
+      "trtexec_rank": 32,
+      "layer_share_pct": 0.9541007131194724,
+      "cumulative_share_pct": 41.48880235728938
+    },
+    {
+      "layer": "/model.16/conv/Conv",
+      "python_rank": 29,
+      "python_mean_ms": 0.03417087959125638,
+      "trtexec_mean_ms": 0.0348544,
+      "trtexec_between_run_SD_ms": 0.003789686910550788,
+      "trtexec_run_mean_ms": [
+        0.0322148,
+        0.0331516,
+        0.0391968
+      ],
+      "trtexec_run_median_ms": [
+        0.03072,
+        0.031744,
+        0.038912
+      ],
+      "mean_change_pct": 2.00030089046499,
+      "trtexec_rank": 33,
+      "layer_share_pct": 0.9510210853012439,
+      "cumulative_share_pct": 42.43982344259062
+    },
+    {
+      "layer": "/model.18/m.0/cv2/conv/Conv",
+      "python_rank": 44,
+      "python_mean_ms": 0.0281436799839139,
+      "trtexec_mean_ms": 0.03366956666666667,
+      "trtexec_between_run_SD_ms": 0.0022760170700883015,
+      "trtexec_run_mean_ms": [
+        0.03221,
+        0.0325066,
+        0.0362921
+      ],
+      "trtexec_run_median_ms": [
+        0.021504,
+        0.022528,
+        0.03072
+      ],
+      "mean_change_pct": 19.63455626951134,
+      "trtexec_rank": 34,
+      "layer_share_pct": 0.918692269353537,
+      "cumulative_share_pct": 43.35851571194416
+    },
+    {
+      "layer": "/model.2/m.0/cv1/conv/Conv",
+      "python_rank": 35,
+      "python_mean_ms": 0.031175680067390202,
+      "trtexec_mean_ms": 0.0322825,
+      "trtexec_between_run_SD_ms": 0.004163487667809284,
+      "trtexec_run_mean_ms": [
+        0.0295475,
+        0.0302259,
+        0.0370741
+      ],
+      "trtexec_run_median_ms": [
+        0.029696,
+        0.029696,
+        0.036864
+      ],
+      "mean_change_pct": 3.550267164075538,
+      "trtexec_rank": 35,
+      "layer_share_pct": 0.8808454079323531,
+      "cumulative_share_pct": 44.23936111987651
+    },
+    {
+      "layer": "/model.22/dfl/conv/Conv",
+      "python_rank": 23,
+      "python_mean_ms": 0.03601727981120348,
+      "trtexec_mean_ms": 0.03213726666666667,
+      "trtexec_between_run_SD_ms": 0.002896622980875029,
+      "trtexec_run_mean_ms": [
+        0.0347842,
+        0.0325846,
+        0.029043
+      ],
+      "trtexec_run_median_ms": [
+        0.037008,
+        0.022528,
+        0.028672
+      ],
+      "mean_change_pct": -10.772643478006072,
+      "trtexec_rank": 36,
+      "layer_share_pct": 0.876882638173339,
+      "cumulative_share_pct": 45.116243758049855
+    },
+    {
+      "layer": "/model.2/m.0/cv2/conv/Conv",
+      "python_rank": 49,
+      "python_mean_ms": 0.025405440349131822,
+      "trtexec_mean_ms": 0.0315463,
+      "trtexec_between_run_SD_ms": 0.011593248763396737,
+      "trtexec_run_mean_ms": [
+        0.0244271,
+        0.025288,
+        0.0449238
+      ],
+      "trtexec_run_median_ms": [
+        0.023552,
+        0.024576,
+        0.032768
+      ],
+      "mean_change_pct": 24.171435592054323,
+      "trtexec_rank": 37,
+      "layer_share_pct": 0.8607577942308181,
+      "cumulative_share_pct": 45.977001552280676
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl173_0",
+      "python_rank": 24,
+      "python_mean_ms": 0.03590400144457817,
+      "trtexec_mean_ms": 0.0314017,
+      "trtexec_between_run_SD_ms": 0.01186899226935463,
+      "trtexec_run_mean_ms": [
+        0.025599,
+        0.0235504,
+        0.0450557
+      ],
+      "trtexec_run_median_ms": [
+        0.0256,
+        0.023552,
+        0.045056
+      ],
+      "mean_change_pct": -12.539831950285475,
+      "trtexec_rank": 38,
+      "layer_share_pct": 0.8568123053130757,
+      "cumulative_share_pct": 46.83381385759375
+    },
+    {
+      "layer": "/model.18/m.0/cv1/conv/Conv",
+      "python_rank": 43,
+      "python_mean_ms": 0.029625919926911593,
+      "trtexec_mean_ms": 0.030917500000000004,
+      "trtexec_between_run_SD_ms": 0.0016852076904642955,
+      "trtexec_run_mean_ms": [
+        0.0290511,
+        0.0323275,
+        0.0313739
+      ],
+      "trtexec_run_median_ms": [
+        0.022528,
+        0.023552,
+        0.03072
+      ],
+      "mean_change_pct": 4.359628582926023,
+      "trtexec_rank": 39,
+      "layer_share_pct": 0.8436006474017975,
+      "cumulative_share_pct": 47.677414504995554
+    },
+    {
+      "layer": "/model.13/Resize_output_0 copy",
+      "python_rank": 36,
+      "python_mean_ms": 0.031148480232805014,
+      "trtexec_mean_ms": 0.030782466666666664,
+      "trtexec_between_run_SD_ms": 0.0003285515535396749,
+      "trtexec_run_mean_ms": [
+        0.0309088,
+        0.0304095,
+        0.0310291
+      ],
+      "trtexec_run_median_ms": [
+        0.029696,
+        0.029696,
+        0.03072
+      ],
+      "mean_change_pct": -1.1750607522509893,
+      "trtexec_rank": 40,
+      "layer_share_pct": 0.8399161901390555,
+      "cumulative_share_pct": 48.51733069513461
+    },
+    {
+      "layer": "/model.2/cv1/conv/Conv",
+      "python_rank": 41,
+      "python_mean_ms": 0.030218240153044463,
+      "trtexec_mean_ms": 0.030598699999999996,
+      "trtexec_between_run_SD_ms": 0.000906738793699708,
+      "trtexec_run_mean_ms": [
+        0.0299979,
+        0.0301565,
+        0.0316417
+      ],
+      "trtexec_run_median_ms": [
+        0.029696,
+        0.029696,
+        0.031744
+      ],
+      "mean_change_pct": 1.2590403843130593,
+      "trtexec_rank": 41,
+      "layer_share_pct": 0.834902017616346,
+      "cumulative_share_pct": 49.352232712750954
+    },
+    {
+      "layer": "/model.2/Split_output_0 copy",
+      "python_rank": 69,
+      "python_mean_ms": 0.01984704002737999,
+      "trtexec_mean_ms": 0.03033846666666666,
+      "trtexec_between_run_SD_ms": 0.0047697724519449895,
+      "trtexec_run_mean_ms": [
+        0.0324393,
+        0.0336972,
+        0.0248789
+      ],
+      "trtexec_run_median_ms": [
+        0.019456,
+        0.019456,
+        0.024576
+      ],
+      "mean_change_pct": 52.86141724314164,
+      "trtexec_rank": 42,
+      "layer_share_pct": 0.8278014108895559,
+      "cumulative_share_pct": 50.18003412364051
+    },
+    {
+      "layer": "__myl_Add_myl221_0",
+      "python_rank": 173,
+      "python_mean_ms": 0.005119999870657921,
+      "trtexec_mean_ms": 0.030032233333333335,
+      "trtexec_between_run_SD_ms": 0.022670494219873844,
+      "trtexec_run_mean_ms": [
+        0.0460761,
+        0.0040967,
+        0.0399239
+      ],
+      "trtexec_run_median_ms": [
+        0.04608,
+        0.004096,
+        0.039936
+      ],
+      "mean_change_pct": 486.5670721095973,
+      "trtexec_rank": 43,
+      "layer_share_pct": 0.8194456693756559,
+      "cumulative_share_pct": 50.999479793016164
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl20_0",
+      "python_rank": 38,
+      "python_mean_ms": 0.030719999223947525,
+      "trtexec_mean_ms": 0.029012800000000002,
+      "trtexec_between_run_SD_ms": 0.0005910623571164046,
+      "trtexec_run_mean_ms": [
+        0.0286714,
+        0.0296953,
+        0.0286717
+      ],
+      "trtexec_run_median_ms": [
+        0.028672,
+        0.029696,
+        0.028672
+      ],
+      "mean_change_pct": -5.557289280843114,
+      "trtexec_rank": 44,
+      "layer_share_pct": 0.7916298815537759,
+      "cumulative_share_pct": 51.79110967456994
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl10_0",
+      "python_rank": 37,
+      "python_mean_ms": 0.030719999223947525,
+      "trtexec_mean_ms": 0.028671600000000002,
+      "trtexec_between_run_SD_ms": 1.7320508075786218e-07,
+      "trtexec_run_mean_ms": [
+        0.0286714,
+        0.0286717,
+        0.0286717
+      ],
+      "trtexec_run_median_ms": [
+        0.028672,
+        0.028672,
+        0.028672
+      ],
+      "mean_change_pct": -6.667966392234515,
+      "trtexec_rank": 45,
+      "layer_share_pct": 0.7823200556980795,
+      "cumulative_share_pct": 52.57342973026802
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl8_0",
+      "python_rank": 39,
+      "python_mean_ms": 0.030719999223947525,
+      "trtexec_mean_ms": 0.028671466666666662,
+      "trtexec_between_run_SD_ms": 1.154700538372394e-07,
+      "trtexec_run_mean_ms": [
+        0.0286716,
+        0.0286714,
+        0.0286714
+      ],
+      "trtexec_run_median_ms": [
+        0.028672,
+        0.028672,
+        0.028672
+      ],
+      "mean_change_pct": -6.668400420023268,
+      "trtexec_rank": 46,
+      "layer_share_pct": 0.7823164176262328,
+      "cumulative_share_pct": 53.35574614789425
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl172_0",
+      "python_rank": 137,
+      "python_mean_ms": 0.008191999979317188,
+      "trtexec_mean_ms": 0.02775164666666666,
+      "trtexec_between_run_SD_ms": 0.020289074078836945,
+      "trtexec_run_mean_ms": [
+        0.0463959,
+        0.0307153,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.0464,
+        0.03072,
+        0.006144
+      ],
+      "mean_change_pct": 238.76521895425822,
+      "trtexec_rank": 47,
+      "layer_share_pct": 0.7572186332810198,
+      "cumulative_share_pct": 54.11296478117527
+    },
+    {
+      "layer": "/model.9/m_1/MaxPool",
+      "python_rank": 63,
+      "python_mean_ms": 0.02183071997016668,
+      "trtexec_mean_ms": 0.027637366666666663,
+      "trtexec_between_run_SD_ms": 0.0023772099304296473,
+      "trtexec_run_mean_ms": [
+        0.0250071,
+        0.0296325,
+        0.0282725
+      ],
+      "trtexec_run_median_ms": [
+        0.0256,
+        0.032576,
+        0.021504
+      ],
+      "mean_change_pct": 26.598512117031415,
+      "trtexec_rank": 48,
+      "layer_share_pct": 0.7541004419012163,
+      "cumulative_share_pct": 54.86706522307649
+    },
+    {
+      "layer": "/model.4/m.1/cv2/conv/Conv",
+      "python_rank": 50,
+      "python_mean_ms": 0.02458623956888914,
+      "trtexec_mean_ms": 0.027359033333333335,
+      "trtexec_between_run_SD_ms": 0.006591666476949008,
+      "trtexec_run_mean_ms": [
+        0.0227068,
+        0.0244681,
+        0.0349022
+      ],
+      "trtexec_run_median_ms": [
+        0.02048,
+        0.021504,
+        0.026624
+      ],
+      "mean_change_pct": 11.277827813704477,
+      "trtexec_rank": 49,
+      "layer_share_pct": 0.7465059669212374,
+      "cumulative_share_pct": 55.61357118999773
+    },
+    {
+      "layer": "/model.4/cv2/conv/Conv",
+      "python_rank": 45,
+      "python_mean_ms": 0.026797440312802793,
+      "trtexec_mean_ms": 0.027205466666666667,
+      "trtexec_between_run_SD_ms": 0.0021944022724499105,
+      "trtexec_run_mean_ms": [
+        0.0262128,
+        0.0256828,
+        0.0297208
+      ],
+      "trtexec_run_median_ms": [
+        0.024576,
+        0.0256,
+        0.029696
+      ],
+      "mean_change_pct": 1.522631822670517,
+      "trtexec_rank": 50,
+      "layer_share_pct": 0.7423158176718047,
+      "cumulative_share_pct": 56.35588700766953
+    },
+    {
+      "layer": "__myl_Sub_myl222_0",
+      "python_rank": 171,
+      "python_mean_ms": 0.00595200015231967,
+      "trtexec_mean_ms": 0.026973433333333335,
+      "trtexec_between_run_SD_ms": 0.012283293576371661,
+      "trtexec_run_mean_ms": [
+        0.0255046,
+        0.0399251,
+        0.0154906
+      ],
+      "trtexec_run_median_ms": [
+        0.025504,
+        0.039936,
+        0.015488
+      ],
+      "mean_change_pct": 353.1826720942034,
+      "trtexec_rank": 51,
+      "layer_share_pct": 0.7359846631405911,
+      "cumulative_share_pct": 57.09187167081012
+    },
+    {
+      "layer": "/model.22/cv2.1/cv2.1.1/conv/Conv",
+      "python_rank": 46,
+      "python_mean_ms": 0.02668960001319647,
+      "trtexec_mean_ms": 0.02626466666666667,
+      "trtexec_between_run_SD_ms": 0.004121563351852467,
+      "trtexec_run_mean_ms": [
+        0.0240611,
+        0.0237133,
+        0.0310196
+      ],
+      "trtexec_run_median_ms": [
+        0.021504,
+        0.022528,
+        0.029696
+      ],
+      "mean_change_pct": -1.5921308161969239,
+      "trtexec_rank": 52,
+      "layer_share_pct": 0.716645582721514,
+      "cumulative_share_pct": 57.80851725353163
+    },
+    {
+      "layer": "/model.22/cv3.1/cv3.1.1/conv/Conv",
+      "python_rank": 57,
+      "python_mean_ms": 0.023266559839248656,
+      "trtexec_mean_ms": 0.0261559,
+      "trtexec_between_run_SD_ms": 0.003978036836179373,
+      "trtexec_run_mean_ms": [
+        0.0234221,
+        0.024326,
+        0.0307196
+      ],
+      "trtexec_run_median_ms": [
+        0.021504,
+        0.021504,
+        0.029696
+      ],
+      "mean_change_pct": 12.418424471490951,
+      "trtexec_rank": 53,
+      "layer_share_pct": 0.7136778256125712,
+      "cumulative_share_pct": 58.522195079144204
+    },
+    {
+      "layer": "/model.22/dfl/Softmax",
+      "python_rank": 48,
+      "python_mean_ms": 0.02569984007626772,
+      "trtexec_mean_ms": 0.025944699999999998,
+      "trtexec_between_run_SD_ms": 0.0009384656999592469,
+      "trtexec_run_mean_ms": [
+        0.026775,
+        0.0249265,
+        0.0261326
+      ],
+      "trtexec_run_median_ms": [
+        0.022528,
+        0.022528,
+        0.024576
+      ],
+      "mean_change_pct": 0.9527682779566948,
+      "trtexec_rank": 54,
+      "layer_share_pct": 0.707915119807404,
+      "cumulative_share_pct": 59.23011019895161
+    },
+    {
+      "layer": "/model.6/m.1/cv1/conv/Conv",
+      "python_rank": 56,
+      "python_mean_ms": 0.023307839892804622,
+      "trtexec_mean_ms": 0.025535066666666665,
+      "trtexec_between_run_SD_ms": 0.004729116761440062,
+      "trtexec_run_mean_ms": [
+        0.0217623,
+        0.0240025,
+        0.0308404
+      ],
+      "trtexec_run_median_ms": [
+        0.021328,
+        0.022528,
+        0.029696
+      ],
+      "mean_change_pct": 9.555697928702568,
+      "trtexec_rank": 55,
+      "layer_share_pct": 0.6967380535763906,
+      "cumulative_share_pct": 59.926848252527996
+    },
+    {
+      "layer": "/model.12/m.0/cv1/conv/Conv",
+      "python_rank": 47,
+      "python_mean_ms": 0.025950079895555974,
+      "trtexec_mean_ms": 0.02548323333333333,
+      "trtexec_between_run_SD_ms": 0.004654350272952534,
+      "trtexec_run_mean_ms": [
+        0.0225268,
+        0.0230746,
+        0.0308483
+      ],
+      "trtexec_run_median_ms": [
+        0.021504,
+        0.022528,
+        0.03072
+      ],
+      "mean_change_pct": -1.7990178223019404,
+      "trtexec_rank": 56,
+      "layer_share_pct": 0.6953237531459873,
+      "cumulative_share_pct": 60.62217200567398
+    },
+    {
+      "layer": "/model.6/m.1/cv2/conv/Conv",
+      "python_rank": 55,
+      "python_mean_ms": 0.023415039908140898,
+      "trtexec_mean_ms": 0.024733766666666667,
+      "trtexec_between_run_SD_ms": 0.00487844967313729,
+      "trtexec_run_mean_ms": [
+        0.0215405,
+        0.0223115,
+        0.0303493
+      ],
+      "trtexec_run_median_ms": [
+        0.021504,
+        0.021504,
+        0.029696
+      ],
+      "mean_change_pct": 5.631964599245798,
+      "trtexec_rank": 57,
+      "layer_share_pct": 0.6748741512957063,
+      "cumulative_share_pct": 61.297046156969685
+    },
+    {
+      "layer": "/model.6/m.0/cv2/conv/Conv",
+      "python_rank": 52,
+      "python_mean_ms": 0.024034559912979602,
+      "trtexec_mean_ms": 0.024716500000000002,
+      "trtexec_between_run_SD_ms": 0.004691377542897181,
+      "trtexec_run_mean_ms": [
+        0.0216385,
+        0.022395,
+        0.030116
+      ],
+      "trtexec_run_median_ms": [
+        0.02048,
+        0.021504,
+        0.029696
+      ],
+      "mean_change_pct": 2.8373312824926167,
+      "trtexec_rank": 58,
+      "layer_share_pct": 0.6744030209915591,
+      "cumulative_share_pct": 61.97144917796125
+    },
+    {
+      "layer": "/model.22/cv2.0/cv2.0.2/Conv",
+      "python_rank": 62,
+      "python_mean_ms": 0.02233055967837572,
+      "trtexec_mean_ms": 0.024189066666666665,
+      "trtexec_between_run_SD_ms": 0.002816543506380353,
+      "trtexec_run_mean_ms": [
+        0.0224489,
+        0.0226797,
+        0.0274386
+      ],
+      "trtexec_run_median_ms": [
+        0.02048,
+        0.021504,
+        0.0256
+      ],
+      "mean_change_pct": 8.32270670802162,
+      "trtexec_rank": 59,
+      "layer_share_pct": 0.6600117182839893,
+      "cumulative_share_pct": 62.63146089624524
+    },
+    {
+      "layer": "/model.9/cv2/conv/Conv",
+      "python_rank": 51,
+      "python_mean_ms": 0.024073919709771872,
+      "trtexec_mean_ms": 0.024131366666666668,
+      "trtexec_between_run_SD_ms": 0.0035558929150542955,
+      "trtexec_run_mean_ms": [
+        0.0231419,
+        0.021175,
+        0.0280772
+      ],
+      "trtexec_run_median_ms": [
+        0.019456,
+        0.02048,
+        0.027648
+      ],
+      "mean_change_pct": 0.23862735103945543,
+      "trtexec_rank": 60,
+      "layer_share_pct": 0.6584373426923313,
+      "cumulative_share_pct": 63.28989823893757
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl16_0",
+      "python_rank": 54,
+      "python_mean_ms": 0.023552000522613525,
+      "trtexec_mean_ms": 0.023892733333333332,
+      "trtexec_between_run_SD_ms": 0.0005905138637943505,
+      "trtexec_run_mean_ms": [
+        0.0245746,
+        0.0235517,
+        0.0235519
+      ],
+      "trtexec_run_median_ms": [
+        0.024576,
+        0.023552,
+        0.023552
+      ],
+      "mean_change_pct": 1.4467255568912263,
+      "trtexec_rank": 61,
+      "layer_share_pct": 0.6519261036047063,
+      "cumulative_share_pct": 63.941824342542276
+    },
+    {
+      "layer": "/model.6/m.0/Add_output_0 copy",
+      "python_rank": 61,
+      "python_mean_ms": 0.02238303983118385,
+      "trtexec_mean_ms": 0.023393366666666665,
+      "trtexec_between_run_SD_ms": 0.011237901324239031,
+      "trtexec_run_mean_ms": [
+        0.0190409,
+        0.0149827,
+        0.0361565
+      ],
+      "trtexec_run_median_ms": [
+        0.007168,
+        0.007296,
+        0.03712
+      ],
+      "mean_change_pct": 4.5138052878556545,
+      "trtexec_rank": 62,
+      "layer_share_pct": 0.6383006150208661,
+      "cumulative_share_pct": 64.58012495756314
+    },
+    {
+      "layer": "/model.15/m.0/cv1/conv/Conv",
+      "python_rank": 64,
+      "python_mean_ms": 0.02180095963180065,
+      "trtexec_mean_ms": 0.023218100000000002,
+      "trtexec_between_run_SD_ms": 0.0033614629374723137,
+      "trtexec_run_mean_ms": [
+        0.0209657,
+        0.0216067,
+        0.0270819
+      ],
+      "trtexec_run_median_ms": [
+        0.02048,
+        0.021504,
+        0.026624
+      ],
+      "mean_change_pct": 6.50035774632689,
+      "trtexec_rank": 63,
+      "layer_share_pct": 0.6335183695783836,
+      "cumulative_share_pct": 65.21364332714153
+    },
+    {
+      "layer": "/model.9/m/MaxPool",
+      "python_rank": 53,
+      "python_mean_ms": 0.02396768004633486,
+      "trtexec_mean_ms": 0.023004066666666666,
+      "trtexec_between_run_SD_ms": 0.002925888173415609,
+      "trtexec_run_mean_ms": [
+        0.0250168,
+        0.0243477,
+        0.0196477
+      ],
+      "trtexec_run_median_ms": [
+        0.014336,
+        0.0144,
+        0.019456
+      ],
+      "mean_change_pct": -4.020469973753471,
+      "trtexec_rank": 64,
+      "layer_share_pct": 0.6276783547464739,
+      "cumulative_share_pct": 65.841321681888
+    },
+    {
+      "layer": "/model.4/m.0/cv2/conv/Conv",
+      "python_rank": 60,
+      "python_mean_ms": 0.022384639456868173,
+      "trtexec_mean_ms": 0.02271223333333333,
+      "trtexec_between_run_SD_ms": 0.003413950474645661,
+      "trtexec_run_mean_ms": [
+        0.0205288,
+        0.0209615,
+        0.0266464
+      ],
+      "trtexec_run_median_ms": [
+        0.02048,
+        0.02048,
+        0.026624
+      ],
+      "mean_change_pct": 1.463476224829896,
+      "trtexec_rank": 65,
+      "layer_share_pct": 0.6197155249920169,
+      "cumulative_share_pct": 66.46103720688002
+    },
+    {
+      "layer": "/model.22/dfl/Reshape + /model.22/dfl/Transpose",
+      "python_rank": 58,
+      "python_mean_ms": 0.023000319506973028,
+      "trtexec_mean_ms": 0.022598499999999997,
+      "trtexec_between_run_SD_ms": 0.0030137217705023807,
+      "trtexec_run_mean_ms": [
+        0.0206784,
+        0.0210451,
+        0.026072
+      ],
+      "trtexec_run_median_ms": [
+        0.020288,
+        0.02048,
+        0.0256
+      ],
+      "mean_change_pct": -1.7470170657899353,
+      "trtexec_rank": 66,
+      "layer_share_pct": 0.6166122497067847,
+      "cumulative_share_pct": 67.07764945658681
+    },
+    {
+      "layer": "/model.8/cv2/conv/Conv",
+      "python_rank": 66,
+      "python_mean_ms": 0.020879360232502222,
+      "trtexec_mean_ms": 0.021669166666666666,
+      "trtexec_between_run_SD_ms": 0.002966118015746059,
+      "trtexec_run_mean_ms": [
+        0.01969,
+        0.020238,
+        0.0250795
+      ],
+      "trtexec_run_median_ms": [
+        0.017408,
+        0.018432,
+        0.024576
+      ],
+      "mean_change_pct": 3.7827137679006917,
+      "trtexec_rank": 67,
+      "layer_share_pct": 0.5912548889353101,
+      "cumulative_share_pct": 67.66890434552212
+    },
+    {
+      "layer": "/model.22/cv3.2/cv3.2.1/conv/Conv",
+      "python_rank": 68,
+      "python_mean_ms": 0.019848000090569258,
+      "trtexec_mean_ms": 0.021250500000000002,
+      "trtexec_between_run_SD_ms": 0.0035206805634706486,
+      "trtexec_run_mean_ms": [
+        0.0188739,
+        0.0195824,
+        0.0252952
+      ],
+      "trtexec_run_median_ms": [
+        0.018432,
+        0.019456,
+        0.0256
+      ],
+      "mean_change_pct": 7.066202655335241,
+      "trtexec_rank": 68,
+      "layer_share_pct": 0.5798313433366831,
+      "cumulative_share_pct": 68.2487356888588
+    },
+    {
+      "layer": "/model.2/Split_output_1 copy",
+      "python_rank": 71,
+      "python_mean_ms": 0.01969536015763879,
+      "trtexec_mean_ms": 0.0209889,
+      "trtexec_between_run_SD_ms": 0.0032716738239011536,
+      "trtexec_run_mean_ms": [
+        0.0190289,
+        0.019172,
+        0.0247658
+      ],
+      "trtexec_run_median_ms": [
+        0.018432,
+        0.019456,
+        0.024576
+      ],
+      "mean_change_pct": 6.567738959876368,
+      "trtexec_rank": 69,
+      "layer_share_pct": 0.5726934463734645,
+      "cumulative_share_pct": 68.82142913523226
+    },
+    {
+      "layer": "/model.13/Resize",
+      "python_rank": 59,
+      "python_mean_ms": 0.02272064032033086,
+      "trtexec_mean_ms": 0.020709466666666666,
+      "trtexec_between_run_SD_ms": 0.001966002803490711,
+      "trtexec_run_mean_ms": [
+        0.019542,
+        0.0196071,
+        0.0229793
+      ],
+      "trtexec_run_median_ms": [
+        0.018432,
+        0.018432,
+        0.022528
+      ],
+      "mean_change_pct": -8.851747245277053,
+      "trtexec_rank": 70,
+      "layer_share_pct": 0.5650689573007501,
+      "cumulative_share_pct": 69.38649809253302
+    },
+    {
+      "layer": "/model.21/cv1/conv/Conv",
+      "python_rank": 76,
+      "python_mean_ms": 0.018675200287252666,
+      "trtexec_mean_ms": 0.020429766666666665,
+      "trtexec_between_run_SD_ms": 0.0039198446070390774,
+      "trtexec_run_mean_ms": [
+        0.0178375,
+        0.0185126,
+        0.0249392
+      ],
+      "trtexec_run_median_ms": [
+        0.017408,
+        0.018432,
+        0.024576
+      ],
+      "mean_change_pct": 9.395167668491533,
+      "trtexec_rank": 71,
+      "layer_share_pct": 0.5574371920843425,
+      "cumulative_share_pct": 69.94393528461735
+    },
+    {
+      "layer": "/model.22/cv3.0/cv3.0.2/Conv",
+      "python_rank": 70,
+      "python_mean_ms": 0.019825599938631058,
+      "trtexec_mean_ms": 0.0199497,
+      "trtexec_between_run_SD_ms": 0.00010393305537700587,
+      "trtexec_run_mean_ms": [
+        0.0198509,
+        0.0200581,
+        0.0199401
+      ],
+      "trtexec_run_median_ms": [
+        0.016384,
+        0.017408,
+        0.019456
+      ],
+      "mean_change_pct": 0.6259586683534879,
+      "trtexec_rank": 72,
+      "layer_share_pct": 0.5443383144003117,
+      "cumulative_share_pct": 70.48827359901766
+    },
+    {
+      "layer": "/model.18/cv1/conv/Conv",
+      "python_rank": 75,
+      "python_mean_ms": 0.018848640378564596,
+      "trtexec_mean_ms": 0.0198923,
+      "trtexec_between_run_SD_ms": 0.0025616235164442084,
+      "trtexec_run_mean_ms": [
+        0.0182975,
+        0.0185323,
+        0.0228471
+      ],
+      "trtexec_run_median_ms": [
+        0.018432,
+        0.018432,
+        0.022528
+      ],
+      "mean_change_pct": 5.537055195887208,
+      "trtexec_rank": 73,
+      "layer_share_pct": 0.542772124470309,
+      "cumulative_share_pct": 71.03104572348796
+    },
+    {
+      "layer": "/model.4/m.0/Add_output_0 copy",
+      "python_rank": 77,
+      "python_mean_ms": 0.018627840243279934,
+      "trtexec_mean_ms": 0.019595166666666667,
+      "trtexec_between_run_SD_ms": 0.0011813137996880142,
+      "trtexec_run_mean_ms": [
+        0.0196141,
+        0.0207669,
+        0.0184045
+      ],
+      "trtexec_run_median_ms": [
+        0.012288,
+        0.013312,
+        0.01536
+      ],
+      "mean_change_pct": 5.1929070184918436,
+      "trtexec_rank": 74,
+      "layer_share_pct": 0.5346646813599457,
+      "cumulative_share_pct": 71.5657104048479
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl65_0",
+      "python_rank": 157,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.019111700000000002,
+      "trtexec_between_run_SD_ms": 0.02246140807807026,
+      "trtexec_run_mean_ms": [
+        0.0450479,
+        0.00614346,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.045056,
+        0.006144,
+        0.006144
+      ],
+      "mean_change_pct": 166.62527536076635,
+      "trtexec_rank": 75,
+      "layer_share_pct": 0.5214730328438242,
+      "cumulative_share_pct": 72.08718343769173
+    },
+    {
+      "layer": "/model.22/Reshape_4_copy_output",
+      "python_rank": 65,
+      "python_mean_ms": 0.021728320023976268,
+      "trtexec_mean_ms": 0.018815833333333334,
+      "trtexec_between_run_SD_ms": 0.006855895014025035,
+      "trtexec_run_mean_ms": [
+        0.0226124,
+        0.0229336,
+        0.0109015
+      ],
+      "trtexec_run_median_ms": [
+        0.024576,
+        0.026624,
+        0.006144
+      ],
+      "mean_change_pct": -13.404104355187751,
+      "trtexec_rank": 76,
+      "layer_share_pct": 0.5134001514160045,
+      "cumulative_share_pct": 72.60058358910774
+    },
+    {
+      "layer": "/model.6/cv2/conv/Conv",
+      "python_rank": 67,
+      "python_mean_ms": 0.020231359899044038,
+      "trtexec_mean_ms": 0.018795066666666665,
+      "trtexec_between_run_SD_ms": 0.0025263398313238334,
+      "trtexec_run_mean_ms": [
+        0.0168903,
+        0.017834,
+        0.0216609
+      ],
+      "trtexec_run_median_ms": [
+        0.01536,
+        0.016384,
+        0.021504
+      ],
+      "mean_change_pct": -7.099341020794359,
+      "trtexec_rank": 77,
+      "layer_share_pct": 0.5128335217258816,
+      "cumulative_share_pct": 73.11341711083362
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl114_0",
+      "python_rank": 136,
+      "python_mean_ms": 0.008191999979317188,
+      "trtexec_mean_ms": 0.018429116666666665,
+      "trtexec_between_run_SD_ms": 0.01039012235374701,
+      "trtexec_run_mean_ms": [
+        0.0276434,
+        0.0204761,
+        0.00716785
+      ],
+      "trtexec_run_median_ms": [
+        0.027648,
+        0.02048,
+        0.007168
+      ],
+      "mean_change_pct": 124.96480362787734,
+      "trtexec_rank": 78,
+      "layer_share_pct": 0.5028483787836421,
+      "cumulative_share_pct": 73.61626548961726
+    },
+    {
+      "layer": "/model.22/Reshape_copy_output",
+      "python_rank": 85,
+      "python_mean_ms": 0.01640511967241764,
+      "trtexec_mean_ms": 0.0178323,
+      "trtexec_between_run_SD_ms": 0.002781603932985428,
+      "trtexec_run_mean_ms": [
+        0.0160605,
+        0.0163981,
+        0.0210383
+      ],
+      "trtexec_run_median_ms": [
+        0.01536,
+        0.016384,
+        0.02048
+      ],
+      "mean_change_pct": 8.699603270690638,
+      "trtexec_rank": 79,
+      "layer_share_pct": 0.48656391443884756,
+      "cumulative_share_pct": 74.10282940405611
+    },
+    {
+      "layer": "/model.10/Resize",
+      "python_rank": 91,
+      "python_mean_ms": 0.014909119978547096,
+      "trtexec_mean_ms": 0.0176119,
+      "trtexec_between_run_SD_ms": 0.010993718083978686,
+      "trtexec_run_mean_ms": [
+        0.0113998,
+        0.0111305,
+        0.0303054
+      ],
+      "trtexec_run_median_ms": [
+        0.010176,
+        0.01024,
+        0.031744
+      ],
+      "mean_change_pct": 18.128367236577112,
+      "trtexec_rank": 80,
+      "layer_share_pct": 0.4805501816762583,
+      "cumulative_share_pct": 74.58337958573237
+    },
+    {
+      "layer": "/model.22/cv2.1/cv2.1.2/Conv",
+      "python_rank": 83,
+      "python_mean_ms": 0.017052799947559833,
+      "trtexec_mean_ms": 0.0174786,
+      "trtexec_between_run_SD_ms": 0.002866063221563684,
+      "trtexec_run_mean_ms": [
+        0.0159031,
+        0.0157459,
+        0.0207868
+      ],
+      "trtexec_run_median_ms": [
+        0.014336,
+        0.01536,
+        0.02048
+      ],
+      "mean_change_pct": 2.496950962596012,
+      "trtexec_rank": 81,
+      "layer_share_pct": 0.4769130193475235,
+      "cumulative_share_pct": 75.0602926050799
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl154_0",
+      "python_rank": 124,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.017098206666666668,
+      "trtexec_between_run_SD_ms": 0.009684877983750406,
+      "trtexec_run_mean_ms": [
+        0.0266262,
+        0.0174047,
+        0.00726372
+      ],
+      "trtexec_run_median_ms": [
+        0.026624,
+        0.017408,
+        0.007264
+      ],
+      "mean_change_pct": 85.52740952569981,
+      "trtexec_rank": 82,
+      "layer_share_pct": 0.46653378227249065,
+      "cumulative_share_pct": 75.52682638735239
+    },
+    {
+      "layer": "/model.22/cv3.1/cv3.1.2/Conv",
+      "python_rank": 84,
+      "python_mean_ms": 0.016622400004416706,
+      "trtexec_mean_ms": 0.016755233333333334,
+      "trtexec_between_run_SD_ms": 0.003240633228758438,
+      "trtexec_run_mean_ms": [
+        0.0150062,
+        0.0147649,
+        0.0204946
+      ],
+      "trtexec_run_median_ms": [
+        0.013312,
+        0.014336,
+        0.018432
+      ],
+      "mean_change_pct": 0.7991224424952703,
+      "trtexec_rank": 83,
+      "layer_share_pct": 0.4571755700612332,
+      "cumulative_share_pct": 75.98400195741362
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl135_0",
+      "python_rank": 78,
+      "python_mean_ms": 0.018432000651955605,
+      "trtexec_mean_ms": 0.016725,
+      "trtexec_between_run_SD_ms": 0.000590975811687755,
+      "trtexec_run_mean_ms": [
+        0.0163835,
+        0.0163841,
+        0.0174074
+      ],
+      "trtexec_run_median_ms": [
+        0.016384,
+        0.016384,
+        0.017408
+      ],
+      "mean_change_pct": -9.261070917846858,
+      "trtexec_rank": 84,
+      "layer_share_pct": 0.45635063726999475,
+      "cumulative_share_pct": 76.44035259468362
+    },
+    {
+      "layer": "/model.4/cv1/conv/Conv",
+      "python_rank": 87,
+      "python_mean_ms": 0.01633279980160296,
+      "trtexec_mean_ms": 0.0167066,
+      "trtexec_between_run_SD_ms": 0.0018018018731258986,
+      "trtexec_run_mean_ms": [
+        0.0155459,
+        0.0157916,
+        0.0187823
+      ],
+      "trtexec_run_median_ms": [
+        0.01536,
+        0.01536,
+        0.018432
+      ],
+      "mean_change_pct": 2.2886474023905645,
+      "trtexec_rank": 85,
+      "layer_share_pct": 0.45584858335515055,
+      "cumulative_share_pct": 76.89620117803877
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl204_0",
+      "python_rank": 168,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.016521413333333332,
+      "trtexec_between_run_SD_ms": 0.011645842168539523,
+      "trtexec_run_mean_ms": [
+        0.00307854,
+        0.023547,
+        0.0229387
+      ],
+      "trtexec_run_median_ms": [
+        0.003072,
+        0.023552,
+        0.022944
+      ],
+      "mean_change_pct": 168.90320229421926,
+      "trtexec_rank": 86,
+      "layer_share_pct": 0.4507956653672738,
+      "cumulative_share_pct": 77.34699684340605
+    },
+    {
+      "layer": "/model.8/cv1/conv/Conv",
+      "python_rank": 89,
+      "python_mean_ms": 0.015248319935053586,
+      "trtexec_mean_ms": 0.0162336,
+      "trtexec_between_run_SD_ms": 0.0029730746929735887,
+      "trtexec_run_mean_ms": [
+        0.0143145,
+        0.014728,
+        0.0196583
+      ],
+      "trtexec_run_median_ms": [
+        0.014336,
+        0.014336,
+        0.019456
+      ],
+      "mean_change_pct": 6.461564743807635,
+      "trtexec_rank": 87,
+      "layer_share_pct": 0.4429425234789947,
+      "cumulative_share_pct": 77.78993936688504
+    },
+    {
+      "layer": "/model.9/m_2/MaxPool",
+      "python_rank": 81,
+      "python_mean_ms": 0.01719391998834908,
+      "trtexec_mean_ms": 0.0159363,
+      "trtexec_between_run_SD_ms": 0.002719467607823267,
+      "trtexec_run_mean_ms": [
+        0.014348,
+        0.0143845,
+        0.0190764
+      ],
+      "trtexec_run_median_ms": [
+        0.013312,
+        0.014336,
+        0.019456
+      ],
+      "mean_change_pct": -7.314329653745444,
+      "trtexec_rank": 88,
+      "layer_share_pct": 0.43483053277882316,
+      "cumulative_share_pct": 78.22476989966385
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl97_0",
+      "python_rank": 159,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.015795923333333333,
+      "trtexec_between_run_SD_ms": 0.011773751624381813,
+      "trtexec_run_mean_ms": [
+        0.00409627,
+        0.0156491,
+        0.0276424
+      ],
+      "trtexec_run_median_ms": [
+        0.004096,
+        0.015648,
+        0.027648
+      ],
+      "mean_change_pct": 120.36723098037085,
+      "trtexec_rank": 89,
+      "layer_share_pct": 0.4310002797868248,
+      "cumulative_share_pct": 78.65577017945068
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl119_0",
+      "python_rank": 112,
+      "python_mean_ms": 0.011264000087976456,
+      "trtexec_mean_ms": 0.015701283333333333,
+      "trtexec_between_run_SD_ms": 0.012125604668668417,
+      "trtexec_run_mean_ms": [
+        0.0296901,
+        0.00819205,
+        0.0092217
+      ],
+      "trtexec_run_median_ms": [
+        0.029696,
+        0.008192,
+        0.009216
+      ],
+      "mean_change_pct": 39.393494413173634,
+      "trtexec_rank": 90,
+      "layer_share_pct": 0.4284179763900397,
+      "cumulative_share_pct": 79.08418815584072
+    },
+    {
+      "layer": "/model.22/cv3.2/cv3.2.2/Conv",
+      "python_rank": 80,
+      "python_mean_ms": 0.017980800210498273,
+      "trtexec_mean_ms": 0.015533786666666667,
+      "trtexec_between_run_SD_ms": 0.005219193882060076,
+      "trtexec_run_mean_ms": [
+        0.0203473,
+        0.0162675,
+        0.00998656
+      ],
+      "trtexec_run_median_ms": [
+        0.023616,
+        0.016384,
+        0.009216
+      ],
+      "mean_change_pct": -13.609035833693827,
+      "trtexec_rank": 91,
+      "layer_share_pct": 0.42384773958442334,
+      "cumulative_share_pct": 79.50803589542514
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl133_0",
+      "python_rank": 86,
+      "python_mean_ms": 0.016383999958634377,
+      "trtexec_mean_ms": 0.015019233333333333,
+      "trtexec_between_run_SD_ms": 0.0005916974423920838,
+      "trtexec_run_mean_ms": [
+        0.014336,
+        0.015361,
+        0.0153607
+      ],
+      "trtexec_run_median_ms": [
+        0.014336,
+        0.01536,
+        0.01536
+      ],
+      "mean_change_pct": -8.329874443034345,
+      "trtexec_rank": 92,
+      "layer_share_pct": 0.4098078746172445,
+      "cumulative_share_pct": 79.91784377004238
+    },
+    {
+      "layer": "/model.15/Split_output_0 copy",
+      "python_rank": 88,
+      "python_mean_ms": 0.015260160248726607,
+      "trtexec_mean_ms": 0.014718033333333333,
+      "trtexec_between_run_SD_ms": 0.001831204631747455,
+      "trtexec_run_mean_ms": [
+        0.0132349,
+        0.0141544,
+        0.0167648
+      ],
+      "trtexec_run_median_ms": [
+        0.012288,
+        0.012288,
+        0.01536
+      ],
+      "mean_change_pct": -3.552563712025969,
+      "trtexec_rank": 93,
+      "layer_share_pct": 0.40158947031555703,
+      "cumulative_share_pct": 80.31943324035794
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl124_0",
+      "python_rank": 93,
+      "python_mean_ms": 0.014336000196635723,
+      "trtexec_mean_ms": 0.014677866666666666,
+      "trtexec_between_run_SD_ms": 0.0011825288255824177,
+      "trtexec_run_mean_ms": [
+        0.0153605,
+        0.0133124,
+        0.0153607
+      ],
+      "trtexec_run_median_ms": [
+        0.01536,
+        0.013312,
+        0.01536
+      ],
+      "mean_change_pct": 2.3846712147169935,
+      "trtexec_rank": 94,
+      "layer_share_pct": 0.40049350117173965,
+      "cumulative_share_pct": 80.71992674152968
+    },
+    {
+      "layer": "/model.18/Split_output_0 copy",
+      "python_rank": 90,
+      "python_mean_ms": 0.015114240092225372,
+      "trtexec_mean_ms": 0.0146638,
+      "trtexec_between_run_SD_ms": 0.0017624359591202178,
+      "trtexec_run_mean_ms": [
+        0.0129079,
+        0.0146508,
+        0.0164327
+      ],
+      "trtexec_run_median_ms": [
+        0.009216,
+        0.009216,
+        0.011264
+      ],
+      "mean_change_pct": -2.9802364490496336,
+      "trtexec_rank": 95,
+      "layer_share_pct": 0.40010968459191326,
+      "cumulative_share_pct": 81.12003642612159
+    },
+    {
+      "layer": "/model.9/cv1/conv/Conv",
+      "python_rank": 82,
+      "python_mean_ms": 0.017103040143847465,
+      "trtexec_mean_ms": 0.014522933333333335,
+      "trtexec_between_run_SD_ms": 0.002035514328943261,
+      "trtexec_run_mean_ms": [
+        0.0134721,
+        0.0132276,
+        0.0168691
+      ],
+      "trtexec_run_median_ms": [
+        0.012288,
+        0.012288,
+        0.016384
+      ],
+      "mean_change_pct": -15.085661898784009,
+      "trtexec_rank": 96,
+      "layer_share_pct": 0.3962660616858784,
+      "cumulative_share_pct": 81.51630248780747
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl105_0",
+      "python_rank": 135,
+      "python_mean_ms": 0.008191999979317188,
+      "trtexec_mean_ms": 0.014333543333333332,
+      "trtexec_between_run_SD_ms": 0.013308325000165622,
+      "trtexec_run_mean_ms": [
+        0.0296893,
+        0.00716759,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.029696,
+        0.007168,
+        0.006144
+      ],
+      "mean_change_pct": 74.97001183498597,
+      "trtexec_rank": 97,
+      "layer_share_pct": 0.3910984534830344,
+      "cumulative_share_pct": 81.9074009412905
+    },
+    {
+      "layer": "/model.22/cv2.2/cv2.2.2/Conv",
+      "python_rank": 95,
+      "python_mean_ms": 0.014080960135906935,
+      "trtexec_mean_ms": 0.014107266666666667,
+      "trtexec_between_run_SD_ms": 0.001617271066745873,
+      "trtexec_run_mean_ms": [
+        0.0134027,
+        0.0129618,
+        0.0159573
+      ],
+      "trtexec_run_median_ms": [
+        0.012256,
+        0.012288,
+        0.016096
+      ],
+      "mean_change_pct": 0.1868234162004878,
+      "trtexec_rank": 98,
+      "layer_share_pct": 0.3849243727038019,
+      "cumulative_share_pct": 82.29232531399431
+    },
+    {
+      "layer": "/model.10/Resize_output_0 copy",
+      "python_rank": 79,
+      "python_mean_ms": 0.018233920028433204,
+      "trtexec_mean_ms": 0.014024466666666666,
+      "trtexec_between_run_SD_ms": 0.0016687260540104642,
+      "trtexec_run_mean_ms": [
+        0.0159497,
+        0.0129929,
+        0.0131308
+      ],
+      "trtexec_run_median_ms": [
+        0.011264,
+        0.011264,
+        0.012288
+      ],
+      "mean_change_pct": -23.085838674308622,
+      "trtexec_rank": 99,
+      "layer_share_pct": 0.38266513008700337,
+      "cumulative_share_pct": 82.67499044408132
+    },
+    {
+      "layer": "/model.9/cv2/act/Mul_output_0 copy",
+      "python_rank": 73,
+      "python_mean_ms": 0.019360319804400207,
+      "trtexec_mean_ms": 0.013904906666666666,
+      "trtexec_between_run_SD_ms": 0.00398873407388025,
+      "trtexec_run_mean_ms": [
+        0.0174483,
+        0.0146814,
+        0.00958502
+      ],
+      "trtexec_run_median_ms": [
+        0.008192,
+        0.008192,
+        0.008192
+      ],
+      "mean_change_pct": -28.178321395773832,
+      "trtexec_rank": 100,
+      "layer_share_pct": 0.37940287106207066,
+      "cumulative_share_pct": 83.05439331514339
+    },
+    {
+      "layer": "/model.18/Split_output_1 copy",
+      "python_rank": 94,
+      "python_mean_ms": 0.014324160064570607,
+      "trtexec_mean_ms": 0.013864333333333333,
+      "trtexec_between_run_SD_ms": 0.000786030135130539,
+      "trtexec_run_mean_ms": [
+        0.013141,
+        0.0147008,
+        0.0137512
+      ],
+      "trtexec_run_median_ms": [
+        0.008192,
+        0.008192,
+        0.01024
+      ],
+      "mean_change_pct": -3.2101479539774935,
+      "trtexec_rank": 101,
+      "layer_share_pct": 0.37829580579912087,
+      "cumulative_share_pct": 83.43268912094251
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl61_0",
+      "python_rank": 14,
+      "python_mean_ms": 0.04608000069856644,
+      "trtexec_mean_ms": 0.013805496666666667,
+      "trtexec_between_run_SD_ms": 0.006746763255149341,
+      "trtexec_run_mean_ms": [
+        0.0194579,
+        0.00633639,
+        0.0156222
+      ],
+      "trtexec_run_median_ms": [
+        0.019456,
+        0.006336,
+        0.015616
+      ],
+      "mean_change_pct": -70.04015525742786,
+      "trtexec_rank": 102,
+      "layer_share_pct": 0.3766904156449699,
+      "cumulative_share_pct": 83.80937953658749
+    },
+    {
+      "layer": "/model.6/cv1/conv/Conv",
+      "python_rank": 99,
+      "python_mean_ms": 0.013099520197138191,
+      "trtexec_mean_ms": 0.013776499999999999,
+      "trtexec_between_run_SD_ms": 0.002223874897560563,
+      "trtexec_run_mean_ms": [
+        0.0123399,
+        0.0126515,
+        0.0163381
+      ],
+      "trtexec_run_median_ms": [
+        0.011264,
+        0.012288,
+        0.016384
+      ],
+      "mean_change_pct": 5.167974037779688,
+      "trtexec_rank": 103,
+      "layer_share_pct": 0.37589922597010955,
+      "cumulative_share_pct": 84.1852787625576
+    },
+    {
+      "layer": "/model.22/Reshape_5_copy_output",
+      "python_rank": 74,
+      "python_mean_ms": 0.01933792014606297,
+      "trtexec_mean_ms": 0.013709206666666666,
+      "trtexec_between_run_SD_ms": 0.004994131867315213,
+      "trtexec_run_mean_ms": [
+        0.0180074,
+        0.0148896,
+        0.00823062
+      ],
+      "trtexec_run_median_ms": [
+        0.013312,
+        0.013312,
+        0.006144
+      ],
+      "mean_change_pct": -29.107129602778194,
+      "trtexec_rank": 104,
+      "layer_share_pct": 0.3740630911090818,
+      "cumulative_share_pct": 84.55934185366668
+    },
+    {
+      "layer": "/model.22/Div_1_output_0 copy",
+      "python_rank": 120,
+      "python_mean_ms": 0.00966624001506716,
+      "trtexec_mean_ms": 0.01359747,
+      "trtexec_between_run_SD_ms": 0.005403355382602555,
+      "trtexec_run_mean_ms": [
+        0.00981621,
+        0.0111901,
+        0.0197861
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.02592
+      ],
+      "mean_change_pct": 40.66969140850085,
+      "trtexec_rank": 105,
+      "layer_share_pct": 0.37101429594975394,
+      "cumulative_share_pct": 84.93035614961643
+    },
+    {
+      "layer": "/model.4/Split_output_0 copy",
+      "python_rank": 102,
+      "python_mean_ms": 0.012494720183312893,
+      "trtexec_mean_ms": 0.013368866666666668,
+      "trtexec_between_run_SD_ms": 0.001891130482894645,
+      "trtexec_run_mean_ms": [
+        0.0122906,
+        0.0122635,
+        0.0155525
+      ],
+      "trtexec_run_median_ms": [
+        0.012288,
+        0.012288,
+        0.014336
+      ],
+      "mean_change_pct": 6.996126928246271,
+      "trtexec_rank": 106,
+      "layer_share_pct": 0.3647767308167966,
+      "cumulative_share_pct": 85.29513288043323
+    },
+    {
+      "layer": "/model.15/Split_output_1 copy",
+      "python_rank": 96,
+      "python_mean_ms": 0.013904000176116824,
+      "trtexec_mean_ms": 0.013335433333333334,
+      "trtexec_between_run_SD_ms": 0.0012679794372675503,
+      "trtexec_run_mean_ms": [
+        0.0124559,
+        0.0127615,
+        0.0147889
+      ],
+      "trtexec_run_median_ms": [
+        0.011264,
+        0.012288,
+        0.014336
+      ],
+      "mean_change_pct": -4.089232131628773,
+      "trtexec_rank": 107,
+      "layer_share_pct": 0.36386448430123747,
+      "cumulative_share_pct": 85.65899736473446
+    },
+    {
+      "layer": "__myl_AddDiv_myl223_0",
+      "python_rank": 42,
+      "python_mean_ms": 0.02969600073993206,
+      "trtexec_mean_ms": 0.012886219999999999,
+      "trtexec_between_run_SD_ms": 0.007895866584815121,
+      "trtexec_run_mean_ms": [
+        0.00384566,
+        0.0184292,
+        0.0163838
+      ],
+      "trtexec_run_median_ms": [
+        0.00384,
+        0.018432,
+        0.016384
+      ],
+      "mean_change_pct": -56.60621067175566,
+      "trtexec_rank": 108,
+      "layer_share_pct": 0.35160745644253216,
+      "cumulative_share_pct": 86.010604821177
+    },
+    {
+      "layer": "/model.4/Split_output_1 copy",
+      "python_rank": 107,
+      "python_mean_ms": 0.01216704022139311,
+      "trtexec_mean_ms": 0.012704066666666666,
+      "trtexec_between_run_SD_ms": 0.0013194229508892638,
+      "trtexec_run_mean_ms": [
+        0.0119457,
+        0.0119389,
+        0.0142276
+      ],
+      "trtexec_run_median_ms": [
+        0.011264,
+        0.012288,
+        0.014336
+      ],
+      "mean_change_pct": 4.413780471682105,
+      "trtexec_rank": 109,
+      "layer_share_pct": 0.34663730458916775,
+      "cumulative_share_pct": 86.35724212576616
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.19/conv/Conv",
+      "python_rank": 92,
+      "python_mean_ms": 0.014859520080499351,
+      "trtexec_mean_ms": 0.0123386,
+      "trtexec_between_run_SD_ms": 0.0011744724943565093,
+      "trtexec_run_mean_ms": [
+        0.0114868,
+        0.0136784,
+        0.0118506
+      ],
+      "trtexec_run_median_ms": [
+        0.007168,
+        0.007168,
+        0.009216
+      ],
+      "mean_change_pct": -16.965016816442414,
+      "trtexec_rank": 110,
+      "layer_share_pct": 0.3366653496573726,
+      "cumulative_share_pct": 86.69390747542353
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl55_0",
+      "python_rank": 145,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.01194456,
+      "trtexec_between_run_SD_ms": 0.010945928147270108,
+      "trtexec_run_mean_ms": [
+        0.02457,
+        0.00511994,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.024576,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": 66.63727450008085,
+      "trtexec_rank": 111,
+      "layer_share_pct": 0.3259137559288304,
+      "cumulative_share_pct": 87.01982123135235
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.21/cv2/conv/Conv",
+      "python_rank": 109,
+      "python_mean_ms": 0.01188448004424572,
+      "trtexec_mean_ms": 0.011500606666666668,
+      "trtexec_between_run_SD_ms": 0.002266971377440247,
+      "trtexec_run_mean_ms": [
+        0.0134153,
+        0.0120891,
+        0.00899742
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": -3.2300393130359706,
+      "trtexec_rank": 112,
+      "layer_share_pct": 0.3138002500044773,
+      "cumulative_share_pct": 87.33362148135683
+    },
+    {
+      "layer": "/model.8/Split_output_1 copy",
+      "python_rank": 100,
+      "python_mean_ms": 0.012943999976851046,
+      "trtexec_mean_ms": 0.011246856666666666,
+      "trtexec_between_run_SD_ms": 0.003829106826876646,
+      "trtexec_run_mean_ms": [
+        0.0115446,
+        0.0149184,
+        0.00727757
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": -13.11142856319174,
+      "trtexec_rank": 113,
+      "layer_share_pct": 0.306876544521233,
+      "cumulative_share_pct": 87.64049802587806
+    },
+    {
+      "layer": "/model.12/cv2/act/Mul_output_0 copy",
+      "python_rank": 117,
+      "python_mean_ms": 0.010940799918025733,
+      "trtexec_mean_ms": 0.011131533333333332,
+      "trtexec_between_run_SD_ms": 0.0006254548131826416,
+      "trtexec_run_mean_ms": [
+        0.0107244,
+        0.0108185,
+        0.0118517
+      ],
+      "trtexec_run_median_ms": [
+        0.01024,
+        0.010304,
+        0.012288
+      ],
+      "mean_change_pct": 1.74332239632089,
+      "trtexec_rank": 114,
+      "layer_share_pct": 0.303729885229229,
+      "cumulative_share_pct": 87.94422791110729
+    },
+    {
+      "layer": "/model.12/Split_output_0 copy",
+      "python_rank": 101,
+      "python_mean_ms": 0.012683840044774115,
+      "trtexec_mean_ms": 0.010956436666666666,
+      "trtexec_between_run_SD_ms": 0.0022767119210900036,
+      "trtexec_run_mean_ms": [
+        0.00942683,
+        0.00986958,
+        0.0135729
+      ],
+      "trtexec_run_median_ms": [
+        0.008192,
+        0.008192,
+        0.01024
+      ],
+      "mean_change_pct": -13.61893063937808,
+      "trtexec_rank": 115,
+      "layer_share_pct": 0.298952278328351,
+      "cumulative_share_pct": 88.24318018943565
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl40_0",
+      "python_rank": 97,
+      "python_mean_ms": 0.013311999849975109,
+      "trtexec_mean_ms": 0.0109229,
+      "trtexec_between_run_SD_ms": 0.0005911489406232576,
+      "trtexec_run_mean_ms": [
+        0.0112642,
+        0.0112642,
+        0.0102403
+      ],
+      "trtexec_run_median_ms": [
+        0.011264,
+        0.011264,
+        0.01024
+      ],
+      "mean_change_pct": -17.946964219501382,
+      "trtexec_rank": 116,
+      "layer_share_pct": 0.2980372123071106,
+      "cumulative_share_pct": 88.54121740174276
+    },
+    {
+      "layer": "/model.6/Split_output_0 copy",
+      "python_rank": 108,
+      "python_mean_ms": 0.011913599935360253,
+      "trtexec_mean_ms": 0.010821766666666668,
+      "trtexec_between_run_SD_ms": 0.0005871062112883269,
+      "trtexec_run_mean_ms": [
+        0.0109955,
+        0.0101674,
+        0.0113024
+      ],
+      "trtexec_run_median_ms": [
+        0.008192,
+        0.008192,
+        0.01024
+      ],
+      "mean_change_pct": -9.164595710931678,
+      "trtexec_rank": 117,
+      "layer_share_pct": 0.29527773481139136,
+      "cumulative_share_pct": 88.83649513655415
+    },
+    {
+      "layer": "/model.6/Split_output_1 copy",
+      "python_rank": 106,
+      "python_mean_ms": 0.012220160039141774,
+      "trtexec_mean_ms": 0.010773113333333334,
+      "trtexec_between_run_SD_ms": 0.001790179562092399,
+      "trtexec_run_mean_ms": [
+        0.00925574,
+        0.0103161,
+        0.0127475
+      ],
+      "trtexec_run_median_ms": [
+        0.008192,
+        0.009216,
+        0.01024
+      ],
+      "mean_change_pct": -11.841470988706194,
+      "trtexec_rank": 118,
+      "layer_share_pct": 0.29395020239453173,
+      "cumulative_share_pct": 89.13044533894868
+    },
+    {
+      "layer": "/model.22/Reshape_2_copy_output",
+      "python_rank": 143,
+      "python_mean_ms": 0.00751199996098876,
+      "trtexec_mean_ms": 0.01034027,
+      "trtexec_between_run_SD_ms": 0.006537526789291192,
+      "trtexec_run_mean_ms": [
+        0.0067848,
+        0.00635101,
+        0.017885
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.005856,
+        0.02048
+      ],
+      "mean_change_pct": 37.65002733891085,
+      "trtexec_rank": 119,
+      "layer_share_pct": 0.2821398388068047,
+      "cumulative_share_pct": 89.41258517775547
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl136_0",
+      "python_rank": 113,
+      "python_mean_ms": 0.011264000087976456,
+      "trtexec_mean_ms": 0.010242166666666667,
+      "trtexec_between_run_SD_ms": 3.5851545759328057e-06,
+      "trtexec_run_mean_ms": [
+        0.0102463,
+        0.0102399,
+        0.0102403
+      ],
+      "trtexec_run_median_ms": [
+        0.01024,
+        0.01024,
+        0.01024
+      ],
+      "mean_change_pct": -9.071674479126878,
+      "trtexec_rank": 120,
+      "layer_share_pct": 0.27946303649380155,
+      "cumulative_share_pct": 89.69204821424927
+    },
+    {
+      "layer": "/model.12/Split_output_1 copy",
+      "python_rank": 110,
+      "python_mean_ms": 0.01186560000758618,
+      "trtexec_mean_ms": 0.009978183333333333,
+      "trtexec_between_run_SD_ms": 0.002513672330363155,
+      "trtexec_run_mean_ms": [
+        0.00853674,
+        0.00851711,
+        0.0128807
+      ],
+      "trtexec_run_median_ms": [
+        0.007168,
+        0.008192,
+        0.01024
+      ],
+      "mean_change_pct": -15.906626492095988,
+      "trtexec_rank": 121,
+      "layer_share_pct": 0.2722601089963233,
+      "cumulative_share_pct": 89.96430832324559
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl90_0",
+      "python_rank": 138,
+      "python_mean_ms": 0.008191999979317188,
+      "trtexec_mean_ms": 0.009898913333333334,
+      "trtexec_between_run_SD_ms": 0.008273389271062576,
+      "trtexec_run_mean_ms": [
+        0.0051246,
+        0.00511994,
+        0.0194522
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.019456
+      ],
+      "mean_change_pct": 20.836344706124123,
+      "trtexec_rank": 122,
+      "layer_share_pct": 0.270097184331666,
+      "cumulative_share_pct": 90.23440550757725
+    },
+    {
+      "layer": "/model.22/Reshape_1_copy_output",
+      "python_rank": 116,
+      "python_mean_ms": 0.011219200072810053,
+      "trtexec_mean_ms": 0.009796726666666667,
+      "trtexec_between_run_SD_ms": 0.000432960809350376,
+      "trtexec_run_mean_ms": [
+        0.0102914,
+        0.00961207,
+        0.00948671
+      ],
+      "trtexec_run_median_ms": [
+        0.007168,
+        0.007168,
+        0.009216
+      ],
+      "mean_change_pct": -12.678920038076313,
+      "trtexec_rank": 123,
+      "layer_share_pct": 0.2673089660683578,
+      "cumulative_share_pct": 90.5017144736456
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl191_0",
+      "python_rank": 153,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.009641726666666668,
+      "trtexec_between_run_SD_ms": 0.006964166486273382,
+      "trtexec_run_mean_ms": [
+        0.0176615,
+        0.00511994,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.017664,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": 34.51069383954562,
+      "trtexec_rank": 124,
+      "layer_share_pct": 0.26307970754657317,
+      "cumulative_share_pct": 90.76479418119217
+    },
+    {
+      "layer": "/model.21/Split_output_0 copy",
+      "python_rank": 132,
+      "python_mean_ms": 0.008699839995242655,
+      "trtexec_mean_ms": 0.00950102,
+      "trtexec_between_run_SD_ms": 0.0017970514017968439,
+      "trtexec_run_mean_ms": [
+        0.0111862,
+        0.00970701,
+        0.00760985
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.006144
+      ],
+      "mean_change_pct": 9.209134940360464,
+      "trtexec_rank": 125,
+      "layer_share_pct": 0.2592404503267543,
+      "cumulative_share_pct": 91.02403463151893
+    },
+    {
+      "layer": "/model.21/Split_output_1 copy",
+      "python_rank": 118,
+      "python_mean_ms": 0.010331520023755729,
+      "trtexec_mean_ms": 0.0093304,
+      "trtexec_between_run_SD_ms": 0.0014503681994238566,
+      "trtexec_run_mean_ms": [
+        0.00987643,
+        0.0104285,
+        0.00768627
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.00512
+      ],
+      "mean_change_pct": -9.689958703596446,
+      "trtexec_rank": 126,
+      "layer_share_pct": 0.2545849916881291,
+      "cumulative_share_pct": 91.27861962320706
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl109_0",
+      "python_rank": 104,
+      "python_mean_ms": 0.01228800043463707,
+      "trtexec_mean_ms": 0.009216150000000001,
+      "trtexec_between_run_SD_ms": 1.652271164185992e-07,
+      "trtexec_run_mean_ms": [
+        0.00921623,
+        0.00921596,
+        0.00921626
+      ],
+      "trtexec_run_median_ms": [
+        0.009216,
+        0.009216,
+        0.009216
+      ],
+      "mean_change_pct": -24.99878194973222,
+      "trtexec_rank": 127,
+      "layer_share_pct": 0.25146761887449104,
+      "cumulative_share_pct": 91.53008724208155
+    },
+    {
+      "layer": "__myl_NegExpAddDiv_myl216_0",
+      "python_rank": 40,
+      "python_mean_ms": 0.030719999223947525,
+      "trtexec_mean_ms": 0.009215183333333333,
+      "trtexec_between_run_SD_ms": 0.005319921886666507,
+      "trtexec_run_mean_ms": [
+        0.00614372,
+        0.00614373,
+        0.0153581
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.01536
+      ],
+      "mean_change_pct": -70.00265766234229,
+      "trtexec_rank": 128,
+      "layer_share_pct": 0.2514412428536025,
+      "cumulative_share_pct": 91.78152848493515
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv2.1/cv2.1.0/act/Sigmoid), PWN(/model.22/cv2.1/cv2.1.0/act/Mul))",
+      "python_rank": 134,
+      "python_mean_ms": 0.00839679999742657,
+      "trtexec_mean_ms": 0.009015566666666667,
+      "trtexec_between_run_SD_ms": 0.001280943582221065,
+      "trtexec_run_mean_ms": [
+        0.00815115,
+        0.00840835,
+        0.0104872
+      ],
+      "trtexec_run_median_ms": [
+        0.008192,
+        0.008192,
+        0.01024
+      ],
+      "mean_change_pct": 7.369077141646052,
+      "trtexec_rank": 129,
+      "layer_share_pct": 0.24599459454011696,
+      "cumulative_share_pct": 92.02752307947527
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl52_0",
+      "python_rank": 155,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.008876656666666668,
+      "trtexec_between_run_SD_ms": 0.005643460788774325,
+      "trtexec_run_mean_ms": [
+        0.00511993,
+        0.0153663,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.01536,
+        0.006144
+      ],
+      "mean_change_pct": 23.83728438773016,
+      "trtexec_rank": 130,
+      "layer_share_pct": 0.24220436033843235,
+      "cumulative_share_pct": 92.2697274398137
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl22_0",
+      "python_rank": 115,
+      "python_mean_ms": 0.011264000087976456,
+      "trtexec_mean_ms": 0.008874826666666667,
+      "trtexec_between_run_SD_ms": 0.0005913279808476292,
+      "trtexec_run_mean_ms": [
+        0.00819202,
+        0.00921596,
+        0.0092165
+      ],
+      "trtexec_run_median_ms": [
+        0.008192,
+        0.009216,
+        0.009216
+      ],
+      "mean_change_pct": -21.210701372952467,
+      "trtexec_rank": 131,
+      "layer_share_pct": 0.24215442780233642,
+      "cumulative_share_pct": 92.51188186761604
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl13_0",
+      "python_rank": 114,
+      "python_mean_ms": 0.011264000087976456,
+      "trtexec_mean_ms": 0.008874756666666666,
+      "trtexec_between_run_SD_ms": 0.0005909901693203823,
+      "trtexec_run_mean_ms": [
+        0.00921597,
+        0.00921596,
+        0.00819234
+      ],
+      "trtexec_run_median_ms": [
+        0.009216,
+        0.009216,
+        0.008192
+      ],
+      "mean_change_pct": -21.21132282181126,
+      "trtexec_rank": 132,
+      "layer_share_pct": 0.24215251781461689,
+      "cumulative_share_pct": 92.75403438543066
+    },
+    {
+      "layer": "/model.8/Split_output_0 copy",
+      "python_rank": 119,
+      "python_mean_ms": 0.009940480086952449,
+      "trtexec_mean_ms": 0.008719356666666666,
+      "trtexec_between_run_SD_ms": 0.0007233954579850033,
+      "trtexec_run_mean_ms": [
+        0.009073,
+        0.0091979,
+        0.00788717
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.008192
+      ],
+      "mean_change_pct": -12.284350550519086,
+      "trtexec_rank": 133,
+      "layer_share_pct": 0.23791234507729206,
+      "cumulative_share_pct": 92.99194673050795
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl100_0",
+      "python_rank": 146,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.008564273333333332,
+      "trtexec_between_run_SD_ms": 0.005105335822317013,
+      "trtexec_run_mean_ms": [
+        0.00511967,
+        0.0144297,
+        0.00614345
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.014432,
+        0.006144
+      ],
+      "mean_change_pct": 19.479258033815295,
+      "trtexec_rank": 134,
+      "layer_share_pct": 0.23368081276060318,
+      "cumulative_share_pct": 93.22562754326854
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl24_0",
+      "python_rank": 105,
+      "python_mean_ms": 0.01228800043463707,
+      "trtexec_mean_ms": 0.00853489,
+      "trtexec_between_run_SD_ms": 0.0011836679939493172,
+      "trtexec_run_mean_ms": [
+        0.00922034,
+        0.00716811,
+        0.00921622
+      ],
+      "trtexec_run_median_ms": [
+        0.009216,
+        0.007168,
+        0.009216
+      ],
+      "mean_change_pct": -30.542889826549057,
+      "trtexec_rank": 135,
+      "layer_share_pct": 0.23287907267738744,
+      "cumulative_share_pct": 93.45850661594594
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl165_0",
+      "python_rank": 150,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.0081931,
+      "trtexec_between_run_SD_ms": 0.00446078773958143,
+      "trtexec_run_mean_ms": [
+        0.00512526,
+        0.0133103,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.013312,
+        0.006144
+      ],
+      "mean_change_pct": 14.30105870007874,
+      "trtexec_rank": 136,
+      "layer_share_pct": 0.22355314835376944,
+      "cumulative_share_pct": 93.68205976429971
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl123_0",
+      "python_rank": 123,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.00819231,
+      "trtexec_between_run_SD_ms": 2.9999999999821836e-08,
+      "trtexec_run_mean_ms": [
+        0.00819228,
+        0.00819231,
+        0.00819234
+      ],
+      "trtexec_run_median_ms": [
+        0.008192,
+        0.008192,
+        0.008192
+      ],
+      "mean_change_pct": -11.107750540028228,
+      "trtexec_rank": 137,
+      "layer_share_pct": 0.22353159277807774,
+      "cumulative_share_pct": 93.90559135707778
+    },
+    {
+      "layer": "/model.22/Mul_2_output_0 copy",
+      "python_rank": 98,
+      "python_mean_ms": 0.013134079980663954,
+      "trtexec_mean_ms": 0.008181693333333332,
+      "trtexec_between_run_SD_ms": 0.0010558523074906511,
+      "trtexec_run_mean_ms": [
+        0.00804821,
+        0.00929794,
+        0.00719893
+      ],
+      "trtexec_run_median_ms": [
+        0.004992,
+        0.00512,
+        0.00512
+      ],
+      "mean_change_pct": -37.7063841138591,
+      "trtexec_rank": 138,
+      "layer_share_pct": 0.22324191130728452,
+      "cumulative_share_pct": 94.12883326838507
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv3.1/cv3.1.0/act/Sigmoid), PWN(/model.22/cv3.1/cv3.1.0/act/Mul))",
+      "python_rank": 139,
+      "python_mean_ms": 0.008092800066806375,
+      "trtexec_mean_ms": 0.008162033333333334,
+      "trtexec_between_run_SD_ms": 0.0012321935544926915,
+      "trtexec_run_mean_ms": [
+        0.00732302,
+        0.00758638,
+        0.0095767
+      ],
+      "trtexec_run_median_ms": [
+        0.007168,
+        0.007168,
+        0.009216
+      ],
+      "mean_change_pct": 0.8554921158985263,
+      "trtexec_rank": 139,
+      "layer_share_pct": 0.22270547761348916,
+      "cumulative_share_pct": 94.35153874599855
+    },
+    {
+      "layer": "/model.9/m_1/MaxPool_output_0 copy",
+      "python_rank": 103,
+      "python_mean_ms": 0.012338880114257336,
+      "trtexec_mean_ms": 0.008138783333333332,
+      "trtexec_between_run_SD_ms": 0.0003826526572929206,
+      "trtexec_run_mean_ms": [
+        0.00814043,
+        0.00775531,
+        0.00852061
+      ],
+      "trtexec_run_median_ms": [
+        0.007168,
+        0.007168,
+        0.008192
+      ],
+      "mean_change_pct": -34.03952986033858,
+      "trtexec_rank": 140,
+      "layer_share_pct": 0.22207108883522136,
+      "cumulative_share_pct": 94.57360983483377
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.2/cv2.2.0/conv/Conv || /model.22/cv3.2/cv3.2.0/conv/Conv",
+      "python_rank": 141,
+      "python_mean_ms": 0.007603840050287545,
+      "trtexec_mean_ms": 0.007366203333333334,
+      "trtexec_between_run_SD_ms": 0.0005541857783571616,
+      "trtexec_run_mean_ms": [
+        0.00758801,
+        0.00777513,
+        0.00673547
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": -3.125219828173853,
+      "trtexec_rank": 141,
+      "layer_share_pct": 0.20099082723031547,
+      "cumulative_share_pct": 94.77460066206409
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.21/cv1/act/Sigmoid), PWN(/model.21/cv1/act/Mul))",
+      "python_rank": 142,
+      "python_mean_ms": 0.00757728012278676,
+      "trtexec_mean_ms": 0.007346063333333333,
+      "trtexec_between_run_SD_ms": 0.0008386465948379772,
+      "trtexec_run_mean_ms": [
+        0.0070807,
+        0.0066722,
+        0.00828529
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": -3.05144835226695,
+      "trtexec_rank": 142,
+      "layer_share_pct": 0.20044129647787193,
+      "cumulative_share_pct": 94.97504195854196
+    },
+    {
+      "layer": "/model.9/m/MaxPool_output_0 copy",
+      "python_rank": 133,
+      "python_mean_ms": 0.008556480086408556,
+      "trtexec_mean_ms": 0.007297553333333334,
+      "trtexec_between_run_SD_ms": 0.0005186932567841354,
+      "trtexec_run_mean_ms": [
+        0.00709901,
+        0.00690746,
+        0.00788619
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.008192
+      ],
+      "mean_change_pct": -14.713138350838328,
+      "trtexec_rank": 143,
+      "layer_share_pct": 0.1991176749882476,
+      "cumulative_share_pct": 95.17415963353021
+    },
+    {
+      "layer": "/model.22/Reshape_3_copy_output",
+      "python_rank": 160,
+      "python_mean_ms": 0.006875200145877898,
+      "trtexec_mean_ms": 0.0072090999999999995,
+      "trtexec_between_run_SD_ms": 0.00045421280464117244,
+      "trtexec_run_mean_ms": [
+        0.00697625,
+        0.00691853,
+        0.00773252
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.008192
+      ],
+      "mean_change_pct": 4.856583765380185,
+      "trtexec_rank": 144,
+      "layer_share_pct": 0.19670417812514912,
+      "cumulative_share_pct": 95.37086381165535
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl95_0",
+      "python_rank": 129,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.007167763333333334,
+      "trtexec_between_run_SD_ms": 1.5011106998941275e-07,
+      "trtexec_run_mean_ms": [
+        0.00716759,
+        0.00716785,
+        0.00716785
+      ],
+      "trtexec_run_median_ms": [
+        0.007168,
+        0.007168,
+        0.007168
+      ],
+      "mean_change_pct": -22.224792970883,
+      "trtexec_rank": 145,
+      "layer_share_pct": 0.19557628490087703,
+      "cumulative_share_pct": 95.56644009655624
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl30_0",
+      "python_rank": 126,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.0068486833333333335,
+      "trtexec_between_run_SD_ms": 0.0006091468953654223,
+      "trtexec_run_mean_ms": [
+        0.00614629,
+        0.00716759,
+        0.00723217
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.007168,
+        0.007232
+      ],
+      "mean_change_pct": -25.687032431753963,
+      "trtexec_rank": 146,
+      "layer_share_pct": 0.1868700151645476,
+      "cumulative_share_pct": 95.75331011172078
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.9/cv2/act/Sigmoid), PWN(/model.9/cv2/act/Mul))",
+      "python_rank": 131,
+      "python_mean_ms": 0.009075520099140704,
+      "trtexec_mean_ms": 0.006843813333333334,
+      "trtexec_between_run_SD_ms": 0.0012960134544183306,
+      "trtexec_run_mean_ms": [
+        0.00625022,
+        0.00595091,
+        0.00833031
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": -24.590400786161826,
+      "trtexec_rank": 147,
+      "layer_share_pct": 0.186737134590347,
+      "cumulative_share_pct": 95.94004724631112
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl111_0",
+      "python_rank": 122,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.0068280166666666664,
+      "trtexec_between_run_SD_ms": 0.0005883834471952227,
+      "trtexec_run_mean_ms": [
+        0.00614861,
+        0.00716759,
+        0.00716785
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.007168,
+        0.007168
+      ],
+      "mean_change_pct": -25.91128010900732,
+      "trtexec_rank": 148,
+      "layer_share_pct": 0.18630611402830963,
+      "cumulative_share_pct": 96.12635336033944
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl26_0",
+      "python_rank": 125,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.006826476666666667,
+      "trtexec_between_run_SD_ms": 0.0005912759576824795,
+      "trtexec_run_mean_ms": [
+        0.00716785,
+        0.00614373,
+        0.00716785
+      ],
+      "trtexec_run_median_ms": [
+        0.007168,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": -25.927990177860703,
+      "trtexec_rank": 149,
+      "layer_share_pct": 0.1862640942984803,
+      "cumulative_share_pct": 96.31261745463792
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl28_0",
+      "python_rank": 121,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.006826386666666667,
+      "trtexec_between_run_SD_ms": 0.0005912066899429786,
+      "trtexec_run_mean_ms": [
+        0.00614372,
+        0.00716759,
+        0.00716785
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.007168,
+        0.007168
+      ],
+      "mean_change_pct": -25.928966740326164,
+      "trtexec_rank": 150,
+      "layer_share_pct": 0.18626163859998376,
+      "cumulative_share_pct": 96.4988790932379
+    },
+    {
+      "layer": "/model.9/cv1/conv/Conv_output_0 copy",
+      "python_rank": 140,
+      "python_mean_ms": 0.008063360182568431,
+      "trtexec_mean_ms": 0.006807383333333333,
+      "trtexec_between_run_SD_ms": 0.0006560336608996012,
+      "trtexec_run_mean_ms": [
+        0.00648972,
+        0.00637065,
+        0.00756178
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": -15.57634560279596,
+      "trtexec_rank": 151,
+      "layer_share_pct": 0.18574312241003335,
+      "cumulative_share_pct": 96.68462221564793
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.21/cv1/conv/Conv",
+      "python_rank": 161,
+      "python_mean_ms": 0.006273600105196238,
+      "trtexec_mean_ms": 0.00678882,
+      "trtexec_between_run_SD_ms": 0.0009311921024686585,
+      "trtexec_run_mean_ms": [
+        0.00612715,
+        0.00638565,
+        0.00785366
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": 8.212507749370591,
+      "trtexec_rank": 152,
+      "layer_share_pct": 0.18523661185717702,
+      "cumulative_share_pct": 96.86985882750511
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/m.0/cv1/conv/Conv",
+      "python_rank": 130,
+      "python_mean_ms": 0.009178880071267485,
+      "trtexec_mean_ms": 0.006753743333333333,
+      "trtexec_between_run_SD_ms": 0.0008697238343481986,
+      "trtexec_run_mean_ms": [
+        0.00643543,
+        0.00608802,
+        0.00773778
+      ],
+      "trtexec_run_median_ms": [
+        0.005728,
+        0.006016,
+        0.006912
+      ],
+      "mean_change_pct": -26.420834776189338,
+      "trtexec_rank": 153,
+      "layer_share_pct": 0.18427952610610732,
+      "cumulative_share_pct": 97.05413835361122
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl44_0",
+      "python_rank": 128,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.006488356666666667,
+      "trtexec_between_run_SD_ms": 0.0005884787225833515,
+      "trtexec_run_mean_ms": [
+        0.00615349,
+        0.00614373,
+        0.00716785
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": -29.596826853646373,
+      "trtexec_rank": 154,
+      "layer_share_pct": 0.17703830790244257,
+      "cumulative_share_pct": 97.23117666151366
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl42_0",
+      "python_rank": 127,
+      "python_mean_ms": 0.009216000325977802,
+      "trtexec_mean_ms": 0.00648511,
+      "trtexec_between_run_SD_ms": 0.0005912701845180424,
+      "trtexec_run_mean_ms": [
+        0.00614372,
+        0.00614376,
+        0.00716785
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": -29.63205544036328,
+      "trtexec_rank": 155,
+      "layer_share_pct": 0.1769497208529755,
+      "cumulative_share_pct": 97.40812638236663
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.8/m.0/cv2/act/Sigmoid), PWN(/model.8/m.0/cv2/act/Mul)), PWN(/model.8/m.0/Add))",
+      "python_rank": 172,
+      "python_mean_ms": 0.005939200073480606,
+      "trtexec_mean_ms": 0.0061530633333333334,
+      "trtexec_between_run_SD_ms": 0.0006033494766993117,
+      "trtexec_run_mean_ms": [
+        0.00564616,
+        0.00599261,
+        0.00682042
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.006144,
+        0.007168
+      ],
+      "mean_change_pct": 3.600876501999961,
+      "trtexec_rank": 156,
+      "layer_share_pct": 0.16788964862955483,
+      "cumulative_share_pct": 97.57601603099619
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl46_0",
+      "python_rank": 154,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.0058023833333333335,
+      "trtexec_between_run_SD_ms": 0.0005910132787284337,
+      "trtexec_run_mean_ms": [
+        0.00614347,
+        0.00511994,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.006144,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": -19.051572910901626,
+      "trtexec_rank": 157,
+      "layer_share_pct": 0.15832115586555834,
+      "cumulative_share_pct": 97.73433718686175
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl186_0",
+      "python_rank": 152,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.005464286666666668,
+      "trtexec_between_run_SD_ms": 0.0005879220058250356,
+      "trtexec_run_mean_ms": [
+        0.00512558,
+        0.00512412,
+        0.00614316
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": -23.768323218229447,
+      "trtexec_rank": 158,
+      "layer_share_pct": 0.1490960061320938,
+      "cumulative_share_pct": 97.88343319299385
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl171_0",
+      "python_rank": 151,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.005463343333333333,
+      "trtexec_between_run_SD_ms": 0.000589249514241067,
+      "trtexec_run_mean_ms": [
+        0.00512635,
+        0.00511994,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": -23.781483560310857,
+      "trtexec_rank": 159,
+      "layer_share_pct": 0.14907026677377838,
+      "cumulative_share_pct": 98.03250345976763
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl163_0",
+      "python_rank": 149,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.005461193333333334,
+      "trtexec_between_run_SD_ms": 0.0005908516206572791,
+      "trtexec_run_mean_ms": [
+        0.00511993,
+        0.0051202,
+        0.00614345
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": -23.811477979542296,
+      "trtexec_rank": 160,
+      "layer_share_pct": 0.14901160286525042,
+      "cumulative_share_pct": 98.18151506263287
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl63_0",
+      "python_rank": 156,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.005461116666666666,
+      "trtexec_between_run_SD_ms": 0.0005911691632970494,
+      "trtexec_run_mean_ms": [
+        0.00511967,
+        0.00511994,
+        0.00614374
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": -23.812547547980024,
+      "trtexec_rank": 161,
+      "layer_share_pct": 0.14900951097393855,
+      "cumulative_share_pct": 98.33052457360681
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl48_0",
+      "python_rank": 144,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.00546102,
+      "trtexec_between_run_SD_ms": 0.0005910017317233513,
+      "trtexec_run_mean_ms": [
+        0.00511967,
+        0.00511994,
+        0.00614345
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.006144
+      ],
+      "mean_change_pct": -23.81389613427105,
+      "trtexec_rank": 162,
+      "layer_share_pct": 0.14900687337184973,
+      "cumulative_share_pct": 98.47953144697865
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl149_0",
+      "python_rank": 148,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.005141279999999999,
+      "trtexec_between_run_SD_ms": 0.00102426682592965,
+      "trtexec_run_mean_ms": [
+        0.00409627,
+        0.00614346,
+        0.00518411
+      ],
+      "trtexec_run_median_ms": [
+        0.004096,
+        0.006144,
+        0.005184
+      ],
+      "mean_change_pct": -28.274554555230548,
+      "trtexec_rank": 163,
+      "layer_share_pct": 0.1402825951798791,
+      "cumulative_share_pct": 98.61981404215854
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl146_0",
+      "python_rank": 147,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.005121873333333333,
+      "trtexec_between_run_SD_ms": 3.5343504825260512e-06,
+      "trtexec_run_mean_ms": [
+        0.00511967,
+        0.00512595,
+        0.00512
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.00512
+      ],
+      "mean_change_pct": -28.545294878897952,
+      "trtexec_rank": 164,
+      "layer_share_pct": 0.13975307382259244,
+      "cumulative_share_pct": 98.75956711598113
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl79_0",
+      "python_rank": 158,
+      "python_mean_ms": 0.0071680000983178616,
+      "trtexec_mean_ms": 0.0051200533333333334,
+      "trtexec_between_run_SD_ms": 2.0502032419604136e-07,
+      "trtexec_run_mean_ms": [
+        0.00511993,
+        0.00511994,
+        0.00512029
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.00512,
+        0.00512
+      ],
+      "mean_change_pct": -28.570685503549676,
+      "trtexec_rank": 165,
+      "layer_share_pct": 0.13970341414188506,
+      "cumulative_share_pct": 98.89927053012302
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl202_0",
+      "python_rank": 167,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.004780133333333334,
+      "trtexec_between_run_SD_ms": 0.0011804191840754422,
+      "trtexec_run_mean_ms": [
+        0.00410148,
+        0.00409576,
+        0.00614316
+      ],
+      "trtexec_run_median_ms": [
+        0.004096,
+        0.004096,
+        0.006144
+      ],
+      "mean_change_pct": -22.198353446355213,
+      "trtexec_rank": 166,
+      "layer_share_pct": 0.13042851377591697,
+      "cumulative_share_pct": 99.02969904389893
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl195_0",
+      "python_rank": 165,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.004778473333333334,
+      "trtexec_between_run_SD_ms": 0.0005910132638387515,
+      "trtexec_run_mean_ms": [
+        0.00511967,
+        0.00409603,
+        0.00511972
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.004096,
+        0.00512
+      ],
+      "mean_change_pct": -22.22537167456622,
+      "trtexec_rank": 167,
+      "layer_share_pct": 0.13038321978142559,
+      "cumulative_share_pct": 99.16008226368035
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl183_0",
+      "python_rank": 164,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.004490746666666667,
+      "trtexec_between_run_SD_ms": 0.0005505101769570962,
+      "trtexec_run_mean_ms": [
+        0.00425624,
+        0.00511968,
+        0.00409632
+      ],
+      "trtexec_run_median_ms": [
+        0.004256,
+        0.00512,
+        0.004096
+      ],
+      "mean_change_pct": -26.908422724200488,
+      "trtexec_rank": 168,
+      "layer_share_pct": 0.1225324426398468,
+      "cumulative_share_pct": 99.2826147063202
+    },
+    {
+      "layer": "__myl_Sub_myl220_0",
+      "python_rank": 170,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.004441883333333334,
+      "trtexec_between_run_SD_ms": 0.0005905837316023307,
+      "trtexec_run_mean_ms": [
+        0.00410552,
+        0.00512381,
+        0.00409632
+      ],
+      "trtexec_run_median_ms": [
+        0.004096,
+        0.00512,
+        0.004096
+      ],
+      "mean_change_pct": -27.703724345375534,
+      "trtexec_rank": 169,
+      "layer_share_pct": 0.12119918025982873,
+      "cumulative_share_pct": 99.40381388658002
+    },
+    {
+      "layer": "__myl_Mul_myl225_0",
+      "python_rank": 174,
+      "python_mean_ms": 0.005119999870657921,
+      "trtexec_mean_ms": 0.004440783333333333,
+      "trtexec_between_run_SD_ms": 0.0005924771794198773,
+      "trtexec_run_mean_ms": [
+        0.00410141,
+        0.00409603,
+        0.00512491
+      ],
+      "trtexec_run_median_ms": [
+        0.004096,
+        0.004096,
+        0.00512
+      ],
+      "mean_change_pct": -13.265948329746891,
+      "trtexec_rank": 170,
+      "layer_share_pct": 0.12116916616709346,
+      "cumulative_share_pct": 99.52498305274712
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl70_0",
+      "python_rank": 169,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.004438216666666667,
+      "trtexec_between_run_SD_ms": 0.0005904431508903578,
+      "trtexec_run_mean_ms": [
+        0.00409601,
+        0.00409864,
+        0.00512
+      ],
+      "trtexec_run_median_ms": [
+        0.004096,
+        0.004096,
+        0.00512
+      ],
+      "mean_change_pct": -27.76340316270909,
+      "trtexec_rank": 171,
+      "layer_share_pct": 0.12109913328404455,
+      "cumulative_share_pct": 99.64608218603117
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMulAdd_myl74_0",
+      "python_rank": 162,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.004437433333333333,
+      "trtexec_between_run_SD_ms": 0.0005911200896884945,
+      "trtexec_run_mean_ms": [
+        0.00409601,
+        0.00409629,
+        0.00512
+      ],
+      "trtexec_run_median_ms": [
+        0.004096,
+        0.004096,
+        0.00512
+      ],
+      "mean_change_pct": -27.776152728230365,
+      "trtexec_rank": 172,
+      "layer_share_pct": 0.12107775961194521,
+      "cumulative_share_pct": 99.76715994564312
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl196_0",
+      "python_rank": 166,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.0044373400000000006,
+      "trtexec_between_run_SD_ms": 0.0005909151315544391,
+      "trtexec_run_mean_ms": [
+        0.00511967,
+        0.00409603,
+        0.00409632
+      ],
+      "trtexec_run_median_ms": [
+        0.00512,
+        0.004096,
+        0.004096
+      ],
+      "mean_change_pct": -27.77767182539884,
+      "trtexec_rank": 173,
+      "layer_share_pct": 0.12107521296165252,
+      "cumulative_share_pct": 99.88823515860477
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl161_0",
+      "python_rank": 163,
+      "python_mean_ms": 0.006144000217318535,
+      "trtexec_mean_ms": 0.004096119999999999,
+      "trtexec_between_run_SD_ms": 1.7349351572894427e-07,
+      "trtexec_run_mean_ms": [
+        0.00409601,
+        0.00409603,
+        0.00409632
+      ],
+      "trtexec_run_median_ms": [
+        0.004096,
+        0.004096,
+        0.004096
+      ],
+      "mean_change_pct": -33.33138256645937,
+      "trtexec_rank": 174,
+      "layer_share_pct": 0.1117648413951791,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Constant_13_output_0",
+      "python_rank": 176,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 175,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to /model.9/cv1/conv/Conv",
+      "python_rank": 224,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 176,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/m.0/cv2/conv/Conv",
+      "python_rank": 205,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 177,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.2/cv2.2.1/conv/Conv",
+      "python_rank": 194,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 178,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.8/cv2/conv/Conv",
+      "python_rank": 204,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 179,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.18/cv2/act/Sigmoid), PWN(/model.18/cv2/act/Mul))",
+      "python_rank": 225,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 180,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(/model.22/Sigmoid)",
+      "python_rank": 207,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 181,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model.8/cv1/act/Sigmoid), PWN(/model.8/cv1/act/Mul))",
+      "python_rank": 226,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 182,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(PWN(/model.6/m.0/cv2/act/Sigmoid), PWN(/model.6/m.0/cv2/act/Mul)), PWN(/model.6/m.0/Add))",
+      "python_rank": 227,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 183,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv2.0/cv2.0.1/act/Sigmoid), PWN(/model.22/cv2.0/cv2.0.1/act/Mul))",
+      "python_rank": 213,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 184,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.6/cv2/conv/Conv",
+      "python_rank": 202,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 185,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.6/m.1/cv1/conv/Conv",
+      "python_rank": 203,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 186,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(/model.4/m.1/cv2/act/Sigmoid), PWN(/model.4/m.1/cv2/act/Mul)), PWN(/model.4/m.1/Add))",
+      "python_rank": 220,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 187,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv3.2/cv3.2.1/act/Sigmoid), PWN(/model.22/cv3.2/cv3.2.1/act/Mul))",
+      "python_rank": 216,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 188,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.12/cv2/conv/Conv",
+      "python_rank": 186,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 189,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.9/m/MaxPool",
+      "python_rank": 206,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 190,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Reshape_2",
+      "python_rank": 180,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 191,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.1/conv/Conv",
+      "python_rank": 185,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 192,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/dfl/Reshape_1",
+      "python_rank": 184,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 193,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Reshape_5",
+      "python_rank": 183,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 194,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to /model.22/cv2.2/cv2.2.0/conv/Conv || /model.22/cv3.2/cv3.2.0/conv/Conv",
+      "python_rank": 223,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 195,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.12/m.0/cv2/act/Sigmoid), PWN(/model.12/m.0/cv2/act/Mul))",
+      "python_rank": 208,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 196,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Constant_15_output_0 + ONNXTRT_Broadcast_95",
+      "python_rank": 177,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 197,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.8/m.0/cv1/act/Sigmoid), PWN(/model.8/m.0/cv1/act/Mul))",
+      "python_rank": 217,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 198,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv3.2/cv3.2.2/Conv",
+      "python_rank": 199,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 199,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Constant_12_output_0",
+      "python_rank": 175,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 200,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv3.0/cv3.0.2/Conv",
+      "python_rank": 197,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 201,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.15/m.0/cv2/act/Sigmoid), PWN(/model.15/m.0/cv2/act/Mul))",
+      "python_rank": 209,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 202,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Reshape_3",
+      "python_rank": 181,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 203,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.2/m.0/cv1/act/Sigmoid), PWN(/model.2/m.0/cv1/act/Mul))",
+      "python_rank": 211,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 204,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.0/cv2.0.2/Conv",
+      "python_rank": 192,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 205,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.6/m.1/cv2/act/Sigmoid), PWN(/model.6/m.1/cv2/act/Mul)), PWN(/model.6/m.1/Add))",
+      "python_rank": 219,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 206,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/dfl/Reshape + /model.22/dfl/Transpose",
+      "python_rank": 200,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 207,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Reshape",
+      "python_rank": 178,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 208,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.1/cv2.1.0/conv/Conv || /model.22/cv3.1/cv3.1.0/conv/Conv",
+      "python_rank": 193,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 209,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.4/cv2/conv/Conv",
+      "python_rank": 201,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 210,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.15/cv2/conv/Conv",
+      "python_rank": 187,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 211,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv3.0/cv3.0.1/conv/Conv",
+      "python_rank": 196,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 212,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Reshape_4",
+      "python_rank": 182,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 213,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.2/m.0/cv2/conv/Conv",
+      "python_rank": 189,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 214,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to /model.22/cv2.1/cv2.1.0/conv/Conv || /model.22/cv3.1/cv3.1.0/conv/Conv",
+      "python_rank": 222,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 215,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.0/cv2.0.1/conv/Conv",
+      "python_rank": 191,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 216,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Output Tensor 0 to /model.22/cv2.0/cv2.0.0/conv/Conv || /model.22/cv3.0/cv3.0.0/conv/Conv",
+      "python_rank": 221,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 217,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv3.2/cv3.2.1/conv/Conv",
+      "python_rank": 198,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 218,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "/model.22/Reshape_1",
+      "python_rank": 179,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 219,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.21/m.0/cv2/conv/Conv",
+      "python_rank": 190,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 220,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.22/cv2.2/cv2.2.2/Conv",
+      "python_rank": 195,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 221,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model.4/m.1/cv2/act/Sigmoid), PWN(/model.4/m.1/cv2/act/Mul)), PWN(/model.4/m.1/Add))",
+      "python_rank": 218,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 222,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.18/m.0/cv2/act/Sigmoid), PWN(/model.18/m.0/cv2/act/Mul))",
+      "python_rank": 210,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 223,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to /model.18/cv2/conv/Conv",
+      "python_rank": 188,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 224,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv2.2/cv2.2.1/act/Sigmoid), PWN(/model.22/cv2.2/cv2.2.1/act/Mul))",
+      "python_rank": 214,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 225,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.22/cv3.0/cv3.0.1/act/Sigmoid), PWN(/model.22/cv3.0/cv3.0.1/act/Mul))",
+      "python_rank": 215,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 226,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    },
+    {
+      "layer": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model.21/m.0/cv1/act/Sigmoid), PWN(/model.21/m.0/cv1/act/Mul))",
+      "python_rank": 212,
+      "python_mean_ms": 0.0,
+      "trtexec_mean_ms": 0.0,
+      "trtexec_between_run_SD_ms": 0.0,
+      "trtexec_run_mean_ms": [
+        0,
+        0,
+        0
+      ],
+      "trtexec_run_median_ms": [
+        0,
+        0,
+        0
+      ],
+      "mean_change_pct": null,
+      "trtexec_rank": 227,
+      "layer_share_pct": 0.0,
+      "cumulative_share_pct": 99.99999999999996
+    }
+  ],
+  "previous_Top10_comparison": [
+    {
+      "layer": "/model.22/cv2.0/cv2.0.0/conv/Conv || /model.22/cv3.0/cv3.0.0/conv/Conv",
+      "python_rank": 1,
+      "python_mean_ms": 0.07272448107600211,
+      "trtexec_mean_ms": 0.07967763333333333,
+      "trtexec_between_run_SD_ms": 0.017427460056569727,
+      "trtexec_run_mean_ms": [
+        0.0682151,
+        0.071085,
+        0.0997328
+      ],
+      "trtexec_run_median_ms": [
+        0.067712,
+        0.070656,
+        0.098304
+      ],
+      "mean_change_pct": 9.560951352907821,
+      "trtexec_rank": 1,
+      "layer_share_pct": 2.1740471598105615,
+      "cumulative_share_pct": 2.1740471598105615
+    },
+    {
+      "layer": "/model.7/conv/Conv",
+      "python_rank": 2,
+      "python_mean_ms": 0.06173887953162193,
+      "trtexec_mean_ms": 0.06705733333333334,
+      "trtexec_between_run_SD_ms": 0.015956827335449026,
+      "trtexec_run_mean_ms": [
+        0.0566564,
+        0.0590864,
+        0.0854292
+      ],
+      "trtexec_run_median_ms": [
+        0.055296,
+        0.058368,
+        0.084992
+      ],
+      "mean_change_pct": 8.614432011172735,
+      "trtexec_rank": 2,
+      "layer_share_pct": 1.8296954738590812,
+      "cumulative_share_pct": 4.003742633669643
+    },
+    {
+      "layer": "/model.22/cv2.0/cv2.0.1/conv/Conv",
+      "python_rank": 3,
+      "python_mean_ms": 0.05916960049420595,
+      "trtexec_mean_ms": 0.0625596,
+      "trtexec_between_run_SD_ms": 0.011698570125874358,
+      "trtexec_run_mean_ms": [
+        0.0547199,
+        0.0569526,
+        0.0760063
+      ],
+      "trtexec_run_median_ms": [
+        0.055296,
+        0.057344,
+        0.075776
+      ],
+      "mean_change_pct": 5.729292537856523,
+      "trtexec_rank": 4,
+      "layer_share_pct": 1.7069723962544674,
+      "cumulative_share_pct": 7.5098188671422825
+    },
+    {
+      "layer": "/model.22/cv2.1/cv2.1.0/conv/Conv || /model.22/cv3.1/cv3.1.0/conv/Conv",
+      "python_rank": 4,
+      "python_mean_ms": 0.058923199474811554,
+      "trtexec_mean_ms": 0.06593616666666667,
+      "trtexec_between_run_SD_ms": 0.016699896599180888,
+      "trtexec_run_mean_ms": [
+        0.0549595,
+        0.0576942,
+        0.0851548
+      ],
+      "trtexec_run_median_ms": [
+        0.054272,
+        0.057344,
+        0.084992
+      ],
+      "mean_change_pct": 11.901877790687543,
+      "trtexec_rank": 3,
+      "layer_share_pct": 1.7991038372181718,
+      "cumulative_share_pct": 5.802846470887815
+    },
+    {
+      "layer": "/model.1/conv/Conv",
+      "python_rank": 5,
+      "python_mean_ms": 0.05828800052404404,
+      "trtexec_mean_ms": 0.062004933333333324,
+      "trtexec_between_run_SD_ms": 0.009483450802494487,
+      "trtexec_run_mean_ms": [
+        0.0557991,
+        0.0572943,
+        0.0729214
+      ],
+      "trtexec_run_median_ms": [
+        0.055296,
+        0.057344,
+        0.072704
+      ],
+      "mean_change_pct": 6.376840474663448,
+      "trtexec_rank": 5,
+      "layer_share_pct": 1.6918380173722092,
+      "cumulative_share_pct": 9.201656884514492
+    },
+    {
+      "layer": "__myl_MoveNegExpAddDivMul_myl5_0",
+      "python_rank": 6,
+      "python_mean_ms": 0.05632000043988228,
+      "trtexec_mean_ms": 0.05529763333333334,
+      "trtexec_between_run_SD_ms": 1.527525231658017e-07,
+      "trtexec_run_mean_ms": [
+        0.0552976,
+        0.0552978,
+        0.0552975
+      ],
+      "trtexec_run_median_ms": [
+        0.055296,
+        0.055296,
+        0.055296
+      ],
+      "mean_change_pct": -1.8152824903477138,
+      "trtexec_rank": 9,
+      "layer_share_pct": 1.5088257226421031,
+      "cumulative_share_pct": 15.602407730155415
+    },
+    {
+      "layer": "/model.22/cv2.2/cv2.2.0/conv/Conv || /model.22/cv3.2/cv3.2.0/conv/Conv",
+      "python_rank": 7,
+      "python_mean_ms": 0.05578239984810352,
+      "trtexec_mean_ms": 0.06123833333333334,
+      "trtexec_between_run_SD_ms": 0.013307762126042582,
+      "trtexec_run_mean_ms": [
+        0.0520313,
+        0.0551873,
+        0.0764964
+      ],
+      "trtexec_run_median_ms": [
+        0.0512,
+        0.053248,
+        0.0768
+      ],
+      "mean_change_pct": 9.780743568018636,
+      "trtexec_rank": 6,
+      "layer_share_pct": 1.670920923289628,
+      "cumulative_share_pct": 10.87257780780412
+    },
+    {
+      "layer": "/model.22/cv3.0/cv3.0.1/conv/Conv",
+      "python_rank": 8,
+      "python_mean_ms": 0.05552447963505983,
+      "trtexec_mean_ms": 0.060414466666666666,
+      "trtexec_between_run_SD_ms": 0.01127329948698842,
+      "trtexec_run_mean_ms": [
+        0.0527181,
+        0.0551708,
+        0.0733545
+      ],
+      "trtexec_run_median_ms": [
+        0.052224,
+        0.055296,
+        0.073728
+      ],
+      "mean_change_pct": 8.806902943974904,
+      "trtexec_rank": 7,
+      "layer_share_pct": 1.6484412773488901,
+      "cumulative_share_pct": 12.52101908515301
+    },
+    {
+      "layer": "/model.19/conv/Conv",
+      "python_rank": 9,
+      "python_mean_ms": 0.05300928059965372,
+      "trtexec_mean_ms": 0.057633566666666664,
+      "trtexec_between_run_SD_ms": 0.011174475649592393,
+      "trtexec_run_mean_ms": [
+        0.050313,
+        0.0520919,
+        0.0704958
+      ],
+      "trtexec_run_median_ms": [
+        0.047104,
+        0.049152,
+        0.069632
+      ],
+      "mean_change_pct": 8.723540509703032,
+      "trtexec_rank": 8,
+      "layer_share_pct": 1.5725629223603024,
+      "cumulative_share_pct": 14.093582007513312
+    },
+    {
+      "layer": "/model.0/conv/Conv",
+      "python_rank": 10,
+      "python_mean_ms": 0.05288735926151276,
+      "trtexec_mean_ms": 0.0541511,
+      "trtexec_between_run_SD_ms": 0.0014110823540814318,
+      "trtexec_run_mean_ms": [
+        0.0531212,
+        0.0535726,
+        0.0557595
+      ],
+      "trtexec_run_median_ms": [
+        0.052224,
+        0.053248,
+        0.055296
+      ],
+      "mean_change_pct": 2.389494873885467,
+      "trtexec_rank": 11,
+      "layer_share_pct": 1.4775419428323595,
+      "cumulative_share_pct": 18.565677277475203
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "engine": "C:\\Users\\dxu1\\Desktop\\Dissertation\\original\\yolov8n_voc\\voc_8n_best_fp32.engine",
+  "engine_sha256": "042cc2793b8d214958fab618d47d4cff4e9ee873d55aedb33a96976c8d9467af",
+  "plan_sha256": "e58dd19fb3ce2dfc5778421981898a0572780295eedffe462ca8af9ad6c4b9d2",
+  "metadata": {
+    "description": "Ultralytics voc_8n_best_fp32 model trained on /users/jupyterhub-ltd/.local/lib/python3.12/site-packages/ultralytics/cfg/datasets/VOC.yaml",
+    "author": "Ultralytics",
+    "date": "2026-09-27T00:11:44.167563+01:00",
+    "version": "8.4.163",
+    "license": "AGPL-3.0 License (https://ultralytics.com/license)",
+    "docs": "https://docs.ultralytics.com",
+    "stride": 32,
+    "task": "detect",
+    "head": "Detect",
+    "batch": 1,
+    "imgsz": [
+      640,
+      640
+    ],
+    "names": {
+      "0": "aeroplane",
+      "1": "bicycle",
+      "2": "bird",
+      "3": "boat",
+      "4": "bottle",
+      "5": "bus",
+      "6": "car",
+      "7": "cat",
+      "8": "chair",
+      "9": "cow",
+      "10": "diningtable",
+      "11": "dog",
+      "12": "horse",
+      "13": "motorbike",
+      "14": "person",
+      "15": "pottedplant",
+      "16": "sheep",
+      "17": "sofa",
+      "18": "train",
+      "19": "tvmonitor"
+    },
+    "args": {
+      "data": null,
+      "batch": 1,
+      "fraction": 1.0,
+      "quantize": 32,
+      "nms": null,
+      "dynamic": false,
+      "simplify": true,
+      "opset": null,
+      "workspace": null
+    },
+    "channels": 3,
+    "end2end": false
+  },
+  "image": "C:\\Users\\dxu1\\Desktop\\Dissertation\\PTQ\\datasets\\VOC\\images\\test2007\\000001.jpg",
+  "input_name": "images",
+  "shape": [
+    1,
+    3,
+    640,
+    640
+  ],
+  "dtype": "float32",
+  "input_sha256": "b31dd19c80320af846cd7d6a1672ac252877e8c57aba1a18de5e5bec8ab1db4f",
+  "preparation": "Same fixed representative image and GPU preprocessing as original IProfiler run."
+}

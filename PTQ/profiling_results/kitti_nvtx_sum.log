@@ -1,0 +1,3 @@
+Generating SQLite file C:\Users\dxu1\Desktop\Dissertation\PTQ\profiling_results\kitti_timeline.sqlite from C:\Users\dxu1\Desktop\Dissertation\PTQ\profiling_results\kitti_timeline.nsys-rep
+Processing [C:\Users\dxu1\Desktop\Dissertation\PTQ\profiling_results\kitti_timeline.sqlite] with [C:\Users\dxu1\AppData\Local\NVIDIA\NsightSystemsPortable\ProgramFiles64Folder\NVIDIA Corporation\Nsight Systems 2026.5.1\target-windows-x64\reports\nvtx_sum.py] to [C:\Users\dxu1\Desktop\Dissertation\PTQ\profiling_results\kitti_stats_nvtx_sum.csv]... PROCESSED
+
