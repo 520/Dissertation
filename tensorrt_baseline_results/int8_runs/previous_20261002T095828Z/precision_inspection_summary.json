@@ -1,0 +1,36 @@
+{
+  "engine": "original\\yolov8n_kitti\\8n_float32_int8.engine",
+  "sha256": "1f0921db0e8addd94ca16a8e54b723cb793750bc99671194580fb7690b369f6a",
+  "quantize": 8,
+  "profiling_verbosity": "ProfilingVerbosity.LAYER_NAMES_ONLY",
+  "io": {
+    "images": "DataType.FLOAT",
+    "output0": "DataType.FLOAT"
+  },
+  "engine_layer_count": 164,
+  "engine_layers_with_QuantizeLinear_in_name": 69,
+  "onnx": {
+    "8n_float32_int8.onnx": {
+      "initializers_by_dtype": {
+        "FLOAT": 132,
+        "INT64": 12
+      },
+      "QuantizeLinear": 0,
+      "DequantizeLinear": 0,
+      "Conv": 64,
+      "Conv_weights_from_DequantizeLinear": 0
+    },
+    "8n_float32_int8.int8.onnx": {
+      "initializers_by_dtype": {
+        "INT8": 240,
+        "INT64": 22,
+        "FLOAT": 2,
+        "FLOAT16": 371
+      },
+      "QuantizeLinear": 120,
+      "DequantizeLinear": 120,
+      "Conv": 64,
+      "Conv_weights_from_DequantizeLinear": 57
+    }
+  }
+}
