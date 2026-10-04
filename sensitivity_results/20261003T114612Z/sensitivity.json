@@ -1,0 +1,787 @@
+{
+  "source": "C:\\Users\\dxu1\\Desktop\\Dissertation\\original\\yolov8n_kitti\\8n_float32.pt",
+  "source_sha256": "b4c22bd2cdc3c73e9e27732a88673fdc4389aed690944d4ca6a7e80dc15863cc",
+  "method": "ModelOpt auto_quantize gradient; detection-loss-weighted local quantization perturbation proxy",
+  "modelopt": "0.47.0",
+  "calibration_images": 500,
+  "score_images": 128,
+  "split": "KITTI train",
+  "imgsz": 640,
+  "batch": 1,
+  "seed": 42,
+  "calls": {
+    "forward": 500,
+    "backward": 128
+  },
+  "warning": "Sensitivity scores are not measured mAP drops and do not reproduce ONNX graph fusion/quantizer placement.",
+  "layers": [
+    {
+      "layer": "model.22.cv2.0.2",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 3.1387555599212646,
+      "cost": 2048.0
+    },
+    {
+      "layer": "model.22.cv2.1.2",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 1.4172073602676392,
+      "cost": 2048.0
+    },
+    {
+      "layer": "model.22.cv2.0.1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.06497260928153992,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.15.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.038938600569963455,
+      "cost": 6144.0
+    },
+    {
+      "layer": "model.2.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.03654688224196434,
+      "cost": 512.0
+    },
+    {
+      "layer": "model.1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.021178368479013443,
+      "cost": 2304.0
+    },
+    {
+      "layer": "model.12.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.021142104640603065,
+      "cost": 24576.0
+    },
+    {
+      "layer": "model.12.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.016614219173789024,
+      "cost": 12288.0
+    },
+    {
+      "layer": "model.2.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.013276726938784122,
+      "cost": 768.0
+    },
+    {
+      "layer": "model.15.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.00997551716864109,
+      "cost": 3072.0
+    },
+    {
+      "layer": "model.3.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.009900395758450031,
+      "cost": 9216.0
+    },
+    {
+      "layer": "model.22.cv2.1.1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.009813510812819004,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.15.m.0.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.009602873586118221,
+      "cost": 4608.0
+    },
+    {
+      "layer": "model.4.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.008070644922554493,
+      "cost": 4096.0
+    },
+    {
+      "layer": "model.4.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.007260313257575035,
+      "cost": 2048.0
+    },
+    {
+      "layer": "model.22.cv2.0.0.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.005773493554443121,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.15.m.0.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.005189528688788414,
+      "cost": 4608.0
+    },
+    {
+      "layer": "model.6.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.004141378682106733,
+      "cost": 16384.0
+    },
+    {
+      "layer": "model.12.m.0.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.004031944554299116,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.9.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0038973833434283733,
+      "cost": 16384.0
+    },
+    {
+      "layer": "model.0.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.003814224386587739,
+      "cost": 216.0
+    },
+    {
+      "layer": "model.12.m.0.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.003769627306610346,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.9.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0036889167968183756,
+      "cost": 65536.0
+    },
+    {
+      "layer": "model.6.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0034239827655255795,
+      "cost": 8192.0
+    },
+    {
+      "layer": "model.2.m.0.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0030625141225755215,
+      "cost": 1152.0
+    },
+    {
+      "layer": "model.8.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0030342796817421913,
+      "cost": 49152.0
+    },
+    {
+      "layer": "model.18.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0029852420557290316,
+      "cost": 12288.0
+    },
+    {
+      "layer": "model.8.m.0.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0029802187345921993,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.22.cv2.1.0.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.002909991890192032,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.8.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0026172653306275606,
+      "cost": 32768.0
+    },
+    {
+      "layer": "model.22.cv3.1.2",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.002600606996566057,
+      "cost": 256.0
+    },
+    {
+      "layer": "model.4.m.1.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0025579757057130337,
+      "cost": 4608.0
+    },
+    {
+      "layer": "model.7.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.002410024404525757,
+      "cost": 147456.0
+    },
+    {
+      "layer": "model.5.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0023707402870059013,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.6.m.0.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0022411528043448925,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.22.cv3.0.2",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0021453476510941982,
+      "cost": 256.0
+    },
+    {
+      "layer": "model.22.cv2.2.2",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0019781196024268866,
+      "cost": 2048.0
+    },
+    {
+      "layer": "model.8.m.0.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0019328983034938574,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.18.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.001820393605157733,
+      "cost": 12288.0
+    },
+    {
+      "layer": "model.18.m.0.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0017842041561380029,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.6.m.1.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0016039774054661393,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.18.m.0.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.001512755872681737,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.4.m.0.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.001243648468516767,
+      "cost": 4608.0
+    },
+    {
+      "layer": "model.4.m.0.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0012358739040791988,
+      "cost": 4608.0
+    },
+    {
+      "layer": "model.2.m.0.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0011775706661865115,
+      "cost": 1152.0
+    },
+    {
+      "layer": "model.4.m.1.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0011130059137940407,
+      "cost": 4608.0
+    },
+    {
+      "layer": "model.16.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0010842193150892854,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.6.m.0.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0006661819061264396,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.6.m.1.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0006159006734378636,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.22.cv3.0.0.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0002791346050798893,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.22.cv3.1.0.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0002168795035686344,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv3.0.1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.00021184541401453316,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.22.cv2.2.1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 7.398110028589144e-05,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.22.cv3.1.1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 4.6274893975351006e-05,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.19.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 3.085460411966778e-05,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.21.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 1.1998233276244719e-05,
+      "cost": 49152.0
+    },
+    {
+      "layer": "model.21.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 1.0071338692796417e-05,
+      "cost": 49152.0
+    },
+    {
+      "layer": "model.22.cv3.2.2",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 8.998500561574474e-06,
+      "cost": 256.0
+    },
+    {
+      "layer": "model.22.cv2.2.0.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 7.4046984082087874e-06,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.22.cv3.2.0.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 5.575183763539826e-07,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.22.cv3.2.1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 3.620108088853158e-07,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.21.m.0.cv2.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 2.6759022375699715e-07,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.21.m.0.cv1.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 1.6429056870492786e-07,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.0.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 432.0
+    },
+    {
+      "layer": "model.1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 4608.0
+    },
+    {
+      "layer": "model.2.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 1024.0
+    },
+    {
+      "layer": "model.2.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 1536.0
+    },
+    {
+      "layer": "model.2.m.0.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 2304.0
+    },
+    {
+      "layer": "model.2.m.0.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 2304.0
+    },
+    {
+      "layer": "model.3.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 18432.0
+    },
+    {
+      "layer": "model.4.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 4096.0
+    },
+    {
+      "layer": "model.4.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 8192.0
+    },
+    {
+      "layer": "model.4.m.0.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 9216.0
+    },
+    {
+      "layer": "model.4.m.0.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 9216.0
+    },
+    {
+      "layer": "model.4.m.1.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 9216.0
+    },
+    {
+      "layer": "model.4.m.1.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 9216.0
+    },
+    {
+      "layer": "model.5.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.6.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 16384.0
+    },
+    {
+      "layer": "model.6.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 32768.0
+    },
+    {
+      "layer": "model.6.m.0.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.6.m.0.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.6.m.1.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.6.m.1.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.7.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 294912.0
+    },
+    {
+      "layer": "model.8.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 65536.0
+    },
+    {
+      "layer": "model.8.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 98304.0
+    },
+    {
+      "layer": "model.8.m.0.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 147456.0
+    },
+    {
+      "layer": "model.8.m.0.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 147456.0
+    },
+    {
+      "layer": "model.9.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 32768.0
+    },
+    {
+      "layer": "model.9.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 131072.0
+    },
+    {
+      "layer": "model.12.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 49152.0
+    },
+    {
+      "layer": "model.12.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 24576.0
+    },
+    {
+      "layer": "model.12.m.0.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.12.m.0.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.15.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 12288.0
+    },
+    {
+      "layer": "model.15.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 6144.0
+    },
+    {
+      "layer": "model.15.m.0.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 9216.0
+    },
+    {
+      "layer": "model.15.m.0.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 9216.0
+    },
+    {
+      "layer": "model.16.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.18.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 24576.0
+    },
+    {
+      "layer": "model.18.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 24576.0
+    },
+    {
+      "layer": "model.18.m.0.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.18.m.0.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.19.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 147456.0
+    },
+    {
+      "layer": "model.21.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 98304.0
+    },
+    {
+      "layer": "model.21.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 98304.0
+    },
+    {
+      "layer": "model.21.m.0.cv1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 147456.0
+    },
+    {
+      "layer": "model.21.m.0.cv2.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 147456.0
+    },
+    {
+      "layer": "model.22.cv2.0.0.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv2.0.1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv2.0.2",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 4096.0
+    },
+    {
+      "layer": "model.22.cv2.1.0.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.22.cv2.1.1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv2.1.2",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 4096.0
+    },
+    {
+      "layer": "model.22.cv2.2.0.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 147456.0
+    },
+    {
+      "layer": "model.22.cv2.2.1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv2.2.2",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 4096.0
+    },
+    {
+      "layer": "model.22.cv3.0.0.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv3.0.1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv3.0.2",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 512.0
+    },
+    {
+      "layer": "model.22.cv3.1.0.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 73728.0
+    },
+    {
+      "layer": "model.22.cv3.1.1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv3.1.2",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 512.0
+    },
+    {
+      "layer": "model.22.cv3.2.0.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 147456.0
+    },
+    {
+      "layer": "model.22.cv3.2.1.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 36864.0
+    },
+    {
+      "layer": "model.22.cv3.2.2",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 512.0
+    },
+    {
+      "layer": "model.22.dfl.conv",
+      "format": "INT8_DEFAULT_CFG(effective-bits: 8.0)",
+      "sensitivity_score": 0.0,
+      "cost": 8.0
+    },
+    {
+      "layer": "model.22.dfl.conv",
+      "format": "NONE(effective-bits: 16.0)",
+      "sensitivity_score": 0.0,
+      "cost": 16.0
+    }
+  ]
+}

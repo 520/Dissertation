@@ -1,0 +1,70 @@
+# ModelOpt INT8 sensitivity ranking
+
+500 KITTI training images for calibration; 128 images for gradient scoring. Scores are a local detection-loss proxy, not mAP drops. The original unfused PyTorch graph is used; ONNX quantizer placement and TensorRT fusion may differ. Zero scores are not proof of insensitivity.
+
+| Rank | Layer | INT8 sensitivity score |
+|---:|---|---:|
+| 1 | model.22.cv2.0.2 | 3.1387556 |
+| 2 | model.22.cv2.1.2 | 1.4172074 |
+| 3 | model.22.cv2.0.1.conv | 0.064972609 |
+| 4 | model.15.cv1.conv | 0.038938601 |
+| 5 | model.2.cv1.conv | 0.036546882 |
+| 6 | model.1.conv | 0.021178368 |
+| 7 | model.12.cv1.conv | 0.021142105 |
+| 8 | model.12.cv2.conv | 0.016614219 |
+| 9 | model.2.cv2.conv | 0.013276727 |
+| 10 | model.15.cv2.conv | 0.0099755172 |
+| 11 | model.3.conv | 0.0099003958 |
+| 12 | model.22.cv2.1.1.conv | 0.0098135108 |
+| 13 | model.15.m.0.cv1.conv | 0.0096028736 |
+| 14 | model.4.cv2.conv | 0.0080706449 |
+| 15 | model.4.cv1.conv | 0.0072603133 |
+| 16 | model.22.cv2.0.0.conv | 0.0057734936 |
+| 17 | model.15.m.0.cv2.conv | 0.0051895287 |
+| 18 | model.6.cv2.conv | 0.0041413787 |
+| 19 | model.12.m.0.cv1.conv | 0.0040319446 |
+| 20 | model.9.cv1.conv | 0.0038973833 |
+| 21 | model.0.conv | 0.0038142244 |
+| 22 | model.12.m.0.cv2.conv | 0.0037696273 |
+| 23 | model.9.cv2.conv | 0.0036889168 |
+| 24 | model.6.cv1.conv | 0.0034239828 |
+| 25 | model.2.m.0.cv1.conv | 0.0030625141 |
+| 26 | model.8.cv2.conv | 0.0030342797 |
+| 27 | model.18.cv1.conv | 0.0029852421 |
+| 28 | model.8.m.0.cv2.conv | 0.0029802187 |
+| 29 | model.22.cv2.1.0.conv | 0.0029099919 |
+| 30 | model.8.cv1.conv | 0.0026172653 |
+| 31 | model.22.cv3.1.2 | 0.002600607 |
+| 32 | model.4.m.1.cv2.conv | 0.0025579757 |
+| 33 | model.7.conv | 0.0024100244 |
+| 34 | model.5.conv | 0.0023707403 |
+| 35 | model.6.m.0.cv2.conv | 0.0022411528 |
+| 36 | model.22.cv3.0.2 | 0.0021453477 |
+| 37 | model.22.cv2.2.2 | 0.0019781196 |
+| 38 | model.8.m.0.cv1.conv | 0.0019328983 |
+| 39 | model.18.cv2.conv | 0.0018203936 |
+| 40 | model.18.m.0.cv2.conv | 0.0017842042 |
+| 41 | model.6.m.1.cv2.conv | 0.0016039774 |
+| 42 | model.18.m.0.cv1.conv | 0.0015127559 |
+| 43 | model.4.m.0.cv2.conv | 0.0012436485 |
+| 44 | model.4.m.0.cv1.conv | 0.0012358739 |
+| 45 | model.2.m.0.cv2.conv | 0.0011775707 |
+| 46 | model.4.m.1.cv1.conv | 0.0011130059 |
+| 47 | model.16.conv | 0.0010842193 |
+| 48 | model.6.m.0.cv1.conv | 0.00066618191 |
+| 49 | model.6.m.1.cv1.conv | 0.00061590067 |
+| 50 | model.22.cv3.0.0.conv | 0.00027913461 |
+| 51 | model.22.cv3.1.0.conv | 0.0002168795 |
+| 52 | model.22.cv3.0.1.conv | 0.00021184541 |
+| 53 | model.22.cv2.2.1.conv | 7.39811e-05 |
+| 54 | model.22.cv3.1.1.conv | 4.6274894e-05 |
+| 55 | model.19.conv | 3.0854604e-05 |
+| 56 | model.21.cv1.conv | 1.1998233e-05 |
+| 57 | model.21.cv2.conv | 1.0071339e-05 |
+| 58 | model.22.cv3.2.2 | 8.9985006e-06 |
+| 59 | model.22.cv2.2.0.conv | 7.4046984e-06 |
+| 60 | model.22.cv3.2.0.conv | 5.5751838e-07 |
+| 61 | model.22.cv3.2.1.conv | 3.6201081e-07 |
+| 62 | model.21.m.0.cv2.conv | 2.6759022e-07 |
+| 63 | model.21.m.0.cv1.conv | 1.6429057e-07 |
+| 64 | model.22.dfl.conv | 0 |
