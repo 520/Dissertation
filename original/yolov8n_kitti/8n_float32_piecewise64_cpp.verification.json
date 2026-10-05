@@ -1,0 +1,64 @@
+{
+  "model": "/Users/richard/Developer/Dissertation/original/yolov8n_kitti/8n_float32.pt",
+  "output": "/Users/richard/Developer/Dissertation/original/yolov8n_kitti/8n_float32_piecewise64_cpp.pt",
+  "threads": 10,
+  "parameters": "adaptive_silu_6_4.json:selected",
+  "backend": "cpp_cpu_neon_binary_search",
+  "cpp_vs_tensor_max_abs_error": 4.76837158203125e-07,
+  "activation_uniform_minus8_plus8": {
+    "mae": 0.006310367491096258,
+    "rmse": 0.0076077342964708805,
+    "max_abs_error": 0.022577956318855286
+  },
+  "activation_median_ms_409600_elements": {
+    "native_silu": 0.0939585,
+    "tensor_binary_search": 1.6722709999999998,
+    "cpp_simd_binary_search": 0.1344795
+  },
+  "gradient_fallback_passed": true,
+  "replaced_silu_references": 56,
+  "remaining_silu": 0,
+  "forward_output_shapes": [
+    [
+      1,
+      12,
+      8400
+    ],
+    [
+      1,
+      64,
+      8400
+    ],
+    [
+      1,
+      8,
+      8400
+    ],
+    [
+      1,
+      64,
+      80,
+      80
+    ],
+    [
+      1,
+      128,
+      40,
+      40
+    ],
+    [
+      1,
+      256,
+      20,
+      20
+    ]
+  ],
+  "full_forward_cpp_vs_tensor_max_abs_error": 0.00018310546875,
+  "full_forward_median_ms": {
+    "original_silu": 40.809229,
+    "piecewise64_cpp": 46.4507295
+  },
+  "silu_vs_piecewise_prediction_max_abs_change_random_input": 11.601081848144531,
+  "checkpoint_reload_exact_match": true,
+  "validation_scope": "Kernel, gradient, random 640x640 full forward and reload; dataset mAP not measured"
+}
