@@ -1,0 +1,15 @@
+[
+  {
+    "image": "C:\\Users\\dxu1\\Desktop\\Dissertation\\PTQ\\datasets\\kitti\\images\\train\\000002.png",
+    "max_abs_error": 1.72869873046875,
+    "mean_abs_error": 0.010746745392680168,
+    "box_max_abs_error": 1.72869873046875,
+    "class_max_abs_error": 0.0016029775142669678,
+    "tf32_pytorch_max_abs_error": 2.6884536743164062,
+    "tf32_pytorch_mean_abs_error": 0.009798082523047924,
+    "tf32_pytorch_allclose": false,
+    "rtol": 0.005,
+    "atol": 0.005,
+    "passed": false
+  }
+]

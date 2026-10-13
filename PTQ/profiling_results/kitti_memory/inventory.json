@@ -1,0 +1,20 @@
+{
+  "engine": "C:\\Users\\dxu1\\Desktop\\Dissertation\\original\\yolov8n_kitti\\8n_float32_fp32.engine",
+  "engine_sha256": "212d389539b7f460ad03830bbc682823d0e5d582a467c46735576ea712d1ab6d",
+  "layers": 227,
+  "profiling_verbosity": "ProfilingVerbosity.LAYER_NAMES_ONLY",
+  "metrics": {
+    "duration_ns": "gpu__time_duration.sum",
+    "L1_global_read_sectors": "l1tex__t_sectors_pipe_lsu_mem_global_op_ld.sum",
+    "L1_global_write_sectors": "l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum",
+    "L1_all_sectors": "l1tex__t_sectors.sum",
+    "L1_hit_pct": "l1tex__t_sector_hit_rate.pct",
+    "L2_read_sectors": "lts__t_sectors_op_read.sum",
+    "L2_write_sectors": "lts__t_sectors_op_write.sum",
+    "L2_all_sectors": "lts__t_sectors.sum",
+    "L2_hit_pct": "lts__t_sector_hit_rate.pct",
+    "DRAM_read_bytes": "dram__bytes_read.sum",
+    "DRAM_write_bytes": "dram__bytes_write.sum"
+  },
+  "status": "NOT_MEASURED"
+}

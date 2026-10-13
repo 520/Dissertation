@@ -1,0 +1,2 @@
+﻿layer_index,layer,onnx_node,engine_layers,channel,role,pruning_candidate,in_channels,groups,kernel,weights_per_channel,l1,l2,l1_mean_abs,l2_rms,taylor1,taylor1_weight_only,gradient_images,taylor_status,rank_within_layer_l1,rank_within_layer_l2,rank_within_layer_taylor1,rank_global_l1,rank_global_l2,rank_global_taylor1
+63,model.22.dfl.conv,/model.22/dfl/conv/Conv,/model.22/dfl/conv/Conv,0,fixed_dfl_projection,False,16,1,1x1,16,120.0,35.21363372331802,7.5,8.803408430829505,,,0,NOT_IN_DETECTION_LOSS_GRAPH,1,1,,2,2,

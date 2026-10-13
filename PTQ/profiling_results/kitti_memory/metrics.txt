@@ -1,0 +1,1 @@
+gpu__time_duration.sum,l1tex__t_sectors_pipe_lsu_mem_global_op_ld.sum,l1tex__t_sectors_pipe_lsu_mem_global_op_st.sum,l1tex__t_sectors.sum,l1tex__t_sector_hit_rate.pct,lts__t_sectors_op_read.sum,lts__t_sectors_op_write.sum,lts__t_sectors.sum,lts__t_sector_hit_rate.pct,dram__bytes_read.sum,dram__bytes_write.sum
