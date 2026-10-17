@@ -1,0 +1,1391 @@
+﻿.\.venv\Scripts\python.exe : 
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+At line:1 char:405
++ ... _keep_dfl"; .\.venv\Scripts\python.exe -u PTQ\modelopt_qat_63conv.py  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\dxu1\D...nstall triton`.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:50:46.853000 36660 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+Calibration: Fast image access  (ping: 0.00.0 ms, read: 877.2409.1 MB/s, size: 51.7 KB)
+
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train.cache... 5985 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 5985/5985 1.1Git/s 0.0s
+Calibrating on 512 KITTI training images...
+Inserted 194 quantizers
+  calibrated 100/512
+  calibrated 200/512
+  calibrated 300/512
+  calibrated 400/512
+  calibrated 500/512
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\export\layer_utils.py:29: UserWarning: 
+Cannot find transformers package. Hugginface modules cannot be exported.
+  warn("Cannot find transformers package. Hugginface modules cannot be exported.")
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 916.5268.8 MB/s, size: 42.6 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 522.9Mit/s 0.0s
+Loading extension modelopt_cuda_ext...
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\cpp_extension.py:93: UserWarning: 
+Ninja is required to load C++ extensions (pip install ninja to get it)
+Unable to load extension modelopt_cuda_ext and falling back to CPU version.
+  warnings.warn(fail_msg)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:14.635000 4684 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:18.939000 1120 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:23.340000 17812 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:27.736000 27076 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 59.5s/it 17.9s<45:38
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.3it/s 18.0s<20.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.8it/s 18.1s<11.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 4.9it/s 18.3s<8.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.7it/s 18.4s<7.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.2it/s 18.5s<6.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.6it/s 18.7s<6.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 6.9it/s 18.8s<5.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 6.9it/s 18.9s<5.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.1it/s 19.1s<5.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.2it/s 19.2s<5.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.3it/s 19.3s<4.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.3it/s 19.5s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.4it/s 19.6s<4.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.3it/s 19.7s<4.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.4it/s 19.9s<4.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.3it/s 20.0s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.4it/s 20.2s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.4it/s 20.3s<3.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.5it/s 20.4s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.4it/s 20.6s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.5it/s 20.7s<3.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.5it/s 20.8s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.5it/s 21.0s<3.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.4it/s 21.1s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.4it/s 21.2s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.4it/s 21.4s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.4it/s 21.5s<2.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.3it/s 21.6s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.4it/s 21.8s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.9s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 22.0s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.4it/s 22.2s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.5it/s 22.3s<1.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 22.4s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.6s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.4it/s 22.7s<1.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.4it/s 22.8s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 23.0s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 23.1s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.5it/s 23.2s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.5it/s 23.4s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 23.5s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.4it/s 23.6s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.4it/s 23.8s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.4it/s 23.9s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 24.0s
+                   all       1496       8128      0.892      0.822      0.886      0.616
+Speed: 0.8ms preprocess, 2.2ms inference, 0.0ms loss, 0.5ms postprocess per image
+PTQ start point: {'mAP50-95': 0.6159750657106253, 'mAP50': 0.8857719446256788, 'precision': 0.8920982152920494, 'recall': 0.8221534767817668}
+[34m[1mtrain: [0mFast image access  (ping: 0.00.0 ms, read: 930.6284.9 MB/s, size: 50.7 KB)
+
+[K[34m[1mtrain: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train.cache... 5985 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 5985/5985 3.1Git/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:38.907000 33200 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:43.258000 32908 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:47.765000 30764 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:52.106000 29688 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:51:56.617000 37476 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:01.066000 22108 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:05.403000 23160 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:09.756000 28204 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:14.078000 37736 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:18.407000 27868 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:22.722000 15832 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:27.127000 28740 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:31.523000 24568 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:35.863000 22508 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:40.288000 31372 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:52:44.716000 12224 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+epoch 1/50 lr=9.99e-05 box=0.8071 cls=0.537 dfl=0.8676
+epoch 2/50 lr=9.961e-05 box=0.7956 cls=0.5267 dfl=0.8682
+epoch 3/50 lr=9.912e-05 box=0.7894 cls=0.5203 dfl=0.8675
+epoch 4/50 lr=9.845e-05 box=0.7883 cls=0.5208 dfl=0.8686
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 1020.0309.3 MB/s, size: 59.0 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 784.3Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:55:48.325000 26592 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:55:52.639000 23736 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:55:56.968000 29116 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:56:01.268000 37388 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 59.4s/it 17.8s<45:32
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.1it/s 18.0s<21.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.7it/s 18.1s<11.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 4.9it/s 18.2s<8.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.6it/s 18.4s<7.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.0it/s 18.5s<6.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.5it/s 18.6s<6.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 6.9it/s 18.8s<5.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.1it/s 18.9s<5.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.0it/s 19.0s<5.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.2it/s 19.2s<5.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.4it/s 19.3s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.4it/s 19.4s<4.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.4it/s 19.6s<4.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.5it/s 19.7s<4.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.5it/s 19.8s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.6it/s 20.0s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.4it/s 20.1s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.5it/s 20.2s<3.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.5it/s 20.4s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.5it/s 20.5s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.3it/s 20.6s<3.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.4it/s 20.8s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.5it/s 20.9s<3.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.5it/s 21.0s<2.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.3it/s 21.2s<2.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.4it/s 21.3s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.5it/s 21.4s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.5it/s 21.6s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.4it/s 21.7s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.8s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.6it/s 22.0s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.6it/s 22.1s<1.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.4it/s 22.2s<1.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 22.4s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.5s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.5it/s 22.6s<1.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.3it/s 22.8s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.4it/s 22.9s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 23.1s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.5it/s 23.2s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.4it/s 23.3s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 23.5s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.4it/s 23.6s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.5it/s 23.7s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.4it/s 23.9s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 24.0s
+                   all       1496       8128      0.908      0.831      0.886      0.636
+Speed: 0.7ms preprocess, 2.3ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 5/50 lr=9.758e-05 box=0.786 cls=0.5201 dfl=0.8678 mAP50-95=0.6359 mAP50=0.8862 precision=0.9082 recall=0.8312
+epoch 6/50 lr=9.653e-05 box=0.7844 cls=0.5183 dfl=0.8682
+epoch 7/50 lr=9.529e-05 box=0.7833 cls=0.5176 dfl=0.8662
+epoch 8/50 lr=9.388e-05 box=0.7795 cls=0.5156 dfl=0.8652
+epoch 9/50 lr=9.23e-05 box=0.7857 cls=0.5183 dfl=0.8664
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 956.9184.1 MB/s, size: 48.6 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 627.5Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:59:07.332000 17032 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:59:11.583000 36272 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:59:15.860000 17764 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 16:59:20.111000 19616 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 58.4s/it 17.5s<44:47
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.2it/s 17.7s<20.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.8it/s 17.8s<11.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 4.9it/s 17.9s<8.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.7it/s 18.1s<7.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.1it/s 18.2s<6.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.6it/s 18.3s<6.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 6.9it/s 18.5s<5.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.1it/s 18.6s<5.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.1it/s 18.7s<5.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.2it/s 18.9s<5.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.4it/s 19.0s<4.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.5it/s 19.1s<4.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.3it/s 19.3s<4.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.5it/s 19.4s<4.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.6it/s 19.5s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.6it/s 19.7s<4.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.4it/s 19.8s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.5it/s 19.9s<3.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.6it/s 20.1s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.6it/s 20.2s<3.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.4it/s 20.3s<3.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.5it/s 20.5s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.6it/s 20.6s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.6it/s 20.7s<2.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.4it/s 20.9s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.5it/s 21.0s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.6it/s 21.1s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.5it/s 21.3s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.4it/s 21.4s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.5s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.7s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.5it/s 21.8s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.4it/s 21.9s<1.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 22.1s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.6it/s 22.2s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.6it/s 22.3s<1.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.4it/s 22.5s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.6s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.6it/s 22.7s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.6it/s 22.9s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.6it/s 23.0s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.6it/s 23.1s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.6it/s 23.3s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.6it/s 23.4s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.5it/s 23.5s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.6s
+                   all       1496       8128      0.903      0.834      0.893      0.637
+Speed: 0.7ms preprocess, 2.2ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 10/50 lr=9.055e-05 box=0.7813 cls=0.5161 dfl=0.8674 mAP50-95=0.6371 mAP50=0.8931 precision=0.903 recall=0.834
+epoch 11/50 lr=8.865e-05 box=0.7804 cls=0.5149 dfl=0.8657
+epoch 12/50 lr=8.659e-05 box=0.7759 cls=0.5124 dfl=0.8661
+epoch 13/50 lr=8.439e-05 box=0.7801 cls=0.5118 dfl=0.8636
+epoch 14/50 lr=8.206e-05 box=0.7761 cls=0.5111 dfl=0.8656
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 904.7298.0 MB/s, size: 46.3 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 784.3Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:02:24.628000 17852 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:02:28.872000 35044 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:02:33.142000 32292 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:02:37.359000 11160 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 58.0s/it 17.4s<44:30
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.3it/s 17.5s<19.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.9it/s 17.7s<11.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 5.0it/s 17.8s<8.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.6it/s 17.9s<7.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.2it/s 18.1s<6.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.7it/s 18.2s<6.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 7.0it/s 18.3s<5.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.0it/s 18.5s<5.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.2it/s 18.6s<5.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.3it/s 18.7s<4.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.4it/s 18.9s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.3it/s 19.0s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.4it/s 19.1s<4.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.5it/s 19.3s<4.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.5it/s 19.4s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.4it/s 19.5s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.5it/s 19.7s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.5it/s 19.8s<3.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.6it/s 19.9s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.4it/s 20.1s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.5it/s 20.2s<3.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.5it/s 20.3s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.6it/s 20.5s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.4it/s 20.6s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.5it/s 20.8s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.5it/s 20.9s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.5it/s 21.0s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.4it/s 21.2s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.4it/s 21.3s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.4s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.6s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.4it/s 21.7s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.5it/s 21.8s<1.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.4it/s 22.0s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.1s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.4it/s 22.2s<1.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.5it/s 22.4s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.5s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 22.6s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.3it/s 22.8s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.4it/s 22.9s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 23.0s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.5it/s 23.2s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.5it/s 23.3s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.5it/s 23.4s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.5s
+                   all       1496       8128      0.916      0.825      0.895      0.639
+Speed: 0.7ms preprocess, 2.2ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 15/50 lr=7.96e-05 box=0.7776 cls=0.5121 dfl=0.8639 mAP50-95=0.639 mAP50=0.8947 precision=0.9161 recall=0.8252
+epoch 16/50 lr=7.703e-05 box=0.775 cls=0.5094 dfl=0.8634
+epoch 17/50 lr=7.435e-05 box=0.7725 cls=0.5106 dfl=0.8666
+epoch 18/50 lr=7.158e-05 box=0.7695 cls=0.5078 dfl=0.8638
+epoch 19/50 lr=6.873e-05 box=0.7776 cls=0.5101 dfl=0.8656
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 988.3236.7 MB/s, size: 49.9 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 697.2Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:05:42.020000 6792 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:05:46.397000 27464 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:05:50.660000 11288 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:05:54.870000 34320 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 59.1s/it 17.7s<45:16
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.2it/s 17.9s<20.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.8it/s 18.0s<11.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 4.9it/s 18.1s<8.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.6it/s 18.3s<7.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.2it/s 18.4s<6.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.6it/s 18.5s<6.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 6.9it/s 18.7s<5.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.0it/s 18.8s<5.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.2it/s 18.9s<5.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.3it/s 19.1s<5.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.3it/s 19.2s<4.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.3it/s 19.3s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.3it/s 19.5s<4.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.4it/s 19.6s<4.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.5it/s 19.7s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.4it/s 19.9s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.4it/s 20.0s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.5it/s 20.1s<3.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.5it/s 20.3s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.5it/s 20.4s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.5it/s 20.5s<3.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.5it/s 20.7s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.6it/s 20.8s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.4it/s 20.9s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.5it/s 21.1s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.6it/s 21.2s<2.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.6it/s 21.3s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.4it/s 21.5s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.5it/s 21.6s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.7s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.9s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.3it/s 22.0s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.4it/s 22.1s<1.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 22.3s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.4s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.4it/s 22.5s<1.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.4it/s 22.7s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.8s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 22.9s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.4it/s 23.1s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.4it/s 23.2s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 23.3s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.5it/s 23.5s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.4it/s 23.6s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.5it/s 23.8s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.9s
+                   all       1496       8128      0.924      0.826      0.894      0.644
+Speed: 0.7ms preprocess, 2.3ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 20/50 lr=6.58e-05 box=0.7766 cls=0.5122 dfl=0.8637 mAP50-95=0.6435 mAP50=0.8942 precision=0.9239 recall=0.8255
+epoch 21/50 lr=6.282e-05 box=0.7734 cls=0.5089 dfl=0.8646
+epoch 22/50 lr=5.978e-05 box=0.7684 cls=0.5073 dfl=0.8647
+epoch 23/50 lr=5.671e-05 box=0.7727 cls=0.5081 dfl=0.8636
+epoch 24/50 lr=5.362e-05 box=0.7672 cls=0.5054 dfl=0.8652
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 896.0166.2 MB/s, size: 53.3 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 896.4Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:09:00.435000 32092 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:09:04.730000 25404 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:09:08.977000 19192 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:09:13.224000 21552 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 58.7s/it 17.6s<45:01
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.1it/s 17.8s<21.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.8it/s 17.9s<11.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 4.9it/s 18.0s<8.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.7it/s 18.2s<7.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.1it/s 18.3s<6.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.6it/s 18.4s<6.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 6.9it/s 18.6s<5.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.1it/s 18.7s<5.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.0it/s 18.8s<5.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.2it/s 19.0s<5.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.3it/s 19.1s<4.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.3it/s 19.2s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.2it/s 19.4s<4.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.3it/s 19.5s<4.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.3it/s 19.7s<4.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.4it/s 19.8s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.3it/s 19.9s<4.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.4it/s 20.1s<3.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.4it/s 20.2s<3.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.5it/s 20.3s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.3it/s 20.5s<3.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.4it/s 20.6s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.5it/s 20.7s<3.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.5it/s 20.9s<2.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.3it/s 21.0s<2.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.4it/s 21.1s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.4it/s 21.3s<2.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.5it/s 21.4s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.3it/s 21.5s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.4it/s 21.7s<2.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.8s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.4it/s 21.9s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.3it/s 22.1s<1.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.4it/s 22.2s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.4s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.5it/s 22.5s<1.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.4it/s 22.6s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.8s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 22.9s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.5it/s 23.0s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.5it/s 23.2s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 23.3s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.4it/s 23.4s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.4it/s 23.6s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.4it/s 23.7s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.8s
+                   all       1496       8128      0.923      0.818      0.896      0.644
+Speed: 0.7ms preprocess, 2.3ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 25/50 lr=5.051e-05 box=0.7727 cls=0.5098 dfl=0.8648 mAP50-95=0.6445 mAP50=0.8961 precision=0.9227 recall=0.8178
+epoch 26/50 lr=4.74e-05 box=0.7734 cls=0.5077 dfl=0.8642
+epoch 27/50 lr=4.43e-05 box=0.769 cls=0.5071 dfl=0.8631
+epoch 28/50 lr=4.123e-05 box=0.7665 cls=0.5057 dfl=0.8637
+epoch 29/50 lr=3.82e-05 box=0.7677 cls=0.5053 dfl=0.8627
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 940.6285.2 MB/s, size: 50.1 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 784.3Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:12:18.425000 14968 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:12:22.673000 31516 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:12:26.917000 37436 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:12:31.180000 9360 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 58.1s/it 17.4s<44:34
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.2it/s 17.6s<20.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.8it/s 17.7s<11.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 4.9it/s 17.8s<8.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.7it/s 18.0s<7.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.3it/s 18.1s<6.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.6it/s 18.2s<6.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 6.9it/s 18.4s<5.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.1it/s 18.5s<5.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.1it/s 18.6s<5.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.2it/s 18.8s<5.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.3it/s 18.9s<4.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.3it/s 19.0s<4.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.4it/s 19.2s<4.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.4it/s 19.3s<4.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.4it/s 19.4s<4.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.5it/s 19.6s<4.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.5it/s 19.7s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.5it/s 19.8s<3.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.5it/s 20.0s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.5it/s 20.1s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.5it/s 20.2s<3.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.5it/s 20.4s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.5it/s 20.5s<3.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.5it/s 20.6s<2.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.5it/s 20.8s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.5it/s 20.9s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.5it/s 21.0s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.5it/s 21.2s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.5it/s 21.3s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.4s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.6s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.5it/s 21.7s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.5it/s 21.8s<1.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 22.0s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.1s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.5it/s 22.2s<1.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.5it/s 22.4s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.5s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 22.6s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.5it/s 22.8s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.5it/s 22.9s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 23.0s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.5it/s 23.2s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.5it/s 23.3s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.5it/s 23.4s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.6s
+                   all       1496       8128      0.907      0.842      0.892      0.644
+Speed: 0.7ms preprocess, 2.2ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 30/50 lr=3.521e-05 box=0.7665 cls=0.5046 dfl=0.8638 mAP50-95=0.6442 mAP50=0.8916 precision=0.9072 recall=0.8417
+epoch 31/50 lr=3.229e-05 box=0.7666 cls=0.5036 dfl=0.8622
+epoch 32/50 lr=2.943e-05 box=0.7652 cls=0.5046 dfl=0.8628
+epoch 33/50 lr=2.666e-05 box=0.7648 cls=0.5044 dfl=0.864
+epoch 34/50 lr=2.398e-05 box=0.7573 cls=0.4994 dfl=0.8624
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 911.3284.9 MB/s, size: 50.9 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 627.5Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:15:36.238000 33052 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:15:40.488000 30360 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:15:44.735000 6836 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:15:49.153000 13216 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 58.6s/it 17.6s<44:58
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.2it/s 17.7s<20.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.8it/s 17.9s<11.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 4.9it/s 18.0s<8.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.5it/s 18.1s<7.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.1it/s 18.3s<6.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.6it/s 18.4s<6.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 6.9it/s 18.5s<5.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 6.9it/s 18.7s<5.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.1it/s 18.8s<5.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.3it/s 18.9s<5.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.3it/s 19.1s<4.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.2it/s 19.2s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.4it/s 19.3s<4.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.5it/s 19.5s<4.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.5it/s 19.6s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.4it/s 19.7s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.4it/s 19.9s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.5it/s 20.0s<3.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.5it/s 20.1s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.3it/s 20.3s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.4it/s 20.4s<3.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.5it/s 20.6s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.5it/s 20.7s<3.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.3it/s 20.8s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.4it/s 21.0s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.5it/s 21.1s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.6it/s 21.2s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.4it/s 21.4s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.5it/s 21.5s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.6s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.8s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.4it/s 21.9s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.4it/s 22.0s<1.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 22.2s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.3s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.4it/s 22.4s<1.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.4it/s 22.6s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.7s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 22.8s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.4it/s 23.0s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.4it/s 23.1s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 23.2s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.6it/s 23.4s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.6it/s 23.5s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.5it/s 23.6s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.7s
+                   all       1496       8128      0.914      0.834      0.893      0.646
+Speed: 0.7ms preprocess, 2.2ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 35/50 lr=2.141e-05 box=0.7674 cls=0.5051 dfl=0.8622 mAP50-95=0.6456 mAP50=0.8931 precision=0.9135 recall=0.8342
+epoch 36/50 lr=1.895e-05 box=0.7663 cls=0.5026 dfl=0.8615
+epoch 37/50 lr=1.662e-05 box=0.7612 cls=0.5029 dfl=0.8626
+epoch 38/50 lr=1.442e-05 box=0.7656 cls=0.5041 dfl=0.8636
+epoch 39/50 lr=1.236e-05 box=0.7627 cls=0.5035 dfl=0.8642
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 951.5209.0 MB/s, size: 50.6 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 896.4Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:18:54.170000 6012 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:18:58.416000 15428 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:02.663000 37332 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:06.833000 30152 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 57.6s/it 17.3s<44:11
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.1it/s 17.4s<21.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.8it/s 17.6s<11.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 4.9it/s 17.7s<8.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.6it/s 17.8s<7.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.2it/s 18.0s<6.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.6it/s 18.1s<6.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 6.9it/s 18.2s<5.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.0it/s 18.4s<5.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.1it/s 18.5s<5.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.3it/s 18.6s<5.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.3it/s 18.8s<4.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.2it/s 18.9s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.3it/s 19.0s<4.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.4it/s 19.2s<4.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.5it/s 19.3s<4.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.3it/s 19.5s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.4it/s 19.6s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.5it/s 19.7s<3.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.5it/s 19.9s<3.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.4it/s 20.0s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.5it/s 20.1s<3.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.5it/s 20.3s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.5it/s 20.4s<3.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.4it/s 20.5s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.4it/s 20.7s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.4it/s 20.8s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.5it/s 20.9s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.3it/s 21.1s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.4it/s 21.2s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.3s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.5s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.3it/s 21.6s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.4it/s 21.7s<1.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 21.9s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.0s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.4it/s 22.1s<1.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.5it/s 22.3s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.4s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 22.5s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.4it/s 22.7s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.5it/s 22.8s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 22.9s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.4it/s 23.1s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.4it/s 23.2s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.5it/s 23.3s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.5s
+                   all       1496       8128      0.919      0.834      0.892      0.645
+Speed: 0.7ms preprocess, 2.2ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 40/50 lr=1.046e-05 box=0.7633 cls=0.5024 dfl=0.8627 mAP50-95=0.6448 mAP50=0.892 precision=0.9187 recall=0.8339
+Closing mosaic
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:19.406000 7504 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:23.888000 7948 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:28.269000 31324 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:32.548000 31536 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:36.772000 35736 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:41.026000 15128 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:45.295000 13052 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:49.529000 2508 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:53.784000 33836 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:19:58.153000 31216 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:20:02.461000 24756 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:20:06.732000 26296 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:20:11.046000 6804 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:20:15.327000 18764 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:20:19.605000 28420 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:20:23.848000 4564 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will not 
+work for triton kernels
+epoch 41/50 lr=8.71e-06 box=0.6976 cls=0.4644 dfl=0.8471
+epoch 42/50 lr=7.127e-06 box=0.701 cls=0.465 dfl=0.8462
+epoch 43/50 lr=5.715e-06 box=0.6963 cls=0.4623 dfl=0.8448
+epoch 44/50 lr=4.479e-06 box=0.6953 cls=0.4626 dfl=0.8451
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 913.6192.4 MB/s, size: 45.8 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 784.3Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:23:15.464000 30336 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:23:19.677000 22232 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:23:23.905000 29140 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:23:28.098000 16548 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 57.9s/it 17.4s<44:23
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.3it/s 17.5s<19.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 3.9it/s 17.6s<11.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 5.0it/s 17.8s<8.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.6it/s 17.9s<7.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.3it/s 18.0s<6.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.7it/s 18.2s<6.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 7.0it/s 18.3s<5.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.0it/s 18.4s<5.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.2it/s 18.6s<5.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.3it/s 18.7s<4.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.4it/s 18.8s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.4it/s 19.0s<4.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.5it/s 19.1s<4.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.6it/s 19.2s<4.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.7it/s 19.3s<4.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.6it/s 19.5s<4.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.6it/s 19.6s<3.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.6it/s 19.7s<3.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.6it/s 19.9s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.6it/s 20.0s<3.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.6it/s 20.1s<3.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.6it/s 20.3s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.6it/s 20.4s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.4it/s 20.5s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.5it/s 20.7s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.5it/s 20.8s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.5it/s 20.9s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.4it/s 21.1s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.4it/s 21.2s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.3s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.5s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.4it/s 21.6s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.4it/s 21.8s<1.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 21.9s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.0s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.4it/s 22.2s<1.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.5it/s 22.3s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.4s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 22.6s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.5it/s 22.7s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.5it/s 22.8s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.5it/s 23.0s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.6it/s 23.1s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.4it/s 23.2s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.5it/s 23.4s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.5s
+                   all       1496       8128       0.91      0.837      0.893      0.641
+Speed: 0.7ms preprocess, 2.3ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 45/50 lr=3.425e-06 box=0.6947 cls=0.461 dfl=0.8427 mAP50-95=0.6414 mAP50=0.8925 precision=0.9096 recall=0.8372
+epoch 46/50 lr=2.557e-06 box=0.6962 cls=0.4637 dfl=0.8457
+epoch 47/50 lr=1.878e-06 box=0.696 cls=0.4616 dfl=0.8433
+epoch 48/50 lr=1.391e-06 box=0.694 cls=0.4608 dfl=0.8424
+epoch 49/50 lr=1.098e-06 box=0.6971 cls=0.462 dfl=0.8445
+WARNING 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.163  Python-3.13.15 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 5080, 16275MiB)
+[34m[1mval: [0mFast image access  (ping: 0.00.0 ms, read: 1011.6155.6 MB/s, size: 50.5 KB)
+
+[K[34m[1mval: [0mScanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\val.cache... 1496 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1496/1496 697.2Mit/s 0.0s
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:26:25.235000 34596 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:26:29.448000 32240 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:26:33.636000 16952 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1491: FutureWarning: 
+`torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1017 17:26:37.842000 35872 Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting will 
+not work for triton kernels
+
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 2% ──────────── 1/47 58.1s/it 17.4s<44:33
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 4% ╸─────────── 2/47 2.3it/s 17.6s<19.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 6% ╸─────────── 3/47 4.0it/s 17.7s<11.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 8% ━─────────── 4/47 5.1it/s 17.8s<8.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 10% ━─────────── 5/47 5.7it/s 18.0s<7.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 12% ━╸────────── 6/47 6.3it/s 18.1s<6.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 14% ━╸────────── 7/47 6.7it/s 18.2s<6.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 17% ━━────────── 8/47 7.0it/s 18.4s<5.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 19% ━━────────── 9/47 7.1it/s 18.5s<5.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 21% ━━╸───────── 10/47 7.3it/s 18.6s<5.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 23% ━━╸───────── 11/47 7.4it/s 18.7s<4.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 25% ━━━───────── 12/47 7.5it/s 18.9s<4.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 27% ━━━───────── 13/47 7.4it/s 19.0s<4.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 29% ━━━╸──────── 14/47 7.5it/s 19.1s<4.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 31% ━━━╸──────── 15/47 7.6it/s 19.3s<4.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 34% ━━━━──────── 16/47 7.6it/s 19.4s<4.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 36% ━━━━──────── 17/47 7.4it/s 19.5s<4.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 38% ━━━━╸─────── 18/47 7.5it/s 19.7s<3.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 40% ━━━━╸─────── 19/47 7.6it/s 19.8s<3.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 42% ━━━━━─────── 20/47 7.6it/s 19.9s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 44% ━━━━━─────── 21/47 7.4it/s 20.1s<3.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 46% ━━━━━╸────── 22/47 7.5it/s 20.2s<3.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 48% ━━━━━╸────── 23/47 7.6it/s 20.3s<3.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 51% ━━━━━━────── 24/47 7.6it/s 20.5s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 53% ━━━━━━────── 25/47 7.4it/s 20.6s<3.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 55% ━━━━━━╸───── 26/47 7.5it/s 20.7s<2.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 57% ━━━━━━╸───── 27/47 7.5it/s 20.9s<2.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 59% ━━━━━━━───── 28/47 7.6it/s 21.0s<2.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 61% ━━━━━━━───── 29/47 7.5it/s 21.1s<2.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 63% ━━━━━━━╸──── 30/47 7.5it/s 21.3s<2.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 65% ━━━━━━━╸──── 31/47 7.5it/s 21.4s<2.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 68% ━━━━━━━━──── 32/47 7.5it/s 21.5s<2.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 70% ━━━━━━━━──── 33/47 7.5it/s 21.7s<1.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 72% ━━━━━━━━╸─── 34/47 7.5it/s 21.8s<1.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 74% ━━━━━━━━╸─── 35/47 7.5it/s 21.9s<1.6s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 76% ━━━━━━━━━─── 36/47 7.5it/s 22.1s<1.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 78% ━━━━━━━━━─── 37/47 7.4it/s 22.2s<1.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 80% ━━━━━━━━━╸── 38/47 7.5it/s 22.3s<1.2s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 82% ━━━━━━━━━╸── 39/47 7.5it/s 22.5s<1.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 85% ━━━━━━━━━━── 40/47 7.5it/s 22.6s<0.9s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 87% ━━━━━━━━━━── 41/47 7.4it/s 22.8s<0.8s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 89% ━━━━━━━━━━╸─ 42/47 7.5it/s 22.9s<0.7s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 91% ━━━━━━━━━━╸─ 43/47 7.6it/s 23.0s<0.5s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 93% ━━━━━━━━━━━─ 44/47 7.6it/s 23.1s<0.4s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 95% ━━━━━━━━━━━─ 45/47 7.5it/s 23.3s<0.3s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 97% ━━━━━━━━━━━╸ 46/47 7.5it/s 23.4s<0.1s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 47/47 2.0it/s 23.5s
+                   all       1496       8128      0.918      0.831      0.895      0.645
+Speed: 0.7ms preprocess, 2.3ms inference, 0.0ms loss, 0.5ms postprocess per image
+epoch 50/50 lr=1e-06 box=0.6967 cls=0.4621 dfl=0.8467 mAP50-95=0.6451 mAP50=0.8952 precision=0.9184 recall=0.8308
+Best val mAP50-95 0.6456 at epoch 35
+Inserted 194 quantizers
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\quantization\nn\modules\quant_module.py:111: 
+UserWarning: Could not identify the device for TensorQuantizer states of model.9.m. Please move the model to the right 
+device now. This can be done by calling `model.to(device)`.
+  warnings.warn(
+C:\Users\dxu1\Desktop\Dissertation\PTQ\modelopt_qat_63conv.py:117: DeprecationWarning: You are using the legacy 
+TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the 
+default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting 
+control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(wrapper, dummy, str(onnx_path), opset_version=17, dynamo=False,
+ONNX 8n_float32_int8_qat_63conv.onnx: output (1, 12, 8400), {'convs': 64, 'convs_with_input_and_weight_qdq': 63, 'convs_without_qdq': ['/model/model.22/dfl/conv/Conv'], 'QuantizeLinear': 126, 'DequantizeLinear': 126}
+trtexec not found under C:\Users\dxu1\AppData\Local\NVIDIA\TensorRT-11.3.0.99; engine skipped. Build it later with --export-only --trt <dir>
