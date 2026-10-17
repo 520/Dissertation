@@ -1,0 +1,57 @@
+{
+  "source": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\baseline\\8n_float32.pt",
+  "source_sha256": "b4c22bd2cdc3c73e9e27732a88673fdc4389aed690944d4ca6a7e80dc15863cc",
+  "modelopt": "0.47.0",
+  "torch": "2.14.0+cu130",
+  "bn_fused": true,
+  "autocast": {
+    "low_precision_type": "fp16",
+    "keep_io_types": true,
+    "data_max": 512,
+    "calibration": {
+      "images": 32,
+      "split": "KITTI train",
+      "seed": 42
+    }
+  },
+  "onnx": {
+    "fp32_file": "8n_float32_fp16_fp32.onnx",
+    "file": "8n_float32_fp16.onnx",
+    "opset": 17,
+    "output_shape": [
+      1,
+      12,
+      8400
+    ],
+    "conv_weight_types": {
+      "FLOAT16": 64
+    },
+    "casts": 4,
+    "nodes_kept_fp32": [
+      "/model/model.10/Constant",
+      "/model/model.13/Constant",
+      "/model/model.22/Constant_15",
+      "/model/model.22/Mul_2"
+    ]
+  },
+  "trtexec": [
+    "C:\\Users\\dxu1\\AppData\\Local\\NVIDIA\\TensorRT-11.3.0.99\\bin\\trtexec.exe",
+    "--onnx=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\fp16\\modelopt\\8n_float32_fp16.onnx",
+    "--saveEngine=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\fp16\\modelopt\\8n_float32_fp16.engine",
+    "--profilingVerbosity=detailed",
+    "--dumpLayerInfo",
+    "--exportLayerInfo=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\fp16\\modelopt\\8n_float32_fp16.layers.json"
+  ],
+  "engine": {
+    "file": "8n_float32_fp16.engine",
+    "size_mb": 53.163772,
+    "conv_layers": 61,
+    "weight_types": {
+      "Half": 61
+    },
+    "weight/input/output": {
+      "Half/Half/Half": 61
+    },
+    "engine_weight_bytes": 6014672
+  }
+}
