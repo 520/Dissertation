@@ -55,6 +55,21 @@ def engine_weights(engine, layer_info=None):
                 counts[f"{key}/{entry['Type']}"] = counts.get(f"{key}/{entry['Type']}", 0) + entry['Count']
                 total += entry['Count'] * BYTES[entry['Type']]
     if not total:
+        # Myelin-compiled engines (e.g. sm120) list weights as 'Constants' of convolution ('correlation') layers
+        # instead of Weights/Bias. Constants of other kernels are not weights (e.g. a [1,29,640,640] zero pad that
+        # widens the 3-channel input to 32 channels for INT8 vectorized convolution).
+        for layer in layers:
+            if not isinstance(layer, dict) or layer.get('LayerType') != 'correlation':
+                continue
+            for entry in layer.get('Constants', []):
+                count = 1
+                for d in entry['Dimensions']:
+                    count *= d
+                key = f"Constants/{entry['Datatype']}"
+                counts[key] = counts.get(key, 0) + count
+                total += count * BYTES[entry['Datatype']]
+        source += ' (Myelin constants)' if total else ''
+    if not total:
         raise RuntimeError(f'{engine.name}: no weight counts in the engine (built without '
                            'profilingVerbosity=detailed). Pass --layer-info from a detailed trtexec build.')
     return {'bytes': total, 'counts': counts, 'source': source}
