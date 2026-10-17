@@ -1,0 +1,391 @@
+{
+  "source": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\baseline\\8n_float32.pt",
+  "source_sha256": "b4c22bd2cdc3c73e9e27732a88673fdc4389aed690944d4ca6a7e80dc15863cc",
+  "modelopt": "0.47.0",
+  "torch": "2.14.0+cu130",
+  "config": {
+    "quant_cfg": {
+      "*": {
+        "enable": false
+      },
+      "*weight_quantizer": {
+        "num_bits": 8,
+        "axis": 0
+      },
+      "*input_quantizer": {
+        "num_bits": 8,
+        "axis": null
+      }
+    },
+    "algorithm": "max"
+  },
+  "bn_fused_before_quantization": true,
+  "calibration": {
+    "images": 512,
+    "split": "KITTI train",
+    "seed": 42,
+    "imgsz": 640,
+    "augment": false,
+    "algorithm": "max"
+  },
+  "calibration_seconds": 104.98466379998717,
+  "non_conv_quantizers_disabled": [
+    "model.9.m"
+  ],
+  "onnx": {
+    "file": "8n_float32_int8_all64.onnx",
+    "opset": 17,
+    "output_shape": [
+      1,
+      12,
+      8400
+    ],
+    "convs": 64,
+    "convs_with_input_and_weight_qdq": 64,
+    "QuantizeLinear": 128,
+    "DequantizeLinear": 128
+  },
+  "trtexec": [
+    "C:\\Users\\dxu1\\AppData\\Local\\NVIDIA\\TensorRT-11.3.0.99\\bin\\trtexec.exe",
+    "--onnx=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\int8\\modelopt_all64\\8n_float32_int8_all64.onnx",
+    "--saveEngine=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\int8\\modelopt_all64\\8n_float32_int8_all64.engine",
+    "--profilingVerbosity=detailed",
+    "--dumpLayerInfo",
+    "--exportLayerInfo=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\int8\\modelopt_all64\\8n_float32_int8_all64.layers.json"
+  ],
+  "engine": {
+    "file": "8n_float32_int8_all64.engine",
+    "size_mb": 29.588668,
+    "conv_layers": 64,
+    "weight_types": {
+      "Int8": 64
+    },
+    "weight/input/output": {
+      "Int8/Int8/Int8": 39,
+      "Int8/Int8/Float": 25
+    },
+    "engine_weight_bytes": 3023456
+  },
+  "quantizer_amax": {
+    "model.0.conv": {
+      "input_amax": 1.0,
+      "weight_amax_min": 3.667591094970703,
+      "weight_amax_max": 23.925945281982422
+    },
+    "model.1.conv": {
+      "input_amax": 47.750877380371094,
+      "weight_amax_min": 0.3546781837940216,
+      "weight_amax_max": 1.8256618976593018
+    },
+    "model.2.cv1.conv": {
+      "input_amax": 194.72509765625,
+      "weight_amax_min": 0.09933081269264221,
+      "weight_amax_max": 0.9169754981994629
+    },
+    "model.2.cv2.conv": {
+      "input_amax": 49.35181427001953,
+      "weight_amax_min": 0.1587551385164261,
+      "weight_amax_max": 0.6651411056518555
+    },
+    "model.2.m.0.cv1.conv": {
+      "input_amax": 24.942665100097656,
+      "weight_amax_min": 0.43269219994544983,
+      "weight_amax_max": 1.5664469003677368
+    },
+    "model.2.m.0.cv2.conv": {
+      "input_amax": 37.18695068359375,
+      "weight_amax_min": 0.15293069183826447,
+      "weight_amax_max": 0.49693483114242554
+    },
+    "model.3.conv": {
+      "input_amax": 21.55009651184082,
+      "weight_amax_min": 0.0908307209610939,
+      "weight_amax_max": 0.29398784041404724
+    },
+    "model.4.cv1.conv": {
+      "input_amax": 13.607670783996582,
+      "weight_amax_min": 0.18867169320583344,
+      "weight_amax_max": 1.1598622798919678
+    },
+    "model.4.cv2.conv": {
+      "input_amax": 15.05463981628418,
+      "weight_amax_min": 0.10652431100606918,
+      "weight_amax_max": 0.5176817178726196
+    },
+    "model.4.m.0.cv1.conv": {
+      "input_amax": 7.291341781616211,
+      "weight_amax_min": 0.15287178754806519,
+      "weight_amax_max": 0.6641103029251099
+    },
+    "model.4.m.0.cv2.conv": {
+      "input_amax": 7.1292948722839355,
+      "weight_amax_min": 0.23233051598072052,
+      "weight_amax_max": 0.6128023266792297
+    },
+    "model.4.m.1.cv1.conv": {
+      "input_amax": 9.598609924316406,
+      "weight_amax_min": 0.12976834177970886,
+      "weight_amax_max": 0.3857470452785492
+    },
+    "model.4.m.1.cv2.conv": {
+      "input_amax": 6.732435703277588,
+      "weight_amax_min": 0.48495784401893616,
+      "weight_amax_max": 1.0973423719406128
+    },
+    "model.5.conv": {
+      "input_amax": 8.859468460083008,
+      "weight_amax_min": 0.0950593650341034,
+      "weight_amax_max": 0.5162935256958008
+    },
+    "model.6.cv1.conv": {
+      "input_amax": 9.808819770812988,
+      "weight_amax_min": 0.19251465797424316,
+      "weight_amax_max": 2.2862727642059326
+    },
+    "model.6.cv2.conv": {
+      "input_amax": 15.838260650634766,
+      "weight_amax_min": 0.09810186922550201,
+      "weight_amax_max": 0.4968690872192383
+    },
+    "model.6.m.0.cv1.conv": {
+      "input_amax": 7.23781681060791,
+      "weight_amax_min": 0.16798509657382965,
+      "weight_amax_max": 0.8026662468910217
+    },
+    "model.6.m.0.cv2.conv": {
+      "input_amax": 11.265762329101562,
+      "weight_amax_min": 0.10509242862462997,
+      "weight_amax_max": 0.5965535044670105
+    },
+    "model.6.m.1.cv1.conv": {
+      "input_amax": 9.854223251342773,
+      "weight_amax_min": 0.07207399606704712,
+      "weight_amax_max": 0.46867960691452026
+    },
+    "model.6.m.1.cv2.conv": {
+      "input_amax": 9.166045188903809,
+      "weight_amax_min": 0.25111037492752075,
+      "weight_amax_max": 2.3660714626312256
+    },
+    "model.7.conv": {
+      "input_amax": 9.265369415283203,
+      "weight_amax_min": 0.09034568816423416,
+      "weight_amax_max": 0.4670593738555908
+    },
+    "model.8.cv1.conv": {
+      "input_amax": 8.227888107299805,
+      "weight_amax_min": 0.06732137501239777,
+      "weight_amax_max": 0.901519775390625
+    },
+    "model.8.cv2.conv": {
+      "input_amax": 20.27852439880371,
+      "weight_amax_min": 0.1311468482017517,
+      "weight_amax_max": 0.3823801279067993
+    },
+    "model.8.m.0.cv1.conv": {
+      "input_amax": 10.285599708557129,
+      "weight_amax_min": 0.07520586252212524,
+      "weight_amax_max": 0.946723461151123
+    },
+    "model.8.m.0.cv2.conv": {
+      "input_amax": 11.98780632019043,
+      "weight_amax_min": 0.15074151754379272,
+      "weight_amax_max": 1.3333607912063599
+    },
+    "model.9.cv1.conv": {
+      "input_amax": 11.1323823928833,
+      "weight_amax_min": 0.1814204752445221,
+      "weight_amax_max": 0.6046195030212402
+    },
+    "model.9.cv2.conv": {
+      "input_amax": 9.668708801269531,
+      "weight_amax_min": 0.0491940937936306,
+      "weight_amax_max": 0.390256404876709
+    },
+    "model.12.cv1.conv": {
+      "input_amax": 9.265369415283203,
+      "weight_amax_min": 0.20804831385612488,
+      "weight_amax_max": 1.3380465507507324
+    },
+    "model.12.cv2.conv": {
+      "input_amax": 13.774394989013672,
+      "weight_amax_min": 0.14116322994232178,
+      "weight_amax_max": 0.8732457756996155
+    },
+    "model.12.m.0.cv1.conv": {
+      "input_amax": 10.287471771240234,
+      "weight_amax_min": 0.11683523654937744,
+      "weight_amax_max": 0.42215046286582947
+    },
+    "model.12.m.0.cv2.conv": {
+      "input_amax": 9.46367073059082,
+      "weight_amax_min": 0.17350530624389648,
+      "weight_amax_max": 0.5615189075469971
+    },
+    "model.15.cv1.conv": {
+      "input_amax": 13.279587745666504,
+      "weight_amax_min": 0.1485873907804489,
+      "weight_amax_max": 0.7679949998855591
+    },
+    "model.15.cv2.conv": {
+      "input_amax": 8.575630187988281,
+      "weight_amax_min": 0.17707201838493347,
+      "weight_amax_max": 1.0329915285110474
+    },
+    "model.15.m.0.cv1.conv": {
+      "input_amax": 8.200835227966309,
+      "weight_amax_min": 0.1274193376302719,
+      "weight_amax_max": 0.5875197649002075
+    },
+    "model.15.m.0.cv2.conv": {
+      "input_amax": 6.155388832092285,
+      "weight_amax_min": 0.4068583548069,
+      "weight_amax_max": 1.275053858757019
+    },
+    "model.16.conv": {
+      "input_amax": 8.396686553955078,
+      "weight_amax_min": 0.1633012890815735,
+      "weight_amax_max": 0.5612550973892212
+    },
+    "model.18.cv1.conv": {
+      "input_amax": 14.124883651733398,
+      "weight_amax_min": 0.14221473038196564,
+      "weight_amax_max": 1.1114542484283447
+    },
+    "model.18.cv2.conv": {
+      "input_amax": 15.114354133605957,
+      "weight_amax_min": 0.10616607218980789,
+      "weight_amax_max": 1.5831481218338013
+    },
+    "model.18.m.0.cv1.conv": {
+      "input_amax": 13.580371856689453,
+      "weight_amax_min": 0.03508494421839714,
+      "weight_amax_max": 0.41835859417915344
+    },
+    "model.18.m.0.cv2.conv": {
+      "input_amax": 9.818307876586914,
+      "weight_amax_min": 0.2900804281234741,
+      "weight_amax_max": 1.3133525848388672
+    },
+    "model.19.conv": {
+      "input_amax": 15.499435424804688,
+      "weight_amax_min": 0.11313007026910782,
+      "weight_amax_max": 0.617531418800354
+    },
+    "model.21.cv1.conv": {
+      "input_amax": 10.059924125671387,
+      "weight_amax_min": 0.19141440093517303,
+      "weight_amax_max": 1.214626431465149
+    },
+    "model.21.cv2.conv": {
+      "input_amax": 14.812602996826172,
+      "weight_amax_min": 0.11256950348615646,
+      "weight_amax_max": 0.887849748134613
+    },
+    "model.21.m.0.cv1.conv": {
+      "input_amax": 13.25816822052002,
+      "weight_amax_min": 0.04538311809301376,
+      "weight_amax_max": 0.6486178636550903
+    },
+    "model.21.m.0.cv2.conv": {
+      "input_amax": 14.260172843933105,
+      "weight_amax_min": 0.101473368704319,
+      "weight_amax_max": 0.36929067969322205
+    },
+    "model.22.cv2.0.0.conv": {
+      "input_amax": 8.396686553955078,
+      "weight_amax_min": 0.09369274228811264,
+      "weight_amax_max": 0.9577716588973999
+    },
+    "model.22.cv2.0.1.conv": {
+      "input_amax": 27.1826171875,
+      "weight_amax_min": 0.156611368060112,
+      "weight_amax_max": 1.8083370923995972
+    },
+    "model.22.cv2.0.2": {
+      "input_amax": 56.32322311401367,
+      "weight_amax_min": 0.148681640625,
+      "weight_amax_max": 1.4296875
+    },
+    "model.22.cv2.1.0.conv": {
+      "input_amax": 15.499435424804688,
+      "weight_amax_min": 0.12668167054653168,
+      "weight_amax_max": 0.7545607089996338
+    },
+    "model.22.cv2.1.1.conv": {
+      "input_amax": 35.11126708984375,
+      "weight_amax_min": 0.09453947097063065,
+      "weight_amax_max": 1.0071840286254883
+    },
+    "model.22.cv2.1.2": {
+      "input_amax": 55.53724670410156,
+      "weight_amax_min": 0.050048828125,
+      "weight_amax_max": 1.66796875
+    },
+    "model.22.cv2.2.0.conv": {
+      "input_amax": 15.733013153076172,
+      "weight_amax_min": 0.0476437583565712,
+      "weight_amax_max": 0.28545093536376953
+    },
+    "model.22.cv2.2.1.conv": {
+      "input_amax": 23.08487319946289,
+      "weight_amax_min": 0.053155917674303055,
+      "weight_amax_max": 0.6589486002922058
+    },
+    "model.22.cv2.2.2": {
+      "input_amax": 22.75454330444336,
+      "weight_amax_min": 0.037445068359375,
+      "weight_amax_max": 0.56689453125
+    },
+    "model.22.cv3.0.0.conv": {
+      "input_amax": 8.396686553955078,
+      "weight_amax_min": 0.14123740792274475,
+      "weight_amax_max": 0.9935140013694763
+    },
+    "model.22.cv3.0.1.conv": {
+      "input_amax": 12.051165580749512,
+      "weight_amax_min": 0.09797981381416321,
+      "weight_amax_max": 1.6043740510940552
+    },
+    "model.22.cv3.0.2": {
+      "input_amax": 23.484676361083984,
+      "weight_amax_min": 0.908203125,
+      "weight_amax_max": 1.236328125
+    },
+    "model.22.cv3.1.0.conv": {
+      "input_amax": 15.499435424804688,
+      "weight_amax_min": 0.12142976373434067,
+      "weight_amax_max": 1.523468255996704
+    },
+    "model.22.cv3.1.1.conv": {
+      "input_amax": 16.59175682067871,
+      "weight_amax_min": 0.08023418486118317,
+      "weight_amax_max": 1.9207231998443604
+    },
+    "model.22.cv3.1.2": {
+      "input_amax": 40.85301208496094,
+      "weight_amax_min": 0.6923828125,
+      "weight_amax_max": 1.0791015625
+    },
+    "model.22.cv3.2.0.conv": {
+      "input_amax": 15.733013153076172,
+      "weight_amax_min": 0.057823874056339264,
+      "weight_amax_max": 0.4492368996143341
+    },
+    "model.22.cv3.2.1.conv": {
+      "input_amax": 10.625436782836914,
+      "weight_amax_min": 0.07477083802223206,
+      "weight_amax_max": 0.3245887756347656
+    },
+    "model.22.cv3.2.2": {
+      "input_amax": 10.397237777709961,
+      "weight_amax_min": 0.5068359375,
+      "weight_amax_max": 0.78369140625
+    },
+    "model.22.dfl.conv": {
+      "input_amax": 1.0,
+      "weight_amax_min": 15.0,
+      "weight_amax_max": 15.0
+    }
+  }
+}

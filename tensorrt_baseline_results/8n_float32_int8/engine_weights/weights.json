@@ -1,0 +1,7 @@
+{
+  "engine": "original/yolov8n_kitti/8n_float32_int8.engine",
+  "method": "sum(Count x bytes) over Weights/Bias of every layer, from trtexec --exportLayerInfo of a profilingVerbosity=detailed build of the same Q/DQ ONNX (original/yolov8n_kitti/8n_float32_int8.int8.onnx); the benchmarked engine has layer names only. Same 57 INT8-quantized weight tensors in both engines.",
+  "counts": {"Weights/Int8": 2987952, "Weights/Half": 13840, "Bias/Float": 5200, "Bias/Half": 216},
+  "weights_mb": 3.0369,
+  "replaces_pt_based_value_mb": 6.2434
+}
