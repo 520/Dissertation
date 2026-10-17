@@ -1,0 +1,99 @@
+{
+  "source": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\baseline\\8n_float32.pt",
+  "ratio": 0.2,
+  "min_channels": 8,
+  "importance": "sum |W| over (in, kh, kw) of the unfused Conv2d weight, ranked globally; tied/paired positions scored by mean L1",
+  "fine_tuned": false,
+  "prunable_channels": 5200,
+  "target_removed": 1040,
+  "removed": 1040,
+  "last_removed_unit_score": 13.482105255126953,
+  "params_before": 3012408,
+  "params_after": 1762706,
+  "param_reduction": 0.4148515074983202,
+  "layers_at_min_channels": [
+    "model.0.conv",
+    "model.2.m.0.cv2.conv",
+    "model.2.cv2.conv",
+    "model.15.cv2.conv",
+    "model.18.cv2.conv",
+    "model.21.cv2.conv",
+    "model.22.cv2.2.1.conv"
+  ],
+  "layers_untouched": [
+    "model.2.m.0.cv1.conv",
+    "model.3.conv",
+    "model.4.m.0.cv1.conv",
+    "model.4.m.1.cv1.conv",
+    "model.5.conv",
+    "model.6.cv1.conv",
+    "model.6.m.0.cv1.conv",
+    "model.6.m.0.cv2.conv",
+    "model.6.m.1.cv1.conv",
+    "model.6.m.1.cv2.conv",
+    "model.6.cv2.conv",
+    "model.7.conv",
+    "model.8.cv1.conv",
+    "model.8.m.0.cv1.conv",
+    "model.8.m.0.cv2.conv",
+    "model.9.cv2.conv",
+    "model.12.cv1.conv",
+    "model.12.m.0.cv1.conv",
+    "model.12.m.0.cv2.conv",
+    "model.15.cv1.conv",
+    "model.15.m.0.cv1.conv",
+    "model.15.m.0.cv2.conv",
+    "model.16.conv",
+    "model.18.m.0.cv1.conv",
+    "model.18.m.0.cv2.conv",
+    "model.22.cv2.0.0.conv",
+    "model.22.cv2.0.1.conv",
+    "model.22.cv2.0.2",
+    "model.22.cv3.0.0.conv",
+    "model.22.cv3.0.1.conv",
+    "model.22.cv3.0.2",
+    "model.22.cv2.1.0.conv",
+    "model.22.cv2.1.1.conv",
+    "model.22.cv2.1.2",
+    "model.22.cv3.1.0.conv",
+    "model.22.cv3.1.1.conv",
+    "model.22.cv3.1.2",
+    "model.22.cv2.2.0.conv",
+    "model.22.cv2.2.2",
+    "model.22.cv3.2.0.conv",
+    "model.22.cv3.2.2"
+  ],
+  "torch_output_mean_abs_change_vs_original": 9.96521282196045,
+  "onnx": {
+    "file": "8n_float32_l1_global20.onnx",
+    "opset": 17,
+    "bn_fused": true,
+    "input": [
+      1,
+      3,
+      640,
+      640
+    ]
+  },
+  "trtexec": [
+    "C:\\Users\\dxu1\\AppData\\Local\\NVIDIA\\TensorRT-11.3.0.99\\bin\\trtexec.exe",
+    "--onnx=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_global20\\8n_float32_l1_global20.onnx",
+    "--saveEngine=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_global20\\8n_float32_l1_global20.engine",
+    "--profilingVerbosity=detailed",
+    "--dumpLayerInfo",
+    "--exportLayerInfo=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_global20\\8n_float32_l1_global20.layers.json"
+  ],
+  "engine": {
+    "file": "8n_float32_l1_global20.engine",
+    "size_mb": 74.095644
+  },
+  "engine_vs_fused_torch_random_input": {
+    "output_shape": [
+      1,
+      12,
+      8400
+    ],
+    "max_abs_error": 0.09937667846679688,
+    "mean_abs_error": 0.002451174193993211
+  }
+}

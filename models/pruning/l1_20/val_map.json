@@ -1,0 +1,112 @@
+{
+  "baseline_pt": {
+    "model": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\baseline\\8n_float32.pt",
+    "map50_95": 0.6753144215381199,
+    "map50": 0.9050345689471957,
+    "map75": 0.7683653889530435,
+    "per_class_map50_95": {
+      "car": 0.8157877362992876,
+      "van": 0.7714498968519425,
+      "truck": 0.8399966725433146,
+      "pedestrian": 0.49227710948550135,
+      "person_sitting": 0.41406374540733937,
+      "cyclist": 0.5881750819200403,
+      "tram": 0.7717091942830828,
+      "misc": 0.7090559355144506
+    },
+    "speed_ms": {
+      "preprocess": 0.21552560170228408,
+      "inference": 2.5641928475323996,
+      "loss": 0.0003437831609405298,
+      "postprocess": 0.7125820855941265
+    }
+  },
+  "pruned_pt": {
+    "model": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_20\\8n_float32_l1_prune20.pt",
+    "map50_95": 6.266066838046272e-05,
+    "map50": 0.0003125,
+    "map75": 4.016709511568123e-07,
+    "per_class_map50_95": {
+      "car": 0.0005012853470437018,
+      "van": 0.0,
+      "truck": 0.0,
+      "pedestrian": 0.0,
+      "person_sitting": 0.0,
+      "cyclist": 0.0,
+      "tram": 0.0,
+      "misc": 0.0
+    },
+    "speed_ms": {
+      "preprocess": 0.20958890408192846,
+      "inference": 2.440914104071341,
+      "loss": 0.0003417775646240555,
+      "postprocess": 0.7066499331516567
+    }
+  },
+  "pruned_engine": {
+    "model": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_20\\8n_float32_l1_prune20.engine",
+    "map50_95": 6.266066838046272e-05,
+    "map50": 0.0003125,
+    "map75": 4.016709511568123e-07,
+    "per_class_map50_95": {
+      "car": 0.0005012853470437018,
+      "van": 0.0,
+      "truck": 0.0,
+      "pedestrian": 0.0,
+      "Person_sitting": 0.0,
+      "cyclist": 0.0,
+      "tram": 0.0,
+      "misc": 0.0
+    },
+    "speed_ms": {
+      "preprocess": 0.33135608493544677,
+      "inference": 2.5317536082266914,
+      "loss": 0.00458141339987636,
+      "postprocess": 0.9971969925305423
+    }
+  },
+  "global_pt": {
+    "model": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_global20\\8n_float32_l1_global20.pt",
+    "map50_95": 4.414164404709155e-08,
+    "map50": 1.8423166132367283e-07,
+    "map75": 4.763392755070155e-09,
+    "per_class_map50_95": {
+      "car": 2.7340776293141436e-07,
+      "van": 7.972538944531803e-08,
+      "truck": 0.0,
+      "pedestrian": 0.0,
+      "person_sitting": 0.0,
+      "cyclist": 0.0,
+      "tram": 0.0,
+      "misc": 0.0
+    },
+    "speed_ms": {
+      "preprocess": 0.2165679143801491,
+      "inference": 1.9793886362785416,
+      "loss": 0.0003661765352160456,
+      "postprocess": 1.9506843582251392
+    }
+  },
+  "global_engine": {
+    "model": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_global20\\8n_float32_l1_global20.engine",
+    "map50_95": 4.4168089095710945e-08,
+    "map50": 1.8449721877182093e-07,
+    "map75": 4.764082628249104e-09,
+    "per_class_map50_95": {
+      "car": 2.7348020584395667e-07,
+      "van": 7.986450692173088e-08,
+      "truck": 0.0,
+      "pedestrian": 0.0,
+      "Person_sitting": 0.0,
+      "cyclist": 0.0,
+      "tram": 0.0,
+      "misc": 0.0
+    },
+    "speed_ms": {
+      "preprocess": 0.3280179144909237,
+      "inference": 1.6951971240858374,
+      "loss": 0.004489104531800006,
+      "postprocess": 2.3606592902283676
+    }
+  }
+}

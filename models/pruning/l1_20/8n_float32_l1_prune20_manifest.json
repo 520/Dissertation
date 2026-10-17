@@ -1,0 +1,75 @@
+{
+  "source": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\baseline\\8n_float32.pt",
+  "ratio": 0.2,
+  "rounding": "round(ratio * channels) per group",
+  "importance": "sum |W| over (in, kh, kw) of the unfused Conv2d weight; coupled groups summed",
+  "fine_tuned": false,
+  "params_before": 3012408,
+  "params_after": 1922780,
+  "param_reduction": 0.3617132871775669,
+  "convs_total": 63,
+  "convs_output_pruned": 57,
+  "convs_output_fixed": [
+    "model.22.cv2.0.2",
+    "model.22.cv3.0.2",
+    "model.22.cv2.1.2",
+    "model.22.cv3.1.2",
+    "model.22.cv2.2.2",
+    "model.22.cv3.2.2"
+  ],
+  "channels_before": 5200,
+  "channels_after": 4155,
+  "residual_coupled_groups": [
+    [
+      "model.2.cv1.conv",
+      "model.2.m.0.cv2.conv"
+    ],
+    [
+      "model.4.cv1.conv",
+      "model.4.m.0.cv2.conv",
+      "model.4.m.1.cv2.conv"
+    ],
+    [
+      "model.6.cv1.conv",
+      "model.6.m.0.cv2.conv",
+      "model.6.m.1.cv2.conv"
+    ],
+    [
+      "model.8.cv1.conv",
+      "model.8.m.0.cv2.conv"
+    ]
+  ],
+  "torch_output_mean_abs_change_vs_original": 4.666782379150391,
+  "onnx": {
+    "file": "8n_float32_l1_prune20.onnx",
+    "opset": 17,
+    "bn_fused": true,
+    "input": [
+      1,
+      3,
+      640,
+      640
+    ]
+  },
+  "trtexec": [
+    "C:\\Users\\dxu1\\AppData\\Local\\NVIDIA\\TensorRT-11.3.0.99\\bin\\trtexec.exe",
+    "--onnx=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_20\\8n_float32_l1_prune20.onnx",
+    "--saveEngine=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_20\\8n_float32_l1_prune20.engine",
+    "--profilingVerbosity=detailed",
+    "--dumpLayerInfo",
+    "--exportLayerInfo=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\pruning\\l1_20\\8n_float32_l1_prune20.layers.json"
+  ],
+  "engine": {
+    "file": "8n_float32_l1_prune20.engine",
+    "size_mb": 80.676876
+  },
+  "engine_vs_fused_torch_random_input": {
+    "output_shape": [
+      1,
+      12,
+      8400
+    ],
+    "max_abs_error": 0.14361572265625,
+    "mean_abs_error": 0.00216652755625546
+  }
+}

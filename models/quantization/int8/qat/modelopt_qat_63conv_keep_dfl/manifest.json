@@ -781,5 +781,28 @@
       "weight_amax_min": 0.5068359375,
       "weight_amax_max": 0.78369140625
     }
+  },
+  "trtexec": [
+    "C:\\Users\\dxu1\\AppData\\Local\\NVIDIA\\TensorRT-11.3.0.99\\bin\\trtexec.exe",
+    "--onnx=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\int8\\qat\\modelopt_qat_63conv_keep_dfl\\8n_float32_int8_qat_63conv.onnx",
+    "--saveEngine=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\int8\\qat\\modelopt_qat_63conv_keep_dfl\\8n_float32_int8_qat_63conv.engine",
+    "--profilingVerbosity=detailed",
+    "--dumpLayerInfo",
+    "--exportLayerInfo=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\int8\\qat\\modelopt_qat_63conv_keep_dfl\\8n_float32_int8_qat_63conv.layers.json"
+  ],
+  "engine": {
+    "file": "8n_float32_int8_qat_63conv.engine",
+    "size_mb": 29.585732,
+    "conv_layers": 64,
+    "weight_types": {
+      "Int8": 63,
+      "Float": 1
+    },
+    "weight/input/output": {
+      "Int8/Int8/Int8": 39,
+      "Int8/Int8/Float": 24,
+      "Float/Float/Float": 1
+    },
+    "engine_weight_bytes": 3023504
   }
 }
