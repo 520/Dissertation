@@ -1,0 +1,28 @@
+{
+  "source": "models\\baseline\\8n_float32.pt",
+  "tool": "torch-pruning 1.6.0",
+  "c2f_cv1_split": true,
+  "root_module_types": [
+    "Conv2d"
+  ],
+  "ignored": [
+    "model.22.cv2.*.2",
+    "model.22.cv3.*.2",
+    "model.22.dfl"
+  ],
+  "conv2d_total": 72,
+  "conv2d_ignored": 7,
+  "conv2d_prunable": 65,
+  "groups": 59,
+  "single_conv_groups": 55,
+  "residual_coupled_groups": [
+    9,
+    13,
+    18,
+    23
+  ],
+  "prunable_channels": 4864,
+  "conv_MFLOPs_total": 8090.27,
+  "check_convs_without_group": [],
+  "check_convs_in_several_groups": {}
+}

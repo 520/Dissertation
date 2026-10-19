@@ -1,0 +1,795 @@
+===== Group 0: root model.22.cv3.2.1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv3.2.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.2.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv3.2.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.2.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv3.2.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_7(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_7(SiluBackward0) => prune_in_channels on model.22.cv3.2.2 (Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))), len(idxs)=64
+--------------------------------
+
+
+===== Group 1: root model.22.cv3.2.0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv3.2.0.conv (Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.2.0.conv (Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv3.2.0.conv (Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.2.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv3.2.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_8(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_8(SiluBackward0) => prune_in_channels on model.22.cv3.2.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 2: root model.21.cv2.conv, 256 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.21.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.21.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on model.21.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.21.cv2.bn (BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on model.21.cv2.bn (BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_9(SiluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_9(SiluBackward0) => prune_in_channels on model.22.cv3.2.0.conv (Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=256
+[4] prune_out_channels on _ElementWiseOp_9(SiluBackward0) => prune_in_channels on model.22.cv2.2.0.conv (Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+===== Group 3: root model.21.m.0.cv2.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.21.m.0.cv2.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.21.m.0.cv2.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.21.m.0.cv2.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.21.m.0.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.21.m.0.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_13(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_13(SiluBackward0) => prune_out_channels on _ConcatOp_10([0, 128, 256, 384]), len(idxs)=128
+[4] prune_out_channels on _ConcatOp_10([0, 128, 256, 384]) => prune_in_channels on model.21.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 4: root model.21.m.0.cv1.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.21.m.0.cv1.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.21.m.0.cv1.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.21.m.0.cv1.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.21.m.0.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.21.m.0.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_14(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_14(SiluBackward0) => prune_in_channels on model.21.m.0.cv2.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 5: root model.21.cv1.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.21.cv1.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.21.cv1.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.21.cv1.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.21.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.21.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_12(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_12(SiluBackward0) => prune_out_channels on _ConcatOp_10([0, 128, 256, 384]), len(idxs)=128
+[4] prune_out_channels on _ElementWiseOp_12(SiluBackward0) => prune_in_channels on model.21.m.0.cv1.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+[5] prune_out_channels on _ConcatOp_10([0, 128, 256, 384]) => prune_in_channels on model.21.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 6: root model.9.cv2.conv, 256 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.9.cv2.conv (Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.9.cv2.conv (Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on model.9.cv2.conv (Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.9.cv2.bn (BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on model.9.cv2.bn (BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_17(SiluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_17(SiluBackward0) => prune_out_channels on _ConcatOp_15([0, 128, 384]), len(idxs)=256
+[4] prune_out_channels on _ElementWiseOp_17(SiluBackward0) => prune_out_channels on _ElementWiseOp_76(UpsampleNearest2DBackward0), len(idxs)=256
+[5] prune_out_channels on _ElementWiseOp_76(UpsampleNearest2DBackward0) => prune_out_channels on _ConcatOp_75([0, 256, 384]), len(idxs)=256
+[6] prune_out_channels on _ConcatOp_75([0, 256, 384]) => prune_in_channels on model.12.cv1.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[7] prune_out_channels on _ConcatOp_75([0, 256, 384]) => prune_in_channels on model.12.cv0.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[8] prune_out_channels on _ConcatOp_15([0, 128, 384]) => prune_in_channels on model.21.cv1.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[9] prune_out_channels on _ConcatOp_15([0, 128, 384]) => prune_in_channels on model.21.cv0.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+===== Group 7: root model.9.cv1.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.9.cv1.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.9.cv1.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.9.cv1.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.9.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.9.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ConcatOp_18([0, 128, 256, 384, 512]), len(idxs)=512
+[3] prune_out_channels on model.9.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_19(MaxPool2DWithIndicesBackward0), len(idxs)=128
+[4] prune_out_channels on _ElementWiseOp_19(MaxPool2DWithIndicesBackward0) => prune_out_channels on _ElementWiseOp_20(MaxPool2DWithIndicesBackward0), len(idxs)=128
+[5] prune_out_channels on _ElementWiseOp_20(MaxPool2DWithIndicesBackward0) => prune_out_channels on _ElementWiseOp_21(MaxPool2DWithIndicesBackward0), len(idxs)=128
+[6] prune_out_channels on _ConcatOp_18([0, 128, 256, 384, 512]) => prune_in_channels on model.9.cv2.conv (Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=512
+--------------------------------
+
+
+===== Group 8: root model.8.cv2.conv, 256 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.8.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.8.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on model.8.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.8.cv2.bn (BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on model.8.cv2.bn (BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_22(SiluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_22(SiluBackward0) => prune_in_channels on model.9.cv1.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+===== Group 9: root model.8.m.0.cv2.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.8.m.0.cv2.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.8.m.0.cv2.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.8.m.0.cv2.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.8.m.0.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.8.m.0.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_27(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_27(SiluBackward0) => prune_out_channels on _ElementWiseOp_26(AddBackward0), len(idxs)=128
+[4] prune_out_channels on _ElementWiseOp_26(AddBackward0) => prune_out_channels on _ElementWiseOp_25(SiluBackward0), len(idxs)=128
+[5] prune_out_channels on _ElementWiseOp_26(AddBackward0) => prune_out_channels on _ConcatOp_23([0, 128, 256, 384]), len(idxs)=256
+[6] prune_out_channels on _ConcatOp_23([0, 128, 256, 384]) => prune_in_channels on model.8.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[7] prune_out_channels on _ElementWiseOp_25(SiluBackward0) => prune_out_channels on model.8.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[8] prune_out_channels on _ElementWiseOp_25(SiluBackward0) => prune_in_channels on model.8.m.0.cv1.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+[9] prune_out_channels on model.8.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on model.8.cv1.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 10: root model.8.m.0.cv1.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.8.m.0.cv1.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.8.m.0.cv1.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.8.m.0.cv1.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.8.m.0.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.8.m.0.cv1.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_28(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_28(SiluBackward0) => prune_in_channels on model.8.m.0.cv2.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 11: root model.7.conv, 256 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.7.conv (Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.7.conv (Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=256
+[1] prune_out_channels on model.7.conv (Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.7.bn (BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=256
+[2] prune_out_channels on model.7.bn (BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_29(SiluBackward0), len(idxs)=256
+[3] prune_out_channels on _ElementWiseOp_29(SiluBackward0) => prune_in_channels on model.8.cv1.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+[4] prune_out_channels on _ElementWiseOp_29(SiluBackward0) => prune_in_channels on model.8.cv0.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=256
+--------------------------------
+
+
+===== Group 12: root model.6.cv2.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.6.cv2.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.6.cv2.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.6.cv2.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.6.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.6.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_30(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_30(SiluBackward0) => prune_in_channels on model.7.conv (Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=128
+[4] prune_out_channels on _ElementWiseOp_30(SiluBackward0) => prune_out_channels on _ConcatOp_75([0, 256, 384]), len(idxs)=128
+[5] prune_out_channels on _ConcatOp_75([0, 256, 384]) => prune_in_channels on model.12.cv1.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[6] prune_out_channels on _ConcatOp_75([0, 256, 384]) => prune_in_channels on model.12.cv0.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 13: root model.6.m.1.cv2.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.6.m.1.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.6.m.1.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.6.m.1.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.6.m.1.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.6.m.1.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_36(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_36(SiluBackward0) => prune_out_channels on _ElementWiseOp_35(AddBackward0), len(idxs)=64
+[4] prune_out_channels on _ElementWiseOp_35(AddBackward0) => prune_out_channels on _ElementWiseOp_34(AddBackward0), len(idxs)=64
+[5] prune_out_channels on _ElementWiseOp_35(AddBackward0) => prune_out_channels on _ConcatOp_31([0, 64, 128, 192, 256]), len(idxs)=192
+[6] prune_out_channels on _ConcatOp_31([0, 64, 128, 192, 256]) => prune_in_channels on model.6.cv2.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=192
+[7] prune_out_channels on _ElementWiseOp_34(AddBackward0) => prune_out_channels on _ElementWiseOp_33(SiluBackward0), len(idxs)=64
+[8] prune_out_channels on _ElementWiseOp_34(AddBackward0) => prune_out_channels on _ElementWiseOp_38(SiluBackward0), len(idxs)=64
+[9] prune_out_channels on _ElementWiseOp_34(AddBackward0) => prune_in_channels on model.6.m.1.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[10] prune_out_channels on _ElementWiseOp_38(SiluBackward0) => prune_out_channels on model.6.m.0.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[11] prune_out_channels on model.6.m.0.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on model.6.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[12] prune_out_channels on _ElementWiseOp_33(SiluBackward0) => prune_out_channels on model.6.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[13] prune_out_channels on _ElementWiseOp_33(SiluBackward0) => prune_in_channels on model.6.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[14] prune_out_channels on model.6.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on model.6.cv1.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 14: root model.6.m.1.cv1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.6.m.1.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.6.m.1.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.6.m.1.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.6.m.1.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.6.m.1.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_37(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_37(SiluBackward0) => prune_in_channels on model.6.m.1.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 15: root model.6.m.0.cv1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.6.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.6.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.6.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.6.m.0.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.6.m.0.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_39(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_39(SiluBackward0) => prune_in_channels on model.6.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 16: root model.5.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.5.conv (Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.5.conv (Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.5.conv (Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.5.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.5.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_40(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_40(SiluBackward0) => prune_in_channels on model.6.cv1.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[4] prune_out_channels on _ElementWiseOp_40(SiluBackward0) => prune_in_channels on model.6.cv0.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 17: root model.4.cv2.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.4.cv2.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.4.cv2.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.4.cv2.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.4.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.4.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_41(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_41(SiluBackward0) => prune_in_channels on model.5.conv (Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=64
+[4] prune_out_channels on _ElementWiseOp_41(SiluBackward0) => prune_out_channels on _ConcatOp_83([0, 128, 192]), len(idxs)=64
+[5] prune_out_channels on _ConcatOp_83([0, 128, 192]) => prune_in_channels on model.15.cv1.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[6] prune_out_channels on _ConcatOp_83([0, 128, 192]) => prune_in_channels on model.15.cv0.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 18: root model.4.m.1.cv2.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.4.m.1.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.4.m.1.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.4.m.1.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.4.m.1.cv2.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.4.m.1.cv2.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_47(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_47(SiluBackward0) => prune_out_channels on _ElementWiseOp_46(AddBackward0), len(idxs)=32
+[4] prune_out_channels on _ElementWiseOp_46(AddBackward0) => prune_out_channels on _ElementWiseOp_45(AddBackward0), len(idxs)=32
+[5] prune_out_channels on _ElementWiseOp_46(AddBackward0) => prune_out_channels on _ConcatOp_42([0, 32, 64, 96, 128]), len(idxs)=96
+[6] prune_out_channels on _ConcatOp_42([0, 32, 64, 96, 128]) => prune_in_channels on model.4.cv2.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=96
+[7] prune_out_channels on _ElementWiseOp_45(AddBackward0) => prune_out_channels on _ElementWiseOp_44(SiluBackward0), len(idxs)=32
+[8] prune_out_channels on _ElementWiseOp_45(AddBackward0) => prune_out_channels on _ElementWiseOp_49(SiluBackward0), len(idxs)=32
+[9] prune_out_channels on _ElementWiseOp_45(AddBackward0) => prune_in_channels on model.4.m.1.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[10] prune_out_channels on _ElementWiseOp_49(SiluBackward0) => prune_out_channels on model.4.m.0.cv2.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[11] prune_out_channels on model.4.m.0.cv2.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on model.4.m.0.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[12] prune_out_channels on _ElementWiseOp_44(SiluBackward0) => prune_out_channels on model.4.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[13] prune_out_channels on _ElementWiseOp_44(SiluBackward0) => prune_in_channels on model.4.m.0.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[14] prune_out_channels on model.4.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on model.4.cv1.conv (Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 19: root model.4.m.1.cv1.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.4.m.1.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.4.m.1.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.4.m.1.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.4.m.1.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.4.m.1.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_48(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_48(SiluBackward0) => prune_in_channels on model.4.m.1.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 20: root model.4.m.0.cv1.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.4.m.0.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.4.m.0.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.4.m.0.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.4.m.0.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.4.m.0.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_50(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_50(SiluBackward0) => prune_in_channels on model.4.m.0.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 21: root model.3.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.3.conv (Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.3.conv (Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.3.conv (Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.3.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.3.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_51(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_51(SiluBackward0) => prune_in_channels on model.4.cv1.conv (Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[4] prune_out_channels on _ElementWiseOp_51(SiluBackward0) => prune_in_channels on model.4.cv0.conv (Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 22: root model.2.cv2.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.2.cv2.conv (Conv2d(48, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.2.cv2.conv (Conv2d(48, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.2.cv2.conv (Conv2d(48, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.2.cv2.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.2.cv2.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_52(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_52(SiluBackward0) => prune_in_channels on model.3.conv (Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 23: root model.2.m.0.cv2.conv, 16 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.2.m.0.cv2.conv (Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.2.m.0.cv2.conv (Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=16
+[1] prune_out_channels on model.2.m.0.cv2.conv (Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.2.m.0.cv2.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=16
+[2] prune_out_channels on model.2.m.0.cv2.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_57(SiluBackward0), len(idxs)=16
+[3] prune_out_channels on _ElementWiseOp_57(SiluBackward0) => prune_out_channels on _ElementWiseOp_56(AddBackward0), len(idxs)=16
+[4] prune_out_channels on _ElementWiseOp_56(AddBackward0) => prune_out_channels on _ElementWiseOp_55(SiluBackward0), len(idxs)=16
+[5] prune_out_channels on _ElementWiseOp_56(AddBackward0) => prune_out_channels on _ConcatOp_53([0, 16, 32, 48]), len(idxs)=32
+[6] prune_out_channels on _ConcatOp_53([0, 16, 32, 48]) => prune_in_channels on model.2.cv2.conv (Conv2d(48, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+[7] prune_out_channels on _ElementWiseOp_55(SiluBackward0) => prune_out_channels on model.2.cv1.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=16
+[8] prune_out_channels on _ElementWiseOp_55(SiluBackward0) => prune_in_channels on model.2.m.0.cv1.conv (Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=16
+[9] prune_out_channels on model.2.cv1.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on model.2.cv1.conv (Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=16
+--------------------------------
+
+
+===== Group 24: root model.2.m.0.cv1.conv, 16 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.2.m.0.cv1.conv (Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.2.m.0.cv1.conv (Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=16
+[1] prune_out_channels on model.2.m.0.cv1.conv (Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.2.m.0.cv1.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=16
+[2] prune_out_channels on model.2.m.0.cv1.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_58(SiluBackward0), len(idxs)=16
+[3] prune_out_channels on _ElementWiseOp_58(SiluBackward0) => prune_in_channels on model.2.m.0.cv2.conv (Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=16
+--------------------------------
+
+
+===== Group 25: root model.1.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.1.conv (Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.1.conv (Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.1.conv (Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_59(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_59(SiluBackward0) => prune_in_channels on model.2.cv1.conv (Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+[4] prune_out_channels on _ElementWiseOp_59(SiluBackward0) => prune_in_channels on model.2.cv0.conv (Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 26: root model.0.conv, 16 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.0.conv (Conv2d(3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.0.conv (Conv2d(3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=16
+[1] prune_out_channels on model.0.conv (Conv2d(3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.0.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=16
+[2] prune_out_channels on model.0.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_60(SiluBackward0), len(idxs)=16
+[3] prune_out_channels on _ElementWiseOp_60(SiluBackward0) => prune_in_channels on model.1.conv (Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=16
+--------------------------------
+
+
+===== Group 27: root model.2.cv0.conv, 16 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.2.cv0.conv (Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.2.cv0.conv (Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=16
+[1] prune_out_channels on model.2.cv0.conv (Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.2.cv0.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=16
+[2] prune_out_channels on model.2.cv0.bn (BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_54(SiluBackward0), len(idxs)=16
+[3] prune_out_channels on _ElementWiseOp_54(SiluBackward0) => prune_out_channels on _ConcatOp_53([0, 16, 32, 48]), len(idxs)=16
+[4] prune_out_channels on _ConcatOp_53([0, 16, 32, 48]) => prune_in_channels on model.2.cv2.conv (Conv2d(48, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=16
+--------------------------------
+
+
+===== Group 28: root model.4.cv0.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.4.cv0.conv (Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.4.cv0.conv (Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.4.cv0.conv (Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.4.cv0.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.4.cv0.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_43(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_43(SiluBackward0) => prune_out_channels on _ConcatOp_42([0, 32, 64, 96, 128]), len(idxs)=32
+[4] prune_out_channels on _ConcatOp_42([0, 32, 64, 96, 128]) => prune_in_channels on model.4.cv2.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 29: root model.6.cv0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.6.cv0.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.6.cv0.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.6.cv0.conv (Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.6.cv0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.6.cv0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_32(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_32(SiluBackward0) => prune_out_channels on _ConcatOp_31([0, 64, 128, 192, 256]), len(idxs)=64
+[4] prune_out_channels on _ConcatOp_31([0, 64, 128, 192, 256]) => prune_in_channels on model.6.cv2.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 30: root model.8.cv0.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.8.cv0.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.8.cv0.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.8.cv0.conv (Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.8.cv0.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.8.cv0.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_24(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_24(SiluBackward0) => prune_out_channels on _ConcatOp_23([0, 128, 256, 384]), len(idxs)=128
+[4] prune_out_channels on _ConcatOp_23([0, 128, 256, 384]) => prune_in_channels on model.8.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 31: root model.19.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.19.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.19.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.19.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.19.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.19.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_16(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_16(SiluBackward0) => prune_out_channels on _ConcatOp_15([0, 128, 384]), len(idxs)=128
+[4] prune_out_channels on _ConcatOp_15([0, 128, 384]) => prune_in_channels on model.21.cv1.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[5] prune_out_channels on _ConcatOp_15([0, 128, 384]) => prune_in_channels on model.21.cv0.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 32: root model.18.cv2.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.18.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.18.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.18.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.18.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.18.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_61(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_61(SiluBackward0) => prune_in_channels on model.19.conv (Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=128
+[4] prune_out_channels on _ElementWiseOp_61(SiluBackward0) => prune_in_channels on model.22.cv3.1.0.conv (Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+[5] prune_out_channels on _ElementWiseOp_61(SiluBackward0) => prune_in_channels on model.22.cv2.1.0.conv (Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 33: root model.18.m.0.cv2.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.18.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.18.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.18.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.18.m.0.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.18.m.0.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_65(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_65(SiluBackward0) => prune_out_channels on _ConcatOp_62([0, 64, 128, 192]), len(idxs)=64
+[4] prune_out_channels on _ConcatOp_62([0, 64, 128, 192]) => prune_in_channels on model.18.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 34: root model.18.m.0.cv1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.18.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.18.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.18.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.18.m.0.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.18.m.0.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_66(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_66(SiluBackward0) => prune_in_channels on model.18.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 35: root model.18.cv1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.18.cv1.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.18.cv1.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.18.cv1.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.18.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.18.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_64(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_64(SiluBackward0) => prune_out_channels on _ConcatOp_62([0, 64, 128, 192]), len(idxs)=64
+[4] prune_out_channels on _ElementWiseOp_64(SiluBackward0) => prune_in_channels on model.18.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[5] prune_out_channels on _ConcatOp_62([0, 64, 128, 192]) => prune_in_channels on model.18.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 36: root model.12.cv2.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.12.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.12.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.12.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.12.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.12.cv2.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_69(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_69(SiluBackward0) => prune_out_channels on _ConcatOp_67([0, 64, 192]), len(idxs)=128
+[4] prune_out_channels on _ElementWiseOp_69(SiluBackward0) => prune_out_channels on _ElementWiseOp_84(UpsampleNearest2DBackward0), len(idxs)=128
+[5] prune_out_channels on _ElementWiseOp_84(UpsampleNearest2DBackward0) => prune_out_channels on _ConcatOp_83([0, 128, 192]), len(idxs)=128
+[6] prune_out_channels on _ConcatOp_83([0, 128, 192]) => prune_in_channels on model.15.cv1.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[7] prune_out_channels on _ConcatOp_83([0, 128, 192]) => prune_in_channels on model.15.cv0.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[8] prune_out_channels on _ConcatOp_67([0, 64, 192]) => prune_in_channels on model.18.cv1.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[9] prune_out_channels on _ConcatOp_67([0, 64, 192]) => prune_in_channels on model.18.cv0.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 37: root model.12.m.0.cv2.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.12.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.12.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.12.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.12.m.0.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.12.m.0.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_73(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_73(SiluBackward0) => prune_out_channels on _ConcatOp_70([0, 64, 128, 192]), len(idxs)=64
+[4] prune_out_channels on _ConcatOp_70([0, 64, 128, 192]) => prune_in_channels on model.12.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 38: root model.12.m.0.cv1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.12.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.12.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.12.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.12.m.0.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.12.m.0.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_74(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_74(SiluBackward0) => prune_in_channels on model.12.m.0.cv2.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 39: root model.12.cv1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.12.cv1.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.12.cv1.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.12.cv1.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.12.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.12.cv1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_72(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_72(SiluBackward0) => prune_out_channels on _ConcatOp_70([0, 64, 128, 192]), len(idxs)=64
+[4] prune_out_channels on _ElementWiseOp_72(SiluBackward0) => prune_in_channels on model.12.m.0.cv1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[5] prune_out_channels on _ConcatOp_70([0, 64, 128, 192]) => prune_in_channels on model.12.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 40: root model.12.cv0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.12.cv0.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.12.cv0.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.12.cv0.conv (Conv2d(384, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.12.cv0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.12.cv0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_71(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_71(SiluBackward0) => prune_out_channels on _ConcatOp_70([0, 64, 128, 192]), len(idxs)=64
+[4] prune_out_channels on _ConcatOp_70([0, 64, 128, 192]) => prune_in_channels on model.12.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 41: root model.16.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.16.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.16.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.16.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)) => prune_out_channels on model.16.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.16.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_68(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_68(SiluBackward0) => prune_out_channels on _ConcatOp_67([0, 64, 192]), len(idxs)=64
+[4] prune_out_channels on _ConcatOp_67([0, 64, 192]) => prune_in_channels on model.18.cv1.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[5] prune_out_channels on _ConcatOp_67([0, 64, 192]) => prune_in_channels on model.18.cv0.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 42: root model.15.cv2.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.15.cv2.conv (Conv2d(96, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.15.cv2.conv (Conv2d(96, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.15.cv2.conv (Conv2d(96, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.15.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.15.cv2.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_77(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_77(SiluBackward0) => prune_in_channels on model.16.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)), len(idxs)=64
+[4] prune_out_channels on _ElementWiseOp_77(SiluBackward0) => prune_in_channels on model.22.cv3.0.0.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[5] prune_out_channels on _ElementWiseOp_77(SiluBackward0) => prune_in_channels on model.22.cv2.0.0.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 43: root model.15.m.0.cv2.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.15.m.0.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.15.m.0.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.15.m.0.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.15.m.0.cv2.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.15.m.0.cv2.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_81(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_81(SiluBackward0) => prune_out_channels on _ConcatOp_78([0, 32, 64, 96]), len(idxs)=32
+[4] prune_out_channels on _ConcatOp_78([0, 32, 64, 96]) => prune_in_channels on model.15.cv2.conv (Conv2d(96, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 44: root model.15.m.0.cv1.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.15.m.0.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.15.m.0.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.15.m.0.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.15.m.0.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.15.m.0.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_82(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_82(SiluBackward0) => prune_in_channels on model.15.m.0.cv2.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 45: root model.15.cv1.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.15.cv1.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.15.cv1.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.15.cv1.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.15.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.15.cv1.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_80(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_80(SiluBackward0) => prune_out_channels on _ConcatOp_78([0, 32, 64, 96]), len(idxs)=32
+[4] prune_out_channels on _ElementWiseOp_80(SiluBackward0) => prune_in_channels on model.15.m.0.cv1.conv (Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=32
+[5] prune_out_channels on _ConcatOp_78([0, 32, 64, 96]) => prune_in_channels on model.15.cv2.conv (Conv2d(96, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 46: root model.15.cv0.conv, 32 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.15.cv0.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.15.cv0.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+[1] prune_out_channels on model.15.cv0.conv (Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.15.cv0.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=32
+[2] prune_out_channels on model.15.cv0.bn (BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_79(SiluBackward0), len(idxs)=32
+[3] prune_out_channels on _ElementWiseOp_79(SiluBackward0) => prune_out_channels on _ConcatOp_78([0, 32, 64, 96]), len(idxs)=32
+[4] prune_out_channels on _ConcatOp_78([0, 32, 64, 96]) => prune_in_channels on model.15.cv2.conv (Conv2d(96, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=32
+--------------------------------
+
+
+===== Group 47: root model.18.cv0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.18.cv0.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.18.cv0.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.18.cv0.conv (Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.18.cv0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.18.cv0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_63(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_63(SiluBackward0) => prune_out_channels on _ConcatOp_62([0, 64, 128, 192]), len(idxs)=64
+[4] prune_out_channels on _ConcatOp_62([0, 64, 128, 192]) => prune_in_channels on model.18.cv2.conv (Conv2d(192, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 48: root model.21.cv0.conv, 128 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.21.cv0.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.21.cv0.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+[1] prune_out_channels on model.21.cv0.conv (Conv2d(384, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)) => prune_out_channels on model.21.cv0.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=128
+[2] prune_out_channels on model.21.cv0.bn (BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_11(SiluBackward0), len(idxs)=128
+[3] prune_out_channels on _ElementWiseOp_11(SiluBackward0) => prune_out_channels on _ConcatOp_10([0, 128, 256, 384]), len(idxs)=128
+[4] prune_out_channels on _ConcatOp_10([0, 128, 256, 384]) => prune_in_channels on model.21.cv2.conv (Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)), len(idxs)=128
+--------------------------------
+
+
+===== Group 49: root model.22.cv3.1.1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv3.1.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.1.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv3.1.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.1.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv3.1.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_85(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_85(SiluBackward0) => prune_in_channels on model.22.cv3.1.2 (Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))), len(idxs)=64
+--------------------------------
+
+
+===== Group 50: root model.22.cv3.1.0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv3.1.0.conv (Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.1.0.conv (Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv3.1.0.conv (Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.1.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv3.1.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_86(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_86(SiluBackward0) => prune_in_channels on model.22.cv3.1.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 51: root model.22.cv3.0.1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv3.0.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.0.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv3.0.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.0.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv3.0.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_87(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_87(SiluBackward0) => prune_in_channels on model.22.cv3.0.2 (Conv2d(64, 8, kernel_size=(1, 1), stride=(1, 1))), len(idxs)=64
+--------------------------------
+
+
+===== Group 52: root model.22.cv3.0.0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv3.0.0.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.0.0.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv3.0.0.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv3.0.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv3.0.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_88(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_88(SiluBackward0) => prune_in_channels on model.22.cv3.0.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 53: root model.22.cv2.2.1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv2.2.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.2.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv2.2.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.2.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv2.2.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_103(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_103(SiluBackward0) => prune_in_channels on model.22.cv2.2.2 (Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))), len(idxs)=64
+--------------------------------
+
+
+===== Group 54: root model.22.cv2.2.0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv2.2.0.conv (Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.2.0.conv (Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv2.2.0.conv (Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.2.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv2.2.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_104(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_104(SiluBackward0) => prune_in_channels on model.22.cv2.2.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 55: root model.22.cv2.1.1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv2.1.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.1.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv2.1.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.1.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv2.1.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_105(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_105(SiluBackward0) => prune_in_channels on model.22.cv2.1.2 (Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))), len(idxs)=64
+--------------------------------
+
+
+===== Group 56: root model.22.cv2.1.0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv2.1.0.conv (Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.1.0.conv (Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv2.1.0.conv (Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.1.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv2.1.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_106(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_106(SiluBackward0) => prune_in_channels on model.22.cv2.1.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+
+
+===== Group 57: root model.22.cv2.0.1.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv2.0.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.0.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv2.0.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.0.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv2.0.1.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_107(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_107(SiluBackward0) => prune_in_channels on model.22.cv2.0.2 (Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1))), len(idxs)=64
+--------------------------------
+
+
+===== Group 58: root model.22.cv2.0.0.conv, 64 channels =====
+
+--------------------------------
+          Pruning Group
+--------------------------------
+[0] prune_out_channels on model.22.cv2.0.0.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.0.0.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+[1] prune_out_channels on model.22.cv2.0.0.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)) => prune_out_channels on model.22.cv2.0.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)), len(idxs)=64
+[2] prune_out_channels on model.22.cv2.0.0.bn (BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, bias=True, track_running_stats=True)) => prune_out_channels on _ElementWiseOp_108(SiluBackward0), len(idxs)=64
+[3] prune_out_channels on _ElementWiseOp_108(SiluBackward0) => prune_in_channels on model.22.cv2.0.1.conv (Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)), len(idxs)=64
+--------------------------------
+

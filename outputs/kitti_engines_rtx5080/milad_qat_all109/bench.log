@@ -36,3 +36,46 @@ Setting batch=1 input of shape (1, 3, 640, 640)
                    all       1496       8128      0.902      0.851      0.911      0.664
 Speed: 0.2ms preprocess, 1.0ms inference, 0.0ms loss, 0.7ms postprocess per image
 Measuring engine-only latency and GPU telemetry...
+Measuring end-to-end latency and GPU telemetry...
+Loading C:\Users\dxu1\Desktop\Dissertation\outputs\kitti_engines_rtx5080\milad_qat_all109\bench\final_model_factorized_lwi_qat_int8_all109.with_metadata.engine for TensorRT inference...
+[10/19/2026-17:50:00] [TRT] [I] Loaded engine size: 49 MiB
+[10/19/2026-17:50:00] [TRT] [I] [MS] Running engine with multi stream info
+[10/19/2026-17:50:00] [TRT] [I] [MS] Number of aux streams is 2
+[10/19/2026-17:50:00] [TRT] [I] [MS] Number of total worker streams is 3
+[10/19/2026-17:50:00] [TRT] [I] [MS] The main stream provided by execute/enqueue calls is the first worker stream
+[10/19/2026-17:50:00] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +64, now: CPU 0, GPU 111 (MiB)
+{
+  "model": "final_model_factorized_lwi_qat_int8_all109.with_metadata.engine",
+  "map50_95": 0.6644603387556153,
+  "map50": 0.9105916529629472,
+  "map75": 0.7727701420784446,
+  "precision": 0.902426143207975,
+  "per_class_precision": [
+    0.919907948004303,
+    0.9050272815926662,
+    0.9610663523254268,
+    0.8543232922505296,
+    0.8841869377459118,
+    0.8828943627597391,
+    0.9113086866952005,
+    0.9006942842900224
+  ],
+  "precision_definition": "Ultralytics mean class precision at its validation-selected max-mean-F1 operating point",
+  "recall": 0.8513378793994988,
+  "per_class_recall": [
+    0.9380685794261722,
+    0.9063063063063063,
+    0.9820627802690582,
+    0.7068403908794788,
+    0.6944444444444444,
+    0.7496472005371974,
+    0.9487179487179487,
+    0.8846153846153846
+  ],
+  "recall_definition": "Ultralytics mean class recall at its validation-selected max-mean-F1 operating point",
+  "engine_median_ms": 2.1566720008850098,
+  "e2e_median_ms": 2.5460500037297606
+}
+| Precision | mAP50-95 (%) | mAP50 (%) | mAP75 (%) | Detection Precision (%) | Recall (%) | Engine median / P75 / P95 (ms) | E2E median / P75 / P95 (ms) | E2E FPS | Params (M) | GFLOPs | Weights (MB) | Engine (MB) | Approx. GPU load delta (MiB) | E2E GPU power (W) | E2E GPU energy (J/image) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Milad INT8 QAT all109 | 66.45 | 91.06 | 77.28 | 90.24 | 85.13 | 2.157 / 2.395 / 2.580 | 2.546 / 2.599 / 2.830 | 384.1 | 1.429 | 6.21 | 1.69 | 52.06 | 152.00 | 62.03 | 0.1615 |
