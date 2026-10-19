@@ -1,0 +1,54 @@
+{
+  "source": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\baseline\\8n_float32.pt",
+  "source_sha256": "b4c22bd2cdc3c73e9e27732a88673fdc4389aed690944d4ca6a7e80dc15863cc",
+  "torch": "2.14.1+cu130",
+  "torch_pruning": "1.6.0",
+  "ranking": "Taylor-1 group score (sum over coupled member convs)",
+  "taylor": {
+    "images": 5985,
+    "loss_mean": 1.7350788408951054,
+    "seconds": 183.64971989998594
+  },
+  "c2f_split_max_abs_diff": 0.00019177257490810007,
+  "ratios": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "adaptive_bn": {
+    "images": 1280,
+    "split": "KITTI train",
+    "batch": 16,
+    "augment": "training pipeline, checkpoint hyperparameters (mosaic on), generated once",
+    "statistics": "reset, cumulative average",
+    "seed": 42
+  },
+  "val_subset": {
+    "images": 500,
+    "split": "KITTI val",
+    "seed": 42,
+    "file": "val_subset.txt"
+  },
+  "reference_unpruned": {
+    "mAP50-95": 0.6844205867142075,
+    "mAP50": 0.9071863053834637,
+    "precision": 0.9485963635693628,
+    "recall": 0.8378375387508121
+  },
+  "reference_unpruned_adaptive_bn": {
+    "mAP50-95": 0.6862450746232229,
+    "mAP50": 0.912434364106246,
+    "precision": 0.9514735089948798,
+    "recall": 0.8354591393523547
+  },
+  "unpruned_params": 3012408,
+  "unpruned_gmacs": 4.0743584,
+  "fine_tuned": false,
+  "groups": 59
+}

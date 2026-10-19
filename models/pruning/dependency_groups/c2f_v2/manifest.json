@@ -1,0 +1,21 @@
+{
+  "source": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\baseline\\8n_float32.pt",
+  "torch": "2.14.1+cu130",
+  "torch_pruning": "1.6.0",
+  "ultralytics": "8.4.163",
+  "convs": 72,
+  "groups": 59,
+  "coupled_groups": 4,
+  "group_channels_total": 4864,
+  "conv_out_channels_in_groups": 5200,
+  "ignored_layers": [
+    "model.22.cv2.0.2",
+    "model.22.cv2.1.2",
+    "model.22.cv2.2.2",
+    "model.22.cv3.0.2",
+    "model.22.cv3.1.2",
+    "model.22.cv3.2.2",
+    "model.22.dfl.conv"
+  ],
+  "convs_not_in_any_group": []
+}
