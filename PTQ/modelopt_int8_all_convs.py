@@ -35,7 +35,9 @@ import modelopt
 import modelopt.torch.quantization as mtq
 from ultralytics.cfg import get_cfg
 from ultralytics.data.dataset import YOLODataset
+from ultralytics.nn.modules.conv import Conv
 from ultralytics.nn.modules.head import Detect
+from ultralytics.utils.torch_utils import fuse_conv_and_bn
 
 ROOT = Path(__file__).resolve().parents[1]
 TRT = Path(r'C:\Users\dxu1\AppData\Local\NVIDIA\TensorRT-11.3.0.99')
@@ -64,6 +66,13 @@ def load_fused(path):
     payload = torch.load(path, map_location='cpu', weights_only=False)
     model = payload.get('ema') or payload['model'] if isinstance(payload, dict) else payload
     model = model.float().eval()
+    # Factorized checkpoints (models/milad) replace Conv.conv by a Sequential of plain Conv2d with no
+    # activation in between; BN then folds exactly into the last convolution of the sequence.
+    for m in model.modules():
+        if isinstance(m, Conv) and hasattr(m, 'bn') and isinstance(m.conv, nn.Sequential):
+            m.conv[-1] = fuse_conv_and_bn(m.conv[-1], m.bn)
+            delattr(m, 'bn')
+            m.forward = m.forward_fuse
     model.fuse(verbose=False)          # fold BN into the convolutions, as deployed
     for p in model.parameters():
         p.requires_grad_(False)

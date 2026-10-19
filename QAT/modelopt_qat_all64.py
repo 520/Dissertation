@@ -174,8 +174,8 @@ def main():
     print(f'Engine {engine_path.name}: {engine_path.stat().st_size/1e6:.2f} MB, {precision}', flush=True)
 
     results = trainer.read_results_csv()
-    best_epoch = max(range(len(results['epoch'])), key=lambda i: 0.1*results['metrics/mAP50(B)'][i]
-                     + 0.9*results['metrics/mAP50-95(B)'][i])
+    # Same selection as the saved checkpoint: Ultralytics fitness is mAP50-95.
+    best_epoch = max(range(len(results['epoch'])), key=lambda i: results['metrics/mAP50-95(B)'][i])
     amax = {name: {'input_amax': float(m.input_quantizer.amax), 'weight_amax_min': float(m.weight_quantizer.amax.min()),
                    'weight_amax_max': float(m.weight_quantizer.amax.max())} for name, m in convs}
     manifest = {'source': str(args.weights), 'source_sha256': sha256(args.weights), 'modelopt': modelopt.__version__,

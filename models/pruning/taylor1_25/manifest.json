@@ -1,0 +1,49 @@
+{
+  "source": "models\\baseline\\8n_float32.pt",
+  "tool": "torch-pruning 1.6.0",
+  "importance": "activation Taylor-1, mean |sum_hw A*dL/dA| over images, BN output before SiLU; group score = mean over coupled convolutions",
+  "scoring_images": 5985,
+  "scoring_split": "KITTI train",
+  "loss_gains": {
+    "box": 7.5,
+    "cls": 0.5,
+    "dfl": 1.5
+  },
+  "ratio_per_layer": 0.25,
+  "global_pruning": false,
+  "round_to": null,
+  "ignored": [
+    "model.22.cv2.*.2",
+    "model.22.cv3.*.2",
+    "model.22.dfl"
+  ],
+  "c2f_split_check_max_abs_diff": 0.000396728515625,
+  "reference_check": {
+    "reference": "sensitivity_results\\kitti_channel_scores_20261014\\channels.csv",
+    "channels_compared": 5200,
+    "pearson": 0.9999999999555107,
+    "spearman": 0.9999999982931271,
+    "max_relative_difference": 0.00010690293120201067
+  },
+  "groups": 59,
+  "pruned_convs": 65,
+  "unpruned_convs": [],
+  "all_pruned_channels_are_lowest_taylor1_in_single_conv_groups": true,
+  "params_before": 3012408,
+  "params_after": 1699204,
+  "gflops_before": 8.1487168,
+  "gflops_after": 4.6264896,
+  "output_shape": [
+    1,
+    12,
+    8400
+  ],
+  "val_no_finetune": {
+    "mAP50-95": 1.1528786711004064e-07,
+    "mAP75": 7.330690375096766e-08,
+    "mAP50": 3.139238689771463e-07,
+    "precision": 5.4146151291566195e-05,
+    "recall": 0.0006560531840447865
+  },
+  "checkpoint": "8n_float32_taylor1_prune25.pt"
+}
