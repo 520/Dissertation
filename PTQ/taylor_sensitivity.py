@@ -95,7 +95,7 @@ def heatmap(pivot, ratios, path):
     fig, ax = plt.subplots(figsize=(1.0 + 0.7 * len(ratios), 0.6 + 0.22 * len(roots)))
     vmax = np.nanmax(np.abs(values)) if np.isfinite(values).any() else 1.0
     im = ax.imshow(values, cmap='RdBu_r', vmin=-vmax, vmax=vmax, aspect='auto')
-    ax.set_xticks(range(len(ratios)), [f'{q:.0%}' for q in ratios])
+    ax.set_xticks(range(len(ratios)), [f'{100 * q:g}%' for q in ratios])
     ax.set_yticks(range(len(roots)), roots, fontsize=7)
     ax.set_xlabel('channels pruned in the group (lowest Taylor-1 first)')
     fig.colorbar(im, ax=ax, label='mAP50-95 drop (pp) vs. unpruned + adaptive BN')
@@ -172,7 +172,8 @@ def main():
     print(f'{len(groups)} groups; {len(trials)} trials to run ({len(done)} already done)', flush=True)
     manifest = {'source': str(args.weights), 'source_sha256': sha256(args.weights), 'torch': torch.__version__,
                 'torch_pruning': tp.__version__, 'ranking': 'Taylor-1 group score (sum over coupled member convs)',
-                'taylor': taylor_info, 'c2f_split_max_abs_diff': diff, 'ratios': args.ratios,
+                'taylor': taylor_info, 'c2f_split_max_abs_diff': diff,
+                'ratios': sorted({q for _, q in done} | set(args.ratios)),     # all ratios in sensitivity.csv
                 'adaptive_bn': {'images': sum(len(b) for b in batches), 'split': 'KITTI train', 'batch': args.bn_batch,
                                 'augment': 'training pipeline, checkpoint hyperparameters (mosaic on), generated once',
                                 'statistics': 'reset, cumulative average', 'seed': args.seed},

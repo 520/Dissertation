@@ -60,7 +60,7 @@ def main():
     with (args.results/'sensitivity.csv').open(encoding='utf-8-sig') as stream:
         rows = list(csv.DictReader(stream))
     manifest = json.loads((args.results/'manifest.json').read_text(encoding='utf-8'))
-    ratios = manifest['ratios']
+    ratios = sorted({float(r['ratio']) for r in rows})
 
     series = {}
     for r in rows:
@@ -99,7 +99,7 @@ def main():
         ax.tick_params(length=2, width=0.6)
     ax0 = axes[0, 0]
     ax0.set_ylim(ymin - 1, ymax * 1.08 + 1)
-    ax0.set_xticks([10, 30, 50, 70, 90])
+    ax0.set_xticks([10, 25, 50, 75, 90])
     ax0.set_xlim(5, 95)
     for c in range(cols):                                          # lowest visible panel of each column
         visible = [ax for ax in axes[:, c] if ax.get_visible()]
@@ -109,7 +109,7 @@ def main():
     for ax in axes[:, 0]:
         ax.set_ylabel('mAP50-95 drop (pp)')
     done = len(rows)
-    total = len(manifest['ratios']) * manifest['groups']
+    total = len(ratios) * manifest['groups']
     ref = manifest['reference_unpruned_adaptive_bn']['mAP50-95']
     status = '' if done >= total else f'  [partial: {done}/{total} trials]'
     top = 1 - 0.55 / fig.get_figheight()                          # title block: fixed height in inches
