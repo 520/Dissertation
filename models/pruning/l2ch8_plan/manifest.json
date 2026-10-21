@@ -1,0 +1,181 @@
+{
+  "source": "models\\baseline\\8n_float32.pt",
+  "checkpoint": "8n_float32_l2ch8_plan.pt",
+  "scan": "outputs/sensitivity_l2_ch8",
+  "tool": "torch-pruning 1.6.0",
+  "importance": "GroupMagnitudeImportance(p=2, group_reduction=mean, normalizer=None), unpruned model",
+  "plan": [
+    {
+      "group": 19,
+      "root": "model.4.m.1.cv1.conv",
+      "channels": 32,
+      "removed": 8,
+      "kept": 24
+    },
+    {
+      "group": 16,
+      "root": "model.5.conv",
+      "channels": 128,
+      "removed": 16,
+      "kept": 112
+    },
+    {
+      "group": 11,
+      "root": "model.7.conv",
+      "channels": 256,
+      "removed": 40,
+      "kept": 216
+    },
+    {
+      "group": 8,
+      "root": "model.8.cv2.conv",
+      "channels": 256,
+      "removed": 16,
+      "kept": 240
+    },
+    {
+      "group": 10,
+      "root": "model.8.m.0.cv1.conv",
+      "channels": 128,
+      "removed": 16,
+      "kept": 112
+    },
+    {
+      "group": 9,
+      "root": "model.8.m.0.cv2.conv",
+      "channels": 128,
+      "removed": 16,
+      "kept": 112
+    },
+    {
+      "group": 41,
+      "root": "model.16.conv",
+      "channels": 64,
+      "removed": 32,
+      "kept": 32
+    },
+    {
+      "group": 35,
+      "root": "model.18.cv1.conv",
+      "channels": 64,
+      "removed": 40,
+      "kept": 24
+    },
+    {
+      "group": 32,
+      "root": "model.18.cv2.conv",
+      "channels": 128,
+      "removed": 40,
+      "kept": 88
+    },
+    {
+      "group": 34,
+      "root": "model.18.m.0.cv1.conv",
+      "channels": 64,
+      "removed": 16,
+      "kept": 48
+    },
+    {
+      "group": 33,
+      "root": "model.18.m.0.cv2.conv",
+      "channels": 64,
+      "removed": 8,
+      "kept": 56
+    },
+    {
+      "group": 31,
+      "root": "model.19.conv",
+      "channels": 128,
+      "removed": 120,
+      "kept": 8
+    },
+    {
+      "group": 48,
+      "root": "model.21.cv0.conv",
+      "channels": 128,
+      "removed": 120,
+      "kept": 8
+    },
+    {
+      "group": 5,
+      "root": "model.21.cv1.conv",
+      "channels": 128,
+      "removed": 120,
+      "kept": 8
+    },
+    {
+      "group": 2,
+      "root": "model.21.cv2.conv",
+      "channels": 256,
+      "removed": 248,
+      "kept": 8
+    },
+    {
+      "group": 4,
+      "root": "model.21.m.0.cv1.conv",
+      "channels": 128,
+      "removed": 120,
+      "kept": 8
+    },
+    {
+      "group": 3,
+      "root": "model.21.m.0.cv2.conv",
+      "channels": 128,
+      "removed": 120,
+      "kept": 8
+    },
+    {
+      "group": 58,
+      "root": "model.22.cv2.0.0.conv",
+      "channels": 64,
+      "removed": 8,
+      "kept": 56
+    },
+    {
+      "group": 54,
+      "root": "model.22.cv2.2.0.conv",
+      "channels": 64,
+      "removed": 56,
+      "kept": 8
+    },
+    {
+      "group": 50,
+      "root": "model.22.cv3.1.0.conv",
+      "channels": 64,
+      "removed": 16,
+      "kept": 48
+    },
+    {
+      "group": 1,
+      "root": "model.22.cv3.2.0.conv",
+      "channels": 64,
+      "removed": 56,
+      "kept": 8
+    },
+    {
+      "group": 0,
+      "root": "model.22.cv3.2.1.conv",
+      "channels": 64,
+      "removed": 8,
+      "kept": 56
+    }
+  ],
+  "c2f_left_split": [
+    "model.8",
+    "model.18"
+  ],
+  "params": {
+    "before": 3012408,
+    "after": 1706088
+  },
+  "GFLOPs": {
+    "before": 8.1487168,
+    "after": 6.5544256
+  },
+  "GFLOPs_saved_%": 19.56493567183486,
+  "output_shape": [
+    1,
+    12,
+    8400
+  ]
+}
