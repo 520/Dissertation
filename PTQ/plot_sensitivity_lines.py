@@ -56,7 +56,10 @@ def panel_of(root):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--results', type=Path, default=ROOT/'sensitivity_results/kitti_taylor1_group_sensitivity')
+    parser.add_argument('--delta', action='store_true',
+                        help='plot the signed change (pruned - reference, negative = worse) instead of the drop')
     args = parser.parse_args()
+    sign = -1.0 if args.delta else 1.0
     with (args.results/'sensitivity.csv').open(encoding='utf-8-sig') as stream:
         rows = list(csv.DictReader(stream))
     manifest = json.loads((args.results/'manifest.json').read_text(encoding='utf-8'))
@@ -65,7 +68,7 @@ def main():
     series = {}
     for r in rows:
         key = (r['root'], r['members'], int(r['channels']))
-        series.setdefault(key, {})[float(r['ratio'])] = float(r['drop_mAP50-95'])
+        series.setdefault(key, {})[float(r['ratio'])] = sign * float(r['drop_mAP50-95'])
     panels = {}
     for (root, members, channels), points in series.items():
         key, title = panel_of(root)
@@ -92,13 +95,13 @@ def main():
             xs = [q for q in ratios if q in points]
             ax.plot([100 * q for q in xs], [points[q] for q in xs], color=SLOT[slot], lw=1.5, marker='o', ms=3.2,
                     mec='white', mew=0.6, label=f'{label} ({channels})', zorder=3)
-        ax.legend(loc='upper left', fontsize=5.6, frameon=False, handlelength=1.6, borderaxespad=0.3,
+        ax.legend(loc='lower left' if args.delta else 'upper left', fontsize=5.6, frameon=False, handlelength=1.6, borderaxespad=0.3,
                   labelcolor=INK2)
         for side in ('top', 'right'):
             ax.spines[side].set_visible(False)
         ax.tick_params(length=2, width=0.6)
     ax0 = axes[0, 0]
-    ax0.set_ylim(ymin - 1, ymax * 1.08 + 1)
+    ax0.set_ylim(ymin * 1.08 - 1, ymax + 1) if args.delta else ax0.set_ylim(ymin - 1, ymax * 1.08 + 1)
     ax0.set_xticks([10, 25, 50, 75, 90])
     ax0.set_xlim(5, 95)
     for c in range(cols):                                          # lowest visible panel of each column
@@ -107,7 +110,7 @@ def main():
             visible[-1].xaxis.set_tick_params(labelbottom=True)
             visible[-1].set_xlabel('channels pruned in group (%)')
     for ax in axes[:, 0]:
-        ax.set_ylabel('mAP50-95 drop (pp)')
+        ax.set_ylabel('mAP50-95 change (pp)' if args.delta else 'mAP50-95 drop (pp)')
     done = len(rows)
     total = len(ratios) * manifest['groups']
     ref = manifest['reference_unpruned_adaptive_bn']['mAP50-95']
@@ -116,13 +119,14 @@ def main():
     fig.text(0.01, 1 - 0.12 / fig.get_figheight(),
              'Per-group pruning sensitivity, Taylor-1 ranking, adaptive BN, no fine-tuning' + status,
              fontsize=9, color=INK, va='top')
-    fig.text(0.01, 1 - 0.33 / fig.get_figheight(), f'One group pruned at a time. Drop vs. unpruned + adaptive BN (mAP50-95 {ref:.3f}) on '
+    fig.text(0.01, 1 - 0.33 / fig.get_figheight(), f'One group pruned at a time. {"Change (negative = worse)" if args.delta else "Drop"} vs. unpruned + adaptive BN (mAP50-95 {ref:.3f}) on '
              f'{manifest["val_subset"]["images"]} KITTI val images. Legend: group (channels).',
              fontsize=6.5, color=INK2, va='top')
     fig.tight_layout(rect=(0, 0, 1, top))
+    stem = 'sensitivity_lines_delta' if args.delta else 'sensitivity_lines'
     for ext in ('png', 'pdf'):
-        fig.savefig(args.results/f'sensitivity_lines.{ext}', dpi=220, facecolor='white')
-    print(f'Saved {args.results/"sensitivity_lines.png"} ({done}/{total} trials)')
+        fig.savefig(args.results/f'{stem}.{ext}', dpi=220, facecolor='white')
+    print(f'Saved {args.results/(stem + ".png")} ({done}/{total} trials)')
 
 
 if __name__ == '__main__':

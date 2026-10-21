@@ -1,0 +1,38 @@
+{
+  "source": "C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\baseline\\8n_float32.pt",
+  "source_sha256": "b4c22bd2cdc3c73e9e27732a88673fdc4389aed690944d4ca6a7e80dc15863cc",
+  "torch": "2.14.1+cu130",
+  "method": "truncated SVD of W reshaped to Cout x Cin*kh*kw; kxk conv Cin->r then 1x1 conv r->Cout, singular values split as sqrt into both factors",
+  "rank_step": 8,
+  "layers": 63,
+  "excluded": "model.22.dfl.conv (fixed)",
+  "adaptive_bn": {
+    "images": 1280,
+    "split": "KITTI train",
+    "batch": 16,
+    "augment": "training pipeline, checkpoint hyperparameters (mosaic on), generated once",
+    "statistics": "reset, cumulative average",
+    "seed": 42
+  },
+  "val_subset": {
+    "images": 500,
+    "split": "KITTI val",
+    "seed": 42,
+    "file": "val_subset.txt"
+  },
+  "reference_plain": {
+    "mAP50-95": 0.6843752663460361,
+    "mAP50": 0.9071244634050143,
+    "precision": 0.9489073050334152,
+    "recall": 0.8376332512920304
+  },
+  "reference_adaptive_bn": {
+    "mAP50-95": 0.6863763910928636,
+    "mAP50": 0.9124415935947767,
+    "precision": 0.9514628562077408,
+    "recall": 0.8355307047502757
+  },
+  "model_params": 3012408,
+  "conv_gmacs": 4.0445952,
+  "fine_tuned": false
+}
