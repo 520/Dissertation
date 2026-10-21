@@ -33,7 +33,9 @@ def main():
     parser.add_argument('--optimizer', default='SGD')
     parser.add_argument('--lr0', type=float, default=0.01)
     parser.add_argument('--name', default='kitti_taylor1_prune25_ft')
+    parser.add_argument('--suffix', default='_ft', help="output checkpoint is <weights stem><suffix>.pt, e.g. '_ft50'")
     args = parser.parse_args()
+    args.weights, args.data = args.weights.resolve(), args.data.resolve()   # the report stores paths relative to ROOT
 
     ckpt = torch.load(args.weights, map_location='cpu', weights_only=False)
     model = ckpt['model'].float()
@@ -52,12 +54,12 @@ def main():
     seconds = time.perf_counter() - begin
 
     best = Path(trainer.best)
-    out = args.weights.with_name(f'{args.weights.stem}_ft.pt')
+    out = args.weights.with_name(f'{args.weights.stem}{args.suffix}.pt')
     shutil.copy2(best, out)
     SETTINGS.update({'datasets_dir': str(args.data.parent)})
     box = YOLO(str(out)).val(data='kitti.yaml', split='val', imgsz=640, batch=1, device=0, rect=False, workers=0,
                              plots=False, save_json=False, verbose=False, project=str(out.parent/'val'),
-                             name='finetuned', exist_ok=True).box
+                             name=f'finetuned{args.suffix}', exist_ok=True).box
     val = {'mAP50-95': box.map, 'mAP75': box.map75, 'mAP50': box.map50, 'precision': box.mp, 'recall': box.mr}
     # The final best.pt is stripped (its epoch is reset), so read the best epoch from results.csv.
     results = trainer.read_results_csv()
@@ -67,7 +69,8 @@ def main():
               'optimizer': args.optimizer, 'lr0': args.lr0, 'lrf': 0.01, 'cos_lr': True, 'warmup_epochs': 3.0,
               'amp': False, 'cache': 'ram', 'train_seconds': seconds,
               'val_batch1_conf0.001': {k: float(v) for k, v in val.items()}}
-    (out.parent/'finetune.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    report_name = 'finetune.json' if args.suffix == '_ft' else f'finetune{args.suffix}.json'
+    (out.parent/report_name).write_text(json.dumps(report, indent=2), encoding='utf-8')
     print(f'Fine-tuned (best epoch {report["best_epoch"]}): {report["val_batch1_conf0.001"]}', flush=True)
 
 

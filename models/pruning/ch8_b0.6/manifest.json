@@ -1,0 +1,38 @@
+{
+  "source": "models\\baseline\\8n_float32.pt",
+  "plans": "outputs\\knapsack_ch8\\plans.json",
+  "budget": 0.6,
+  "groups_pruned": 15,
+  "channels_removed": 1008,
+  "params_before": 3012408,
+  "params_after": 1943064,
+  "gflops_before": 8.1487168,
+  "gflops_after": 7.104352,
+  "saved_%": 12.816309925017888,
+  "output_shape": [
+    1,
+    12,
+    8400
+  ],
+  "c2f_merged_back": [
+    2,
+    4,
+    6,
+    8,
+    12,
+    15
+  ],
+  "c2f_left_split": [
+    18,
+    21
+  ],
+  "knapsack_evaluation": {
+    "pred_drop": 0.615,
+    "drop_search": 0.972,
+    "drop_heldout": 1.163,
+    "pred_saved_%": 18.26,
+    "saved_%": 12.82,
+    "real_GFLOPs": 7.1044
+  },
+  "checkpoint": "8n_float32_ch8_b0.6.pt"
+}

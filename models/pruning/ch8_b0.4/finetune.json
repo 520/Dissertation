@@ -1,0 +1,23 @@
+{
+  "source": "models\\pruning\\ch8_b0.4\\8n_float32_ch8_b0.4.pt",
+  "checkpoint": "8n_float32_ch8_b0.4_ft.pt",
+  "run_dir": "C:\\Users\\dxu1\\Desktop\\Dissertation\\Pruning\\runs\\kitti_ch8_b0.4_ft10",
+  "best_epoch": 10,
+  "epochs": 10,
+  "batch": 32,
+  "optimizer": "SGD",
+  "lr0": 0.01,
+  "lrf": 0.01,
+  "cos_lr": true,
+  "warmup_epochs": 3.0,
+  "amp": false,
+  "cache": "ram",
+  "train_seconds": 286.8088040999719,
+  "val_batch1_conf0.001": {
+    "mAP50-95": 0.665304211183922,
+    "mAP75": 0.7459080880521151,
+    "mAP50": 0.8973072755589852,
+    "precision": 0.9030355888426246,
+    "recall": 0.8346459038697676
+  }
+}
