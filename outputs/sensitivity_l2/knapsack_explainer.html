@@ -1,0 +1,434 @@
+<title>YOLOv8n 剪枝背包</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; the two interactive panels widen to a lab-bench width, tables scroll inside themselves. */
+:root {
+  --bg: #f4f6f9; --surface: #ffffff; --ink: #16202c; --muted: #586474; --line: #dbe1e9;
+  --accent: #256abf; --accent-soft: #dbe9fb; --pick: #c95f1c; --pick-soft: #fbe6d6; --bad: #b9363a;
+  --r0: #eef1f5; --r1: #cde2fb; --r2: #9ec5f4; --r3: #6da7ec; --r4: #3987e5; --r5: #256abf; --r6: #184f95; --r7: #0d366b;
+  --display: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f141b; --surface: #17202a; --ink: #e5ebf3; --muted: #9aa7b8; --line: #2a3543;
+  --accent: #6da7ec; --accent-soft: #1b3150; --pick: #f0a15c; --pick-soft: #3d2a1b; --bad: #ef7d7f;
+  --r0: #222c38; --r1: #1d3a5f; --r2: #1f4a7d; --r3: #24599a; --r4: #2f6cb8; --r5: #4a88d4; --r6: #78a8e6; --r7: #a9c9f2;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0f141b; --surface: #17202a; --ink: #e5ebf3; --muted: #9aa7b8; --line: #2a3543;
+  --accent: #6da7ec; --accent-soft: #1b3150; --pick: #f0a15c; --pick-soft: #3d2a1b; --bad: #ef7d7f;
+  --r0: #222c38; --r1: #1d3a5f; --r2: #1f4a7d; --r3: #24599a; --r4: #2f6cb8; --r5: #4a88d4; --r6: #78a8e6; --r7: #a9c9f2;
+  color-scheme: dark; }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.75; }
+.page { max-width: 1040px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 44px; }
+.prose { max-width: 42em; display: grid; gap: 14px; }
+h1, h2 { font-family: var(--display); font-weight: 700; text-wrap: balance; margin: 0; line-height: 1.3; }
+h1 { font-size: clamp(28px, 4.4vw, 40px); }
+h2 { font-size: 23px; }
+h3 { font-size: 15px; margin: 0; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 17px; color: var(--muted); }
+code, .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+code { font-size: .9em; background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }
+.formula { font-family: var(--mono); font-size: 14px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 14px 16px; overflow-x: auto; white-space: pre; line-height: 1.7; }
+.mapping { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.map { border-top: 2px solid var(--accent); padding-top: 8px; display: grid; gap: 2px; min-width: 0; }
+.map b { font-size: 13px; color: var(--muted); font-weight: 500; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 18px; min-width: 0; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.controls label { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+button, select { font: inherit; font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 7px; padding: 6px 12px; cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); font-weight: 500; }
+button:hover { border-color: var(--accent); }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+input[type=range] { accent-color: var(--accent); width: 200px; max-width: 46vw; }
+.scroll { overflow-x: auto; min-width: 0; }
+table { border-collapse: collapse; font-size: 13px; }
+th, td { padding: 6px 9px; text-align: right; white-space: nowrap; }
+th { color: var(--muted); font-weight: 500; }
+th.l, td.l { text-align: left; }
+.dp td.cell { border: 1px solid var(--line); min-width: 52px; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.dp td.cell.empty { color: transparent; }
+.dp td.cell.cur { outline: 2px solid var(--accent); outline-offset: -2px; background: var(--accent-soft); }
+.dp td.cell.src { background: var(--accent-soft); }
+.dp td.cell.path { background: var(--pick-soft); color: var(--pick); font-weight: 600; }
+.dp td.cell .ch { display: block; font-size: 10.5px; color: var(--muted); }
+.opts { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.explain { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; display: grid; gap: 6px; min-height: 7.5em; font-size: 14px; }
+.cand { display: flex; flex-wrap: wrap; gap: 6px 10px; font-family: var(--mono); font-size: 13px; }
+.cand span { padding: 2px 8px; border-radius: 5px; border: 1px solid var(--line); }
+.cand .win { border-color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.cand .no { color: var(--muted); text-decoration: line-through; }
+.versus { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.versus > div { border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px; display: grid; gap: 4px; min-width: 0; font-size: 14px; }
+.versus .tag { font-size: 12px; color: var(--muted); }
+.versus .big { font-family: var(--mono); font-size: 22px; font-weight: 600; }
+.versus .dpwin .big { color: var(--pick); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+.stat { display: grid; gap: 0; }
+.stat .k { font-size: 13px; color: var(--muted); }
+.stat .v { font-family: var(--mono); font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.stat .s { font-size: 12px; color: var(--muted); }
+.strip { display: grid; grid-template-columns: repeat(59, minmax(0, 1fr)); gap: 2px; }
+.strip i { display: block; height: 28px; border-radius: 3px; background: var(--r0); position: relative; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); align-items: center; }
+.legend i { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 5px; }
+.strip-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); font-family: var(--mono); }
+svg text { fill: var(--muted); font-family: var(--mono); font-size: 11px; }
+.chart-line { fill: none; stroke: var(--accent); stroke-width: 2; }
+.chart-grid { stroke: var(--line); stroke-width: 1; }
+.chart-dot { fill: var(--pick); stroke: var(--surface); stroke-width: 2; }
+.chart-guide { stroke: var(--pick); stroke-width: 1; stroke-dasharray: 3 3; }
+.chosen td { border-top: 1px solid var(--line); }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: 0; }
+.note { font-size: 13px; color: var(--muted); }
+.warn { color: var(--bad); }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+@media (max-width: 760px) { .two { grid-template-columns: minmax(0, 1fr); } .strip i { height: 22px; } }
+ol.caveats { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="page">
+  <header class="prose">
+    <span class="eyebrow">YOLOv8n-KITTI · Torch-Pruning · 59 个依赖组</span>
+    <h1>用背包问题分配每组剪枝比例</h1>
+    <p class="lede">敏感度扫描给了每个组在每个比例下的掉点和省下的 FLOPs。剩下的问题是：在总掉点不超过预算的前提下，每组各选一个比例，让省下的 FLOPs 最多。这正是一个多选背包问题，可以用动态规划精确求解。</p>
+  </header>
+
+  <section class="prose">
+    <span class="eyebrow">1 · 问题对应</span>
+    <h2>把剪枝翻译成背包</h2>
+    <div class="mapping">
+      <div class="map"><b>物品类别</b><span>一个依赖组。每类必须且只能选一个物品。</span></div>
+      <div class="map"><b>物品</b><span>该组的一个剪枝比例：0、12.5%、25% … 87.5%。</span></div>
+      <div class="map"><b>重量（成本）</b><span>剪这一档的 mAP50-95 掉点，单位：点。</span></div>
+      <div class="map"><b>价值</b><span>剪这一档省下的 FLOPs，单位：MFLOPs。</span></div>
+      <div class="map"><b>背包容量</b><span>允许的总掉点预算，比如 1 个点。</span></div>
+    </div>
+    <p>普通 0/1 背包里每个物品选或不选；这里每组有 8 个互斥选项，必须恰好选一个，所以叫<strong>多选背包</strong>（Multiple-Choice Knapsack）。「不剪」是成本 0、价值 0 的选项，所以「这组不动」也包含在内。</p>
+    <p>它依赖一个假设：<strong>各组的掉点可以相加</strong>。敏感度是一次只剪一组测出来的，多组同时剪的真实掉点要组合实测。这是求解之后要验证的事，不影响求解本身。</p>
+  </section>
+
+  <section class="prose">
+    <span class="eyebrow">2 · 递推式</span>
+    <h2>动态规划怎么算</h2>
+    <p>把预算切成小格（下面的玩具例子每格 0.5 点，真实求解每格 0.01 点）。定义表格的一格：</p>
+    <div class="formula">dp[i][b] = 只看前 i 个组、总掉点不超过 b 格时，最多能省多少 FLOPs
+
+dp[0][b] = 0                                   一个组都没选，什么也没省
+dp[i][b] = max  over 第 i 组的每个选项 j，且 cost[i][j] ≤ b：
+               dp[i-1][b - cost[i][j]] + value[i][j]</div>
+    <p>读法：要算第 i 组在预算 b 下的最好结果，就逐个试这组的每个比例。选了比例 j，就花掉 <code>cost[i][j]</code> 格，剩下的 <code>b − cost</code> 格交给前 i−1 组，而前 i−1 组在这个预算下的最好结果已经在上一行算好了。所有试过的选项里取最大的那个，并记下选的是哪个。</p>
+    <p>表填完后，<code>dp[组数][预算]</code> 就是最优值。再从最后一行往回走，按记下的选择逐组还原方案，这一步叫<strong>回溯</strong>。</p>
+    <p>计算量是 组数 × 预算格数 × 每组选项数。真实问题是 59 × 500 × 8 ≈ 24 万次加法，浏览器里不到一毫秒。</p>
+  </section>
+
+  <section class="panel" aria-labelledby="toy-title">
+    <div class="prose">
+      <span class="eyebrow">3 · 一步一步填表</span>
+      <h2 id="toy-title">玩具例子：4 个真实的组，4 档比例</h2>
+      <p>下面用 4 个组的真实扫描数据，只允许 0 / 12.5% / 25% / 37.5% 四档。掉点四舍五入到 0.5 点一格，方便看表。点「下一步」逐格填写，右侧会列出这一格试了哪些选项。</p>
+    </div>
+    <div class="scroll"><table class="opts" id="toy-opts"></table></div>
+    <div class="controls">
+      <button class="primary" id="toy-next" type="button">下一步</button>
+      <button id="toy-play" type="button">自动播放</button>
+      <button id="toy-fill" type="button">全部填完</button>
+      <button id="toy-reset" type="button">重置</button>
+      <label for="toy-budget">回溯的预算
+        <select id="toy-budget"></select>
+      </label>
+    </div>
+    <div class="two">
+      <div class="scroll"><table class="dp" id="toy-table"></table></div>
+      <div class="explain" id="toy-explain" aria-live="polite"></div>
+    </div>
+    <div class="versus" id="toy-versus" hidden></div>
+  </section>
+
+  <section class="panel" aria-labelledby="real-title">
+    <div class="prose">
+      <span class="eyebrow">4 · 真实求解</span>
+      <h2 id="real-title">59 个组，用你的扫描数据</h2>
+      <p>数据来自 12.5% 步长的敏感度扫描：L2 组重要性、adaptive BN、500 张验证图，基准 68.59 mAP50-95，未剪模型 8.149 GFLOPs。拖动预算，下面的方案会立即重算。</p>
+    </div>
+    <div class="controls">
+      <label for="real-budget">掉点预算 <span class="num" id="real-budget-v"></span></label>
+      <input type="range" id="real-budget" min="0" max="5" step="0.1" value="1">
+      <label for="real-max">最大比例
+        <select id="real-max">
+          <option value="3">37.5%</option>
+          <option value="4">50%</option>
+          <option value="7" selected>87.5%</option>
+        </select>
+      </label>
+      <label for="real-mono"><input type="checkbox" id="real-mono" checked> 掉点单调化</label>
+    </div>
+    <div class="stats" id="real-stats"></div>
+    <div class="two">
+      <div style="display:grid;gap:8px;min-width:0">
+        <h3>预算和可省 FLOPs 的关系</h3>
+        <div class="scroll"><svg id="real-chart" viewBox="0 0 440 250" width="100%" role="img" aria-label="不同掉点预算下的最优可省 GFLOPs 曲线"></svg></div>
+        <p class="note">每个点都是一次完整的背包最优解。曲线前段陡、后段平：最先花掉的预算换来的 FLOPs 最多。</p>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0">
+        <h3>每组选的比例（按网络从输入到输出排列）</h3>
+        <div class="strip" id="real-strip"></div>
+        <div class="strip-labels"><span>model.0</span><span>backbone → neck → head</span><span>model.22</span></div>
+        <div class="legend" id="real-legend"></div>
+      </div>
+    </div>
+    <div class="scroll"><table class="chosen" id="real-table"></table></div>
+  </section>
+
+  <section class="prose">
+    <span class="eyebrow">5 · 用之前要知道的</span>
+    <h2>这个解是起点，不是答案</h2>
+    <ol class="caveats">
+      <li><strong>可加性只是近似。</strong>表里的「预测掉点」是各组单独剪时掉点的和，FLOPs 也是各组单独省下的和。相邻两组共用一个卷积（一个剪输出通道，一个剪输入通道）时，真实省下的 FLOPs 比相加略少；多组同时剪的真实掉点也可能更多或更少。拿到方案后要按真实组合剪枝、adaptive BN、实测。</li>
+      <li><strong>噪声约 ±0.5 点。</strong>500 张验证图上，同一个点两次测量最多差 0.42 点。背包会主动挑那些「碰巧测得很低」的格子，所以解的预测掉点偏乐观。勾选「掉点单调化」会把每组的掉点改成随比例单调不减（取前缀最大值），能挡掉一部分这种噪声。</li>
+      <li><strong>负的掉点按 0 算。</strong>小于 0 的值是噪声，不当成剪了反而变好。</li>
+      <li><strong>只取第一名不够稳。</strong>建议取多档预算、每档前 10 个左右不同的方案去实测，再用全量验证集复测前几名，最后微调 1–2 个。</li>
+    </ol>
+  </section>
+</div>
+
+<script>
+const GROUPS = [{"g":0,"n":"model.22.cv3.2.1","c":64,"k":0,"d":[0,0.0,0.03,0.12,0.14,0.12,0.06,0.01],"f":[0,3.7,7.5,11.2,15.0,18.7,22.5,26.2]},{"g":1,"n":"model.22.cv3.2.0","c":64,"k":0,"d":[0,-0.0,0.0,0.0,0.0,-0.0,0.01,0.02],"f":[0,18.4,36.9,55.3,73.8,92.2,110.7,129.1]},{"g":2,"n":"model.21.cv2","c":256,"k":0,"d":[0,0.02,0.03,0.03,0.02,-0.02,0.08,0.08],"f":[0,39.4,78.7,118.1,157.5,196.8,236.2,275.6]},{"g":3,"n":"model.21.m.0.cv2","c":128,"k":0,"d":[0,0.02,0.13,0.17,0.18,0.07,0.04,0.19],"f":[0,18.0,36.1,54.1,72.2,90.2,108.3,126.3]},{"g":4,"n":"model.21.m.0.cv1","c":128,"k":0,"d":[0,-0.0,-0.0,-0.0,0.02,0.02,0.0,0.02],"f":[0,29.5,59.0,88.5,118.1,147.6,177.1,206.6]},{"g":5,"n":"model.21.cv1","c":128,"k":0,"d":[0,0.03,0.01,0.02,0.03,0.05,0.11,0.1],"f":[0,22.9,45.9,68.9,91.8,114.8,137.8,160.7]},{"g":6,"n":"model.9.cv2","c":256,"k":0,"d":[0,4.53,6.04,7.1,8.77,11.2,16.8,22.37],"f":[0,32.9,65.8,98.7,131.7,164.6,197.5,230.4]},{"g":7,"n":"model.9.cv1","c":128,"k":0,"d":[0,0.99,1.57,2.65,3.52,7.39,14.77,26.53],"f":[0,16.4,32.9,49.3,65.8,82.2,98.7,115.1]},{"g":8,"n":"model.8.cv2","c":256,"k":0,"d":[0,0.31,0.79,0.79,3.97,6.85,12.57,21.37],"f":[0,13.1,26.3,39.5,52.6,65.8,78.9,92.1]},{"g":9,"n":"model.8.m.0.cv2","c":128,"k":1,"d":[0,0.31,0.66,2.11,4.91,10.34,16.66,24.46],"f":[0,39.4,78.7,118.1,157.5,196.8,236.2,275.6]},{"g":10,"n":"model.8.m.0.cv1","c":128,"k":0,"d":[0,0.44,0.48,1.16,3.55,4.08,6.01,15.01],"f":[0,29.5,59.0,88.5,118.1,147.6,177.1,206.6]},{"g":11,"n":"model.7","c":256,"k":0,"d":[0,0.03,0.41,1.21,2.09,4.12,8.88,23.32],"f":[0,36.1,72.2,108.3,144.4,180.5,216.6,252.7]},{"g":12,"n":"model.6.cv2","c":128,"k":0,"d":[0,0.64,1.97,4.31,9.27,17.87,33.33,53.36],"f":[0,49.2,98.5,147.7,197.0,246.3,295.5,344.8]},{"g":13,"n":"model.6.m.1.cv2","c":64,"k":2,"d":[0,1.35,2.56,5.95,10.43,17.04,30.66,40.82],"f":[0,72.2,144.5,216.7,289.0,361.2,433.4,505.7]},{"g":14,"n":"model.6.m.1.cv1","c":64,"k":0,"d":[0,0.46,0.54,1.04,2.62,3.37,6.68,8.18],"f":[0,29.5,59.1,88.6,118.2,147.7,177.2,206.8]},{"g":15,"n":"model.6.m.0.cv1","c":64,"k":0,"d":[0,0.41,0.83,1.34,1.8,3.39,6.07,10.71],"f":[0,29.5,59.1,88.6,118.2,147.7,177.2,206.8]},{"g":16,"n":"model.5","c":128,"k":0,"d":[0,0.34,1.04,2.3,3.43,6.62,13.99,29.32],"f":[0,36.1,72.3,108.4,144.6,180.7,216.9,253.0]},{"g":17,"n":"model.4.cv2","c":64,"k":0,"d":[0,1.35,4.04,7.07,12.56,22.52,37.58,66.24],"f":[0,49.3,98.7,148.1,197.4,246.8,296.1,345.5]},{"g":18,"n":"model.4.m.1.cv2","c":32,"k":2,"d":[0,0.8,2.43,4.79,10.55,14.71,29.82,44.92],"f":[0,72.4,144.8,217.2,289.6,362.0,434.4,506.8]},{"g":19,"n":"model.4.m.1.cv1","c":32,"k":0,"d":[0,0.21,0.09,0.81,2.01,3.15,3.69,5.69],"f":[0,29.6,59.2,88.8,118.4,148.0,177.5,207.1]},{"g":20,"n":"model.4.m.0.cv1","c":32,"k":0,"d":[0,-0.0,0.62,1.59,2.15,2.65,5.19,7.42],"f":[0,29.6,59.2,88.8,118.4,148.0,177.5,207.1]},{"g":21,"n":"model.3","c":64,"k":0,"d":[0,0.19,1.63,3.5,5.54,10.89,18.63,43.85],"f":[0,36.2,72.5,108.7,145.0,181.2,217.5,253.7]},{"g":22,"n":"model.2.cv2","c":32,"k":0,"d":[0,1.21,2.33,5.29,6.94,23.16,37.58,61.71],"f":[0,39.7,79.4,119.2,158.9,198.6,238.4,278.1]},{"g":23,"n":"model.2.m.0.cv2","c":16,"k":1,"d":[0,1.1,1.63,4.07,6.99,16.38,34.53,56.64],"f":[0,39.7,79.4,119.2,158.9,198.6,238.4,278.1]},{"g":24,"n":"model.2.m.0.cv1","c":16,"k":0,"d":[0,0.37,0.98,1.24,1.05,1.54,3.16,5.71],"f":[0,29.7,59.4,89.1,118.8,148.5,178.2,207.9]},{"g":25,"n":"model.1","c":32,"k":0,"d":[0,2.92,10.15,50.93,58.69,61.05,66.84,68.58],"f":[0,36.4,72.9,109.3,145.8,182.3,218.7,255.2]},{"g":26,"n":"model.0","c":16,"k":0,"d":[0,0.95,3.56,4.46,14.37,31.52,51.63,62.94],"f":[0,41.4,82.7,124.1,165.5,206.8,248.2,289.6]},{"g":27,"n":"model.2.cv0","c":16,"k":0,"d":[0,0.66,2.61,3.81,5.29,7.65,9.48,13.25],"f":[0,6.7,13.5,20.3,27.0,33.8,40.5,47.3]},{"g":28,"n":"model.4.cv0","c":32,"k":0,"d":[0,0.15,0.62,0.77,1.52,1.73,2.33,7.76],"f":[0,6.6,13.3,20.0,26.6,33.3,39.9,46.6]},{"g":29,"n":"model.6.cv0","c":64,"k":0,"d":[0,0.12,0.42,0.7,2.07,2.78,3.48,4.86],"f":[0,6.6,13.2,19.8,26.4,33.0,39.6,46.2]},{"g":30,"n":"model.8.cv0","c":128,"k":0,"d":[0,0.43,0.18,1.17,1.31,1.56,1.96,2.38],"f":[0,6.6,13.1,19.7,26.3,32.9,39.5,46.0]},{"g":31,"n":"model.19","c":128,"k":0,"d":[0,-0.01,0.01,0.03,0.02,-0.02,-0.02,-0.02],"f":[0,18.0,36.1,54.1,72.2,90.2,108.3,126.3]},{"g":32,"n":"model.18.cv2","c":128,"k":0,"d":[0,-0.21,0.07,2.45,7.02,10.91,17.66,19.55],"f":[0,83.6,167.3,251.0,334.6,418.3,501.9,585.6]},{"g":33,"n":"model.18.m.0.cv2","c":64,"k":0,"d":[0,0.05,0.25,0.37,0.77,1.71,3.31,4.06],"f":[0,18.1,36.1,54.2,72.3,90.4,108.4,126.5]},{"g":34,"n":"model.18.m.0.cv1","c":64,"k":0,"d":[0,0.13,0.16,0.41,1.07,2.34,2.44,5.62],"f":[0,29.5,59.1,88.6,118.2,147.7,177.2,206.8]},{"g":35,"n":"model.18.cv1","c":64,"k":0,"d":[0,-0.28,0.15,0.19,-0.37,0.17,2.23,8.99],"f":[0,23.0,46.0,68.9,91.9,114.9,137.9,160.9]},{"g":36,"n":"model.12.cv2","c":128,"k":0,"d":[0,0.97,3.31,8.93,13.15,20.31,34.51,52.3],"f":[0,29.8,59.6,89.4,119.2,149.0,178.8,208.6]},{"g":37,"n":"model.12.m.0.cv2","c":64,"k":0,"d":[0,0.32,0.7,1.36,3.08,4.0,7.76,11.17],"f":[0,18.1,36.1,54.2,72.3,90.4,108.4,126.5]},{"g":38,"n":"model.12.m.0.cv1","c":64,"k":0,"d":[0,0.73,1.63,2.7,4.11,4.98,8.37,13.57],"f":[0,29.5,59.1,88.6,118.2,147.7,177.2,206.8]},{"g":39,"n":"model.12.cv1","c":64,"k":0,"d":[0,0.54,2.63,4.61,8.54,11.12,21.0,32.07],"f":[0,27.9,55.8,83.7,111.6,139.5,167.4,195.3]},{"g":40,"n":"model.12.cv0","c":64,"k":0,"d":[0,0.62,2.2,3.25,6.13,7.73,10.62,20.55],"f":[0,13.1,26.3,39.5,52.6,65.8,78.9,92.1]},{"g":41,"n":"model.16","c":64,"k":0,"d":[0,-0.3,0.24,0.19,0.2,0.68,2.46,4.89],"f":[0,18.1,36.1,54.2,72.3,90.4,108.4,126.5]},{"g":42,"n":"model.15.cv2","c":64,"k":0,"d":[0,2.9,5.42,6.98,11.36,16.96,19.61,38.18],"f":[0,142.7,285.5,428.2,571.0,713.7,856.5,999.2]},{"g":43,"n":"model.15.m.0.cv2","c":32,"k":0,"d":[0,0.61,2.25,3.37,5.53,8.77,11.47,19.49],"f":[0,18.1,36.2,54.4,72.5,90.6,108.7,126.9]},{"g":44,"n":"model.15.m.0.cv1","c":32,"k":0,"d":[0,1.19,2.74,4.11,6.51,11.79,18.37,28.23],"f":[0,29.6,59.2,88.8,118.4,148.0,177.5,207.1]},{"g":45,"n":"model.15.cv1","c":32,"k":0,"d":[0,1.66,4.21,6.58,8.83,14.85,22.83,34.75],"f":[0,27.9,55.9,83.8,111.8,139.8,167.7,195.7]},{"g":46,"n":"model.15.cv0","c":32,"k":0,"d":[0,0.94,2.67,3.94,5.35,6.94,9.53,11.06],"f":[0,13.2,26.4,39.6,52.8,66.0,79.2,92.5]},{"g":47,"n":"model.18.cv0","c":64,"k":0,"d":[0,0.15,0.15,0.7,1.12,1.77,4.38,5.78],"f":[0,8.2,16.5,24.7,33.0,41.2,49.4,57.7]},{"g":48,"n":"model.21.cv0","c":128,"k":0,"d":[0,-0.01,0.01,0.02,0.02,0.03,0.04,0.08],"f":[0,8.2,16.4,24.6,32.9,41.1,49.3,57.5]},{"g":49,"n":"model.22.cv3.1.1","c":64,"k":0,"d":[0,1.06,2.62,3.96,5.89,8.29,8.75,10.96],"f":[0,15.0,30.0,45.0,60.0,75.0,90.0,105.0]},{"g":50,"n":"model.22.cv3.1.0","c":64,"k":0,"d":[0,-0.06,0.16,0.43,0.78,2.1,5.28,10.66],"f":[0,44.3,88.6,132.8,177.1,221.4,265.7,310.0]},{"g":51,"n":"model.22.cv3.0.1","c":64,"k":0,"d":[0,2.01,3.52,4.36,4.9,5.78,6.39,6.83],"f":[0,60.0,120.0,180.0,240.0,300.0,360.0,420.0]},{"g":52,"n":"model.22.cv3.0.0","c":64,"k":0,"d":[0,0.66,1.29,1.61,2.25,3.88,7.39,10.35],"f":[0,118.2,236.3,354.5,472.7,590.8,709.0,827.2]},{"g":53,"n":"model.22.cv2.2.1","c":64,"k":0,"d":[0,0.23,0.3,0.3,0.31,0.32,0.32,0.31],"f":[0,4.1,8.2,12.3,16.4,20.5,24.6,28.7]},{"g":54,"n":"model.22.cv2.2.0","c":64,"k":0,"d":[0,0.08,0.08,0.13,0.22,0.29,0.31,0.32],"f":[0,18.4,36.9,55.3,73.8,92.2,110.7,129.1]},{"g":55,"n":"model.22.cv2.1.1","c":64,"k":0,"d":[0,2.6,8.09,11.34,19.86,32.55,40.54,46.24],"f":[0,16.4,32.9,49.3,65.7,82.2,98.6,115.0]},{"g":56,"n":"model.22.cv2.1.0","c":64,"k":0,"d":[0,0.21,0.63,3.92,9.2,17.72,32.01,43.97],"f":[0,44.3,88.6,132.8,177.1,221.4,265.7,310.0]},{"g":57,"n":"model.22.cv2.0.1","c":64,"k":0,"d":[0,6.79,12.76,26.82,32.84,36.0,37.29,39.23],"f":[0,65.7,131.5,197.2,262.9,328.7,394.4,460.2]},{"g":58,"n":"model.22.cv2.0.0","c":64,"k":0,"d":[0,0.74,2.55,6.37,11.07,16.64,22.89,40.14],"f":[0,118.2,236.3,354.5,472.7,590.8,709.0,827.2]}];
+const RATIOS = [0, 12.5, 25, 37.5, 50, 62.5, 75, 87.5];
+const BASE_GFLOPS = 8.1487;
+const $ = id => document.getElementById(id);
+const fmt = (x, d = 1) => Number(x).toFixed(d);
+
+/* ---------- 3 · toy DP ---------- */
+const TOY_IDS = [31, 11, 8, 42];      // model.19, model.7, model.8.cv2, model.15.cv2
+const TOY_UNIT = 0.5, TOY_B = 6, TOY_K = 4;
+const toy = TOY_IDS.map(id => {
+  const g = GROUPS.find(x => x.g === id);
+  return { name: g.n, ch: g.c,
+    cost: g.d.slice(0, TOY_K).map(d => Math.round(Math.max(0, d) / TOY_UNIT)),
+    rawd: g.d.slice(0, TOY_K), value: g.f.slice(0, TOY_K).map(Math.round) };
+});
+const N = toy.length;
+let dp, choice, step, timer = null;
+const order = [];
+for (let i = 1; i <= N; i++) for (let b = 0; b <= TOY_B; b++) order.push([i, b]);
+
+function toyReset() {
+  dp = Array.from({ length: N + 1 }, (_, i) => Array(TOY_B + 1).fill(i === 0 ? 0 : null));
+  choice = Array.from({ length: N + 1 }, () => Array(TOY_B + 1).fill(null));
+  step = 0; stopPlay(); renderToy(null);
+}
+function candidates(i, b) {
+  const t = toy[i - 1];
+  return t.cost.map((c, j) => c > b ? { j, ok: false, c } : { j, ok: true, c, from: b - c, total: dp[i - 1][b - c] + t.value[j] });
+}
+function fillCell(i, b) {
+  const cands = candidates(i, b);
+  let best = null;
+  for (const x of cands) if (x.ok && (best === null || x.total > best.total)) best = x;
+  dp[i][b] = best.total; choice[i][b] = best.j;
+  return { cands, best };
+}
+function toyStep() {
+  if (step >= order.length) return null;
+  const [i, b] = order[step++];
+  const r = fillCell(i, b);
+  renderToy({ i, b, ...r });
+  return r;
+}
+function backtrack(B) {
+  const path = [];
+  let b = B;
+  for (let i = N; i >= 1; i--) { const j = choice[i][b]; path.unshift({ i, b, j }); b -= toy[i - 1].cost[j]; }
+  return path;
+}
+function greedy(B) {
+  // Repeatedly take the one-step upgrade with the best FLOPs per point of drop that still fits.
+  const sel = Array(N).fill(0); let used = 0;
+  for (;;) {
+    let best = null;
+    toy.forEach((t, i) => {
+      const j = sel[i] + 1;
+      if (j >= TOY_K) return;
+      const dc = t.cost[j] - t.cost[sel[i]], dv = t.value[j] - t.value[sel[i]];
+      if (used + dc > B) return;
+      const score = dc <= 0 ? Infinity : dv / dc;
+      if (!best || score > best.score) best = { i, j, dc, score };
+    });
+    if (!best) break;
+    sel[best.i] = best.j; used += best.dc;
+  }
+  return { sel, used, value: sel.reduce((s, j, i) => s + toy[i].value[j], 0) };
+}
+function renderOpts() {
+  let h = '<tr><th class="l">组</th><th class="l">通道</th>' + RATIOS.slice(0, TOY_K).map(r => `<th>${r}%</th>`).join('') + '</tr>';
+  toy.forEach((t, i) => {
+    h += `<tr><td class="l">${i + 1}. ${t.name}</td><td class="l">${t.ch}</td>` + t.cost.map((c, j) =>
+      `<td>掉 ${fmt(c * TOY_UNIT)} · 省 ${t.value[j]}</td>`).join('') + '</tr>';
+  });
+  $('toy-opts').innerHTML = h + `<tr><td class="l" colspan="${TOY_K + 2}">格式：掉点（四舍五入到 0.5 点）· 省下的 MFLOPs。实测掉点：` +
+    toy.map(t => `${t.name} ${t.rawd.slice(1).map(d => fmt(Math.max(0, d), 2)).join(' / ')}`).join('；') + '</td></tr>';
+}
+function renderToy(cur) {
+  const B = +$('toy-budget').value;
+  const done = step >= order.length;
+  const path = done ? backtrack(B) : [];
+  const onPath = new Set(path.map(p => p.i + ',' + p.b));
+  const src = cur ? new Set(cur.cands.filter(x => x.ok).map(x => (cur.i - 1) + ',' + x.from)) : new Set();
+  let h = '<tr><th class="l">dp[i][b]</th>' + Array.from({ length: TOY_B + 1 }, (_, b) => `<th>b=${fmt(b * TOY_UNIT)}</th>`).join('') + '</tr>';
+  for (let i = 0; i <= N; i++) {
+    h += `<tr><th class="l">${i === 0 ? 'i=0 不选' : `i=${i} ${toy[i - 1].name}`}</th>`;
+    for (let b = 0; b <= TOY_B; b++) {
+      const v = dp[i][b], key = i + ',' + b;
+      const cls = ['cell', v === null ? 'empty' : '', cur && cur.i === i && cur.b === b ? 'cur' : '',
+        src.has(key) ? 'src' : '', onPath.has(key) || (done && i === 0 && path.length && b === path[0].b - toy[0].cost[path[0].j]) ? 'path' : ''].join(' ');
+      const ch = v !== null && i > 0 ? `<span class="ch">选 ${RATIOS[choice[i][b]]}%</span>` : '';
+      h += `<td class="${cls}">${v === null ? '·' : v}${ch}</td>`;
+    }
+    h += '</tr>';
+  }
+  $('toy-table').innerHTML = h;
+
+  const ex = $('toy-explain');
+  if (cur) {
+    const t = toy[cur.i - 1];
+    ex.innerHTML = `<b>第 ${cur.i} 组 ${t.name}，预算 b = ${fmt(cur.b * TOY_UNIT)} 点</b>
+      <span>逐个试这组的比例，剩下的预算交给上一行：</span>
+      <div class="cand">${cur.cands.map(x => x.ok
+        ? `<span class="${x === cur.best ? 'win' : ''}">${RATIOS[x.j]}%：dp[${cur.i - 1}][${fmt(x.from * TOY_UNIT)}] + ${t.value[x.j]} = ${x.total}</span>`
+        : `<span class="no">${RATIOS[x.j]}%：要 ${fmt(x.c * TOY_UNIT)} 点，超预算</span>`).join('')}</div>
+      <span>取最大的 <b class="num">${cur.best.total}</b>，记下「选 ${RATIOS[cur.best.j]}%」。浅蓝色是它参考的上一行格子。</span>`;
+  } else if (done) {
+    const total = path.reduce((s, p) => s + toy[p.i - 1].cost[p.j], 0);
+    ex.innerHTML = `<b>表填完了。回溯预算 ${fmt(B * TOY_UNIT)} 点的最优方案（橙色路径）：</b>
+      <span>从最后一行 b = ${fmt(B * TOY_UNIT)} 出发，每一格记着选了哪个比例，减掉它的成本就跳到上一行对应的格子。</span>
+      <div class="cand">${path.map(p => `<span class="win">${toy[p.i - 1].name} → ${RATIOS[p.j]}%</span>`).join('')}</div>
+      <span>共掉 ${fmt(total * TOY_UNIT)} 点，省 <b class="num">${dp[N][B]}</b> MFLOPs。改上面的「回溯的预算」可以直接看别的预算，不用重算整张表。</span>`;
+  } else {
+    ex.innerHTML = `<b>第 0 行全是 0：还没选任何组。</b><span>点「下一步」开始填第 1 组。每一格只依赖上一行，所以按行从左往右填就行。</span>`;
+  }
+
+  const vs = $('toy-versus');
+  vs.hidden = !done;
+  if (done) {
+    const g = greedy(B);
+    const better = dp[N][B] > g.value;
+    vs.innerHTML = `<div class="dpwin"><span class="tag">动态规划（精确）</span><span class="big">${dp[N][B]} MFLOPs</span>
+        <span>${path.map(p => `${toy[p.i - 1].name} ${RATIOS[p.j]}%`).join('，')}</span></div>
+      <div><span class="tag">贪心：每次升一档「省 FLOPs ÷ 掉点」最高的组</span><span class="big">${g.value} MFLOPs</span>
+        <span>${g.sel.map((j, i) => `${toy[i].name} ${RATIOS[j]}%`).join('，')}，用掉 ${fmt(g.used * TOY_UNIT)} 点</span></div>
+      <p class="note" style="grid-column:1/-1">${better
+        ? '贪心先把便宜的小升级拿光，等到想要 model.15.cv2 这种「贵但值」的选项时预算已经不够了。动态规划考虑了所有组合，所以不会被前面的选择卡住。'
+        : '这个预算下贪心碰巧也找到了最优解。把预算调到 3.0 点再看，两者就不一样了。'}</p>`;
+  }
+  $('toy-next').disabled = done;
+}
+function stopPlay() { if (timer) { clearInterval(timer); timer = null; } $('toy-play').textContent = '自动播放'; }
+$('toy-budget').innerHTML = Array.from({ length: TOY_B }, (_, k) => k + 1).map(b =>
+  `<option value="${b}" ${b === TOY_B ? 'selected' : ''}>${fmt(b * TOY_UNIT)} 点</option>`).join('');
+$('toy-next').onclick = () => { stopPlay(); toyStep(); };
+$('toy-fill').onclick = () => { stopPlay(); while (step < order.length) { const [i, b] = order[step++]; fillCell(i, b); } renderToy(null); };
+$('toy-reset').onclick = toyReset;
+$('toy-budget').onchange = () => renderToy(null);
+$('toy-play').onclick = () => {
+  if (timer) return stopPlay();
+  if (step >= order.length) toyReset();
+  $('toy-play').textContent = '暂停';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  timer = setInterval(() => { if (!toyStep()) { stopPlay(); renderToy(null); } }, reduce ? 900 : 650);
+};
+renderOpts();
+toyReset();
+
+/* ---------- 4 · real solve ---------- */
+const UNIT = 0.01, BMAX = 500;           // 0.01 point per cell, up to 5 points
+const layerKey = n => { const p = n.split('.'); return [+p[1], n]; };
+const byLayer = GROUPS.slice().sort((a, b) => { const x = layerKey(a.n), y = layerKey(b.n); return x[0] - y[0] || x[1].localeCompare(y[1]); });
+
+function solve(maxIdx, mono) {
+  const items = GROUPS.map(g => {
+    let run = 0;
+    const d = g.d.slice(0, maxIdx + 1).map(v => { const x = Math.max(0, v); run = mono ? Math.max(run, x) : x; return run; });
+    return { g, d, cost: d.map(x => Math.round(x / UNIT)), value: g.f.slice(0, maxIdx + 1) };
+  });
+  let prev = new Float64Array(BMAX + 1);   // dp[0][b] = 0
+  const choices = [];
+  for (const it of items) {
+    const cur = new Float64Array(BMAX + 1).fill(-Infinity), ch = new Uint8Array(BMAX + 1);
+    for (let b = 0; b <= BMAX; b++) for (let j = 0; j < it.cost.length; j++) {
+      const c = it.cost[j];
+      if (c > b) continue;
+      const v = prev[b - c] + it.value[j];
+      if (v > cur[b]) { cur[b] = v; ch[b] = j; }
+    }
+    choices.push(ch); prev = cur;
+  }
+  return { items, best: prev, choices };
+}
+function pick(sol, B) {
+  const sel = new Array(sol.items.length);
+  let b = B;
+  for (let i = sol.items.length - 1; i >= 0; i--) { const j = sol.choices[i][b]; sel[i] = j; b -= sol.items[i].cost[j]; }
+  return sel;
+}
+const rampVar = j => `var(--r${j})`;
+$('real-legend').innerHTML = RATIOS.map((r, j) => `<span><i style="background:${rampVar(j)}"></i>${r}%</span>`).join('');
+
+function drawChart(sol, B) {
+  const W = 440, H = 250, L = 46, R = 14, T = 14, Bot = 34;
+  const ys = Array.from({ length: 51 }, (_, k) => sol.best[k * 10] / 1000);
+  const ymax = Math.max(0.5, Math.ceil(ys[50] * 2) / 2);
+  const x = v => L + (W - L - R) * v / 5, y = v => H - Bot - (H - T - Bot) * v / ymax;
+  let s = '';
+  for (let k = 0; k <= 5; k++) s += `<line class="chart-grid" x1="${x(k)}" x2="${x(k)}" y1="${T}" y2="${H - Bot}"/><text x="${x(k)}" y="${H - Bot + 16}" text-anchor="middle">${k}</text>`;
+  const step = ymax > 2 ? 0.5 : 0.25;
+  for (let v = 0; v <= ymax + 1e-9; v += step) s += `<line class="chart-grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v, 2)}</text>`;
+  s += `<text x="${(L + W - R) / 2}" y="${H - 4}" text-anchor="middle">掉点预算（点）</text>`;
+  s += `<text x="12" y="${(T + H - Bot) / 2}" text-anchor="middle" transform="rotate(-90 12 ${(T + H - Bot) / 2})">可省 GFLOPs</text>`;
+  s += `<polyline class="chart-line" points="${ys.map((v, k) => `${x(k / 10)},${y(v)}`).join(' ')}"/>`;
+  const cur = sol.best[B] / 1000;
+  s += `<line class="chart-guide" x1="${x(B * UNIT)}" x2="${x(B * UNIT)}" y1="${T}" y2="${H - Bot}"/>`;
+  s += `<circle class="chart-dot" cx="${x(B * UNIT)}" cy="${y(cur)}" r="5.5"/>`;
+  $('real-chart').innerHTML = s;
+}
+function renderReal() {
+  const budget = +$('real-budget').value, B = Math.round(budget / UNIT);
+  const maxIdx = +$('real-max').value, mono = $('real-mono').checked;
+  $('real-budget-v').textContent = fmt(budget) + ' 点';
+  const sol = solve(maxIdx, mono), sel = pick(sol, B);
+  const chosen = sol.items.map((it, i) => ({ ...it, j: sel[i] }));
+  const drop = chosen.reduce((s, c) => s + c.d[c.j], 0);
+  const saved = chosen.reduce((s, c) => s + c.value[c.j], 0) / 1000;
+  const pruned = chosen.filter(c => c.j > 0);
+  $('real-stats').innerHTML = [
+    ['预测总掉点', fmt(drop, 2) + ' 点', `预算 ${fmt(budget)} 点`],
+    ['预测可省', fmt(saved, 3) + ' GFLOPs', `占 ${fmt(100 * saved / BASE_GFLOPS)}%，各组相加`],
+    ['剪了的组', pruned.length + ' / 59', pruned.length ? `其中 ${pruned.filter(c => c.j >= 4).length} 组 ≥ 50%` : '一个都没剪'],
+    ['预测剪后 mAP50-95', fmt(68.59 - drop, 2), '基准 68.59，未实测'],
+  ].map(([k, v, s]) => `<div class="stat"><span class="k">${k}</span><span class="v">${v}</span><span class="s">${s}</span></div>`).join('');
+  const jOf = new Map(chosen.map(c => [c.g.g, c]));
+  $('real-strip').innerHTML = byLayer.map(g => { const c = jOf.get(g.g);
+    return `<i style="background:${rampVar(c.j)}" title="G${g.g} ${g.n}：${RATIOS[c.j]}%，掉 ${fmt(c.d[c.j], 2)} 点，省 ${fmt(c.value[c.j])} MFLOPs"></i>`; }).join('');
+  pruned.sort((a, b) => b.value[b.j] - a.value[a.j]);
+  $('real-table').innerHTML = '<tr><th class="l">组</th><th class="l">根卷积</th><th>通道</th><th>比例</th><th>剪掉</th><th>掉点</th><th>省 MFLOPs</th></tr>' +
+    (pruned.length ? pruned.map(c => `<tr><td class="l num">G${String(c.g.g).padStart(2, '0')}</td><td class="l"><span class="swatch" style="background:${rampVar(c.j)}"></span>${c.g.n}${c.g.k ? ` <span class="note">(+${c.g.k} 耦合)</span>` : ''}</td>
+      <td class="num">${c.g.c}</td><td class="num">${RATIOS[c.j]}%</td><td class="num">${Math.round(c.g.c * RATIOS[c.j] / 100)}</td>
+      <td class="num">${fmt(c.d[c.j], 2)}</td><td class="num">${fmt(c.value[c.j])}</td></tr>`).join('')
+      : '<tr><td class="l" colspan="7">预算为 0 时只会剪掉点为 0 的组。</td></tr>');
+  drawChart(sol, B);
+}
+['real-budget', 'real-max', 'real-mono'].forEach(id => $(id).addEventListener('input', renderReal));
+renderReal();
+</script>

@@ -5,7 +5,8 @@ Detect output convolutions cv2.*.2 / cv3.*.2 and the DFL projection not pruned).
 starting each time from the unpruned model:
   1. importance = Torch-Pruning GroupMagnitudeImportance(p=2): per root channel, the mean over the group's layers
      (coupled conv filters, their BN, consumer conv input slices) of the L2 norm of the weights for that channel;
-  2. remove the round(ratio * channels) lowest-importance channels of that group only (at least one channel kept);
+  2. remove the round(ratio * channels) lowest-importance channels of that group only (at least one channel kept),
+     or with --channel-step S: remove S, 2S, ... channels (S at least kept), e.g. 31 points for a 256-channel group;
   3. adaptive BN: reset all BN running statistics and re-estimate them (cumulative average, train-mode BN, no
      gradient, no weight update) on --bn-images KITTI training images with the training augmentation;
   4. mAP on a fixed random subset of --val-images KITTI validation images (imgsz 640, rect=False, conf 0.001).
@@ -116,6 +117,8 @@ def main():
     parser.add_argument('--batch', type=int, default=32)
     parser.add_argument('--groups', type=int, nargs='*', default=None, help='only these group indices')
     parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('--channel-step', type=int, default=0,
+                        help='remove step, 2*step, ... channels per group (at least step kept) instead of --ratios')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     torch.manual_seed(args.seed)
@@ -162,7 +165,11 @@ def main():
     rows = []
     selected = range(len(info)) if args.groups is None else args.groups
     for g in selected:
-        for ratio in args.ratios:
+        channels = info[g]['channels']
+        removals = (list(range(args.channel_step, channels, args.channel_step)) if args.channel_step
+                    else [min(int(round(r * channels)), channels - 1) for r in args.ratios])
+        for n in removals:
+            ratio = round(n / channels, 5)
             start = time.perf_counter()
             model = deepcopy(base)
             graph, groups = groups_of(model, example)
@@ -170,8 +177,6 @@ def main():
             root = group[0].dep.target.module
             if dict(model.named_modules()).get(info[g]['root']) is not root or len(groups) != len(info):
                 raise RuntimeError(f'Group {g} does not match between copies')
-            channels = len(group[0].idxs)
-            n = min(int(round(ratio * channels)), channels - 1)
             scores = importance(group)
             idxs = torch.argsort(scores)[:n].tolist()
             graph.get_pruning_group(root, OUT_CH, idxs).prune()
@@ -196,12 +201,23 @@ def main():
                   f"({row['seconds']}s)", flush=True)
             del model, graph, groups, group
 
+    def safe_removal(mine, limit):
+        """Channels removable before the first point whose drop exceeds limit (mAP50-95 points)."""
+        best = 0
+        for r in mine:
+            if 100 * r['drop_mAP50-95'] > limit:
+                break
+            best = r['removed']
+        return best
+
     summary = []
     for g in selected:
         mine = [r for r in rows if r['group'] == g]
-        summary.append({'group': g, **info[g], **{f"drop@{r['ratio']:g}": r['drop_mAP50-95'] for r in mine},
+        per_point = {} if args.channel_step else {f"drop@{r['ratio']:g}": r['drop_mAP50-95'] for r in mine}
+        summary.append({'group': g, **info[g], **per_point,
                         'mean_drop': round(float(np.mean([r['drop_mAP50-95'] for r in mine])), 5),
-                        'GFLOPs_saved@max_ratio': round(2*base_macs/1e9 - mine[-1]['GFLOPs'], 4)})
+                        'removable@0.5pt': safe_removal(mine, 0.5), 'removable@1pt': safe_removal(mine, 1.0),
+                        'GFLOPs_saved@max_removed': round(2*base_macs/1e9 - mine[-1]['GFLOPs'], 4)})
     summary.sort(key=lambda r: -r['mean_drop'])
     with (args.output/'summary.csv').open('w', newline='', encoding='utf-8-sig') as f:
         writer = csv.DictWriter(f, fieldnames=list(summary[0]))
@@ -212,7 +228,10 @@ def main():
                 'importance': 'GroupMagnitudeImportance(p=2, group_reduction=mean, normalizer=None)',
                 'groups': len(info), 'c2f_cv1_split': True,
                 'ignored': ['model.22.cv2.*.2', 'model.22.cv3.*.2', 'model.22.dfl'],
-                'ratios': args.ratios, 'channels_removed': 'round(ratio*channels), at least one kept',
+                'ratios': None if args.channel_step else args.ratios,
+                'channel_step': args.channel_step or None,
+                'channels_removed': (f'{args.channel_step}, {2*args.channel_step}, ... below the group size'
+                                     if args.channel_step else 'round(ratio*channels), at least one kept'),
                 'adaptive_bn': {'images': args.bn_images, 'split': 'KITTI train', 'augment': 'training hyperparameters (mosaic etc.)', 'seed': args.seed,
                                 'momentum': None, 'batch': args.batch},
                 'validation': {'images': len(val_files), 'split': 'KITTI val', 'seed': args.seed, 'imgsz': 640,

@@ -1,0 +1,58 @@
+{
+  "source": "models\\baseline\\8n_float32.pt",
+  "scan": "outputs\\sensitivity_l2_eighths\\sensitivity.csv",
+  "importance": "GroupMagnitudeImportance(p=2), taken on the unpruned model",
+  "knapsack": {
+    "value": "MFLOPs saved by the group alone",
+    "cost": "mAP50-95 drop alone, cumulative max, >= 0",
+    "unit_points": 0.01,
+    "budgets": [
+      0.25,
+      0.5,
+      0.75,
+      1,
+      1.5,
+      2,
+      3,
+      4,
+      5
+    ],
+    "caps": [
+      0.5,
+      0.75,
+      0.875
+    ],
+    "k": 200,
+    "per_budget": 4,
+    "min_diff_groups": 3
+  },
+  "uniform_baselines": [
+    0.125,
+    0.25,
+    0.375
+  ],
+  "adaptive_bn": {
+    "images": 512,
+    "augment": "training hyperparameters",
+    "seed": 42
+  },
+  "validation": {
+    "search_images": 500,
+    "heldout_images": 996
+  },
+  "reference_unpruned_adaptive_bn": {
+    "GFLOPs": 8.1487168,
+    "params": 3012408,
+    "mAP_search": 68.49107282584853,
+    "mAP_heldout": 67.23565481948823
+  },
+  "candidates": 111,
+  "pareto_front": 25,
+  "checks": {
+    "pearson_pred_vs_search_drop": 0.9889443378054461,
+    "spearman_search_vs_heldout_mAP": 0.9753773253773252,
+    "mean_pred_over_real_GFLOPs_saved": 1.2514028344075039
+  },
+  "seconds": 754.8288461000193,
+  "pareto_front_over": "knapsack candidates (uniform baselines plotted separately)"
+}

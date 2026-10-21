@@ -1,0 +1,55 @@
+50 budgets -> 50 distinct plans
+[K[34m[1mval: [0mCaching images (0.1GB RAM): 47% ━━━━━╸────── 239/500 709.9it/s 0.1s<0.4s[K[34m[1mval: [0mCaching images (0.2GB RAM): 95% ━━━━━━━━━━━─ 477/500 1.2Kit/s 0.2s<0.0s[K[34m[1mval: [0mCaching images (0.2GB RAM): 100% ━━━━━━━━━━━━ 500/500 2.4Kit/s 0.2s
+[K[34m[1mval: [0mCaching images (0.1GB RAM): 26% ━━━───────── 259/996 765.5it/s 0.1s<1.0s[K[34m[1mval: [0mCaching images (0.2GB RAM): 50% ━━━━━━────── 506/996 1.3Kit/s 0.2s<0.4s[K[34m[1mval: [0mCaching images (0.3GB RAM): 76% ━━━━━━━━━─── 757/996 1.6Kit/s 0.3s<0.1s[K[34m[1mval: [0mCaching images (0.3GB RAM): 100% ━━━━━━━━━━━━ 996/996 2.5Kit/s 0.4s
+Unpruned after adaptive BN: {'GFLOPs': 8.1487168, 'mAP_search': np.float64(68.5670778557148), 'mAP_heldout': np.float64(67.32833913539477)}
+[1/50] saved  9.69%  held-out drop  0.35  (6.6s)
+[2/50] saved 10.65%  held-out drop  0.35  (6.3s)
+[3/50] saved 11.91%  held-out drop  0.68  (6.3s)
+[4/50] saved 12.15%  held-out drop  0.68  (6.2s)
+[5/50] saved 12.39%  held-out drop  0.68  (6.2s)
+[6/50] saved 12.42%  held-out drop  0.68  (6.2s)
+[7/50] saved 12.56%  held-out drop  0.68  (6.2s)
+[8/50] saved 13.50%  held-out drop  2.24  (6.2s)
+[9/50] saved 13.65%  held-out drop  2.24  (6.3s)
+[10/50] saved 13.96%  held-out drop  2.62  (6.3s)
+[11/50] saved 13.97%  held-out drop  2.24  (6.2s)
+[12/50] saved 14.23%  held-out drop  2.62  (6.2s)
+[13/50] saved 14.59%  held-out drop  3.02  (6.2s)
+[14/50] saved 14.69%  held-out drop  3.02  (6.3s)
+[15/50] saved 15.10%  held-out drop  3.21  (6.4s)
+[16/50] saved 15.42%  held-out drop  3.45  (6.3s)
+[17/50] saved 15.82%  held-out drop  3.86  (6.3s)
+[18/50] saved 16.04%  held-out drop  3.78  (6.3s)
+[19/50] saved 16.27%  held-out drop  4.08  (6.3s)
+[20/50] saved 16.50%  held-out drop  4.42  (6.9s)
+[21/50] saved 16.53%  held-out drop  4.43  (7.0s)
+[22/50] saved 16.95%  held-out drop  4.47  (7.0s)
+[23/50] saved 16.98%  held-out drop  4.48  (7.0s)
+[24/50] saved 17.40%  held-out drop  5.13  (7.0s)
+[25/50] saved 17.43%  held-out drop  5.13  (7.1s)
+[26/50] saved 17.79%  held-out drop  5.63  (7.1s)
+[27/50] saved 17.85%  held-out drop  5.63  (7.1s)
+[28/50] saved 18.35%  held-out drop  5.73  (7.0s)
+[29/50] saved 18.83%  held-out drop  5.40  (7.0s)
+[30/50] saved 19.04%  held-out drop  6.26  (7.1s)
+[31/50] saved 19.44%  held-out drop  6.31  (7.0s)
+[32/50] saved 19.77%  held-out drop  6.48  (7.0s)
+[33/50] saved 20.17%  held-out drop  6.96  (7.2s)
+[34/50] saved 20.35%  held-out drop  6.79  (7.1s)
+[35/50] saved 20.62%  held-out drop  7.20  (7.1s)
+[36/50] saved 20.85%  held-out drop  7.48  (7.0s)
+[37/50] saved 21.06%  held-out drop  8.00  (7.0s)
+[38/50] saved 21.30%  held-out drop  7.57  (7.0s)
+[39/50] saved 21.33%  held-out drop  7.96  (7.2s)
+[40/50] saved 21.75%  held-out drop  8.05  (7.0s)
+[41/50] saved 21.78%  held-out drop  8.06  (7.0s)
+[42/50] saved 22.14%  held-out drop  8.77  (7.0s)
+[43/50] saved 22.20%  held-out drop  8.77  (7.0s)
+[44/50] saved 22.70%  held-out drop  8.23  (7.0s)
+[45/50] saved 22.73%  held-out drop  8.63  (7.2s)
+[46/50] saved 23.19%  held-out drop  8.72  (7.1s)
+[47/50] saved 23.18%  held-out drop  8.72  (7.1s)
+[48/50] saved 23.23%  held-out drop  8.72  (7.1s)
+[49/50] saved 23.65%  held-out drop  9.26  (7.1s)
+[50/50] saved 23.63%  held-out drop  9.27  (7.1s)
+Done: C:\Users\dxu1\Desktop\Dissertation\outputs\budget_curve

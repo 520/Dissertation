@@ -1,0 +1,49 @@
+{
+  "source": "models\\baseline\\8n_float32.pt",
+  "tool": "torch-pruning 1.6.0",
+  "importance": "GroupMagnitudeImportance(p=2, group_reduction=mean, normalizer=None)",
+  "groups": 59,
+  "c2f_cv1_split": true,
+  "ignored": [
+    "model.22.cv2.*.2",
+    "model.22.cv3.*.2",
+    "model.22.dfl"
+  ],
+  "ratios": null,
+  "channel_step": 8,
+  "channels_removed": "8, 16, ... below the group size",
+  "adaptive_bn": {
+    "images": 512,
+    "split": "KITTI train",
+    "augment": "training hyperparameters (mosaic etc.)",
+    "seed": 42,
+    "momentum": null,
+    "batch": 32
+  },
+  "validation": {
+    "images": 500,
+    "split": "KITTI val",
+    "seed": 42,
+    "imgsz": 640,
+    "rect": false,
+    "conf": 0.001,
+    "iou": 0.7
+  },
+  "base_params": 3012408,
+  "base_GFLOPs": 8.1487168,
+  "unpruned_trained_bn": {
+    "mAP50-95": 0.6844153262009478,
+    "mAP50": 0.9072015137912993,
+    "mAP75": 0.8025292335470898,
+    "precision": 0.9486560175630745,
+    "recall": 0.8378196195491487
+  },
+  "reference_unpruned_adaptive_bn": {
+    "mAP50-95": 0.6852111909511036,
+    "mAP50": 0.9125268211929665,
+    "mAP75": 0.797178408005597,
+    "precision": 0.9562823049725867,
+    "recall": 0.8344774513790756
+  },
+  "seconds": 1552.6257043000078
+}

@@ -1,0 +1,56 @@
+[K[34m[1mval: [0mCaching images (0.1GB RAM): 27% ━━━───────── 276/996 825.5it/s 0.1s<0.9s[K[34m[1mval: [0mCaching images (0.2GB RAM): 56% ━━━━━━╸───── 563/996 1.4Kit/s 0.2s<0.3s[K[34m[1mval: [0mCaching images (0.3GB RAM): 85% ━━━━━━━━━━── 851/996 1.8Kit/s 0.3s<0.1s[K[34m[1mval: [0mCaching images (0.3GB RAM): 100% ━━━━━━━━━━━━ 996/996 2.8Kit/s 0.4s
+seed 1: unpruned 67.10
+  cap875_b0.5_r3       drop 0.43
+  cap875_b0.75_r0      drop 1.08
+  cap875_b0.75_r1      drop 0.49
+  cap875_b0.75_r3      drop 0.88
+  cap875_b1_r3         drop 1.84
+  cap875_b1.5_r1       drop 2.82
+  cap875_b2_r0         drop 4.10
+  cap875_b2_r1         drop 3.67
+  cap875_b2_r2         drop 3.50
+  cap875_b5_r0         drop 8.95
+  cap875_b5_r2         drop 9.11
+  cap500_b5_r3         drop 7.52
+  uniform_12.5%        drop 43.70
+seed 2: unpruned 67.06
+  cap875_b0.5_r3       drop 0.48
+  cap875_b0.75_r0      drop 0.99
+  cap875_b0.75_r1      drop 0.48
+  cap875_b0.75_r3      drop 0.61
+  cap875_b1_r3         drop 1.75
+  cap875_b1.5_r1       drop 2.66
+  cap875_b2_r0         drop 3.99
+  cap875_b2_r1         drop 3.58
+  cap875_b2_r2         drop 3.38
+  cap875_b5_r0         drop 8.86
+  cap875_b5_r2         drop 8.99
+  cap500_b5_r3         drop 7.26
+  uniform_12.5%        drop 43.92
+seed 3: unpruned 67.23
+  cap875_b0.5_r3       drop 0.52
+  cap875_b0.75_r0      drop 1.28
+  cap875_b0.75_r1      drop 0.69
+  cap875_b0.75_r3      drop 0.97
+  cap875_b1_r3         drop 2.11
+  cap875_b1.5_r1       drop 2.91
+  cap875_b2_r0         drop 4.32
+  cap875_b2_r1         drop 3.86
+  cap875_b2_r2         drop 3.64
+  cap875_b5_r0         drop 9.13
+  cap875_b5_r2         drop 9.25
+  cap500_b5_r3         drop 7.62
+  uniform_12.5%        drop 44.07
+cap875_b0.5_r3       saved  11.8%  drop seed42  0.48  mean over seeds  0.48  spread 0.10
+cap875_b0.75_r0      saved  13.1%  drop seed42  1.13  mean over seeds  1.11  spread 0.29
+cap875_b0.75_r1      saved  12.6%  drop seed42  0.54  mean over seeds  0.56  spread 0.21
+cap875_b0.75_r3      saved  12.7%  drop seed42  0.85  mean over seeds  0.82  spread 0.35
+cap875_b1_r3         saved  13.8%  drop seed42  2.11  mean over seeds  1.90  spread 0.37
+cap875_b1.5_r1       saved  15.2%  drop seed42  2.99  mean over seeds  2.80  spread 0.26
+cap875_b2_r0         saved  16.5%  drop seed42  4.38  mean over seeds  4.14  spread 0.33
+cap875_b2_r1         saved  16.5%  drop seed42  3.74  mean over seeds  3.70  spread 0.28
+cap875_b2_r2         saved  16.3%  drop seed42  3.70  mean over seeds  3.51  spread 0.26
+cap875_b5_r0         saved  23.6%  drop seed42  9.11  mean over seeds  8.98  spread 0.27
+cap875_b5_r2         saved  23.7%  drop seed42  9.16  mean over seeds  9.12  spread 0.25
+cap500_b5_r3         saved  21.6%  drop seed42  7.54  mean over seeds  7.47  spread 0.36
+uniform_12.5%        saved  23.1%  drop seed42 43.99  mean over seeds 43.90  spread 0.37
