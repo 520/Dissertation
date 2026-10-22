@@ -1,0 +1,407 @@
+{
+  "environment": {
+    "timestamp_utc": "2026-10-22T21:56:20.249997+00:00",
+    "gpu": "NVIDIA RTX A2000",
+    "gpu_uuid": "cd12445e-241c-a0ac-0d98-327e67f730e9",
+    "python": "3.13.16",
+    "torch": "2.14.0+cu130",
+    "tensorrt": "11.3.0.99",
+    "ultralytics": "8.4.163",
+    "driver": "581.29",
+    "imgsz": 640,
+    "batch": 1,
+    "run_seconds_min": 15.0,
+    "idle_seconds": 5.0,
+    "warmup": 20,
+    "idle_settle_seconds": 10.0,
+    "sampling_interval_s": 0.1,
+    "pid": 6168
+  },
+  "models": [
+    {
+      "model": "models\\lrf\\budget1.7\\trt_fp32\\8n_float32_lrf_ft10_fp32.engine",
+      "weights": "models\\lrf\\budget1.7\\8n_float32_lrf_ft10.pt",
+      "dataset": "kitti.yaml",
+      "accuracy": {
+        "map50_95": 0.660409019116449,
+        "map50": 0.8938608024455222,
+        "map75": 0.7450414321063665,
+        "precision": 0.8844219638268447,
+        "per_class_precision": [
+          0.9244717344328676,
+          0.9112653420534845,
+          0.9721259854575132,
+          0.8560036524790837,
+          0.7254821368158539,
+          0.8687623298802717,
+          0.8938625157095721,
+          0.9234020137861108
+        ],
+        "precision_definition": "Ultralytics mean class precision at its validation-selected max-mean-F1 operating point",
+        "recall": 0.8295581430641481,
+        "per_class_recall": [
+          0.9363191042687193,
+          0.8972972972972973,
+          0.9383638001845388,
+          0.7090119435396308,
+          0.5555555555555556,
+          0.8039772727272727,
+          0.9401709401709402,
+          0.8557692307692307
+        ],
+        "recall_definition": "Ultralytics mean class recall at its validation-selected max-mean-F1 operating point"
+      },
+      "parameters": 1588024,
+      "gflops": 6.2474752,
+      "gmacs": 3.1237376,
+      "weights_size_mb": 6.331296,
+      "engine_size_mb": 71.311596,
+      "engine_only": {
+        "latency": {
+          "images": 5323,
+          "mean_ms": 2.7907107181394992,
+          "median_ms": 2.6521599292755127,
+          "p75_ms": 2.7248640060424805,
+          "p95_ms": 3.2491519451141357,
+          "fps_inverse_mean_latency": 358.33165849116614,
+          "wall_duration_s": 15.000906000146642,
+          "fps_observed_wall": 354.8452340110634
+        },
+        "memory_before_load": {
+          "gpu_total_used_mib": 723.375,
+          "process_used_mib": null,
+          "torch_allocated_mib": 0.0,
+          "torch_reserved_mib": 0.0
+        },
+        "memory_model_loaded": {
+          "gpu_total_used_mib": 861.375,
+          "process_used_mib": null,
+          "torch_allocated_mib": 5.072265625,
+          "torch_reserved_mib": 22.0
+        },
+        "memory_after_inference": {
+          "gpu_total_used_mib": 861.375,
+          "process_used_mib": null,
+          "torch_allocated_mib": 5.072265625,
+          "torch_reserved_mib": 22.0
+        },
+        "idle_power_w": 9.254513695837788,
+        "idle_telemetry": {
+          "power_w": {
+            "mean": 9.260600000000002,
+            "median": 9.707,
+            "min": 8.17,
+            "max": 9.925
+          },
+          "temperature_c": {
+            "mean": 61.28888888888889,
+            "median": 61.0,
+            "min": 61.0,
+            "max": 62.0
+          },
+          "sm_clock_mhz": {
+            "mean": 210.0,
+            "median": 210.0,
+            "min": 210.0,
+            "max": 210.0
+          },
+          "memory_clock_mhz": {
+            "mean": 405.0,
+            "median": 405.0,
+            "min": 405.0,
+            "max": 405.0
+          },
+          "gpu_util_percent": {
+            "mean": 5.6,
+            "median": 6.0,
+            "min": 4.0,
+            "max": 6.0
+          },
+          "memory_util_percent": {
+            "mean": 4.955555555555556,
+            "median": 5.0,
+            "min": 4.0,
+            "max": 6.0
+          },
+          "gpu_total_used_mib": {
+            "mean": 861.375,
+            "median": 861.375,
+            "min": 861.375,
+            "max": 861.375
+          },
+          "process_used_mib": {
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "sampling_interval_s": 0.1,
+          "samples": 45,
+          "duration_s": 5.000681199831888,
+          "images": 0,
+          "mean_power_w_time_weighted": 9.254513695837788,
+          "gpu_energy_j": 46.27887265236275,
+          "gpu_energy_j_per_image": null,
+          "incremental_gpu_energy_j_per_image": null
+        },
+        "telemetry": {
+          "power_w": {
+            "mean": 64.2245294117647,
+            "median": 68.468,
+            "min": 9.653,
+            "max": 68.923
+          },
+          "temperature_c": {
+            "mean": 70.63235294117646,
+            "median": 71.0,
+            "min": 61.0,
+            "max": 74.0
+          },
+          "sm_clock_mhz": {
+            "mean": 1539.6544117647059,
+            "median": 1582.0,
+            "min": 210.0,
+            "max": 1612.0
+          },
+          "memory_clock_mhz": {
+            "mean": 5545.235294117647,
+            "median": 5701.0,
+            "min": 405.0,
+            "max": 5701.0
+          },
+          "gpu_util_percent": {
+            "mean": 85.57352941176471,
+            "median": 92.0,
+            "min": 3.0,
+            "max": 93.0
+          },
+          "memory_util_percent": {
+            "mean": 37.75735294117647,
+            "median": 40.0,
+            "min": 4.0,
+            "max": 41.0
+          },
+          "gpu_total_used_mib": {
+            "mean": 861.375,
+            "median": 861.375,
+            "min": 861.375,
+            "max": 861.375
+          },
+          "process_used_mib": {
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "sampling_interval_s": 0.1,
+          "samples": 136,
+          "duration_s": 15.000906000146642,
+          "images": 5323,
+          "mean_power_w_time_weighted": 64.04718610399343,
+          "gpu_energy_j": 960.7658183199036,
+          "gpu_energy_j_per_image": 0.180493296697333,
+          "incremental_gpu_energy_j_per_image": 0.1544128739980408
+        },
+        "engine_metadata": {
+          "description": "trtexec engine 8n_float32_lrf_ft10_fp32.engine (metadata added for Ultralytics)",
+          "author": "Ultralytics",
+          "date": "2026-09-27T00:38:07.618104+01:00",
+          "version": "8.4.163",
+          "license": "AGPL-3.0 License (https://ultralytics.com/license)",
+          "docs": "https://docs.ultralytics.com",
+          "stride": 32,
+          "task": "detect",
+          "head": "Detect",
+          "batch": 1,
+          "imgsz": [
+            640,
+            640
+          ],
+          "names": {
+            "0": "car",
+            "1": "van",
+            "2": "truck",
+            "3": "pedestrian",
+            "4": "Person_sitting",
+            "5": "cyclist",
+            "6": "tram",
+            "7": "misc"
+          },
+          "args": {
+            "data": null,
+            "batch": 1,
+            "fraction": 1.0,
+            "quantize": 32,
+            "nms": null,
+            "dynamic": false,
+            "simplify": true,
+            "opset": null,
+            "workspace": null
+          },
+          "channels": 3,
+          "end2end": false
+        },
+        "io_types": {
+          "images": "DataType.FLOAT",
+          "output0": "DataType.FLOAT"
+        }
+      },
+      "end_to_end": {
+        "latency": {
+          "images": 3414,
+          "mean_ms": 4.388307086609448,
+          "median_ms": 4.091099952347577,
+          "p75_ms": 4.663850006181747,
+          "p95_ms": 5.3821600042283535,
+          "fps_inverse_mean_latency": 227.8783093943941,
+          "wall_duration_s": 15.00365039985627,
+          "fps_observed_wall": 227.54462474230306
+        },
+        "memory_before_load": {
+          "gpu_total_used_mib": 723.375,
+          "process_used_mib": null,
+          "torch_allocated_mib": 0.0,
+          "torch_reserved_mib": 0.0
+        },
+        "memory_model_loaded": {
+          "gpu_total_used_mib": 861.375,
+          "process_used_mib": null,
+          "torch_allocated_mib": 5.07275390625,
+          "torch_reserved_mib": 22.0
+        },
+        "memory_after_inference": {
+          "gpu_total_used_mib": 861.5,
+          "process_used_mib": null,
+          "torch_allocated_mib": 5.07275390625,
+          "torch_reserved_mib": 22.0
+        },
+        "idle_power_w": 10.215895318507922,
+        "idle_telemetry": {
+          "power_w": {
+            "mean": 10.224822222222222,
+            "median": 10.561,
+            "min": 8.737,
+            "max": 10.882
+          },
+          "temperature_c": {
+            "mean": 65.11111111111111,
+            "median": 65.0,
+            "min": 65.0,
+            "max": 66.0
+          },
+          "sm_clock_mhz": {
+            "mean": 210.0,
+            "median": 210.0,
+            "min": 210.0,
+            "max": 210.0
+          },
+          "memory_clock_mhz": {
+            "mean": 405.0,
+            "median": 405.0,
+            "min": 405.0,
+            "max": 405.0
+          },
+          "gpu_util_percent": {
+            "mean": 6.222222222222222,
+            "median": 6.0,
+            "min": 5.0,
+            "max": 7.0
+          },
+          "memory_util_percent": {
+            "mean": 4.955555555555556,
+            "median": 5.0,
+            "min": 4.0,
+            "max": 7.0
+          },
+          "gpu_total_used_mib": {
+            "mean": 861.4527777777778,
+            "median": 861.5,
+            "min": 861.375,
+            "max": 861.5
+          },
+          "process_used_mib": {
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "sampling_interval_s": 0.1,
+          "samples": 45,
+          "duration_s": 5.000169100007042,
+          "images": 0,
+          "mean_power_w_time_weighted": 10.215895318507922,
+          "gpu_energy_j": 51.081204100509915,
+          "gpu_energy_j_per_image": null,
+          "incremental_gpu_energy_j_per_image": null
+        },
+        "telemetry": {
+          "power_w": {
+            "mean": 64.23740145985401,
+            "median": 68.519,
+            "min": 9.779,
+            "max": 68.92
+          },
+          "temperature_c": {
+            "mean": 74.62043795620438,
+            "median": 75.0,
+            "min": 65.0,
+            "max": 78.0
+          },
+          "sm_clock_mhz": {
+            "mean": 1679.4014598540145,
+            "median": 1725.0,
+            "min": 210.0,
+            "max": 1777.0
+          },
+          "memory_clock_mhz": {
+            "mean": 5507.715328467153,
+            "median": 5701.0,
+            "min": 405.0,
+            "max": 5701.0
+          },
+          "gpu_util_percent": {
+            "mean": 54.4014598540146,
+            "median": 57.0,
+            "min": 6.0,
+            "max": 60.0
+          },
+          "memory_util_percent": {
+            "mean": 28.175182481751825,
+            "median": 29.0,
+            "min": 7.0,
+            "max": 31.0
+          },
+          "gpu_total_used_mib": {
+            "mean": 861.5,
+            "median": 861.5,
+            "min": 861.5,
+            "max": 861.5
+          },
+          "process_used_mib": {
+            "mean": null,
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "sampling_interval_s": 0.1,
+          "samples": 137,
+          "duration_s": 15.00365039985627,
+          "images": 3414,
+          "mean_power_w_time_weighted": 64.03759224713536,
+          "gpu_energy_j": 960.7976465245653,
+          "gpu_energy_j_per_image": 0.28142871895857213,
+          "incremental_gpu_energy_j_per_image": 0.23653249110841948
+        }
+      },
+      "latency_image_count": 100,
+      "weights_size_source": "engine inspector",
+      "engine_weight_counts": {
+        "Weights/Float": 1577408,
+        "Bias/Float": 5416
+      },
+      "checkpoint_file_mb": 10.668247,
+      "benchmark_engine_file": "models\\lrf\\budget1.7\\trt_fp32\\bench\\8n_float32_lrf_ft10_fp32.with_metadata.engine",
+      "benchmark_weights_file": "models\\lrf\\budget1.7\\8n_float32_lrf_ft10.pt"
+    }
+  ]
+}
