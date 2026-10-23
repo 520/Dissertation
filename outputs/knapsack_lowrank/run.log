@@ -1,0 +1,56 @@
+63 layers, 833 options; 51 budgets -> 51 distinct plans
+[K[34m[1mval: [0mCaching images (0.1GB RAM): 52% ━━━━━━────── 262/500 778.1it/s 0.1s<0.3s[K[34m[1mval: [0mCaching images (0.2GB RAM): 100% ━━━━━━━━━━━━ 500/500 2.6Kit/s 0.2s
+[K[34m[1mval: [0mCaching images (0.1GB RAM): 20% ━━╸───────── 209/996 625.2it/s 0.1s<1.3s[K[34m[1mval: [0mCaching images (0.1GB RAM): 40% ━━━━╸─────── 401/996 1.0Kit/s 0.2s<0.6s[K[34m[1mval: [0mCaching images (0.2GB RAM): 60% ━━━━━━━───── 601/996 1.3Kit/s 0.3s<0.3s[K[34m[1mval: [0mCaching images (0.3GB RAM): 81% ━━━━━━━━━╸── 809/996 1.5Kit/s 0.4s<0.1s[K[34m[1mval: [0mCaching images (0.3GB RAM): 100% ━━━━━━━━━━━━ 996/996 2.0Kit/s 0.5s
+Original: {'GFLOPs': 8.1487168, 'params': 3012408, 'raw_mAP_search': np.float64(68.44153262009478), 'raw_mAP_heldout': np.float64(67.17077024021324), 'mAP_search': np.float64(68.5737261068305), 'mAP_heldout': np.float64(67.05164944104173)}
+[1/51] saved 10.02%  held-out drop raw  3.04 adaptive BN  3.75  (13.7s)
+[2/51] saved 13.57%  held-out drop raw  3.23 adaptive BN  3.90  (13.7s)
+[3/51] saved 16.03%  held-out drop raw  3.70 adaptive BN  3.73  (13.4s)
+[4/51] saved 17.71%  held-out drop raw  3.87 adaptive BN  4.54  (13.4s)
+[5/51] saved 18.60%  held-out drop raw  3.94 adaptive BN  4.57  (13.7s)
+[6/51] saved 19.27%  held-out drop raw  3.93 adaptive BN  4.44  (13.4s)
+[7/51] saved 19.75%  held-out drop raw  4.00 adaptive BN  4.13  (12.9s)
+[8/51] saved 20.23%  held-out drop raw  4.96 adaptive BN  4.71  (12.8s)
+[9/51] saved 20.61%  held-out drop raw  4.83 adaptive BN  5.22  (12.6s)
+[10/51] saved 21.06%  held-out drop raw  6.01 adaptive BN  5.79  (12.8s)
+[11/51] saved 21.34%  held-out drop raw  3.94 adaptive BN  4.66  (13.5s)
+[12/51] saved 21.82%  held-out drop raw  4.82 adaptive BN  4.57  (13.5s)
+[13/51] saved 22.18%  held-out drop raw  5.38 adaptive BN  5.64  (13.6s)
+[14/51] saved 22.64%  held-out drop raw  5.73 adaptive BN  5.81  (13.6s)
+[15/51] saved 22.91%  held-out drop raw  5.71 adaptive BN  5.84  (13.5s)
+[16/51] saved 23.28%  held-out drop raw  6.53 adaptive BN  5.71  (13.7s)
+[17/51] saved 23.61%  held-out drop raw  6.68 adaptive BN  5.94  (13.7s)
+[18/51] saved 23.95%  held-out drop raw  6.82 adaptive BN  6.69  (13.8s)
+[19/51] saved 24.27%  held-out drop raw  7.78 adaptive BN  6.61  (13.7s)
+[20/51] saved 24.54%  held-out drop raw  7.74 adaptive BN  7.13  (14.0s)
+[21/51] saved 24.96%  held-out drop raw  7.53 adaptive BN  7.85  (14.1s)
+[22/51] saved 25.26%  held-out drop raw  7.70 adaptive BN  8.40  (13.8s)
+[23/51] saved 25.58%  held-out drop raw  8.57 adaptive BN  8.04  (14.3s)
+[24/51] saved 25.88%  held-out drop raw  8.86 adaptive BN  8.60  (14.3s)
+[25/51] saved 26.10%  held-out drop raw  8.93 adaptive BN  8.63  (14.4s)
+[26/51] saved 26.44%  held-out drop raw  9.08 adaptive BN  8.33  (14.1s)
+[27/51] saved 26.75%  held-out drop raw  8.44 adaptive BN  9.07  (14.5s)
+[28/51] saved 27.05%  held-out drop raw  8.59 adaptive BN  9.33  (14.2s)
+[29/51] saved 27.38%  held-out drop raw  8.37 adaptive BN  8.87  (14.4s)
+[30/51] saved 27.67%  held-out drop raw  8.63 adaptive BN  9.43  (14.5s)
+[31/51] saved 27.89%  held-out drop raw  8.53 adaptive BN  9.41  (14.3s)
+[32/51] saved 28.23%  held-out drop raw  8.82 adaptive BN  9.08  (14.3s)
+[33/51] saved 28.47%  held-out drop raw  8.79 adaptive BN  9.20  (13.8s)
+[34/51] saved 28.69%  held-out drop raw  9.64 adaptive BN  9.56  (13.7s)
+[35/51] saved 28.88%  held-out drop raw  9.49 adaptive BN 10.27  (13.8s)
+[36/51] saved 29.08%  held-out drop raw  9.96 adaptive BN 10.57  (13.8s)
+[37/51] saved 29.29%  held-out drop raw 10.32 adaptive BN 10.69  (13.7s)
+[38/51] saved 29.52%  held-out drop raw 10.37 adaptive BN 11.01  (13.6s)
+[39/51] saved 29.71%  held-out drop raw 10.61 adaptive BN 11.47  (14.0s)
+[40/51] saved 29.90%  held-out drop raw 11.01 adaptive BN 11.83  (13.9s)
+[41/51] saved 30.08%  held-out drop raw 10.53 adaptive BN 12.23  (13.9s)
+[42/51] saved 30.22%  held-out drop raw 11.20 adaptive BN 12.58  (14.1s)
+[43/51] saved 30.40%  held-out drop raw 12.48 adaptive BN 12.17  (13.8s)
+[44/51] saved 30.59%  held-out drop raw 12.14 adaptive BN 12.40  (13.9s)
+[45/51] saved 30.77%  held-out drop raw 12.76 adaptive BN 13.11  (13.8s)
+[46/51] saved 30.95%  held-out drop raw 11.00 adaptive BN 12.82  (13.7s)
+[47/51] saved 31.07%  held-out drop raw 13.98 adaptive BN 13.67  (13.9s)
+[48/51] saved 31.26%  held-out drop raw 13.50 adaptive BN 13.45  (13.8s)
+[49/51] saved 31.45%  held-out drop raw 12.06 adaptive BN 13.25  (13.7s)
+[50/51] saved 31.62%  held-out drop raw 12.96 adaptive BN 13.82  (14.2s)
+[51/51] saved 31.75%  held-out drop raw 14.73 adaptive BN 13.70  (13.8s)
+Done: C:\Users\dxu1\Desktop\Dissertation\outputs\knapsack_lowrank
