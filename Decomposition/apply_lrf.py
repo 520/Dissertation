@@ -1,7 +1,7 @@
 """Apply a low-rank factorisation plan to YOLOv8n-KITTI, save the checkpoint and validate it on KITTI val.
 
 The plan is a text file with one line per decomposed layer, "<layer> <option>:<rank>", options as in
-Decomposition/knapsack_lowrank.py: tucker2-out / tucker2-in for k x k Conv blocks, svd for 1 x 1 convs. Layers
+Decomposition/knapsack_lowrank.py: tucker2-out / tucker2-in / tucker2-both for k x k Conv blocks, svd for 1 x 1 convs. Layers
 not listed are kept. Decomposition is plain truncated SVD / Tucker-2 (no data, trained BN kept, no fine-tuning).
 The checkpoint stores the model object, as the pruned checkpoints do, so Pruning/finetune.py can train it
 (rebuilding from the yaml would undo the factorisation). Loading it needs the repository root on sys.path
@@ -44,7 +44,8 @@ def main():
     parser.add_argument('--weights', type=Path, default=ROOT/'models/baseline/8n_float32.pt')
     parser.add_argument('--data', type=Path, default=ROOT/'PTQ/datasets/kitti')
     parser.add_argument('--plan', type=Path, required=True, help='"<layer> <option>:<rank>" per line')
-    parser.add_argument('--tucker', type=Path, default=ROOT/'outputs/sensitivity_tucker2/sensitivity.csv')
+    parser.add_argument('--tucker', type=Path, nargs='+', default=[ROOT/'outputs/sensitivity_tucker2/sensitivity.csv',
+                                                                   ROOT/'outputs/sensitivity_tucker2_both/sensitivity.csv'])
     parser.add_argument('--svd', type=Path, default=ROOT/'sensitivity_results/kitti_svd_rank_sensitivity/sensitivity.csv')
     parser.add_argument('--output', type=Path, default=None, help='checkpoint path (default: next to --plan)')
     args = parser.parse_args()
@@ -81,7 +82,8 @@ def main():
     layers = [{'layer': t['layer'], 'kernel': t['kernel'], 'c_in': t['c_in'], 'c_out': t['c_out'],
                'option': t['option'][j], 'rank': t['rank'][j], 'single_layer_drop_pts': t['drop'][j],
                'single_layer_MFLOPs_saved': t['saved'][j]} for t, j in zip(table, sel) if j]
-    decomposition = {'method': 'Tucker-2 (one mode, truncated HOSVD) for k x k Conv blocks, truncated SVD for 1 x 1',
+    decomposition = {'method': 'Tucker-2 (one mode: truncated HOSVD; both modes: HOSVD + HOOI) for k x k Conv blocks, '
+                               'truncated SVD for 1 x 1',
                      'plan': str(args.plan.relative_to(ROOT)), 'layers': layers,
                      'predicted_drop_pts': round(sum(l['single_layer_drop_pts'] for l in layers), 3)}
     model.cpu()

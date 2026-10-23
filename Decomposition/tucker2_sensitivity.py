@@ -3,7 +3,8 @@
 Every Ultralytics Conv block with a k x k kernel (k > 1) is a candidate (1x1 convs and the Detect output convs are
 not decomposed). For every layer, both modes are swept separately, starting each time from the original model:
   mode 'out': R_out = 8, 16, ..., C_out with R_in = C_in (full);
-  mode 'in' : R_in  = 8, 16, ..., C_in  with R_out = C_out (full)  (skipped when C_in <= 8, i.e. model.0).
+  mode 'in' : R_in  = 8, 16, ..., C_in  with R_out = C_out (full)  (skipped when C_in <= 8, i.e. model.0);
+  mode 'both' (only with --modes both): R_in = R_out = 8, 16, ... < min(C_in, C_out), full Tucker-2, three convs.
 The kernel W (C_out, C_in, k, k) is replaced by its Tucker-2 approximation
   W ~= G x_0 U_out x_1 U_in,  U_out (C_out, R_out), U_in (C_in, R_in), core G (R_out, R_in, k, k),
 computed by truncated HOSVD of the mode-0/mode-1 unfoldings refined by --hooi-iters HOOI sweeps (with one mode at
@@ -158,7 +159,7 @@ def main():
     parser.add_argument('--val-images', type=int, default=500, help='KITTI validation images for mAP')
     parser.add_argument('--batch', type=int, default=32)
     parser.add_argument('--layers', nargs='*', default=None, help='only these layer names')
-    parser.add_argument('--modes', nargs='+', default=['out', 'in'], choices=['out', 'in'])
+    parser.add_argument('--modes', nargs='+', default=['out', 'in'], choices=['out', 'in', 'both'])
     parser.add_argument('--seed', type=int, default=42)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
@@ -208,14 +209,15 @@ def main():
         hw_in, hw_out = sizes[name]
         base_params, base_layer_macs = chain_cost([conv], hw_in, hw_out)
         for mode in args.modes:
-            channels = c_out if mode == 'out' else c_in
+            channels = {'out': c_out, 'in': c_in, 'both': min(c_in, c_out)}[mode]
             if channels <= args.step:
                 continue
-            for rank in range(args.step, channels + 1, args.step):
+            # 'both' stops below min(C_in, C_out): at that rank one mode is full, i.e. a one-mode scheme
+            for rank in range(args.step, channels + (mode != 'both'), args.step):
                 if (name, mode, rank) in done:
                     continue
                 start = time.perf_counter()
-                r_out, r_in = (rank, c_in) if mode == 'out' else (c_out, rank)
+                r_out, r_in = {'out': (rank, c_in), 'in': (c_out, rank), 'both': (rank, rank)}[mode]
                 model = deepcopy(base)
                 new, rel_error = decompose(model.get_submodule(name), r_out, r_in, args.hooi_iters)
                 set_module(model, name, new)
@@ -275,7 +277,8 @@ def main():
 
     manifest = {'source': str(args.weights.relative_to(ROOT)), 'method': 'Tucker-2 (partial Tucker on out/in modes), HOSVD + HOOI',
                 'hooi_iters': args.hooi_iters, 'layers': [n for n, _ in layers], 'modes': args.modes,
-                'ranks': f'{args.step}, {2*args.step}, ..., C (other mode at full rank)',
+                'ranks': f'{args.step}, {2*args.step}, ..., C (other mode at full rank); '
+                         'both: R_in = R_out < min(C_in, C_out)',
                 'calibration': {'when': f'raw mAP50-95 drop > {args.calib_threshold}', 'method': 'adaptive BN',
                                 'images': args.bn_images, 'split': 'KITTI train',
                                 'augment': 'training hyperparameters (mosaic etc.)', 'seed': args.seed,

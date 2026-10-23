@@ -1,7 +1,8 @@
 """Knapsack over the low-rank sensitivity scans (Tucker-2 + SVD): best decomposition plan per drop budget, evaluated.
 
 One group per convolution, exactly one option per group (multiple-choice knapsack):
-  k x k Conv blocks (39): keep, Tucker-2 'out' ranks, Tucker-2 'in' ranks  (outputs/sensitivity_tucker2)
+  k x k Conv blocks (39): keep, Tucker-2 'out' ranks, Tucker-2 'in' ranks  (outputs/sensitivity_tucker2),
+                          full Tucker-2 'both' ranks, R_in = R_out           (outputs/sensitivity_tucker2_both)
   1 x 1 convs     (24): keep, SVD ranks                                   (sensitivity_results/kitti_svd_rank_sensitivity)
 The SVD rows of k x k convs are not used: they are the same decomposition as Tucker-2 'out'.
 Cost = single-layer mAP50-95 drop with the trained BN ("raw", the one measured the same way in both scans), in
@@ -46,6 +47,7 @@ from Pruning.sensitivity_l2 import adapt_bn, bn_images
 from Pruning.taylor_prune import hyp_from, load_model
 
 ROOT = Path(__file__).resolve().parents[1]
+HOOI_ITERS = 10                                       # as the Tucker-2 scan (only matters for 'both')
 
 
 def monotone(points):
@@ -57,9 +59,10 @@ def monotone(points):
     return out[::-1]
 
 
-def load_table(tucker_csv, svd_csv):
+def load_table(tucker_csvs, svd_csv):
     groups = {}
-    for r in csv.DictReader(tucker_csv.open(encoding='utf-8-sig')):
+    tucker_csvs = [tucker_csvs] if isinstance(tucker_csvs, Path) else tucker_csvs
+    for r in (r for path in tucker_csvs for r in csv.DictReader(path.open(encoding='utf-8-sig'))):
         g = groups.setdefault(r['layer'], {'layer': r['layer'], 'kernel': f"{r['kernel']}x{r['kernel']}",
                                            'c_in': int(r['c_in']), 'c_out': int(r['c_out']), 'modes': {}})
         saved = 1000 * (float(r['layer_GFLOPs_base']) - float(r['layer_GFLOPs']))
@@ -113,8 +116,10 @@ def build(base, table, sel):
         if isinstance(module, nn.Conv2d):
             set_module(model, t['layer'], low_rank_conv(module, rank))
         else:
-            r_out, r_in = (t['c_out'], rank) if option == 'tucker2-in' else (rank, t['c_in'])
-            new, _ = decompose(module, r_out, r_in, 0)
+            # svd of a 1 x 1 Conv block is the 'out' mode
+            r_out, r_in = {'tucker2-in': (t['c_out'], rank), 'tucker2-out': (rank, t['c_in']),
+                           'svd': (rank, t['c_in']), 'tucker2-both': (rank, rank)}[option]
+            new, _ = decompose(module, r_out, r_in, HOOI_ITERS)
             set_module(model, t['layer'], new)
     return model
 
@@ -154,10 +159,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', type=Path, default=ROOT/'models/baseline/8n_float32.pt')
     parser.add_argument('--data', type=Path, default=ROOT/'PTQ/datasets/kitti')
-    parser.add_argument('--tucker', type=Path, default=ROOT/'outputs/sensitivity_tucker2/sensitivity.csv')
+    parser.add_argument('--tucker', type=Path, nargs='+', default=[ROOT/'outputs/sensitivity_tucker2/sensitivity.csv',
+                                                                   ROOT/'outputs/sensitivity_tucker2_both/sensitivity.csv'])
     parser.add_argument('--svd', type=Path, default=ROOT/'sensitivity_results/kitti_svd_rank_sensitivity/sensitivity.csv')
     parser.add_argument('--search-subset', type=Path, default=ROOT/'outputs/sensitivity_tucker2/val_subset.txt')
-    parser.add_argument('--output', type=Path, default=ROOT/'outputs/knapsack_lowrank')
+    parser.add_argument('--output', type=Path, default=ROOT/'outputs/knapsack_lowrank_both')
     parser.add_argument('--budgets', type=float, nargs='+', default=[round(0.1 * k, 1) for k in range(1, 51)])
     parser.add_argument('--bn-images', type=int, default=512)
     parser.add_argument('--batch', type=int, default=32)
@@ -242,9 +248,9 @@ def main():
     (args.output/'plans.json').write_text(json.dumps({'reference': reference, 'layers': table, 'plans': rows},
                                                      separators=(',', ':')), encoding='utf-8')
     plot(rows, reference['GFLOPs'], args.output)
-    manifest = {'source': str(args.weights.relative_to(ROOT)), 'tucker_scan': str(args.tucker.relative_to(ROOT)),
-                'svd_scan': str(args.svd.relative_to(ROOT)),
-                'knapsack': 'top 1 per budget; k x k: keep / Tucker-2 out / Tucker-2 in ranks, 1 x 1: keep / SVD ranks; '
+    manifest = {'source': str(args.weights.relative_to(ROOT)),
+                'tucker_scan': [str(p.relative_to(ROOT)) for p in args.tucker], 'svd_scan': str(args.svd.relative_to(ROOT)),
+                'knapsack': 'top 1 per budget; k x k: keep / Tucker-2 out / in / both ranks, 1 x 1: keep / SVD ranks; '
                             'cost = single-layer raw drop (trained BN), >= 0, monotone in rank; value = single-layer '
                             'MFLOPs saved, options saving nothing dropped', 'unit_points': 0.01,
                 'budgets': args.budgets, 'layers': len(table), 'distinct_plans': len(distinct),

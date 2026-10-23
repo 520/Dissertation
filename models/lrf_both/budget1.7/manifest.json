@@ -1,0 +1,337 @@
+{
+  "source": "models\\baseline\\8n_float32.pt",
+  "checkpoint": "8n_float32_lrf.pt",
+  "method": "Tucker-2 (one mode: truncated HOSVD; both modes: HOSVD + HOOI) for k x k Conv blocks, truncated SVD for 1 x 1",
+  "plan": "models\\lrf_both\\budget1.7\\plan.txt",
+  "layers": [
+    {
+      "layer": "model.4.m.0.cv2",
+      "kernel": "3x3",
+      "c_in": 32,
+      "c_out": 32,
+      "option": "tucker2-out",
+      "rank": 24,
+      "single_layer_drop_pts": 0.0,
+      "single_layer_MFLOPs_saved": 19.66
+    },
+    {
+      "layer": "model.5",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 128,
+      "option": "tucker2-out",
+      "rank": 56,
+      "single_layer_drop_pts": 0.073,
+      "single_layer_MFLOPs_saved": 109.77
+    },
+    {
+      "layer": "model.6.m.0.cv1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 40,
+      "single_layer_drop_pts": 0.0,
+      "single_layer_MFLOPs_saved": 36.04
+    },
+    {
+      "layer": "model.6.m.0.cv2",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-both",
+      "rank": 48,
+      "single_layer_drop_pts": 0.0,
+      "single_layer_MFLOPs_saved": 31.94
+    },
+    {
+      "layer": "model.6.m.1.cv1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 32,
+      "single_layer_drop_pts": 0.145,
+      "single_layer_MFLOPs_saved": 52.42
+    },
+    {
+      "layer": "model.6.m.1.cv2",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 24,
+      "single_layer_drop_pts": 0.0,
+      "single_layer_MFLOPs_saved": 68.81
+    },
+    {
+      "layer": "model.7",
+      "kernel": "3x3",
+      "c_in": 128,
+      "c_out": 256,
+      "option": "tucker2-out",
+      "rank": 136,
+      "single_layer_drop_pts": 0.038,
+      "single_layer_MFLOPs_saved": 82.74
+    },
+    {
+      "layer": "model.8.cv2",
+      "kernel": "1x1",
+      "c_in": 384,
+      "c_out": 256,
+      "option": "svd",
+      "rank": 152,
+      "single_layer_drop_pts": 0.0015,
+      "single_layer_MFLOPs_saved": 0.819
+    },
+    {
+      "layer": "model.8.m.0.cv1",
+      "kernel": "3x3",
+      "c_in": 128,
+      "c_out": 128,
+      "option": "tucker2-in",
+      "rank": 48,
+      "single_layer_drop_pts": 0.004,
+      "single_layer_MFLOPs_saved": 68.81
+    },
+    {
+      "layer": "model.8.m.0.cv2",
+      "kernel": "3x3",
+      "c_in": 128,
+      "c_out": 128,
+      "option": "tucker2-both",
+      "rank": 72,
+      "single_layer_drop_pts": 0.066,
+      "single_layer_MFLOPs_saved": 65.89
+    },
+    {
+      "layer": "model.12.m.0.cv1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 48,
+      "single_layer_drop_pts": 0.0,
+      "single_layer_MFLOPs_saved": 19.66
+    },
+    {
+      "layer": "model.16",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 32,
+      "single_layer_drop_pts": 0.074,
+      "single_layer_MFLOPs_saved": 32.76
+    },
+    {
+      "layer": "model.18.m.0.cv1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 40,
+      "single_layer_drop_pts": 0.0,
+      "single_layer_MFLOPs_saved": 36.04
+    },
+    {
+      "layer": "model.18.m.0.cv2",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-both",
+      "rank": 32,
+      "single_layer_drop_pts": 0.013,
+      "single_layer_MFLOPs_saved": 75.36
+    },
+    {
+      "layer": "model.19",
+      "kernel": "3x3",
+      "c_in": 128,
+      "c_out": 128,
+      "option": "tucker2-out",
+      "rank": 8,
+      "single_layer_drop_pts": 0.029,
+      "single_layer_MFLOPs_saved": 109.77
+    },
+    {
+      "layer": "model.21.cv1",
+      "kernel": "1x1",
+      "c_in": 384,
+      "c_out": 256,
+      "option": "svd",
+      "rank": 8,
+      "single_layer_drop_pts": 0.0274,
+      "single_layer_MFLOPs_saved": 74.547
+    },
+    {
+      "layer": "model.21.cv2",
+      "kernel": "1x1",
+      "c_in": 384,
+      "c_out": 256,
+      "option": "svd",
+      "rank": 8,
+      "single_layer_drop_pts": 0.0316,
+      "single_layer_MFLOPs_saved": 74.547
+    },
+    {
+      "layer": "model.21.m.0.cv1",
+      "kernel": "3x3",
+      "c_in": 128,
+      "c_out": 128,
+      "option": "tucker2-both",
+      "rank": 8,
+      "single_layer_drop_pts": 0.04,
+      "single_layer_MFLOPs_saved": 115.86
+    },
+    {
+      "layer": "model.21.m.0.cv2",
+      "kernel": "3x3",
+      "c_in": 128,
+      "c_out": 128,
+      "option": "tucker2-both",
+      "rank": 8,
+      "single_layer_drop_pts": 0.026,
+      "single_layer_MFLOPs_saved": 115.86
+    },
+    {
+      "layer": "model.22.cv2.1.0",
+      "kernel": "3x3",
+      "c_in": 128,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 56,
+      "single_layer_drop_pts": 0.042,
+      "single_layer_MFLOPs_saved": 109.77
+    },
+    {
+      "layer": "model.22.cv2.1.1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 48,
+      "single_layer_drop_pts": 0.028,
+      "single_layer_MFLOPs_saved": 19.66
+    },
+    {
+      "layer": "model.22.cv2.2.0",
+      "kernel": "3x3",
+      "c_in": 256,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 16,
+      "single_layer_drop_pts": 0.039,
+      "single_layer_MFLOPs_saved": 107.31
+    },
+    {
+      "layer": "model.22.cv2.2.1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-both",
+      "rank": 32,
+      "single_layer_drop_pts": 0.05,
+      "single_layer_MFLOPs_saved": 18.84
+    },
+    {
+      "layer": "model.22.cv2.2.2",
+      "kernel": "1x1",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "svd",
+      "rank": 16,
+      "single_layer_drop_pts": 0.0001,
+      "single_layer_MFLOPs_saved": 1.638
+    },
+    {
+      "layer": "model.22.cv3.0.0",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 48,
+      "single_layer_drop_pts": 0.238,
+      "single_layer_MFLOPs_saved": 78.64
+    },
+    {
+      "layer": "model.22.cv3.0.1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-out",
+      "rank": 40,
+      "single_layer_drop_pts": 0.425,
+      "single_layer_MFLOPs_saved": 144.18
+    },
+    {
+      "layer": "model.22.cv3.1.0",
+      "kernel": "3x3",
+      "c_in": 128,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 48,
+      "single_layer_drop_pts": 0.075,
+      "single_layer_MFLOPs_saved": 127.8
+    },
+    {
+      "layer": "model.22.cv3.1.1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 24,
+      "single_layer_drop_pts": 0.188,
+      "single_layer_MFLOPs_saved": 68.81
+    },
+    {
+      "layer": "model.22.cv3.2.0",
+      "kernel": "3x3",
+      "c_in": 256,
+      "c_out": 64,
+      "option": "tucker2-both",
+      "rank": 8,
+      "single_layer_drop_pts": 0.045,
+      "single_layer_MFLOPs_saved": 115.45
+    },
+    {
+      "layer": "model.22.cv3.2.1",
+      "kernel": "3x3",
+      "c_in": 64,
+      "c_out": 64,
+      "option": "tucker2-in",
+      "rank": 8,
+      "single_layer_drop_pts": 0.01,
+      "single_layer_MFLOPs_saved": 25.39
+    }
+  ],
+  "predicted_drop_pts": 1.709,
+  "params": {
+    "base": 3012408,
+    "lrf": 1518904,
+    "saved_%": 49.57841036141186
+  },
+  "GFLOPs": {
+    "base": 8.1487168,
+    "lrf": 6.1398336,
+    "saved_%": 24.652755142993797
+  },
+  "output_rel_diff_constant_input": 0.1389615386724472,
+  "val_batch1_conf0.001": {
+    "baseline": {
+      "mAP50-95": 0.6753236180108553,
+      "mAP75": 0.7682593591635606,
+      "mAP50": 0.904875405599695,
+      "precision": 0.9224776002544859,
+      "recall": 0.8391872172353209
+    },
+    "lrf": {
+      "mAP50-95": 0.6092751494608593,
+      "mAP75": 0.6875971120120237,
+      "mAP50": 0.8572374094652913,
+      "precision": 0.8678065021241925,
+      "recall": 0.7727132548424023
+    },
+    "drop_mAP50-95_pts": 6.604846854999602
+  }
+}

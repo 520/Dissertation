@@ -1,0 +1,23 @@
+{
+  "source": "models\\lrf_both\\budget2.0\\8n_float32_lrf.pt",
+  "checkpoint": "8n_float32_lrf_ft50.pt",
+  "run_dir": "C:\\Users\\dxu1\\Desktop\\Dissertation\\Pruning\\runs\\kitti_lrfboth_b2.0_ft50",
+  "best_epoch": 50,
+  "epochs": 50,
+  "batch": 32,
+  "optimizer": "SGD",
+  "lr0": 0.01,
+  "lrf": 0.01,
+  "cos_lr": true,
+  "warmup_epochs": 3.0,
+  "amp": false,
+  "cache": "ram",
+  "train_seconds": 1259.9621454000007,
+  "val_batch1_conf0.001": {
+    "mAP50-95": 0.6685328500854633,
+    "mAP75": 0.7623324411933093,
+    "mAP50": 0.8970274260180244,
+    "precision": 0.9119268905487028,
+    "recall": 0.8276080094915949
+  }
+}

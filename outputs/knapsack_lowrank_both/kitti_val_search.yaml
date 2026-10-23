@@ -1,0 +1,1 @@
+{"path": "C:\\Users\\dxu1\\Desktop\\Dissertation\\PTQ\\datasets\\kitti", "train": "images/train", "val": "C:\\Users\\dxu1\\Desktop\\Dissertation\\outputs\\knapsack_lowrank_both\\val_search.txt", "nc": 8, "names": {"0": "car", "1": "van", "2": "truck", "3": "pedestrian", "4": "person_sitting", "5": "cyclist", "6": "tram", "7": "misc"}}
