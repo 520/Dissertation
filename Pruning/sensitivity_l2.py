@@ -54,7 +54,8 @@ FIELDS = ['group', 'root', 'coupled_out_convs', 'channels', 'ratio', 'removed', 
 
 def ignored_layers(model):
     head = model.model[-1]
-    return [s[-1] for s in head.cv2] + [s[-1] for s in head.cv3] + [head.dfl]
+    # .modules(): a low-rank output conv is a Sequential of two convs, both kept
+    return [m for s in (*head.cv2, *head.cv3) for m in s[-1].modules() if isinstance(m, nn.Conv2d)] + [head.dfl]
 
 
 def groups_of(model, example):
@@ -213,6 +214,8 @@ def main():
     summary = []
     for g in selected:
         mine = [r for r in rows if r['group'] == g]
+        if not mine:
+            continue                           # group of channel_step channels or fewer: nothing to remove
         per_point = {} if args.channel_step else {f"drop@{r['ratio']:g}": r['drop_mAP50-95'] for r in mine}
         summary.append({'group': g, **info[g], **per_point,
                         'mean_drop': round(float(np.mean([r['drop_mAP50-95'] for r in mine])), 5),

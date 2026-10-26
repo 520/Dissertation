@@ -55,12 +55,13 @@ def main():
     example = torch.zeros(1, 3, 640, 640)
     base_macs, base_params = tp.utils.count_ops_and_params(model, example)
     importance = tp.importance.GroupMagnitudeImportance(p=2, group_reduction='mean', normalizer=None)
-    pruned = build(model, example, importance, plan['removed']).eval()
+    pruned = build(model, example, importance, plan['removed'], [g['group'] for g in groups]).eval()
 
     merged, kept_split = [], []
     for i, m in enumerate(pruned.model):
         if isinstance(m, C2fSplit):
-            if m.cv0.conv.out_channels == m.cv1.conv.out_channels:
+            # halves of a low-rank cv1 (Decomposition TuckerConv) each carry their own factors: left split
+            if isinstance(m.cv0.conv, torch.nn.Conv2d) and m.cv0.conv.out_channels == m.cv1.conv.out_channels:
                 pruned.model[i] = m.merge()
                 merged.append(i)
             else:

@@ -68,11 +68,15 @@ def load_fused(path):
     model = model.float().eval()
     # Factorized checkpoints (models/milad) replace Conv.conv by a Sequential of plain Conv2d with no
     # activation in between; BN then folds exactly into the last convolution of the sequence.
+    # Decomposition TuckerConv (conv Sequential + bn + act, not a Conv) folds the same way.
     for m in model.modules():
         if isinstance(m, Conv) and hasattr(m, 'bn') and isinstance(m.conv, nn.Sequential):
             m.conv[-1] = fuse_conv_and_bn(m.conv[-1], m.bn)
             delattr(m, 'bn')
             m.forward = m.forward_fuse
+        elif isinstance(getattr(m, 'bn', None), nn.BatchNorm2d) and isinstance(getattr(m, 'conv', None), nn.Sequential):
+            m.conv[-1] = fuse_conv_and_bn(m.conv[-1], m.bn)
+            m.bn = nn.Identity()
     model.fuse(verbose=False)          # fold BN into the convolutions, as deployed
     for p in model.parameters():
         p.requires_grad_(False)

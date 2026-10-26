@@ -45,10 +45,13 @@ KITTI = {0: 'car', 1: 'van', 2: 'truck', 3: 'pedestrian', 4: 'person_sitting', 5
 
 
 def slice_conv(block: Conv, idx: slice) -> Conv:
-    """Copy of an Ultralytics Conv (conv+BN+act) keeping only output channels idx."""
+    """Copy of an Ultralytics Conv (conv+BN+act) keeping only output channels idx; for a low-rank block
+    (Decomposition TuckerConv, conv is a Sequential) only its last convolution is sliced."""
     new = deepcopy(block)
-    new.conv.weight = nn.Parameter(block.conv.weight.data[idx].clone())
-    new.conv.out_channels = new.conv.weight.shape[0]
+    src = block.conv[-1] if isinstance(block.conv, nn.Sequential) else block.conv
+    dst = new.conv[-1] if isinstance(new.conv, nn.Sequential) else new.conv
+    dst.weight = nn.Parameter(src.weight.data[idx].clone())
+    dst.out_channels = dst.weight.shape[0]
     bn = new.bn
     bn.weight = nn.Parameter(block.bn.weight.data[idx].clone())
     bn.bias = nn.Parameter(block.bn.bias.data[idx].clone())

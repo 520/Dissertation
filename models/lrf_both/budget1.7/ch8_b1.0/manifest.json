@@ -1,0 +1,38 @@
+{
+  "source": "models\\lrf_both\\budget1.7\\8n_float32_lrf_ft50.pt",
+  "plans": "outputs\\knapsack_ch8_b1.7ft50\\plans.json",
+  "budget": 1.0,
+  "groups_pruned": 32,
+  "channels_removed": 1264,
+  "params_before": 1521976,
+  "params_after": 1226792,
+  "gflops_before": 6.1422912,
+  "gflops_after": 5.618336,
+  "saved_%": 8.530289153337433,
+  "output_shape": [
+    1,
+    12,
+    8400
+  ],
+  "c2f_merged_back": [
+    2,
+    4,
+    6,
+    8,
+    12,
+    15
+  ],
+  "c2f_left_split": [
+    18,
+    21
+  ],
+  "knapsack_evaluation": {
+    "pred_drop": 1.04,
+    "drop_search": 2.49,
+    "drop_heldout": 4.199,
+    "pred_saved_%": 8.76,
+    "saved_%": 8.53,
+    "real_GFLOPs": 5.6183
+  },
+  "checkpoint": "8n_float32_lrf_ft50_ch8_b1.pt"
+}

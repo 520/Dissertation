@@ -92,11 +92,14 @@ def best_plans(table, budgets):
     return plans
 
 
-def build(base, example, importance, removals):
+def build(base, example, importance, removals, group_ids=None):
+    """removals[i] channels removed from DepGraph group group_ids[i] (default i; groups too small to scan are not
+    in the table)."""
     model = deepcopy(base)
     graph, groups = groups_of(model, example)
+    group_ids = range(len(removals)) if group_ids is None else group_ids
     todo = [(groups[g][0].dep.target.module, torch.argsort(importance(groups[g]))[:n].tolist())
-            for g, n in enumerate(removals) if n]
+            for g, n in zip(group_ids, removals) if n]
     for root, idxs in todo:
         graph.get_pruning_group(root, OUT_CH, idxs).prune()
     for m in model.modules():
@@ -154,7 +157,7 @@ def main():
             measured[sel] = {'real_GFLOPs': reference['GFLOPs'], 'params': base_params,
                              'mAP_search': reference['mAP_search'], 'mAP_heldout': reference['mAP_heldout']}
             continue
-        model = build(base, example, importance, removals)
+        model = build(base, example, importance, removals, [t['group'] for t in table])
         macs, params = tp.utils.count_ops_and_params(model, example)
         adapt_bn(model, calib, args.batch, device)
         measured[sel] = {'real_GFLOPs': 2 * macs / 1e9, 'params': params,

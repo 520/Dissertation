@@ -1,0 +1,51 @@
+{
+  "source": "models\\lrf_both\\budget1.7\\8n_float32_lrf_ft50.pt",
+  "tool": "torch-pruning 1.6.0",
+  "importance": "GroupMagnitudeImportance(p=2, group_reduction=mean, normalizer=None)",
+  "groups": 96,
+  "groups_scanned": 85,
+  "c2f_cv1_split": true,
+  "ignored": [
+    "model.22.cv2.*.2",
+    "model.22.cv3.*.2",
+    "model.22.dfl"
+  ],
+  "ratios": null,
+  "channel_step": 8,
+  "channels_removed": "8, 16, ... below the group size",
+  "adaptive_bn": {
+    "images": 512,
+    "split": "KITTI train",
+    "augment": "training hyperparameters (mosaic etc.)",
+    "seed": 42,
+    "momentum": null,
+    "batch": 32
+  },
+  "validation": {
+    "images": 500,
+    "split": "KITTI val",
+    "seed": 42,
+    "imgsz": 640,
+    "rect": false,
+    "conf": 0.001,
+    "iou": 0.7
+  },
+  "base_params": 1521976,
+  "base_GFLOPs": 6.1422912,
+  "unpruned_trained_bn": {
+    "mAP50-95": 0.676247828330661,
+    "mAP50": 0.9023020173893352,
+    "mAP75": 0.7766823026949327,
+    "precision": 0.9480932325907405,
+    "recall": 0.8057413583490605
+  },
+  "reference_unpruned_adaptive_bn": {
+    "mAP50-95": 0.6582024477911281,
+    "mAP50": 0.8841105774925593,
+    "mAP75": 0.7452963281579961,
+    "precision": 0.9346944934661214,
+    "recall": 0.7972827892140943
+  },
+  "seconds": 1990.0,
+  "note": "summary.csv and manifest.json written after the run from sensitivity.csv and run.log (the run stopped in the summary step on groups too small to scan); seconds = sum of trials"
+}
