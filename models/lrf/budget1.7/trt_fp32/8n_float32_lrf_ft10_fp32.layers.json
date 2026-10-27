@@ -399,7 +399,7 @@
     "Location": "Device",
     "Dimensions": [80,80,1],
     "Datatype": "Float",
-    "Format": "(Linear) Row major linear format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -606,7 +606,7 @@
     "Location": "Device",
     "Dimensions": [80,80,1],
     "Datatype": "Float",
-    "Format": "(Linear) Row major linear format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -658,7 +658,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x0000000000000000",
+  "TacticValue": "0x00000000000003e8",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Concat_4]"
 },{
@@ -728,11 +728,35 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.1/conv/Conv]"
 },{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/Reshape_6",
+  "LayerType": "Reformat",
+  "Inputs": [
+  {
+    "Name": "/model/model.22/Concat_2_output_0",
+    "Location": "Device",
+    "Dimensions": [80,80,2],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/Reshape_6",
+    "Location": "Device",
+    "Dimensions": [80,80,2],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
   "Name": "/model/model.22/Reshape_6",
   "LayerType": "NoOp",
   "Inputs": [
   {
-    "Name": "/model/model.22/Concat_2_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/Reshape_6",
     "Location": "Device",
     "Dimensions": [80,80,2],
     "Datatype": "Float",
@@ -816,7 +840,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Reshape_7]"
 },{
@@ -862,15 +886,37 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Reshape_8]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl36_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.1/act/Sigmoid), PWN(/model/model.1/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.1/conv/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.1/act/Sigmoid), PWN(/model/model.1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl38_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.1/act/Sigmoid), PWN(/model/model.1/act/Mul))",
     "Dimensions": [1,32,160,160],
     "Strides": [819200,1,5120,32],
     "StrideOrder": [3,0,2,1],
@@ -891,11 +937,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.1/act/Sigmoid]\u001e[ONNX Layer: /model/model.1/act/Mul]"
 },{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.2/cv1/conv/Conv",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.1/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.2/cv1/conv/Conv",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
   "Name": "/model/model.2/cv1/conv/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "/model/model.1/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.2/cv1/conv/Conv",
     "Location": "Device",
     "Dimensions": [1,32,160,160],
     "Datatype": "Float",
@@ -962,11 +1030,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Transpose]\u001e[ONNX Layer: /model/model.22/Unsqueeze_6]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl39_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.2/cv1/act/Sigmoid), PWN(/model/model.2/cv1/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.2/cv1/conv/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.2/cv1/act/Sigmoid), PWN(/model/model.2/cv1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl43_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.2/cv1/act/Sigmoid), PWN(/model/model.2/cv1/act/Mul))",
     "Dimensions": [1,32,160,160],
     "Strides": [819200,1,5120,32],
     "StrideOrder": [3,0,2,1],
@@ -976,7 +1066,7 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "/model/model.2/cv1/act/Mul_output_0",
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.2/cv1/act/Sigmoid), PWN(/model/model.2/cv1/act/Mul))",
     "Dimensions": [1,32,160,160],
     "Strides": [819200,1,5120,32],
     "StrideOrder": [3,0,2,1],
@@ -986,6 +1076,28 @@
   "TacticName": "__myl_MoveNegExpAddDivMul_0xeaba8c4bb1258aafd062b0843f98168e",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.2/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.2/cv1/act/Mul]"
+},{
+  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.2/cv1/act/Sigmoid), PWN(/model/model.2/cv1/act/Mul))",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.2/cv1/act/Sigmoid), PWN(/model/model.2/cv1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "/model/model.2/cv1/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
 },{
   "Name": "/model/model.2/m.0/cv1/conv/Conv",
   "LayerType": "CaskConvolution",
@@ -1031,11 +1143,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.2/m.0/cv1/conv/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl41_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.2/m.0/cv1/act/Sigmoid), PWN(/model/model.2/m.0/cv1/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.2/m.0/cv1/conv/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,16,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.2/m.0/cv1/act/Sigmoid), PWN(/model/model.2/m.0/cv1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,16,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl47_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.2/m.0/cv1/act/Sigmoid), PWN(/model/model.2/m.0/cv1/act/Mul))",
     "Dimensions": [1,16,160,160],
     "Strides": [409600,1,2560,16],
     "StrideOrder": [3,0,2,1],
@@ -1056,11 +1190,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.2/m.0/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.2/m.0/cv1/act/Mul]"
 },{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.2/m.0/cv2/conv/Conv",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.2/m.0/cv1/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,16,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.2/m.0/cv2/conv/Conv",
+    "Location": "Device",
+    "Dimensions": [1,16,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
   "Name": "/model/model.2/m.0/cv2/conv/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "/model/model.2/m.0/cv1/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.2/m.0/cv2/conv/Conv",
     "Location": "Device",
     "Dimensions": [1,16,160,160],
     "Datatype": "Float",
@@ -1100,7 +1256,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.2/m.0/cv2/conv/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMulAdd_myl43_0",
+  "Name": "__myl_MoveNegExpAddDivMulAdd_myl50_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -1177,7 +1333,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x0000000000000000",
+  "TacticValue": "0x00000000000003e8",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.2/Concat]"
 },{
@@ -1220,16 +1376,38 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x9cb304e2edbc1221",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
+  "TacticValue": "0x72a5d05b1bb165ef",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.2/cv2/conv/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl47_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.2/cv2/act/Sigmoid), PWN(/model/model.2/cv2/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.2/cv2/conv/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.2/cv2/act/Sigmoid), PWN(/model/model.2/cv2/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl55_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.2/cv2/act/Sigmoid), PWN(/model/model.2/cv2/act/Mul))",
     "Dimensions": [1,32,160,160],
     "Strides": [819200,1,5120,32],
     "StrideOrder": [3,0,2,1],
@@ -1250,11 +1428,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.2/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.2/cv2/act/Mul]"
 },{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.3/conv/Conv",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.2/cv2/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.3/conv/Conv",
+    "Location": "Device",
+    "Dimensions": [1,32,160,160],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
   "Name": "/model/model.3/conv/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "/model/model.2/cv2/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.3/conv/Conv",
     "Location": "Device",
     "Dimensions": [1,32,160,160],
     "Datatype": "Float",
@@ -1294,33 +1494,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.3/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.3/act/Sigmoid), PWN(/model/model.3/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.3/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.3/act/Sigmoid), PWN(/model/model.3/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl50_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl58_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.3/act/Sigmoid), PWN(/model/model.3/act/Mul))",
+    "Name": "/model/model.3/conv/Conv_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -1341,33 +1519,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.3/act/Sigmoid]\u001e[ONNX Layer: /model/model.3/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.4/cv1/conv/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.3/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.4/cv1/conv/Conv",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.4/cv1/conv/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.4/cv1/conv/Conv",
+    "Name": "/model/model.3/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,64,80,80],
     "Datatype": "Float",
@@ -1407,33 +1563,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/cv1/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.4/cv1/act/Sigmoid), PWN(/model/model.4/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.4/cv1/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.4/cv1/act/Sigmoid), PWN(/model/model.4/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl54_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl60_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.4/cv1/act/Sigmoid), PWN(/model/model.4/cv1/act/Mul))",
+    "Name": "/model/model.4/cv1/conv/Conv_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -1443,7 +1577,7 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.4/cv1/act/Sigmoid), PWN(/model/model.4/cv1/act/Mul))",
+    "Name": "/model/model.4/cv1/act/Mul_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -1453,28 +1587,6 @@
   "TacticName": "__myl_MoveNegExpAddDivMul_0x3374c38a810d0deb73233e4cfd7e6b57",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.4/cv1/act/Mul]"
-},{
-  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.4/cv1/act/Sigmoid), PWN(/model/model.4/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.4/cv1/act/Sigmoid), PWN(/model/model.4/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "/model/model.4/cv1/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
 },{
   "Name": "/model/model.4/m.0/cv1/conv/Conv",
   "LayerType": "CaskConvolution",
@@ -1520,33 +1632,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/m.0/cv1/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.4/m.0/cv1/act/Sigmoid), PWN(/model/model.4/m.0/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.4/m.0/cv1/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.4/m.0/cv1/act/Sigmoid), PWN(/model/model.4/m.0/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl58_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl62_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.4/m.0/cv1/act/Sigmoid), PWN(/model/model.4/m.0/cv1/act/Mul))",
+    "Name": "/model/model.4/m.0/cv1/conv/Conv_output_0",
     "Dimensions": [1,32,80,80],
     "Strides": [204800,1,2560,32],
     "StrideOrder": [3,0,2,1],
@@ -1567,33 +1657,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/m.0/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.4/m.0/cv1/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.4/m.0/cv2/conv/conv.0/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.4/m.0/cv1/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.4/m.0/cv2/conv/conv.0/Conv",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.4/m.0/cv2/conv/conv.0/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.4/m.0/cv2/conv/conv.0/Conv",
+    "Name": "/model/model.4/m.0/cv1/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,32,80,80],
     "Datatype": "Float",
@@ -1628,8 +1696,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
-  "TacticValue": "0x3a8712b17741b582",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc4",
+  "TacticValue": "0xb6f6563c77d057d7",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/m.0/cv2/conv/conv.0/Conv]"
 },{
@@ -1672,12 +1740,12 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
-  "TacticValue": "0x4037b478ce77e422",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8_aligna8_alignc8",
+  "TacticValue": "0x7bff86d5f2eadc76",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/m.0/cv2/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMulAdd_myl62_0",
+  "Name": "__myl_MoveNegExpAddDivMulAdd_myl65_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -1754,33 +1822,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/m.1/cv1/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.4/m.1/cv1/act/Sigmoid), PWN(/model/model.4/m.1/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.4/m.1/cv1/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.4/m.1/cv1/act/Sigmoid), PWN(/model/model.4/m.1/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl65_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl67_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.4/m.1/cv1/act/Sigmoid), PWN(/model/model.4/m.1/cv1/act/Mul))",
+    "Name": "/model/model.4/m.1/cv1/conv/Conv_output_0",
     "Dimensions": [1,32,80,80],
     "Strides": [204800,1,2560,32],
     "StrideOrder": [3,0,2,1],
@@ -1801,33 +1847,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/m.1/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.4/m.1/cv1/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.4/m.1/cv2/conv/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.4/m.1/cv1/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.4/m.1/cv2/conv/Conv",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.4/m.1/cv2/conv/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.4/m.1/cv2/conv/Conv",
+    "Name": "/model/model.4/m.1/cv1/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,32,80,80],
     "Datatype": "Float",
@@ -1867,11 +1891,55 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/m.1/cv2/conv/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMulAdd_myl68_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(PWN(/model/model.4/m.1/cv2/act/Sigmoid), PWN(/model/model.4/m.1/cv2/act/Mul)), PWN(/model/model.4/m.1/Add))",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.4/m.1/cv2/conv/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,32,80,80],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(PWN(/model/model.4/m.1/cv2/act/Sigmoid), PWN(/model/model.4/m.1/cv2/act/Mul)), PWN(/model/model.4/m.1/Add))",
+    "Location": "Device",
+    "Dimensions": [1,32,80,80],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "Reformatting CopyNode for Input Tensor 1 to PWN(PWN(PWN(/model/model.4/m.1/cv2/act/Sigmoid), PWN(/model/model.4/m.1/cv2/act/Mul)), PWN(/model/model.4/m.1/Add))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.4/m.0/Add_output_0",
+    "Location": "Device",
+    "Dimensions": [1,32,80,80],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 1 to PWN(PWN(PWN(/model/model.4/m.1/cv2/act/Sigmoid), PWN(/model/model.4/m.1/cv2/act/Mul)), PWN(/model/model.4/m.1/Add))",
+    "Location": "Device",
+    "Dimensions": [1,32,80,80],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMulAdd_myl71_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 1 to PWN(PWN(PWN(/model/model.4/m.1/cv2/act/Sigmoid), PWN(/model/model.4/m.1/cv2/act/Mul)), PWN(/model/model.4/m.1/Add))",
     "Dimensions": [1,32,80,80],
     "Strides": [204800,1,2560,32],
     "StrideOrder": [3,0,2,1],
@@ -1879,7 +1947,7 @@
     "Format": "(NHWC) Channel major format"
   },
   {
-    "Name": "/model/model.4/m.1/cv2/conv/Conv_output_0",
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(PWN(/model/model.4/m.1/cv2/act/Sigmoid), PWN(/model/model.4/m.1/cv2/act/Mul)), PWN(/model/model.4/m.1/Add))",
     "Dimensions": [1,32,80,80],
     "Strides": [204800,1,2560,32],
     "StrideOrder": [3,0,2,1],
@@ -1916,11 +1984,11 @@
     "Location": "Device",
     "Dimensions": [1,32,80,80],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(NHWC) Channel major format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/Concat]"
 },{
@@ -1940,7 +2008,7 @@
     "Location": "Device",
     "Dimensions": [1,32,80,80],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(NHWC) Channel major format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -1964,7 +2032,7 @@
     "Location": "Device",
     "Dimensions": [1,32,80,80],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(NHWC) Channel major format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -1972,11 +2040,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/Concat]"
 },{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.4/cv2/conv/Conv",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.4/Concat_output_0",
+    "Location": "Device",
+    "Dimensions": [1,128,80,80],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.4/cv2/conv/Conv",
+    "Location": "Device",
+    "Dimensions": [1,128,80,80],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
   "Name": "/model/model.4/cv2/conv/Conv",
   "LayerType": "CaskGemmConvolution",
   "Inputs": [
   {
-    "Name": "/model/model.4/Concat_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.4/cv2/conv/Conv",
     "Location": "Device",
     "Dimensions": [1,128,80,80],
     "Datatype": "Float",
@@ -2011,12 +2101,12 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize256x64x32_stage2_warpsize4x1x1_tensor16x8x8",
-  "TacticValue": "0x00000000000201fb",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize128x64x32_stage4_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x00000000000205f0",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.4/cv2/conv/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl73_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl77_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -2080,8 +2170,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0xb33296dda7141c64",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0x10383a0781d24dde",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.5/conv/conv.0/Conv]"
 },{
@@ -2124,8 +2214,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize128x64x16_stage6_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x00000000000200e2",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x128x32_stage4_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x00000000000204a0",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.5/conv/conv.1/Conv]"
 },{
@@ -2151,7 +2241,7 @@
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl77_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl81_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -2237,8 +2327,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize128x128x16_stage4_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x0000000000020165",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize128x64x32_stage4_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x000000000002029b",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/cv1/conv/Conv]"
 },{
@@ -2264,7 +2354,7 @@
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl81_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl85_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -2350,8 +2440,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x64x64_stage3_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x0000000000020346",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize128x64x16_stage6_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x0000000000020209",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/m.0/cv1/conv/conv.0/Conv]"
 },{
@@ -2399,11 +2489,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/m.0/cv1/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl85_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.6/m.0/cv1/act/Sigmoid), PWN(/model/model.6/m.0/cv1/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.6/m.0/cv1/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.6/m.0/cv1/act/Sigmoid), PWN(/model/model.6/m.0/cv1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl90_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.6/m.0/cv1/act/Sigmoid), PWN(/model/model.6/m.0/cv1/act/Mul))",
     "Dimensions": [1,64,40,40],
     "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
@@ -2424,11 +2536,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/m.0/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.6/m.0/cv1/act/Mul]"
 },{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.6/m.0/cv2/conv/conv.0/Conv",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.6/m.0/cv1/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.6/m.0/cv2/conv/conv.0/Conv",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
   "Name": "/model/model.6/m.0/cv2/conv/conv.0/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "/model/model.6/m.0/cv1/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.6/m.0/cv2/conv/conv.0/Conv",
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
@@ -2507,12 +2641,12 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x64x64_stage3_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x0000000000020346",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize64x64x64_stage3_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x00000000000201a7",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/m.0/cv2/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMulAdd_myl88_0",
+  "Name": "__myl_MoveNegExpAddDivMulAdd_myl94_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -2633,11 +2767,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/m.1/cv1/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl91_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.6/m.1/cv1/act/Sigmoid), PWN(/model/model.6/m.1/cv1/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.6/m.1/cv1/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.6/m.1/cv1/act/Sigmoid), PWN(/model/model.6/m.1/cv1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl98_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.6/m.1/cv1/act/Sigmoid), PWN(/model/model.6/m.1/cv1/act/Mul))",
     "Dimensions": [1,64,40,40],
     "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
@@ -2658,11 +2814,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/m.1/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.6/m.1/cv1/act/Mul]"
 },{
-  "Name": "/model/model.6/m.1/cv2/conv/conv.0/Conv",
-  "LayerType": "CaskConvolution",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.6/m.1/cv2/conv/conv.0/Conv",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.6/m.1/cv1/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.6/m.1/cv2/conv/conv.0/Conv",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "/model/model.6/m.1/cv2/conv/conv.0/Conv",
+  "LayerType": "CaskGemmConvolution",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.6/m.1/cv2/conv/conv.0/Conv",
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
@@ -2697,8 +2875,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize64x32x64_stage4_warpsize2x1x2_tensor16x8x8",
+  "TacticValue": "0x0000000000020069",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/m.1/cv2/conv/conv.0/Conv]"
 },{
@@ -2790,7 +2968,7 @@
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMulAdd_myl96_0",
+  "Name": "__myl_MoveNegExpAddDivMulAdd_myl104_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -2843,7 +3021,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/Concat]"
 },{
@@ -2867,7 +3045,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/Concat]"
 },{
@@ -2961,33 +3139,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.6/cv2/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.6/cv2/act/Sigmoid), PWN(/model/model.6/cv2/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.6/cv2/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,128,40,40],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.6/cv2/act/Sigmoid), PWN(/model/model.6/cv2/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,128,40,40],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl103_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl110_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.6/cv2/act/Sigmoid), PWN(/model/model.6/cv2/act/Mul))",
+    "Name": "/model/model.6/cv2/conv/Conv_output_0",
     "Dimensions": [1,128,40,40],
     "Strides": [204800,1,5120,128],
     "StrideOrder": [3,0,2,1],
@@ -3016,7 +3172,7 @@
     "Location": "Device",
     "Dimensions": [1,128,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "Outputs": [
   {
@@ -3024,7 +3180,7 @@
     "Location": "Device",
     "Dimensions": [1,136,20,20],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "ParameterType": "Convolution",
   "Kernel": [3,3],
@@ -3047,38 +3203,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_f32f32_f32_nhwckrsc_nhwc_tilesize64x64x8_stage3_warpsize1x4x1_g1_ffma_t1r3s3_aligna4_alignc4",
-  "TacticValue": "0x94a7db94ba744c45",
+  "TacticName": "ampere_scudnn_128x32_sliced1x4_ldg4_relu_exp_small_nhwc_tn_v1",
+  "TacticValue": "0x3e2b881168d9689d",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.7/conv/conv.0/Conv]"
-},{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.7/conv/conv.1/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.7/conv/conv.0/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,136,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.7/conv/conv.1/Conv",
-    "Location": "Device",
-    "Dimensions": [1,136,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
 },{
   "Name": "/model/model.7/conv/conv.1/Conv",
   "LayerType": "CaskGemmConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.7/conv/conv.1/Conv",
+    "Name": "/model/model.7/conv/conv.0/Conv_output_0",
     "Location": "Device",
     "Dimensions": [1,136,20,20],
     "Datatype": "Float",
@@ -3113,38 +3247,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize128x64x16_stage6_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x00000000000200e2",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x128x16_stage4_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x00000000000205e3",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.7/conv/conv.1/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.7/act/Sigmoid), PWN(/model/model.7/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.7/conv/conv.1/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.7/act/Sigmoid), PWN(/model/model.7/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl108_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl113_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.7/act/Sigmoid), PWN(/model/model.7/act/Mul))",
+    "Name": "/model/model.7/conv/conv.1/Conv_output_0",
     "Dimensions": [1,256,20,20],
     "Strides": [102400,1,5120,256],
     "StrideOrder": [3,0,2,1],
@@ -3165,33 +3277,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.7/act/Sigmoid]\u001e[ONNX Layer: /model/model.7/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.8/cv1/conv/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.7/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.8/cv1/conv/Conv",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.8/cv1/conv/Conv",
   "LayerType": "CaskGemmConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.8/cv1/conv/Conv",
+    "Name": "/model/model.7/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,256,20,20],
     "Datatype": "Float",
@@ -3231,33 +3321,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.8/cv1/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.8/cv1/act/Sigmoid), PWN(/model/model.8/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.8/cv1/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.8/cv1/act/Sigmoid), PWN(/model/model.8/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl112_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl115_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.8/cv1/act/Sigmoid), PWN(/model/model.8/cv1/act/Mul))",
+    "Name": "/model/model.8/cv1/conv/Conv_output_0",
     "Dimensions": [1,256,20,20],
     "Strides": [102400,1,5120,256],
     "StrideOrder": [3,0,2,1],
@@ -3267,7 +3335,7 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.8/cv1/act/Sigmoid), PWN(/model/model.8/cv1/act/Mul))",
+    "Name": "/model/model.8/cv1/act/Mul_output_0",
     "Dimensions": [1,256,20,20],
     "Strides": [102400,1,5120,256],
     "StrideOrder": [3,0,2,1],
@@ -3277,28 +3345,6 @@
   "TacticName": "__myl_MoveNegExpAddDivMul_0x2bf9c8ed7f44b80468594229bec2b6fd",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.8/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.8/cv1/act/Mul]"
-},{
-  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.8/cv1/act/Sigmoid), PWN(/model/model.8/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.8/cv1/act/Sigmoid), PWN(/model/model.8/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "/model/model.8/cv1/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
 },{
   "Name": "/model/model.8/m.0/cv1/conv/conv.0/Conv",
   "LayerType": "CaskGemmConvolution",
@@ -3388,7 +3434,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.8/m.0/cv1/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl116_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl118_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -3545,7 +3591,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.8/m.0/cv2/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMulAdd_myl121_0",
+  "Name": "__myl_MoveNegExpAddDivMulAdd_myl123_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -3598,7 +3644,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x0000000000000000",
+  "TacticValue": "0x00000000000003e8",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.8/Concat]"
 },{
@@ -3622,7 +3668,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.8/Concat]"
 },{
@@ -3709,38 +3755,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize128x64x32_stage4_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x000000000002029b",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x128x16_stage4_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x00000000000205e3",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.8/cv2/conv/conv.1/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.8/cv2/act/Sigmoid), PWN(/model/model.8/cv2/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.8/cv2/conv/conv.1/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.8/cv2/act/Sigmoid), PWN(/model/model.8/cv2/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl127_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl128_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.8/cv2/act/Sigmoid), PWN(/model/model.8/cv2/act/Mul))",
+    "Name": "/model/model.8/cv2/conv/conv.1/Conv_output_0",
     "Dimensions": [1,256,20,20],
     "Strides": [102400,1,5120,256],
     "StrideOrder": [3,0,2,1],
@@ -3761,33 +3785,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.8/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.8/cv2/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.9/cv1/conv/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.8/cv2/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.9/cv1/conv/Conv",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.9/cv1/conv/Conv",
   "LayerType": "CaskGemmConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.9/cv1/conv/Conv",
+    "Name": "/model/model.8/cv2/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,256,20,20],
     "Datatype": "Float",
@@ -3962,8 +3964,8 @@
   "Stride": [1,1],
   "BlendFactor": 0,
   "AverageCountExcludesPadding": 1,
-  "TacticName": "sm50_xmma_pooling_max_nhwc_FP32FP32_WINDOWSIZE_5_NOT_PROPAGATE_NAN_2D",
-  "TacticValue": "0x46e512dcbb2f25d4",
+  "TacticName": "sm50_xmma_pooling_max_nhwc_FP32FP32_WINDOWSIZE_0_NOT_PROPAGATE_NAN_2D",
+  "TacticValue": "0xaec8628e8180bced",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.9/m_2/MaxPool]"
 },{
@@ -4078,8 +4080,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize128x64x32_stage4_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x00000000000205f0",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize64x128x32_stage4_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x000000000002036d",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.9/cv2/conv/Conv]"
 },{
@@ -4119,7 +4121,7 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "/model/model.9/cv2/act/Mul_output_0",
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.9/cv2/act/Sigmoid), PWN(/model/model.9/cv2/act/Mul))",
     "Dimensions": [1,256,20,20],
     "Strides": [102400,1,5120,256],
     "StrideOrder": [3,0,2,1],
@@ -4130,11 +4132,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.9/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.9/cv2/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.10/Resize",
+  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.9/cv2/act/Sigmoid), PWN(/model/model.9/cv2/act/Mul))",
   "LayerType": "Reformat",
   "Inputs": [
   {
-    "Name": "/model/model.9/cv2/act/Mul_output_0",
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.9/cv2/act/Sigmoid), PWN(/model/model.9/cv2/act/Mul))",
     "Location": "Device",
     "Dimensions": [1,256,20,20],
     "Datatype": "Float",
@@ -4142,7 +4144,7 @@
   }],
   "Outputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.10/Resize",
+    "Name": "/model/model.9/cv2/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,256,20,20],
     "Datatype": "Float",
@@ -4158,7 +4160,7 @@
   "LayerType": "Resize",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.10/Resize",
+    "Name": "/model/model.9/cv2/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,256,20,20],
     "Datatype": "Float",
@@ -4200,7 +4202,7 @@
     "Location": "Device",
     "Dimensions": [1,256,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -4208,33 +4210,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.11/Concat]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.12/cv1/conv/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.11/Concat_output_0",
-    "Location": "Device",
-    "Dimensions": [1,384,40,40],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.12/cv1/conv/Conv",
-    "Location": "Device",
-    "Dimensions": [1,384,40,40],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.12/cv1/conv/Conv",
   "LayerType": "CaskGemmConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.12/cv1/conv/Conv",
+    "Name": "/model/model.11/Concat_output_0",
     "Location": "Device",
     "Dimensions": [1,384,40,40],
     "Datatype": "Float",
@@ -4269,8 +4249,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x128x32_stage4_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x00000000000204a0",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize128x64x32_stage4_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x000000000002029b",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.12/cv1/conv/Conv]"
 },{
@@ -4296,7 +4276,7 @@
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl147_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl146_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -4382,8 +4362,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize64x128x16_stage4_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x0000000000020455",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x64x64_stage3_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x0000000000020346",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.12/m.0/cv1/conv/conv.0/Conv]"
 },{
@@ -4426,16 +4406,38 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0xb33296dda7141c64",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.12/m.0/cv1/conv/conv.1/Conv]"
+},{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.12/m.0/cv1/act/Sigmoid), PWN(/model/model.12/m.0/cv1/act/Mul))",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.12/m.0/cv1/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.12/m.0/cv1/act/Sigmoid), PWN(/model/model.12/m.0/cv1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
 },{
   "Name": "__myl_MoveNegExpAddDivMul_myl151_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "/model/model.12/m.0/cv1/conv/conv.1/Conv_output_0",
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.12/m.0/cv1/act/Sigmoid), PWN(/model/model.12/m.0/cv1/act/Mul))",
     "Dimensions": [1,64,40,40],
     "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
@@ -4456,11 +4458,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.12/m.0/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.12/m.0/cv1/act/Mul]"
 },{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.12/m.0/cv2/conv/Conv",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.12/m.0/cv1/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.12/m.0/cv2/conv/Conv",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
   "Name": "/model/model.12/m.0/cv2/conv/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "/model/model.12/m.0/cv1/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.12/m.0/cv2/conv/Conv",
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
@@ -4522,7 +4546,7 @@
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl154_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl155_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -4536,16 +4560,40 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "/model/model.12/Concat_output_0",
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.12/m.0/cv2/act/Sigmoid), PWN(/model/model.12/m.0/cv2/act/Mul))",
     "Dimensions": [1,64,40,40],
-    "Strides": [307200,1,7680,192],
+    "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
     "Datatype": "Float",
     "Format": "(NHWC) Channel major format"
   }],
-  "TacticName": "__myl_MoveNegExpAddDivMul_0x0fe17f4a927a18a4da143073891c48b8",
+  "TacticName": "__myl_MoveNegExpAddDivMul_0x120bd22e6697a2389e1072401b3bb74f",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.12/m.0/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.12/m.0/cv2/act/Mul]"
+},{
+  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.12/m.0/cv2/act/Sigmoid), PWN(/model/model.12/m.0/cv2/act/Mul))",
+  "LayerType": "Reformat",
+  "Inputs": [
+  {
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.12/m.0/cv2/act/Sigmoid), PWN(/model/model.12/m.0/cv2/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "/model/model.12/Concat_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
 },{
   "Name": "/model/model.12/Slice_output_0 copy",
   "LayerType": "Reformat",
@@ -4563,7 +4611,7 @@
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -4587,45 +4635,23 @@
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.12/Concat]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.12/cv2/conv/Conv",
-  "LayerType": "NoOp",
+  "Name": "/model/model.12/cv2/conv/Conv",
+  "LayerType": "CaskConvolution",
   "Inputs": [
   {
     "Name": "/model/model.12/Concat_output_0",
     "Location": "Device",
     "Dimensions": [1,192,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.12/cv2/conv/Conv",
-    "Location": "Device",
-    "Dimensions": [1,192,40,40],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "/model/model.12/cv2/conv/Conv",
-  "LayerType": "CaskConvolution",
-  "Inputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.12/cv2/conv/Conv",
-    "Location": "Device",
-    "Dimensions": [1,192,40,40],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -4656,16 +4682,38 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8",
-  "TacticValue": "0x3104d85fecdd547c",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_tf32f32_f32_nchwkrsc_nchw_tilesize128x32x16_stage2_warpsize2x2x1_g1_tensor16x8x8_simple_t1r1s1_aligna4_alignc4",
+  "TacticValue": "0xb2c8ebee321e63d6",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.12/cv2/conv/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl159_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.12/cv2/act/Sigmoid), PWN(/model/model.12/cv2/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.12/cv2/conv/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,128,40,40],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.12/cv2/act/Sigmoid), PWN(/model/model.12/cv2/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,128,40,40],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl161_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.12/cv2/act/Sigmoid), PWN(/model/model.12/cv2/act/Mul))",
     "Dimensions": [1,128,40,40],
     "Strides": [204800,1600,40,1],
     "StrideOrder": [3,2,1,0],
@@ -4686,11 +4734,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.12/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.12/cv2/act/Mul]"
 },{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.13/Resize",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.12/cv2/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,128,40,40],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.13/Resize",
+    "Location": "Device",
+    "Dimensions": [1,128,40,40],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
   "Name": "/model/model.13/Resize",
   "LayerType": "Resize",
   "Inputs": [
   {
-    "Name": "/model/model.12/cv2/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.13/Resize",
     "Location": "Device",
     "Dimensions": [1,128,40,40],
     "Datatype": "Float",
@@ -4784,33 +4854,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.15/cv1/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.15/cv1/act/Sigmoid), PWN(/model/model.15/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.15/cv1/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.15/cv1/act/Sigmoid), PWN(/model/model.15/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl164_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl166_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.15/cv1/act/Sigmoid), PWN(/model/model.15/cv1/act/Mul))",
+    "Name": "/model/model.15/cv1/conv/Conv_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -4820,7 +4868,7 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.15/cv1/act/Sigmoid), PWN(/model/model.15/cv1/act/Mul))",
+    "Name": "/model/model.15/cv1/act/Mul_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -4830,28 +4878,6 @@
   "TacticName": "__myl_MoveNegExpAddDivMul_0x3374c38a810d0deb73233e4cfd7e6b57",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.15/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.15/cv1/act/Mul]"
-},{
-  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.15/cv1/act/Sigmoid), PWN(/model/model.15/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.15/cv1/act/Sigmoid), PWN(/model/model.15/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "/model/model.15/cv1/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
 },{
   "Name": "/model/model.15/m.0/cv1/conv/Conv",
   "LayerType": "CaskConvolution",
@@ -4897,33 +4923,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.15/m.0/cv1/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.15/m.0/cv1/act/Sigmoid), PWN(/model/model.15/m.0/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.15/m.0/cv1/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.15/m.0/cv1/act/Sigmoid), PWN(/model/model.15/m.0/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "__myl_MoveNegExpAddDivMul_myl168_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.15/m.0/cv1/act/Sigmoid), PWN(/model/model.15/m.0/cv1/act/Mul))",
+    "Name": "/model/model.15/m.0/cv1/conv/Conv_output_0",
     "Dimensions": [1,32,80,80],
     "Strides": [204800,1,2560,32],
     "StrideOrder": [3,0,2,1],
@@ -4944,33 +4948,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.15/m.0/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.15/m.0/cv1/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.15/m.0/cv2/conv/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.15/m.0/cv1/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.15/m.0/cv2/conv/Conv",
-    "Location": "Device",
-    "Dimensions": [1,32,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.15/m.0/cv2/conv/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.15/m.0/cv2/conv/Conv",
+    "Name": "/model/model.15/m.0/cv1/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,32,80,80],
     "Datatype": "Float",
@@ -5032,7 +5014,7 @@
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl172_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl171_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -5077,7 +5059,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x0000000000000000",
+  "TacticValue": "0x00000000000003e8",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.15/Concat]"
 },{
@@ -5101,7 +5083,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.15/Concat]"
 },{
@@ -5171,33 +5153,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.15/cv2/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.15/cv2/act/Sigmoid), PWN(/model/model.15/cv2/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.15/cv2/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.15/cv2/act/Sigmoid), PWN(/model/model.15/cv2/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl178_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl176_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.15/cv2/act/Sigmoid), PWN(/model/model.15/cv2/act/Mul))",
+    "Name": "/model/model.15/cv2/conv/Conv_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -5207,7 +5167,7 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.15/cv2/act/Sigmoid), PWN(/model/model.15/cv2/act/Mul))",
+    "Name": "/model/model.15/cv2/act/Mul_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -5217,28 +5177,6 @@
   "TacticName": "__myl_MoveNegExpAddDivMul_0x3374c38a810d0deb73233e4cfd7e6b57",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.15/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.15/cv2/act/Mul]"
-},{
-  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.15/cv2/act/Sigmoid), PWN(/model/model.15/cv2/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.15/cv2/act/Sigmoid), PWN(/model/model.15/cv2/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "/model/model.15/cv2/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
 },{
   "Name": "/model/model.16/conv/conv.0/Conv || /model/model.22/cv3.0/cv3.0.0/conv/conv.0/Conv",
   "LayerType": "CaskGemmConvolution",
@@ -5323,8 +5261,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x9cb304e2edbc1221",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
+  "TacticValue": "0x72a5d05b1bb165ef",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.0/cv2.0.0/conv/Conv]"
 },{
@@ -5367,8 +5305,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc4",
-  "TacticValue": "0xb6f6563c77d057d7",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0xb33296dda7141c64",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.16/conv/conv.1/Conv]"
 },{
@@ -5411,38 +5349,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x9cb304e2edbc1221",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
+  "TacticValue": "0x3a8712b17741b582",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.0/cv3.0.0/conv/conv.1/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.22/cv2.0/cv2.0.0/act/Sigmoid), PWN(/model/model.22/cv2.0/cv2.0.0/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.22/cv2.0/cv2.0.0/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv2.0/cv2.0.0/act/Sigmoid), PWN(/model/model.22/cv2.0/cv2.0.0/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl185_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl181_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv2.0/cv2.0.0/act/Sigmoid), PWN(/model/model.22/cv2.0/cv2.0.0/act/Mul))",
+    "Name": "/model/model.22/cv2.0/cv2.0.0/conv/Conv_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -5463,11 +5379,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.0/cv2.0.0/act/Sigmoid]\u001e[ONNX Layer: /model/model.22/cv2.0/cv2.0.0/act/Mul]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl186_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.16/act/Sigmoid), PWN(/model/model.16/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.16/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.16/act/Sigmoid), PWN(/model/model.16/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl183_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.16/act/Sigmoid), PWN(/model/model.16/act/Mul))",
     "Dimensions": [1,64,40,40],
     "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
@@ -5477,35 +5415,37 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "/model/model.17/Concat_output_0",
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.16/act/Sigmoid), PWN(/model/model.16/act/Mul))",
     "Dimensions": [1,64,40,40],
-    "Strides": [307200,1,7680,192],
+    "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
     "Datatype": "Float",
     "Format": "(NHWC) Channel major format"
   }],
-  "TacticName": "__myl_MoveNegExpAddDivMul_0x0fe17f4a927a18a4da143073891c48b8",
+  "TacticName": "__myl_MoveNegExpAddDivMul_0x120bd22e6697a2389e1072401b3bb74f",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.16/act/Sigmoid]\u001e[ONNX Layer: /model/model.16/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv2.0/cv2.0.1/conv/Conv",
-  "LayerType": "NoOp",
+  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.16/act/Sigmoid), PWN(/model/model.16/act/Mul))",
+  "LayerType": "Reformat",
   "Inputs": [
   {
-    "Name": "/model/model.22/cv2.0/cv2.0.0/act/Mul_output_0",
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.16/act/Sigmoid), PWN(/model/model.16/act/Mul))",
     "Location": "Device",
-    "Dimensions": [1,64,80,80],
+    "Dimensions": [1,64,40,40],
     "Datatype": "Float",
     "Format": "(NHWC) Channel major format"
   }],
   "Outputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.0/cv2.0.1/conv/Conv",
+    "Name": "/model/model.17/Concat_output_0",
     "Location": "Device",
-    "Dimensions": [1,64,80,80],
+    "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
   "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": ""
@@ -5514,7 +5454,7 @@
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.0/cv2.0.1/conv/Conv",
+    "Name": "/model/model.22/cv2.0/cv2.0.0/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,64,80,80],
     "Datatype": "Float",
@@ -5549,38 +5489,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x9cb304e2edbc1221",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
+  "TacticValue": "0x72a5d05b1bb165ef",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.0/cv2.0.1/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.22/cv3.0/cv3.0.0/act/Sigmoid), PWN(/model/model.22/cv3.0/cv3.0.0/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.22/cv3.0/cv3.0.0/conv/conv.1/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv3.0/cv3.0.0/act/Sigmoid), PWN(/model/model.22/cv3.0/cv3.0.0/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl190_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl186_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv3.0/cv3.0.0/act/Sigmoid), PWN(/model/model.22/cv3.0/cv3.0.0/act/Mul))",
+    "Name": "/model/model.22/cv3.0/cv3.0.0/conv/conv.1/Conv_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -5617,41 +5535,19 @@
     "Location": "Device",
     "Dimensions": [1,128,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x0000000000000000",
+  "TacticValue": "0x00000000000003e8",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.17/Concat]"
-},{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv3.0/cv3.0.1/conv/conv.0/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.22/cv3.0/cv3.0.0/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv3.0/cv3.0.1/conv/conv.0/Conv",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
 },{
   "Name": "/model/model.22/cv3.0/cv3.0.1/conv/conv.0/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv3.0/cv3.0.1/conv/conv.0/Conv",
+    "Name": "/model/model.22/cv3.0/cv3.0.0/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,64,80,80],
     "Datatype": "Float",
@@ -5686,20 +5582,20 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
+  "TacticValue": "0x3a8712b17741b582",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.0/cv3.0.1/conv/conv.0/Conv]"
 },{
   "Name": "/model/model.18/cv1/conv/Conv",
-  "LayerType": "CaskGemmConvolution",
+  "LayerType": "CaskConvolution",
   "Inputs": [
   {
     "Name": "/model/model.17/Concat_output_0",
     "Location": "Device",
     "Dimensions": [1,192,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -5707,7 +5603,7 @@
     "Location": "Device",
     "Dimensions": [1,128,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "ParameterType": "Convolution",
   "Kernel": [1,1],
@@ -5730,38 +5626,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize128x64x32_stage4_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x00000000000205f0",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_tf32f32_f32_nchwkrsc_nchw_tilesize128x32x16_stage2_warpsize2x2x1_g1_tensor16x8x8_simple_t1r1s1_aligna4_alignc4",
+  "TacticValue": "0xb2c8ebee321e63d6",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/cv1/conv/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.22/cv2.0/cv2.0.1/act/Sigmoid), PWN(/model/model.22/cv2.0/cv2.0.1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.22/cv2.0/cv2.0.1/conv/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv2.0/cv2.0.1/act/Sigmoid), PWN(/model/model.22/cv2.0/cv2.0.1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl196_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl190_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv2.0/cv2.0.1/act/Sigmoid), PWN(/model/model.22/cv2.0/cv2.0.1/act/Mul))",
+    "Name": "/model/model.22/cv2.0/cv2.0.1/conv/Conv_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -5821,38 +5695,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x9cb304e2edbc1221",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8_aligna4",
+  "TacticValue": "0x570667f2a28165a0",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.0/cv3.0.1/conv/conv.1/Conv]"
-},{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv2.0/cv2.0.2/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.22/cv2.0/cv2.0.1/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.0/cv2.0.2/Conv",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
 },{
   "Name": "/model/model.22/cv2.0/cv2.0.2/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.0/cv2.0.2/Conv",
+    "Name": "/model/model.22/cv2.0/cv2.0.1/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,64,80,80],
     "Datatype": "Float",
@@ -5887,8 +5739,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_f32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8",
-  "TacticValue": "0xe0a307ffe0ffb6a5",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8",
+  "TacticValue": "0x3104d85fecdd547c",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.0/cv2.0.2/Conv]"
 },{
@@ -5900,7 +5752,7 @@
     "Location": "Device",
     "Dimensions": [1,128,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -5908,34 +5760,34 @@
     "Location": "Device",
     "Dimensions": [1,128,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
   "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl201_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl194_0",
   "LayerType": "kgen",
   "Inputs": [
   {
     "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.18/cv1/act/Sigmoid), PWN(/model/model.18/cv1/act/Mul))",
     "Dimensions": [1,128,40,40],
-    "Strides": [204800,1,5120,128],
-    "StrideOrder": [3,0,2,1],
+    "Strides": [204800,1600,40,1],
+    "StrideOrder": [3,2,1,0],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
   "Constants": [],
   "Outputs": [
   {
     "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.18/cv1/act/Sigmoid), PWN(/model/model.18/cv1/act/Mul))",
     "Dimensions": [1,128,40,40],
-    "Strides": [204800,1,5120,128],
-    "StrideOrder": [3,0,2,1],
+    "Strides": [204800,1600,40,1],
+    "StrideOrder": [3,2,1,0],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
-  "TacticName": "__myl_MoveNegExpAddDivMul_0x12ac61173cd6850e36a27f17f05e7755",
+  "TacticName": "__myl_MoveNegExpAddDivMul_0xff81c6ea12806a01927267cc7e96fe37",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.18/cv1/act/Mul]"
 },{
@@ -5947,7 +5799,7 @@
     "Location": "Device",
     "Dimensions": [1,128,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -5955,7 +5807,7 @@
     "Location": "Device",
     "Dimensions": [1,128,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "TacticValue": "0x0000000000000000",
   "StreamId": 0,
@@ -6007,33 +5859,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Reshape]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.22/cv3.0/cv3.0.1/act/Sigmoid), PWN(/model/model.22/cv3.0/cv3.0.1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.22/cv3.0/cv3.0.1/conv/conv.1/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv3.0/cv3.0.1/act/Sigmoid), PWN(/model/model.22/cv3.0/cv3.0.1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl206_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl198_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv3.0/cv3.0.1/act/Sigmoid), PWN(/model/model.22/cv3.0/cv3.0.1/act/Mul))",
+    "Name": "/model/model.22/cv3.0/cv3.0.1/conv/conv.1/Conv_output_0",
     "Dimensions": [1,64,80,80],
     "Strides": [409600,1,5120,64],
     "StrideOrder": [3,0,2,1],
@@ -6054,33 +5884,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.0/cv3.0.1/act/Sigmoid]\u001e[ONNX Layer: /model/model.22/cv3.0/cv3.0.1/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv3.0/cv3.0.2/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.22/cv3.0/cv3.0.1/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv3.0/cv3.0.2/Conv",
-    "Location": "Device",
-    "Dimensions": [1,64,80,80],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.22/cv3.0/cv3.0.2/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv3.0/cv3.0.2/Conv",
+    "Name": "/model/model.22/cv3.0/cv3.0.1/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,64,80,80],
     "Datatype": "Float",
@@ -6115,8 +5923,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x32_stage1_warpsize4x1x1_g1_tensor16x8x8_aligna8",
-  "TacticValue": "0x3f948a101b8c4067",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc4",
+  "TacticValue": "0xcc46f0f5cee60677",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.0/cv3.0.2/Conv]"
 },{
@@ -6185,23 +5993,23 @@
     "Location": "Device",
     "Dimensions": [1,8,6400],
     "Datatype": "Float",
-    "Format": "(Linear) Row major linear format"
+    "Format": "(NHWC) Channel major format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x0000000000000000",
+  "TacticValue": "0x00000000000003e8",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Reshape_3]"
 },{
   "Name": "/model/model.18/m.0/cv1/conv/conv.0/Conv",
-  "LayerType": "CaskGemmConvolution",
+  "LayerType": "CaskConvolution",
   "Inputs": [
   {
     "Name": "/model/model.18/cv1/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -6209,7 +6017,7 @@
     "Location": "Device",
     "Dimensions": [1,40,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "ParameterType": "Convolution",
   "Kernel": [1,1],
@@ -6232,8 +6040,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x64x64_stage3_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x0000000000020346",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_f32f32_f32_nchwkcrs_nchw_tilesize64x64x8_stage3_warpsize1x4x1_g1_ffma_aligna4_alignc4",
+  "TacticValue": "0xa31d27de74b895ff",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/m.0/cv1/conv/conv.0/Conv]"
 },{
@@ -6245,7 +6053,7 @@
     "Location": "Device",
     "Dimensions": [1,40,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -6253,7 +6061,7 @@
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "ParameterType": "Convolution",
   "Kernel": [3,3],
@@ -6276,33 +6084,33 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_f32f32_f32_nchwkcrs_nchw_tilesize64x64x8_stage3_warpsize1x4x1_g1_ffma_t1r3s3_aligna4_alignc4",
+  "TacticValue": "0x4727434768e46395",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/m.0/cv1/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl214_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl205_0",
   "LayerType": "kgen",
   "Inputs": [
   {
     "Name": "/model/model.18/m.0/cv1/conv/conv.1/Conv_output_0",
     "Dimensions": [1,64,40,40],
-    "Strides": [102400,1,2560,64],
-    "StrideOrder": [3,0,2,1],
+    "Strides": [102400,1600,40,1],
+    "StrideOrder": [3,2,1,0],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
   "Constants": [],
   "Outputs": [
   {
     "Name": "/model/model.18/m.0/cv1/act/Mul_output_0",
     "Dimensions": [1,64,40,40],
-    "Strides": [102400,1,2560,64],
-    "StrideOrder": [3,0,2,1],
+    "Strides": [102400,1600,40,1],
+    "StrideOrder": [3,2,1,0],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
-  "TacticName": "__myl_MoveNegExpAddDivMul_0x120bd22e6697a2389e1072401b3bb74f",
+  "TacticName": "__myl_MoveNegExpAddDivMul_0x63717d2e0e481a4e7386250dc0e4d146",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/m.0/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.18/m.0/cv1/act/Mul]"
 },{
@@ -6314,7 +6122,7 @@
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -6322,7 +6130,7 @@
     "Location": "Device",
     "Dimensions": [1,16,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "ParameterType": "Convolution",
   "Kernel": [1,1],
@@ -6345,8 +6153,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm70_xmma_fprop_implicit_gemm_f32f32_f32f32_f32_nchwkcrs_nchw_tilesize32x32x8_stage1_warpsize1x2x1_g1_ffma_aligna4_alignc4",
+  "TacticValue": "0xf7a98be0a08d77c4",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/m.0/cv2/conv/conv.0/Conv]"
 },{
@@ -6358,7 +6166,7 @@
     "Location": "Device",
     "Dimensions": [1,16,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -6366,7 +6174,7 @@
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "ParameterType": "Convolution",
   "Kernel": [3,3],
@@ -6389,57 +6197,59 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm70_xmma_fprop_implicit_gemm_f32f32_f32f32_f32_nchwkcrs_nchw_tilesize64x64x8_stage1_warpsize1x4x1_g1_ffma_t1r3s3_aligna4_alignc4",
+  "TacticValue": "0x62b2ffd9a5c0cfb5",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/m.0/cv2/conv/conv.1/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.18/m.0/cv2/act/Sigmoid), PWN(/model/model.18/m.0/cv2/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.18/m.0/cv2/conv/conv.1/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,64,40,40],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.18/m.0/cv2/act/Sigmoid), PWN(/model/model.18/m.0/cv2/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,64,40,40],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl218_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl208_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.18/m.0/cv2/act/Sigmoid), PWN(/model/model.18/m.0/cv2/act/Mul))",
+    "Name": "/model/model.18/m.0/cv2/conv/conv.1/Conv_output_0",
     "Dimensions": [1,64,40,40],
-    "Strides": [102400,1,2560,64],
-    "StrideOrder": [3,0,2,1],
+    "Strides": [102400,1600,40,1],
+    "StrideOrder": [3,2,1,0],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
   "Constants": [],
   "Outputs": [
   {
-    "Name": "/model/model.18/Concat_output_0",
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.18/m.0/cv2/act/Sigmoid), PWN(/model/model.18/m.0/cv2/act/Mul))",
     "Dimensions": [1,64,40,40],
-    "Strides": [307200,1,7680,192],
-    "StrideOrder": [3,0,2,1],
+    "Strides": [102400,1600,40,1],
+    "StrideOrder": [3,2,1,0],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "TacticName": "__myl_MoveNegExpAddDivMul_0x63717d2e0e481a4e7386250dc0e4d146",
+  "StreamId": 0,
+  "Metadata": "[ONNX Layer: /model/model.18/m.0/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.18/m.0/cv2/act/Mul]"
+},{
+  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.18/m.0/cv2/act/Sigmoid), PWN(/model/model.18/m.0/cv2/act/Mul))",
+  "LayerType": "Reformat",
+  "Inputs": [
+  {
+    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.18/m.0/cv2/act/Sigmoid), PWN(/model/model.18/m.0/cv2/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "Outputs": [
+  {
+    "Name": "/model/model.18/Concat_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
     "Datatype": "Float",
     "Format": "(NHWC) Channel major format"
   }],
-  "TacticName": "__myl_MoveNegExpAddDivMul_0x0fe17f4a927a18a4da143073891c48b8",
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
-  "Metadata": "[ONNX Layer: /model/model.18/m.0/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.18/m.0/cv2/act/Mul]"
+  "Metadata": ""
 },{
   "Name": "/model/model.18/Slice_output_0 copy",
   "LayerType": "Reformat",
@@ -6449,7 +6259,7 @@
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -6473,7 +6283,7 @@
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -6485,7 +6295,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/Concat]"
 },{
@@ -6550,8 +6360,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize128x64x32_stage4_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x00000000000205f0",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize128x64x32_stage4_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x000000000002029b",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.18/cv2/conv/Conv]"
 },{
@@ -6577,7 +6387,7 @@
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl224_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl215_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -6773,8 +6583,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x9cb304e2edbc1221",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x32_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0xae48d3ccfe1edfcd",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.19/conv/conv.1/Conv]"
 },{
@@ -6817,8 +6627,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
+  "TacticValue": "0x3a8712b17741b582",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.1/cv2.1.0/conv/conv.1/Conv]"
 },{
@@ -6861,16 +6671,38 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
+  "TacticValue": "0x3a8712b17741b582",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.1/cv3.1.0/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl232_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.19/act/Sigmoid), PWN(/model/model.19/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.19/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,128,20,20],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.19/act/Sigmoid), PWN(/model/model.19/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,128,20,20],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl224_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.19/act/Sigmoid), PWN(/model/model.19/act/Mul))",
     "Dimensions": [1,128,20,20],
     "Strides": [51200,1,2560,128],
     "StrideOrder": [3,0,2,1],
@@ -6891,11 +6723,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.19/act/Sigmoid]\u001e[ONNX Layer: /model/model.19/act/Mul]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl233_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.22/cv2.1/cv2.1.0/act/Sigmoid), PWN(/model/model.22/cv2.1/cv2.1.0/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.22/cv2.1/cv2.1.0/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv2.1/cv2.1.0/act/Sigmoid), PWN(/model/model.22/cv2.1/cv2.1.0/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl226_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv2.1/cv2.1.0/act/Sigmoid), PWN(/model/model.22/cv2.1/cv2.1.0/act/Mul))",
     "Dimensions": [1,64,40,40],
     "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
@@ -6916,11 +6770,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.1/cv2.1.0/act/Sigmoid]\u001e[ONNX Layer: /model/model.22/cv2.1/cv2.1.0/act/Mul]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl234_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.22/cv3.1/cv3.1.0/act/Sigmoid), PWN(/model/model.22/cv3.1/cv3.1.0/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.22/cv3.1/cv3.1.0/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv3.1/cv3.1.0/act/Sigmoid), PWN(/model/model.22/cv3.1/cv3.1.0/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl228_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv3.1/cv3.1.0/act/Sigmoid), PWN(/model/model.22/cv3.1/cv3.1.0/act/Mul))",
     "Dimensions": [1,64,40,40],
     "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
@@ -6949,7 +6825,7 @@
     "Location": "Device",
     "Dimensions": [1,256,20,20],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(Linear) Row major linear format"
   }],
   "Outputs": [
   {
@@ -6957,7 +6833,7 @@
     "Location": "Device",
     "Dimensions": [1,256,20,20],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(NHWC) Channel major format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -6965,11 +6841,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.20/Concat]"
 },{
-  "Name": "/model/model.22/cv2.1/cv2.1.1/conv/conv.0/Conv",
-  "LayerType": "CaskGemmConvolution",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv2.1/cv2.1.1/conv/conv.0/Conv",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.22/cv2.1/cv2.1.0/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.1/cv2.1.1/conv/conv.0/Conv",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "/model/model.22/cv2.1/cv2.1.1/conv/conv.0/Conv",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.1/cv2.1.1/conv/conv.0/Conv",
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
@@ -7004,16 +6902,38 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize64x64x64_stage3_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x0000000000020346",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_aligna8",
+  "TacticValue": "0x9355e195cee05798",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.1/cv2.1.1/conv/conv.0/Conv]"
 },{
-  "Name": "/model/model.22/cv3.1/cv3.1.1/conv/conv.0/Conv",
-  "LayerType": "CaskConvolution",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv3.1/cv3.1.1/conv/conv.0/Conv",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.22/cv3.1/cv3.1.0/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv3.1/cv3.1.1/conv/conv.0/Conv",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "/model/model.22/cv3.1/cv3.1.1/conv/conv.0/Conv",
+  "LayerType": "CaskGemmConvolution",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv3.1/cv3.1.1/conv/conv.0/Conv",
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
@@ -7048,8 +6968,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize64x32x64_stage4_warpsize2x1x2_tensor16x8x8",
+  "TacticValue": "0x0000000000020069",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.1/cv3.1.1/conv/conv.0/Conv]"
 },{
@@ -7061,7 +6981,7 @@
     "Location": "Device",
     "Dimensions": [1,384,20,20],
     "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+    "Format": "(NHWC) Channel major format"
   }],
   "Outputs": [
   {
@@ -7069,7 +6989,7 @@
     "Location": "Device",
     "Dimensions": [1,384,20,20],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "TacticValue": "0x0000000000000000",
   "StreamId": 0,
@@ -7083,7 +7003,7 @@
     "Location": "Device",
     "Dimensions": [1,384,20,20],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "Outputs": [
   {
@@ -7091,7 +7011,7 @@
     "Location": "Device",
     "Dimensions": [1,8,20,20],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "ParameterType": "Convolution",
   "Kernel": [1,1],
@@ -7114,8 +7034,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm50_xmma_cublas_smallN_NN_f32f32_f32_f32_nn_n_thread_count256threads_per_row16b_elems_per_thread2bias_or_reluFalse",
-  "TacticValue": "0x000000000002022b",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize64x32x64_stage4_warpsize2x1x2_tensor16x8x8",
+  "TacticValue": "0x0000000000020069",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/cv1/conv/conv.0/Conv]"
 },{
@@ -7158,8 +7078,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x10383a0781d24dde",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0xb33296dda7141c64",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.1/cv2.1.1/conv/conv.1/Conv]"
 },{
@@ -7207,33 +7127,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.1/cv3.1.1/conv/conv.1/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.21/cv1/conv/conv.1/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.21/cv1/conv/conv.0/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,8,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.21/cv1/conv/conv.1/Conv",
-    "Location": "Device",
-    "Dimensions": [1,8,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.21/cv1/conv/conv.1/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.21/cv1/conv/conv.1/Conv",
+    "Name": "/model/model.21/cv1/conv/conv.0/Conv_output_0",
     "Location": "Device",
     "Dimensions": [1,8,20,20],
     "Datatype": "Float",
@@ -7268,16 +7166,38 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x9cb304e2edbc1221",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc4",
+  "TacticValue": "0xcc46f0f5cee60677",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/cv1/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl244_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.22/cv2.1/cv2.1.1/act/Sigmoid), PWN(/model/model.22/cv2.1/cv2.1.1/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.22/cv2.1/cv2.1.1/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv2.1/cv2.1.1/act/Sigmoid), PWN(/model/model.22/cv2.1/cv2.1.1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl240_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv2.1/cv2.1.1/act/Sigmoid), PWN(/model/model.22/cv2.1/cv2.1.1/act/Mul))",
     "Dimensions": [1,64,40,40],
     "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
@@ -7298,11 +7218,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.1/cv2.1.1/act/Sigmoid]\u001e[ONNX Layer: /model/model.22/cv2.1/cv2.1.1/act/Mul]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl245_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.22/cv3.1/cv3.1.1/act/Sigmoid), PWN(/model/model.22/cv3.1/cv3.1.1/act/Mul))",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.22/cv3.1/cv3.1.1/conv/conv.1/Conv_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv3.1/cv3.1.1/act/Sigmoid), PWN(/model/model.22/cv3.1/cv3.1.1/act/Mul))",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_MoveNegExpAddDivMul_myl242_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.22/cv3.1/cv3.1.1/act/Sigmoid), PWN(/model/model.22/cv3.1/cv3.1.1/act/Mul))",
     "Dimensions": [1,64,40,40],
     "Strides": [102400,1,2560,64],
     "StrideOrder": [3,0,2,1],
@@ -7323,33 +7265,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.1/cv3.1.1/act/Sigmoid]\u001e[ONNX Layer: /model/model.22/cv3.1/cv3.1.1/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.21/cv1/act/Sigmoid), PWN(/model/model.21/cv1/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.21/cv1/conv/conv.1/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.21/cv1/act/Sigmoid), PWN(/model/model.21/cv1/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl247_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl243_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.21/cv1/act/Sigmoid), PWN(/model/model.21/cv1/act/Mul))",
+    "Name": "/model/model.21/cv1/conv/conv.1/Conv_output_0",
     "Dimensions": [1,256,20,20],
     "Strides": [102400,1,5120,256],
     "StrideOrder": [3,0,2,1],
@@ -7359,7 +7279,7 @@
   "Constants": [],
   "Outputs": [
   {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.21/cv1/act/Sigmoid), PWN(/model/model.21/cv1/act/Mul))",
+    "Name": "/model/model.21/cv1/act/Mul_output_0",
     "Dimensions": [1,256,20,20],
     "Strides": [102400,1,5120,256],
     "StrideOrder": [3,0,2,1],
@@ -7370,21 +7290,21 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/cv1/act/Sigmoid]\u001e[ONNX Layer: /model/model.21/cv1/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Output Tensor 0 to PWN(PWN(/model/model.21/cv1/act/Sigmoid), PWN(/model/model.21/cv1/act/Mul))",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv2.1/cv2.1.2/Conv",
   "LayerType": "NoOp",
   "Inputs": [
   {
-    "Name": "Reformatted Output Tensor 0 to PWN(PWN(/model/model.21/cv1/act/Sigmoid), PWN(/model/model.21/cv1/act/Mul))",
+    "Name": "/model/model.22/cv2.1/cv2.1.1/act/Mul_output_0",
     "Location": "Device",
-    "Dimensions": [1,256,20,20],
+    "Dimensions": [1,64,40,40],
     "Datatype": "Float",
     "Format": "(NHWC) Channel major format"
   }],
   "Outputs": [
   {
-    "Name": "/model/model.21/cv1/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.1/cv2.1.2/Conv",
     "Location": "Device",
-    "Dimensions": [1,256,20,20],
+    "Dimensions": [1,64,40,40],
     "Datatype": "Float",
     "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
@@ -7396,7 +7316,7 @@
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "/model/model.22/cv2.1/cv2.1.1/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.1/cv2.1.2/Conv",
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
@@ -7431,16 +7351,38 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8_simple_t1r1s1_alignc4",
-  "TacticValue": "0x440241d9c93d605d",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8",
+  "TacticValue": "0x3104d85fecdd547c",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.1/cv2.1.2/Conv]"
+},{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv3.1/cv3.1.2/Conv",
+  "LayerType": "NoOp",
+  "Inputs": [
+  {
+    "Name": "/model/model.22/cv3.1/cv3.1.1/act/Mul_output_0",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv3.1/cv3.1.2/Conv",
+    "Location": "Device",
+    "Dimensions": [1,64,40,40],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
 },{
   "Name": "/model/model.22/cv3.1/cv3.1.2/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "/model/model.22/cv3.1/cv3.1.1/act/Mul_output_0",
+    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv3.1/cv3.1.2/Conv",
     "Location": "Device",
     "Dimensions": [1,64,40,40],
     "Datatype": "Float",
@@ -7522,7 +7464,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x0000000000000000",
+  "TacticValue": "0x00000000000003e8",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Reshape_1]"
 },{
@@ -7564,7 +7506,7 @@
     "Location": "Device",
     "Dimensions": [1,8,1600],
     "Datatype": "Float",
-    "Format": "(Linear) Row major linear format"
+    "Format": "(NHWC) Channel major format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -7655,12 +7597,12 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_aligna8",
-  "TacticValue": "0x9355e195cee05798",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0x9cb304e2edbc1221",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/m.0/cv1/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl257_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl254_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -7768,8 +7710,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x8_aligna8",
-  "TacticValue": "0x9355e195cee05798",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0x9cb304e2edbc1221",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/m.0/cv2/conv/conv.1/Conv]"
 },{
@@ -7795,7 +7737,7 @@
   "StreamId": 0,
   "Metadata": ""
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl261_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl258_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -7840,7 +7782,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/Concat]"
 },{
@@ -7868,8 +7810,8 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/Concat]"
 },{
-  "Name": "/model/model.21/cv2/conv/conv.0/Conv",
-  "LayerType": "CaskGemmConvolution",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.21/cv2/conv/conv.0/Conv",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.21/Concat_output_0",
@@ -7880,11 +7822,33 @@
   }],
   "Outputs": [
   {
+    "Name": "Reformatted Input Tensor 0 to /model/model.21/cv2/conv/conv.0/Conv",
+    "Location": "Device",
+    "Dimensions": [1,384,20,20],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "/model/model.21/cv2/conv/conv.0/Conv",
+  "LayerType": "CaskGemmConvolution",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to /model/model.21/cv2/conv/conv.0/Conv",
+    "Location": "Device",
+    "Dimensions": [1,384,20,20],
+    "Datatype": "Float",
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
+  }],
+  "Outputs": [
+  {
     "Name": "/model/model.21/cv2/conv/conv.0/Conv_output_0",
     "Location": "Device",
     "Dimensions": [1,8,20,20],
     "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
+    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
   }],
   "ParameterType": "Convolution",
   "Kernel": [1,1],
@@ -7907,38 +7871,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm50_xmma_cublas_smallN_NN_f32f32_f32_f32_nn_n_thread_count256threads_per_row16b_elems_per_thread2bias_or_reluFalse",
-  "TacticValue": "0x000000000002022b",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize64x32x64_stage4_warpsize2x1x2_tensor16x8x8",
+  "TacticValue": "0x0000000000020069",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/cv2/conv/conv.0/Conv]"
-},{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.21/cv2/conv/conv.1/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.21/cv2/conv/conv.0/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,8,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.21/cv2/conv/conv.1/Conv",
-    "Location": "Device",
-    "Dimensions": [1,8,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
 },{
   "Name": "/model/model.21/cv2/conv/conv.1/Conv",
   "LayerType": "CaskConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.21/cv2/conv/conv.1/Conv",
+    "Name": "/model/model.21/cv2/conv/conv.0/Conv_output_0",
     "Location": "Device",
     "Dimensions": [1,8,20,20],
     "Datatype": "Float",
@@ -7973,38 +7915,16 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x32x16_stage1_warpsize4x1x1_g1_tensor16x8x8",
-  "TacticValue": "0x9cb304e2edbc1221",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc4",
+  "TacticValue": "0xcc46f0f5cee60677",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/cv2/conv/conv.1/Conv]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(PWN(/model/model.21/cv2/act/Sigmoid), PWN(/model/model.21/cv2/act/Mul))",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.21/cv2/conv/conv.1/Conv_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.21/cv2/act/Sigmoid), PWN(/model/model.21/cv2/act/Mul))",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
-  "Name": "__myl_MoveNegExpAddDivMul_myl268_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl264_0",
   "LayerType": "kgen",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to PWN(PWN(/model/model.21/cv2/act/Sigmoid), PWN(/model/model.21/cv2/act/Mul))",
+    "Name": "/model/model.21/cv2/conv/conv.1/Conv_output_0",
     "Dimensions": [1,256,20,20],
     "Strides": [102400,1,5120,256],
     "StrideOrder": [3,0,2,1],
@@ -8025,33 +7945,11 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.21/cv2/act/Sigmoid]\u001e[ONNX Layer: /model/model.21/cv2/act/Mul]"
 },{
-  "Name": "Reformatting CopyNode for Input Tensor 0 to /model/model.22/cv2.2/cv2.2.0/conv/conv.0/Conv || /model/model.22/cv3.2/cv3.2.0/conv/conv.0/Conv",
-  "LayerType": "NoOp",
-  "Inputs": [
-  {
-    "Name": "/model/model.21/cv2/act/Mul_output_0",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC) Channel major format"
-  }],
-  "Outputs": [
-  {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.2/cv2.2.0/conv/conv.0/Conv || /model/model.22/cv3.2/cv3.2.0/conv/conv.0/Conv",
-    "Location": "Device",
-    "Dimensions": [1,256,20,20],
-    "Datatype": "Float",
-    "Format": "(NHWC4) Channel major format where channel % 4 == 0"
-  }],
-  "TacticValue": "0x0000000000000000",
-  "StreamId": 0,
-  "Metadata": ""
-},{
   "Name": "/model/model.22/cv2.2/cv2.2.0/conv/conv.0/Conv || /model/model.22/cv3.2/cv3.2.0/conv/conv.0/Conv",
   "LayerType": "CaskGemmConvolution",
   "Inputs": [
   {
-    "Name": "Reformatted Input Tensor 0 to /model/model.22/cv2.2/cv2.2.0/conv/conv.0/Conv || /model/model.22/cv3.2/cv3.2.0/conv/conv.0/Conv",
+    "Name": "/model/model.21/cv2/act/Mul_output_0",
     "Location": "Device",
     "Dimensions": [1,256,20,20],
     "Datatype": "Float",
@@ -8086,8 +7984,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize32x32x64_stage3_warpsize2x1x2_tensor16x8x8",
-  "TacticValue": "0x0000000000020215",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize64x32x64_stage4_warpsize2x1x2_tensor16x8x8",
+  "TacticValue": "0x0000000000020069",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.2/cv2.2.0/conv/conv.0/Conv]\u001e[ONNX Layer: /model/model.22/cv3.2/cv3.2.0/conv/conv.0/Conv]"
 },{
@@ -8130,8 +8028,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc8",
-  "TacticValue": "0x4037b478ce77e422",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0x10383a0781d24dde",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.2/cv2.2.0/conv/conv.1/Conv]"
 },{
@@ -8179,7 +8077,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.2/cv3.2.0/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl273_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl268_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -8204,7 +8102,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.2/cv2.2.0/act/Sigmoid]\u001e[ONNX Layer: /model/model.22/cv2.2/cv2.2.0/act/Mul]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl274_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl269_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -8268,8 +8166,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize32x32x64_stage3_warpsize2x1x2_tensor16x8x8",
-  "TacticValue": "0x0000000000020215",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize32x32x64_stage6_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x0000000000020696",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.2/cv2.2.1/conv/conv.0/Conv]"
 },{
@@ -8312,8 +8210,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize32x32x64_stage3_warpsize2x1x2_tensor16x8x8",
-  "TacticValue": "0x0000000000020347",
+  "TacticName": "sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize32x32x64_stage3_warpsize2x1x2_tensor16x8x8",
+  "TacticValue": "0x0000000000020215",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.2/cv3.2.1/conv/conv.0/Conv]"
 },{
@@ -8356,8 +8254,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8_alignc4",
-  "TacticValue": "0xcc46f0f5cee60677",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f32f32_tf32f32_f32_nhwckrsc_nhwc_tilesize128x16x64_stage1_warpsize4x1x1_g1_tensor16x8x8",
+  "TacticValue": "0x10383a0781d24dde",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.2/cv2.2.1/conv/conv.1/Conv]"
 },{
@@ -8405,7 +8303,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.2/cv3.2.1/conv/conv.1/Conv]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl279_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl274_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -8430,7 +8328,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.2/cv2.2.1/act/Sigmoid]\u001e[ONNX Layer: /model/model.22/cv2.2/cv2.2.1/act/Mul]"
 },{
-  "Name": "__myl_MoveNegExpAddDivMul_myl280_0",
+  "Name": "__myl_MoveNegExpAddDivMul_myl275_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -8494,8 +8392,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_nn_n_tilesize32x32x64_stage6_warpsize2x2x1_tensor16x8x8",
-  "TacticValue": "0x000000000002005b",
+  "TacticName": "sm86_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize32x32x64_stage6_warpsize2x2x1_tensor16x8x8",
+  "TacticValue": "0x0000000000020696",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv2.2/cv2.2.2/cv2.2.2.0/Conv]"
 },{
@@ -8538,8 +8436,8 @@
   "BiasAsActInputIdx": -1,
   "ResAsActInputIdx": -1,
   "Activation": "NONE",
-  "TacticName": "sm80_xmma_fprop_implicit_gemm_f32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8",
-  "TacticValue": "0x3104d85fecdd547c",
+  "TacticName": "sm80_xmma_fprop_implicit_gemm_indexed_f32f32_tf32f32_f32_nhwckrsc_nchw_tilesize128x128x16_stage4_warpsize2x2x1_g1_tensor16x8x8",
+  "TacticValue": "0xe0a307ffe0ffb6a5",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/cv3.2/cv3.2.2/Conv]"
 },{
@@ -8625,7 +8523,7 @@
     "Location": "Device",
     "Dimensions": [1,8,400],
     "Datatype": "Float",
-    "Format": "(Linear) Row major linear format"
+    "Format": "(NHWC) Channel major format"
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
@@ -8679,11 +8577,33 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Reshape_2]"
 },{
-  "Name": "__myl_NegExpAddDiv_myl288_0",
-  "LayerType": "kgen",
+  "Name": "Reformatting CopyNode for Input Tensor 0 to PWN(/model/model.22/Sigmoid)",
+  "LayerType": "NoOp",
   "Inputs": [
   {
     "Name": "/model/model.22/Concat_1_output_0",
+    "Location": "Device",
+    "Dimensions": [1,8,8400],
+    "Datatype": "Float",
+    "Format": "(NHWC) Channel major format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(/model/model.22/Sigmoid)",
+    "Location": "Device",
+    "Dimensions": [1,8,8400],
+    "Datatype": "Float",
+    "Format": "(Linear) Row major linear format"
+  }],
+  "TacticValue": "0x0000000000000000",
+  "StreamId": 0,
+  "Metadata": ""
+},{
+  "Name": "__myl_NegExpAddDiv_myl284_0",
+  "LayerType": "kgen",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to PWN(/model/model.22/Sigmoid)",
     "Dimensions": [1,8,8400],
     "Strides": [67200,8400,1],
     "StrideOrder": [2,1,0],
@@ -8822,7 +8742,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/dfl/Reshape_1]"
 },{
-  "Name": "__myl_Sub_myl293_0",
+  "Name": "__myl_Sub_myl289_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -8855,7 +8775,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Sub]"
 },{
-  "Name": "__myl_Add_myl294_0",
+  "Name": "__myl_Add_myl290_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -8888,7 +8808,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Add_1]"
 },{
-  "Name": "__myl_Sub_myl295_0",
+  "Name": "__myl_Sub_myl291_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -8921,7 +8841,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Sub_1]"
 },{
-  "Name": "__myl_AddDiv_myl296_0",
+  "Name": "__myl_AddDiv_myl292_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -8978,7 +8898,7 @@
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Concat_6]"
 },{
-  "Name": "__myl_Mul_myl298_0",
+  "Name": "__myl_Mul_myl294_0",
   "LayerType": "kgen",
   "Inputs": [
   {
@@ -9031,7 +8951,7 @@
   }],
   "ParameterType": "Reformat",
   "Origin": "CONCAT",
-  "TacticValue": "0x00000000000003e8",
+  "TacticValue": "0x0000000000000000",
   "StreamId": 0,
   "Metadata": "[ONNX Layer: /model/model.22/Concat_7]"
 }],

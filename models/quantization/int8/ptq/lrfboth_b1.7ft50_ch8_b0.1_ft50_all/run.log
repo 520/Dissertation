@@ -1,0 +1,181 @@
+﻿.venv\Scripts\python.exe : 
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\utils\import_utils.py:33: UserWarning: Your 
+device is potentially capable to use triton kernel to speed up quantization simulations. Try to install triton with 
+`pip install triton`.
+At line:1 char:427
++ ... | Out-Null; .venv\Scripts\python.exe -m PTQ.modelopt_int8_all_convs - ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\dxu1\D...nstall triton`.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warn_rank_0(msg_if_missing)
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\torch\jit\_script.py:1485: FutureWarning: 
+`torch.jit.script` is not supported in Python 3.14+ and may break. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+W1026 23:15:02.626000 18608 .venv\Lib\site-packages\torch\utils\flop_counter.py:113] triton not found; flop counting 
+will not work for triton kernels
+Fused model: 104 Conv2d layers; excluded: []
+WARNING Calibration: Slow image access detected (ping: 0.10.0 ms, read: 7.51.8 MB/s, size: 50.6 KB). Use local storage instead of remote/mounted storage for better performance. See https://docs.ultralytics.com/guides/model-training-tips
+
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1 images, 0 backgrounds, 0 corrupt: 0% ──────────── 1/5985 2.2it/s 0.1s<45:59
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 23 images, 0 backgrounds, 0 corrupt: 0% ──────────── 23/5985 50.8it/s 0.3s<1:57
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 94 images, 0 backgrounds, 0 corrupt: 1% ──────────── 94/5985 187.5it/s 0.4s<31.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 143 images, 0 backgrounds, 0 corrupt: 2% ──────────── 143/5985 269.7it/s 0.5s<21.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 178 images, 0 backgrounds, 0 corrupt: 2% ──────────── 178/5985 289.0it/s 0.6s<20.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 220 images, 0 backgrounds, 0 corrupt: 3% ──────────── 220/5985 325.5it/s 0.7s<17.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 232 images, 0 backgrounds, 0 corrupt: 3% ──────────── 232/5985 259.5it/s 0.8s<22.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 296 images, 0 backgrounds, 0 corrupt: 4% ╸─────────── 296/5985 361.8it/s 0.9s<15.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 334 images, 0 backgrounds, 0 corrupt: 5% ╸─────────── 334/5985 325.9it/s 1.1s<17.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 400 images, 0 backgrounds, 0 corrupt: 6% ╸─────────── 400/5985 399.2it/s 1.2s<14.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 433 images, 0 backgrounds, 0 corrupt: 7% ╸─────────── 433/5985 371.1it/s 1.3s<15.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 474 images, 0 backgrounds, 0 corrupt: 7% ╸─────────── 474/5985 366.9it/s 1.4s<15.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 516 images, 0 backgrounds, 0 corrupt: 8% ━─────────── 516/5985 360.9it/s 1.6s<15.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 571 images, 0 backgrounds, 0 corrupt: 9% ━─────────── 571/5985 413.8it/s 1.7s<13.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 603 images, 0 backgrounds, 0 corrupt: 10% ━─────────── 603/5985 385.1it/s 1.8s<14.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 633 images, 0 backgrounds, 0 corrupt: 10% ━─────────── 633/5985 323.8it/s 1.9s<16.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 701 images, 0 backgrounds, 0 corrupt: 11% ━─────────── 701/5985 418.7it/s 2.0s<12.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 737 images, 0 backgrounds, 0 corrupt: 12% ━─────────── 737/5985 394.7it/s 2.1s<13.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 770 images, 0 backgrounds, 0 corrupt: 12% ━╸────────── 770/5985 368.4it/s 2.3s<14.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 826 images, 0 backgrounds, 0 corrupt: 13% ━╸────────── 826/5985 416.3it/s 2.4s<12.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 866 images, 0 backgrounds, 0 corrupt: 14% ━╸────────── 866/5985 404.1it/s 2.5s<12.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 898 images, 0 backgrounds, 0 corrupt: 15% ━╸────────── 898/5985 364.5it/s 2.6s<14.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 947 images, 0 backgrounds, 0 corrupt: 15% ━╸────────── 947/5985 402.2it/s 2.7s<12.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 990 images, 0 backgrounds, 0 corrupt: 16% ━╸────────── 990/5985 407.4it/s 2.8s<12.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1026 images, 0 backgrounds, 0 corrupt: 17% ━━────────── 1026/5985 382.9it/s 2.9s<12.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1073 images, 0 backgrounds, 0 corrupt: 17% ━━────────── 1073/5985 388.3it/s 3.0s<12.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1113 images, 0 backgrounds, 0 corrupt: 18% ━━────────── 1113/5985 354.7it/s 3.2s<13.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1173 images, 0 backgrounds, 0 corrupt: 19% ━━────────── 1173/5985 420.2it/s 3.3s<11.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1206 images, 0 backgrounds, 0 corrupt: 20% ━━────────── 1206/5985 389.2it/s 3.4s<12.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1255 images, 0 backgrounds, 0 corrupt: 20% ━━╸───────── 1255/5985 410.4it/s 3.5s<11.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1297 images, 0 backgrounds, 0 corrupt: 21% ━━╸───────── 1297/5985 410.4it/s 3.6s<11.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1338 images, 0 backgrounds, 0 corrupt: 22% ━━╸───────── 1338/5985 395.2it/s 3.7s<11.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1383 images, 0 backgrounds, 0 corrupt: 23% ━━╸───────── 1383/5985 395.7it/s 3.8s<11.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1432 images, 0 backgrounds, 0 corrupt: 23% ━━╸───────── 1432/5985 421.3it/s 3.9s<10.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1473 images, 0 backgrounds, 0 corrupt: 24% ━━╸───────── 1473/5985 413.6it/s 4.0s<10.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1520 images, 0 backgrounds, 0 corrupt: 25% ━━━───────── 1520/5985 426.7it/s 4.1s<10.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1564 images, 0 backgrounds, 0 corrupt: 26% ━━━───────── 1564/5985 428.6it/s 4.2s<10.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1596 images, 0 backgrounds, 0 corrupt: 26% ━━━───────── 1596/5985 381.6it/s 4.3s<11.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1650 images, 0 backgrounds, 0 corrupt: 27% ━━━───────── 1650/5985 418.6it/s 4.4s<10.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1693 images, 0 backgrounds, 0 corrupt: 28% ━━━───────── 1693/5985 396.4it/s 4.6s<10.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1744 images, 0 backgrounds, 0 corrupt: 29% ━━━───────── 1744/5985 421.2it/s 4.7s<10.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1775 images, 0 backgrounds, 0 corrupt: 29% ━━━╸──────── 1775/5985 372.1it/s 4.8s<11.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1829 images, 0 backgrounds, 0 corrupt: 30% ━━━╸──────── 1829/5985 402.2it/s 4.9s<10.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1874 images, 0 backgrounds, 0 corrupt: 31% ━━━╸──────── 1874/5985 366.4it/s 5.1s<11.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1935 images, 0 backgrounds, 0 corrupt: 32% ━━━╸──────── 1935/5985 436.4it/s 5.2s<9.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 1975 images, 0 backgrounds, 0 corrupt: 32% ━━━╸──────── 1975/5985 404.9it/s 5.3s<9.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2008 images, 0 backgrounds, 0 corrupt: 33% ━━━━──────── 2008/5985 352.7it/s 5.4s<11.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2066 images, 0 backgrounds, 0 corrupt: 34% ━━━━──────── 2066/5985 412.5it/s 5.5s<9.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2109 images, 0 backgrounds, 0 corrupt: 35% ━━━━──────── 2109/5985 417.4it/s 5.6s<9.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2148 images, 0 backgrounds, 0 corrupt: 35% ━━━━──────── 2148/5985 405.6it/s 5.7s<9.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2180 images, 0 backgrounds, 0 corrupt: 36% ━━━━──────── 2180/5985 376.9it/s 5.8s<10.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2214 images, 0 backgrounds, 0 corrupt: 36% ━━━━──────── 2214/5985 354.7it/s 6.0s<10.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2253 images, 0 backgrounds, 0 corrupt: 37% ━━━━╸─────── 2253/5985 364.7it/s 6.1s<10.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2296 images, 0 backgrounds, 0 corrupt: 38% ━━━━╸─────── 2296/5985 352.3it/s 6.2s<10.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2316 images, 0 backgrounds, 0 corrupt: 38% ━━━━╸─────── 2316/5985 294.9it/s 6.3s<12.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2378 images, 0 backgrounds, 0 corrupt: 39% ━━━━╸─────── 2378/5985 391.0it/s 6.4s<9.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2428 images, 0 backgrounds, 0 corrupt: 40% ━━━━╸─────── 2428/5985 420.7it/s 6.5s<8.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2469 images, 0 backgrounds, 0 corrupt: 41% ━━━━╸─────── 2469/5985 411.7it/s 6.6s<8.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2504 images, 0 backgrounds, 0 corrupt: 41% ━━━━━─────── 2504/5985 391.9it/s 6.7s<8.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2539 images, 0 backgrounds, 0 corrupt: 42% ━━━━━─────── 2539/5985 376.4it/s 6.8s<9.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2579 images, 0 backgrounds, 0 corrupt: 43% ━━━━━─────── 2579/5985 381.4it/s 6.9s<8.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2620 images, 0 backgrounds, 0 corrupt: 43% ━━━━━─────── 2620/5985 357.4it/s 7.1s<9.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2676 images, 0 backgrounds, 0 corrupt: 44% ━━━━━─────── 2676/5985 414.4it/s 7.2s<8.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2711 images, 0 backgrounds, 0 corrupt: 45% ━━━━━─────── 2711/5985 350.2it/s 7.3s<9.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2769 images, 0 backgrounds, 0 corrupt: 46% ━━━━━╸────── 2769/5985 400.0it/s 7.4s<8.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2827 images, 0 backgrounds, 0 corrupt: 47% ━━━━━╸────── 2827/5985 449.3it/s 7.6s<7.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2872 images, 0 backgrounds, 0 corrupt: 47% ━━━━━╸────── 2872/5985 449.4it/s 7.7s<6.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2912 images, 0 backgrounds, 0 corrupt: 48% ━━━━━╸────── 2912/5985 420.2it/s 7.8s<7.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2953 images, 0 backgrounds, 0 corrupt: 49% ━━━━━╸────── 2953/5985 411.2it/s 7.9s<7.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 2998 images, 0 backgrounds, 0 corrupt: 50% ━━━━━━────── 2998/5985 418.2it/s 8.0s<7.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3038 images, 0 backgrounds, 0 corrupt: 50% ━━━━━━────── 3038/5985 412.0it/s 8.1s<7.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3070 images, 0 backgrounds, 0 corrupt: 51% ━━━━━━────── 3070/5985 371.8it/s 8.2s<7.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3115 images, 0 backgrounds, 0 corrupt: 52% ━━━━━━────── 3115/5985 355.8it/s 8.3s<8.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3171 images, 0 backgrounds, 0 corrupt: 52% ━━━━━━────── 3171/5985 414.5it/s 8.4s<6.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3202 images, 0 backgrounds, 0 corrupt: 53% ━━━━━━────── 3202/5985 375.8it/s 8.5s<7.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3247 images, 0 backgrounds, 0 corrupt: 54% ━━━━━━╸───── 3247/5985 392.1it/s 8.6s<7.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3290 images, 0 backgrounds, 0 corrupt: 54% ━━━━━━╸───── 3290/5985 401.7it/s 8.7s<6.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3329 images, 0 backgrounds, 0 corrupt: 55% ━━━━━━╸───── 3329/5985 396.2it/s 8.8s<6.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3369 images, 0 backgrounds, 0 corrupt: 56% ━━━━━━╸───── 3369/5985 370.1it/s 9.0s<7.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3414 images, 0 backgrounds, 0 corrupt: 57% ━━━━━━╸───── 3414/5985 388.2it/s 9.1s<6.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3453 images, 0 backgrounds, 0 corrupt: 57% ━━━━━━╸───── 3453/5985 383.7it/s 9.2s<6.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3496 images, 0 backgrounds, 0 corrupt: 58% ━━━━━━━───── 3496/5985 393.4it/s 9.3s<6.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3529 images, 0 backgrounds, 0 corrupt: 58% ━━━━━━━───── 3529/5985 372.6it/s 9.4s<6.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3562 images, 0 backgrounds, 0 corrupt: 59% ━━━━━━━───── 3562/5985 349.7it/s 9.5s<6.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3608 images, 0 backgrounds, 0 corrupt: 60% ━━━━━━━───── 3608/5985 382.6it/s 9.6s<6.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3653 images, 0 backgrounds, 0 corrupt: 61% ━━━━━━━───── 3653/5985 397.8it/s 9.7s<5.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3690 images, 0 backgrounds, 0 corrupt: 61% ━━━━━━━───── 3690/5985 388.3it/s 9.8s<5.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3727 images, 0 backgrounds, 0 corrupt: 62% ━━━━━━━───── 3727/5985 362.1it/s 9.9s<6.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3780 images, 0 backgrounds, 0 corrupt: 63% ━━━━━━━╸──── 3780/5985 397.4it/s 10.0s<5.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3814 images, 0 backgrounds, 0 corrupt: 63% ━━━━━━━╸──── 3814/5985 353.3it/s 10.2s<6.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3864 images, 0 backgrounds, 0 corrupt: 64% ━━━━━━━╸──── 3864/5985 322.9it/s 10.4s<6.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3937 images, 0 backgrounds, 0 corrupt: 65% ━━━━━━━╸──── 3937/5985 412.7it/s 10.5s<5.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 3991 images, 0 backgrounds, 0 corrupt: 66% ━━━━━━━━──── 3991/5985 440.1it/s 10.6s<4.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4035 images, 0 backgrounds, 0 corrupt: 67% ━━━━━━━━──── 4035/5985 417.9it/s 10.7s<4.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4080 images, 0 backgrounds, 0 corrupt: 68% ━━━━━━━━──── 4080/5985 421.0it/s 10.8s<4.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4097 images, 0 backgrounds, 0 corrupt: 68% ━━━━━━━━──── 4097/5985 334.7it/s 11.0s<5.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4167 images, 0 backgrounds, 0 corrupt: 69% ━━━━━━━━──── 4167/5985 430.5it/s 11.1s<4.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4201 images, 0 backgrounds, 0 corrupt: 70% ━━━━━━━━──── 4201/5985 394.1it/s 11.2s<4.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4248 images, 0 backgrounds, 0 corrupt: 70% ━━━━━━━━╸─── 4248/5985 396.8it/s 11.3s<4.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4291 images, 0 backgrounds, 0 corrupt: 71% ━━━━━━━━╸─── 4291/5985 406.0it/s 11.4s<4.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4308 images, 0 backgrounds, 0 corrupt: 71% ━━━━━━━━╸─── 4308/5985 324.1it/s 11.5s<5.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4374 images, 0 backgrounds, 0 corrupt: 73% ━━━━━━━━╸─── 4374/5985 421.9it/s 11.6s<3.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4412 images, 0 backgrounds, 0 corrupt: 73% ━━━━━━━━╸─── 4412/5985 403.4it/s 11.7s<3.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4451 images, 0 backgrounds, 0 corrupt: 74% ━━━━━━━━╸─── 4451/5985 398.5it/s 11.8s<3.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4494 images, 0 backgrounds, 0 corrupt: 75% ━━━━━━━━━─── 4494/5985 376.5it/s 12.0s<4.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4525 images, 0 backgrounds, 0 corrupt: 75% ━━━━━━━━━─── 4525/5985 339.2it/s 12.1s<4.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4564 images, 0 backgrounds, 0 corrupt: 76% ━━━━━━━━━─── 4564/5985 352.5it/s 12.2s<4.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4626 images, 0 backgrounds, 0 corrupt: 77% ━━━━━━━━━─── 4626/5985 414.4it/s 12.3s<3.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4661 images, 0 backgrounds, 0 corrupt: 77% ━━━━━━━━━─── 4661/5985 389.5it/s 12.4s<3.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4712 images, 0 backgrounds, 0 corrupt: 78% ━━━━━━━━━─── 4712/5985 409.2it/s 12.5s<3.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4746 images, 0 backgrounds, 0 corrupt: 79% ━━━━━━━━━╸── 4746/5985 353.3it/s 12.7s<3.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4802 images, 0 backgrounds, 0 corrupt: 80% ━━━━━━━━━╸── 4802/5985 402.5it/s 12.8s<2.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4849 images, 0 backgrounds, 0 corrupt: 81% ━━━━━━━━━╸── 4849/5985 413.8it/s 12.9s<2.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4889 images, 0 backgrounds, 0 corrupt: 81% ━━━━━━━━━╸── 4889/5985 402.3it/s 13.0s<2.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4931 images, 0 backgrounds, 0 corrupt: 82% ━━━━━━━━━╸── 4931/5985 407.3it/s 13.1s<2.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 4970 images, 0 backgrounds, 0 corrupt: 83% ━━━━━━━━━╸── 4970/5985 401.1it/s 13.2s<2.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5008 images, 0 backgrounds, 0 corrupt: 83% ━━━━━━━━━━── 5008/5985 394.2it/s 13.3s<2.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5047 images, 0 backgrounds, 0 corrupt: 84% ━━━━━━━━━━── 5047/5985 353.7it/s 13.4s<2.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5106 images, 0 backgrounds, 0 corrupt: 85% ━━━━━━━━━━── 5106/5985 422.3it/s 13.5s<2.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5147 images, 0 backgrounds, 0 corrupt: 85% ━━━━━━━━━━── 5147/5985 417.8it/s 13.6s<2.0s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5187 images, 0 backgrounds, 0 corrupt: 86% ━━━━━━━━━━── 5187/5985 409.4it/s 13.7s<1.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5209 images, 0 backgrounds, 0 corrupt: 87% ━━━━━━━━━━── 5209/5985 352.2it/s 13.8s<2.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5268 images, 0 backgrounds, 0 corrupt: 88% ━━━━━━━━━━╸─ 5268/5985 422.7it/s 13.9s<1.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5296 images, 0 backgrounds, 0 corrupt: 88% ━━━━━━━━━━╸─ 5296/5985 377.6it/s 14.0s<1.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5347 images, 0 backgrounds, 0 corrupt: 89% ━━━━━━━━━━╸─ 5347/5985 415.7it/s 14.1s<1.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5373 images, 0 backgrounds, 0 corrupt: 89% ━━━━━━━━━━╸─ 5373/5985 346.6it/s 14.3s<1.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5436 images, 0 backgrounds, 0 corrupt: 90% ━━━━━━━━━━╸─ 5436/5985 403.6it/s 14.4s<1.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5475 images, 0 backgrounds, 0 corrupt: 91% ━━━━━━━━━━╸─ 5475/5985 398.7it/s 14.5s<1.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5519 images, 0 backgrounds, 0 corrupt: 92% ━━━━━━━━━━━─ 5519/5985 407.2it/s 14.6s<1.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5559 images, 0 backgrounds, 0 corrupt: 92% ━━━━━━━━━━━─ 5559/5985 403.4it/s 14.7s<1.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5589 images, 0 backgrounds, 0 corrupt: 93% ━━━━━━━━━━━─ 5589/5985 369.1it/s 14.8s<1.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5639 images, 0 backgrounds, 0 corrupt: 94% ━━━━━━━━━━━─ 5639/5985 403.4it/s 14.9s<0.9s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5678 images, 0 backgrounds, 0 corrupt: 94% ━━━━━━━━━━━─ 5678/5985 394.4it/s 15.0s<0.8s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5716 images, 0 backgrounds, 0 corrupt: 95% ━━━━━━━━━━━─ 5716/5985 379.9it/s 15.1s<0.7s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5762 images, 0 backgrounds, 0 corrupt: 96% ━━━━━━━━━━━╸ 5762/5985 402.7it/s 15.2s<0.6s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5805 images, 0 backgrounds, 0 corrupt: 96% ━━━━━━━━━━━╸ 5805/5985 398.2it/s 15.3s<0.5s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5833 images, 0 backgrounds, 0 corrupt: 97% ━━━━━━━━━━━╸ 5833/5985 343.9it/s 15.5s<0.4s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5884 images, 0 backgrounds, 0 corrupt: 98% ━━━━━━━━━━━╸ 5884/5985 391.9it/s 15.6s<0.3s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5923 images, 0 backgrounds, 0 corrupt: 98% ━━━━━━━━━━━╸ 5923/5985 390.4it/s 15.7s<0.2s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5954 images, 0 backgrounds, 0 corrupt: 99% ━━━━━━━━━━━╸ 5954/5985 333.5it/s 15.8s<0.1s
+[KCalibration: Scanning C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train... 5985 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 5985/5985 377.9it/s 15.8s
+Calibration: New cache created: C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\labels\train.cache
+Calibrating on 512 KITTI training images...
+Inserted 314 quantizers
+  calibrated 100/512
+  calibrated 200/512
+  calibrated 300/512
+  calibrated 400/512
+  calibrated 500/512
+C:\Users\dxu1\Desktop\Dissertation\.venv\Lib\site-packages\modelopt\torch\export\layer_utils.py:29: UserWarning: 
+Cannot find transformers package. Hugginface modules cannot be exported.
+  warn("Cannot find transformers package. Hugginface modules cannot be exported.")
+Quantized convs: 104; quantizers disabled on 1 non-conv modules
+C:\Users\dxu1\Desktop\Dissertation\PTQ\modelopt_int8_all_convs.py:235: DeprecationWarning: You are using the legacy 
+TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the 
+default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting 
+control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(wrapper, dummy, str(onnx_path), opset_version=17, dynamo=False,
+ONNX 8n_float32_lrf_ft50_ch8_b0.1_ft50_int8_104conv.onnx: output (1, 12, 8400), {'convs': 104, 'convs_with_input_and_weight_qdq': 104, 'convs_without_qdq': [], 'QuantizeLinear': 208, 'DequantizeLinear': 208}
+Building TensorRT engine (detailed)...
+Engine 8n_float32_lrf_ft50_ch8_b0.1_ft50_int8_104conv.engine: 29.01 MB, {'conv_layers': 104, 'weight_types': {'Int8': 104}, 'weight/input/output': {'Int8/Int8/Int8': 72, 'Int8/Int8/Float': 32}, 'engine_weight_bytes': 1378048}
+Done: models\quantization\int8\ptq\lrfboth_b1.7ft50_ch8_b0.1_ft50_all

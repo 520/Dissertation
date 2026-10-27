@@ -70,7 +70,7 @@
     "DequantizeLinear": 208
   },
   "trtexec": [
-    "C:\\Users\\dxu1\\AppData\\Local\\NVIDIA\\TensorRT-11.3-tools\\bin\\trtexec.exe",
+    "C:\\Users\\dxu1\\AppData\\Local\\NVIDIA\\TensorRT-11.3.0.99\\bin\\trtexec.exe",
     "--onnx=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\int8\\qat\\lrfboth_b1.7ft50_ch8_b0.1_ft50_all\\8n_float32_lrf_ft50_ch8_b0.1_ft50_qat_int8_all104.onnx",
     "--saveEngine=C:\\Users\\dxu1\\Desktop\\Dissertation\\models\\quantization\\int8\\qat\\lrfboth_b1.7ft50_ch8_b0.1_ft50_all\\8n_float32_lrf_ft50_ch8_b0.1_ft50_qat_int8_all104.engine",
     "--profilingVerbosity=detailed",
@@ -79,17 +79,17 @@
   ],
   "engine": {
     "file": "8n_float32_lrf_ft50_ch8_b0.1_ft50_qat_int8_all104.engine",
-    "size_mb": 51.966212,
+    "size_mb": 28.964604,
+    "gpu": "NVIDIA RTX A2000",
     "conv_layers": 104,
-    "conv_kernels": 99,
     "weight_types": {
       "Int8": 104
     },
     "weight/input/output": {
-      "Int8/Int8/Float": 65,
-      "Int8/Int8/Int8": 39
+      "Int8/Int8/Int8": 72,
+      "Int8/Int8/Float": 32
     },
-    "engine_constant_bytes": 1637376
+    "engine_weight_bytes": 1378048
   },
   "quantizer_amax": {
     "model.0.conv": {
