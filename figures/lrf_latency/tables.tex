@@ -1,0 +1,63 @@
+% requires \usepackage{booktabs}
+\begin{table}[t]
+\centering
+\caption{Overall comparison of the baseline and the compressed model (KITTI, 640$\times$640, batch 1, RTX A2000).}
+\label{tab:lrf_overall}
+\begin{tabular}{lrrr}
+\toprule
+Metric & Baseline & LRF + pruning & Change \\
+\midrule
+Parameters (M) & 3.012 & 1.363 & -54.8\% \\
+Compute (GMACs) & 4.05 & 2.90 & -28.2\% \\
+Conv2d layers & 64 & 104 & +62.5\% \\
+TensorRT layers (after fusion) & 245 & 271 & +10.6\% \\
+TensorRT FP32 latency (ms) & 2.600 & 2.638 & +1.5\% \\
+PyTorch eager latency (ms) & 5.244 & 6.728 & +28.3\% \\
+mAP50-95 (\%) & 67.53 & 65.33 & -2.20 pp \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Per-stage effect of compression. Conv layers, compute (MMACs) and TensorRT time ($\mu$s), baseline $\rightarrow$ compressed.}
+\label{tab:lrf_stages}
+\begin{tabular}{llrrrrr}
+\toprule
+Stage & Size & Conv layers & MMACs & $\Delta$MACs & TRT $\mu$s & $\Delta$Time \\
+\midrule
+4 & 80 & 6 $\rightarrow$ 7 & 315 $\rightarrow$ 305 & -3.1\% & 165 $\rightarrow$ 168 & +1.8\% \\
+5 & 40 & 1 $\rightarrow$ 2 & 118 $\rightarrow$ 62 & -47.1\% & 33 $\rightarrow$ 39 & +18.8\% \\
+6 & 40 & 6 $\rightarrow$ 11 & 315 $\rightarrow$ 190 & -39.6\% & 155 $\rightarrow$ 202 & +29.7\% \\
+7 & 20 & 1 $\rightarrow$ 2 & 118 $\rightarrow$ 77 & -35.1\% & 54 $\rightarrow$ 62 & +14.2\% \\
+8 & 20 & 4 $\rightarrow$ 8 & 184 $\rightarrow$ 96 & -47.5\% & 112 $\rightarrow$ 155 & +38.9\% \\
+12 & 40 & 4 $\rightarrow$ 5 & 236 $\rightarrow$ 226 & -4.2\% & 131 $\rightarrow$ 147 & +12.5\% \\
+16 & 40 & 1 $\rightarrow$ 2 & 59 $\rightarrow$ 43 & -27.8\% & 30 $\rightarrow$ 36 & +20.7\% \\
+18 & 40 & 4 $\rightarrow$ 8 & 197 $\rightarrow$ 114 & -42.0\% & 92 $\rightarrow$ 125 & +35.6\% \\
+19 & 20 & 1 $\rightarrow$ 2 & 59 $\rightarrow$ 4 & -93.7\% & 79 $\rightarrow$ 51 & -35.7\% \\
+21 & 20 & 4 $\rightarrow$ 12 & 197 $\rightarrow$ 2 & -98.8\% & 116 $\rightarrow$ 130 & +12.1\% \\
+22 & head & 19 $\rightarrow$ 32 & 1484 $\rightarrow$ 1019 & -31.3\% & 653 $\rightarrow$ 725 & +11.0\% \\
+\midrule
+Total &  & 51 $\rightarrow$ 91 & 3280 $\rightarrow$ 2138 & -34.8\% & 1620 $\rightarrow$ 1839 & +13.5\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{TensorRT time by operator type (IProfiler per-layer medians): kernel count, ms and share of the layer sum.}
+\label{tab:lrf_breakdown}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Operator & Base kernels & Base ms & \% & LRF kernels & LRF ms & \% & $\Delta$Time \\
+\midrule
+Convolution & 61 & 1.582 & 51.9 & 99 & 1.884 & 57.1 & +19.1\% \\
+SiLU activation (+ residual Add) & 56 & 0.698 & 22.9 & 58 & 0.676 & 20.5 & -3.1\% \\
+Tensor copies (split/concat/resize) & 33 & 0.409 & 13.4 & 30 & 0.434 & 13.2 & +6.0\% \\
+Layout reformatting & 72 & 0.189 & 6.2 & 61 & 0.107 & 3.2 & -43.7\% \\
+Other (maxpool, DFL, decode) & 23 & 0.168 & 5.5 & 23 & 0.196 & 6.0 & +17.2\% \\
+\midrule
+Total (IProfiler sum) & 245 & 3.046 & 100.0 & 271 & 3.296 & 100.0 & +8.2\% \\
+\bottomrule
+\end{tabular}
+\end{table}
