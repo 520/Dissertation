@@ -1,0 +1,32 @@
+description: Ultralytics 8n_float32_lrf_ft50 model trained on C:\Users\dxu1\Desktop\Dissertation\PTQ\datasets\kitti\kitti.yaml
+author: Ultralytics
+date: '2026-11-06T07:21:15.095024+00:00'
+version: 8.4.163
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+head: Detect
+batch: 1
+imgsz:
+- 640
+- 640
+names:
+  0: car
+  1: van
+  2: truck
+  3: pedestrian
+  4: person_sitting
+  5: cyclist
+  6: tram
+  7: misc
+args:
+  data: null
+  batch: 1
+  fraction: 1.0
+  quantize: null
+  nms: null
+  keras: false
+  opset: null
+channels: 3
+end2end: false

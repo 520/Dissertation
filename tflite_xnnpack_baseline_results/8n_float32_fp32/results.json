@@ -1,0 +1,167 @@
+{
+  "timestamp": "2026-11-06T06:45:25+00:00",
+  "model": {
+    "name": "8n_float32_float32",
+    "path": "original\\yolov8n_kitti\\8n_float32_saved_model\\8n_float32_float32.tflite",
+    "size_mb": 12.185337,
+    "sha256": "c99a2b25bd06ba28f274808ec1f0edbe23352099a9504024606a573153225bbc",
+    "input_shape": [
+      1,
+      640,
+      640,
+      3
+    ],
+    "input_dtype": "float32",
+    "output_shape": [
+      1,
+      12,
+      8400
+    ]
+  },
+  "environment": {
+    "cpu": "12th Gen Intel(R) Core(TM) i7-12700",
+    "logical_cpus": 20,
+    "os": "Windows 11 (10.0.22631)",
+    "python": "3.12.7",
+    "ai_edge_litert": "2.3.0",
+    "numpy": "2.1.3"
+  },
+  "protocol": {
+    "warmup": 20,
+    "min_seconds": 15.0,
+    "min_iters": 500,
+    "batch": 1,
+    "timed_region": "interpreter.invoke() only (next image copied into the input tensor before timing)",
+    "images": {
+      "source": "PTQ\\datasets\\kitti\\images\\val",
+      "count": 500,
+      "first": "000000.png",
+      "last": "002553.png"
+    },
+    "numerical_check_input": "000000.png (first image)"
+  },
+  "delegation": {
+    "partitions": 3,
+    "ops_total": 252,
+    "ops_delegated": 250,
+    "non_delegated_ops": {
+      "RESIZE_NEAREST_NEIGHBOR": 2
+    },
+    "non_delegated_op_indices": [
+      106,
+      123
+    ]
+  },
+  "runs": [
+    {
+      "mode": "xnnpack",
+      "threads": 1,
+      "latency": {
+        "samples": 500,
+        "mean_ms": 116.114594,
+        "median_ms": 115.87135,
+        "p75_ms": 116.808825,
+        "p95_ms": 118.429305,
+        "p99_ms": 119.761411,
+        "min_ms": 113.1798,
+        "max_ms": 123.5629,
+        "std_ms": 1.2626473962188955,
+        "fps_inverse_mean_latency": 8.612181858897083
+      }
+    },
+    {
+      "mode": "builtin_no_xnnpack",
+      "threads": 1,
+      "latency": {
+        "samples": 500,
+        "mean_ms": 259.66023859999996,
+        "median_ms": 259.09805,
+        "p75_ms": 261.6787,
+        "p95_ms": 266.684625,
+        "p99_ms": 275.48311799999993,
+        "min_ms": 249.9153,
+        "max_ms": 302.8372,
+        "std_ms": 4.977524308365634,
+        "fps_inverse_mean_latency": 3.851186478883564
+      }
+    },
+    {
+      "mode": "xnnpack",
+      "threads": 4,
+      "latency": {
+        "samples": 500,
+        "mean_ms": 32.4313488,
+        "median_ms": 32.31175,
+        "p75_ms": 32.753725,
+        "p95_ms": 33.58533499999999,
+        "p99_ms": 34.37209599999999,
+        "min_ms": 31.0077,
+        "max_ms": 43.2459,
+        "std_ms": 0.8977221888285875,
+        "fps_inverse_mean_latency": 30.834363571088968
+      }
+    },
+    {
+      "mode": "builtin_no_xnnpack",
+      "threads": 4,
+      "latency": {
+        "samples": 500,
+        "mean_ms": 139.04874600000002,
+        "median_ms": 140.39024999999998,
+        "p75_ms": 141.0776,
+        "p95_ms": 142.05831,
+        "p99_ms": 143.74894899999998,
+        "min_ms": 123.834,
+        "max_ms": 156.9303,
+        "std_ms": 4.4902608173222145,
+        "fps_inverse_mean_latency": 7.191722534484416
+      }
+    },
+    {
+      "mode": "xnnpack",
+      "threads": 8,
+      "latency": {
+        "samples": 633,
+        "mean_ms": 22.755133807266983,
+        "median_ms": 22.4677,
+        "p75_ms": 23.3627,
+        "p95_ms": 25.590259999999997,
+        "p99_ms": 29.53197999999997,
+        "min_ms": 19.6839,
+        "max_ms": 32.2278,
+        "std_ms": 1.6072197320672739,
+        "fps_inverse_mean_latency": 43.94612699138004
+      }
+    },
+    {
+      "mode": "builtin_no_xnnpack",
+      "threads": 8,
+      "latency": {
+        "samples": 500,
+        "mean_ms": 109.3024282,
+        "median_ms": 109.14235,
+        "p75_ms": 110.0029,
+        "p95_ms": 116.19462,
+        "p99_ms": 123.106058,
+        "min_ms": 101.0424,
+        "max_ms": 127.5554,
+        "std_ms": 3.7571672049773186,
+        "fps_inverse_mean_latency": 9.148927580732375
+      }
+    }
+  ],
+  "numerical_check": {
+    "output_shape": [
+      1,
+      12,
+      8400
+    ],
+    "box_max_abs_diff_px": 0.0038299560546875,
+    "box_mean_abs_diff_px": 4.0647402784088627e-05,
+    "score_max_abs_diff": 4.76837158203125e-07,
+    "score_mean_abs_diff": 3.8840233113068834e-11,
+    "top100_anchor_overlap": 100,
+    "max_score_tflite": 0.8794028162956238,
+    "max_score_torch": 0.8794031143188477
+  }
+}

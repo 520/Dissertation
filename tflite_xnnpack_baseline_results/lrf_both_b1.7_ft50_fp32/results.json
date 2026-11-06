@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-11-06T07:21:41+00:00",
+  "model": {
+    "name": "8n_float32_lrf_ft50_float32",
+    "path": "models\\lrf_both\\budget1.7\\8n_float32_lrf_ft50_saved_model\\8n_float32_lrf_ft50_float32.tflite",
+    "size_mb": 6.224221,
+    "sha256": "4ccc5c3f98b0ae6dbde4b02948bd1fe81d7d4fa76a2194a60e02d60830b02870",
+    "input_shape": [
+      1,
+      640,
+      640,
+      3
+    ],
+    "input_dtype": "float32",
+    "output_shape": [
+      1,
+      12,
+      8400
+    ]
+  },
+  "environment": {
+    "cpu": "12th Gen Intel(R) Core(TM) i7-12700",
+    "logical_cpus": 20,
+    "os": "Windows 11 (10.0.22631)",
+    "python": "3.12.7",
+    "ai_edge_litert": "2.3.0",
+    "numpy": "2.1.3"
+  },
+  "protocol": {
+    "warmup": 20,
+    "min_seconds": 15.0,
+    "min_iters": 500,
+    "batch": 1,
+    "timed_region": "interpreter.invoke() only (next image copied into the input tensor before timing)",
+    "images": {
+      "source": "PTQ\\datasets\\kitti\\images\\val",
+      "count": 500,
+      "first": "000000.png",
+      "last": "002553.png"
+    },
+    "numerical_check_input": "000000.png (first image)"
+  },
+  "delegation": {
+    "partitions": 3,
+    "ops_total": 289,
+    "ops_delegated": 287,
+    "non_delegated_ops": {
+      "RESIZE_NEAREST_NEIGHBOR": 2
+    },
+    "non_delegated_op_indices": [
+      118,
+      136
+    ]
+  },
+  "runs": [
+    {
+      "mode": "xnnpack",
+      "threads": 1,
+      "latency": {
+        "samples": 500,
+        "mean_ms": 92.81266519999998,
+        "median_ms": 92.5144,
+        "p75_ms": 93.19015,
+        "p95_ms": 95.25035,
+        "p99_ms": 100.719232,
+        "min_ms": 89.7013,
+        "max_ms": 110.3917,
+        "std_ms": 1.627292061954079,
+        "fps_inverse_mean_latency": 10.774391596719282
+      }
+    }
+  ],
+  "numerical_check": {
+    "output_shape": [
+      1,
+      12,
+      8400
+    ],
+    "box_max_abs_diff_px": 0.0020751953125,
+    "box_mean_abs_diff_px": 3.483660111669451e-05,
+    "score_max_abs_diff": 2.384185791015625e-07,
+    "score_mean_abs_diff": 2.6031244867996683e-11,
+    "top100_anchor_overlap": 100,
+    "max_score_tflite": 0.8851194977760315,
+    "max_score_torch": 0.8851193785667419
+  }
+}

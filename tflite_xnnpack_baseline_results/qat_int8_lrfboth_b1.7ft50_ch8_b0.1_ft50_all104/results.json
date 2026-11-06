@@ -1,0 +1,75 @@
+{
+  "timestamp": "2026-11-06T08:18:39+00:00",
+  "model": {
+    "name": "8n_float32_lrf_ft50_ch8_b0.1_ft50_qat_int8_all104_qatw_fp32_integer_quant",
+    "path": "models\\quantization\\int8\\qat\\lrfboth_b1.7ft50_ch8_b0.1_ft50_all\\tflite_int8\\8n_float32_lrf_ft50_ch8_b0.1_ft50_qat_int8_all104_qatw_fp32_integer_quant.tflite",
+    "size_mb": 1.623368,
+    "sha256": "b9dfb68e83e8990cda92dabb4b5e207cdfefe363b346bcb1310fd2d0e72a5011",
+    "input_shape": [
+      1,
+      640,
+      640,
+      3
+    ],
+    "input_dtype": "float32",
+    "output_shape": [
+      1,
+      12,
+      8400
+    ]
+  },
+  "environment": {
+    "cpu": "12th Gen Intel(R) Core(TM) i7-12700",
+    "logical_cpus": 20,
+    "os": "Windows 11 (10.0.22631)",
+    "python": "3.12.7",
+    "ai_edge_litert": "2.3.0",
+    "numpy": "2.1.3"
+  },
+  "protocol": {
+    "warmup": 20,
+    "min_seconds": 15.0,
+    "min_iters": 500,
+    "batch": 1,
+    "timed_region": "interpreter.invoke() only (next image copied into the input tensor before timing)",
+    "images": {
+      "source": "PTQ\\datasets\\kitti\\images\\val",
+      "count": 500,
+      "first": "000000.png",
+      "last": "002553.png"
+    },
+    "numerical_check_input": "000000.png (first image)"
+  },
+  "delegation": {
+    "partitions": 4,
+    "ops_total": 297,
+    "ops_delegated": 294,
+    "non_delegated_ops": {
+      "SOFTMAX": 1,
+      "RESIZE_NEAREST_NEIGHBOR": 2
+    },
+    "non_delegated_op_indices": [
+      120,
+      139,
+      269
+    ]
+  },
+  "runs": [
+    {
+      "mode": "xnnpack",
+      "threads": 1,
+      "latency": {
+        "samples": 500,
+        "mean_ms": 30.099276,
+        "median_ms": 29.912950000000002,
+        "p75_ms": 30.331899999999997,
+        "p95_ms": 31.337439999999997,
+        "p99_ms": 32.731584999999995,
+        "min_ms": 28.9907,
+        "max_ms": 46.6476,
+        "std_ms": 1.0730162897832822,
+        "fps_inverse_mean_latency": 33.22339048952539
+      }
+    }
+  ]
+}

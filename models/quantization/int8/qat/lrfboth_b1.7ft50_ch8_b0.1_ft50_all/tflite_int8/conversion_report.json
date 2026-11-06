@@ -1,0 +1,60 @@
+{
+  "source_onnx": "models\\quantization\\int8\\qat\\lrfboth_b1.7ft50_ch8_b0.1_ft50_all\\8n_float32_lrf_ft50_ch8_b0.1_ft50_qat_int8_all104.onnx",
+  "strip_stats": {
+    "activation_qdq_removed": 104,
+    "weight_qdq_folded": 104,
+    "weight_per_channel": 103,
+    "weight_per_tensor": 1,
+    "dead_nodes_removed": 416,
+    "dead_initializers_removed": 104
+  },
+  "float_onnx": "8n_float32_lrf_ft50_ch8_b0.1_ft50_qat_int8_all104_qatw_fp32.onnx",
+  "head_normalisation": {
+    "boxes": "xywh normalised by imgsz",
+    "imgsz": 640,
+    "anchors": 8400,
+    "anchor_constants_scaled": 2,
+    "rewrite_box_max_abs_diff_px": 0.0001220703125,
+    "rewrite_score_max_abs_diff": 0.0
+  },
+  "output_boxes": "xywh normalised to [0, 1]; multiply by imgsz for pixels",
+  "calibration": {
+    "images": 512,
+    "root": "C:\\Users\\dxu1\\Desktop\\Dissertation\\PTQ\\datasets\\kitti\\images\\train",
+    "rule": "sorted + torch.linspace",
+    "first": "000002.png",
+    "last": "007480.png",
+    "letterbox": 640
+  },
+  "tflite_int8": "8n_float32_lrf_ft50_ch8_b0.1_ft50_qat_int8_all104_qatw_fp32_integer_quant.tflite",
+  "tflite_input": {
+    "dtype": "float32",
+    "shape": [
+      1,
+      640,
+      640,
+      3
+    ]
+  },
+  "check_images": 20,
+  "stripped_fp32_vs_qdq_onnx": {
+    "box_mean_abs_diff_px": 5.741556644439697,
+    "score_max_abs_diff": 0.48837801814079285,
+    "score_mean_abs_diff": 2.245919495180715e-05,
+    "top100_anchor_overlap_mean": 87.9,
+    "anchors_over_0.25_total": [
+      412,
+      399
+    ]
+  },
+  "tflite_int8_vs_qdq_onnx": {
+    "box_mean_abs_diff_px": 8.147822380065918,
+    "score_max_abs_diff": 0.7857224345207214,
+    "score_mean_abs_diff": 2.468314050929621e-05,
+    "top100_anchor_overlap_mean": 33.85,
+    "anchors_over_0.25_total": [
+      402,
+      399
+    ]
+  }
+}

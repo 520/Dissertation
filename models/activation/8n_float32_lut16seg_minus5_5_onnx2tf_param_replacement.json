@@ -1,0 +1,82 @@
+{
+  "format_version": 1,
+  "operations": [
+    {
+      "op_name": "/model.22/Reshape",
+      "param_target": "inputs",
+      "param_name": "/model.22/cv2.0/cv2.0.2/Conv_output_0",
+      "pre_process_transpose_perm": [
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "op_name": "/model.22/Reshape_3",
+      "param_target": "inputs",
+      "param_name": "/model.22/cv3.0/cv3.0.2/Conv_output_0",
+      "pre_process_transpose_perm": [
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "op_name": "/model.22/Reshape_1",
+      "param_target": "inputs",
+      "param_name": "/model.22/cv2.1/cv2.1.2/Conv_output_0",
+      "pre_process_transpose_perm": [
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "op_name": "/model.22/Reshape_4",
+      "param_target": "inputs",
+      "param_name": "/model.22/cv3.1/cv3.1.2/Conv_output_0",
+      "pre_process_transpose_perm": [
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "op_name": "/model.22/Reshape_2",
+      "param_target": "inputs",
+      "param_name": "/model.22/cv2.2/cv2.2.2/Conv_output_0",
+      "pre_process_transpose_perm": [
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "op_name": "/model.22/Reshape_5",
+      "param_target": "inputs",
+      "param_name": "/model.22/cv3.2/cv3.2.2/Conv_output_0",
+      "pre_process_transpose_perm": [
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "op_name": "/model.22/dfl/Reshape_1",
+      "param_target": "inputs",
+      "param_name": "/model.22/dfl/conv/Conv_output_0",
+      "pre_process_transpose_perm": [
+        0,
+        3,
+        1,
+        2
+      ]
+    }
+  ]
+}

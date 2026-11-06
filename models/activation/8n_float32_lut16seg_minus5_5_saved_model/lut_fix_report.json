@@ -1,0 +1,9 @@
+{
+  "onnx": "8n_float32_lut16seg_minus5_5.onnx",
+  "tables_prepermuted": 112,
+  "head_reshape_transposes": 7,
+  "tflite": "8n_float32_lut16seg_minus5_5_float32.tflite",
+  "check_images": 5,
+  "box_max_abs_diff_px": 390.2118225097656,
+  "score_max_abs_diff": 0.9145996570587158
+}
